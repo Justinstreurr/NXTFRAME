@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { FrameGlyph } from "./Logo";
+import MoreOnMobile from "./MoreOnMobile";
 import { quadMatrix } from "./quad";
 
 /* one shared clock for all four films: a step every 1.3 s, eight steps a loop */
@@ -288,7 +289,9 @@ const cards: Card[] = [
 export default function SmartBento() {
   const { host, step } = useStep();
   return (
-    <div ref={host} className="grid gap-4 md:gap-5 lg:grid-cols-12">
+    // on phones the first two cards, the other two behind a button
+    <div ref={host}>
+      <MoreOnMobile show={2} label="Toon nog 2 voorbeelden" className="grid gap-4 md:gap-5 lg:grid-cols-12">
       {cards.map((c) => (
         <article key={c.title} className={`relative h-[560px] overflow-hidden rounded-[14px] ${c.bg} ${c.text} ${c.span}`}>
           <div className="relative z-10 p-7 md:p-9">
@@ -303,6 +306,7 @@ export default function SmartBento() {
           </div>
         </article>
       ))}
+      </MoreOnMobile>
     </div>
   );
 }

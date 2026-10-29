@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import MoreOnMobile from "@/components/MoreOnMobile";
 import { FaqList, Platform, Work, type PathStep } from "@/components/Sections";
 import StackCards, { type StackCard } from "@/components/StackCards";
 import { ArrowIcon, Button, Container, Eyebrow, TextLink } from "@/components/ui";
@@ -275,7 +276,7 @@ export default function Page() {
               </p>
             </div>
 
-            <ol className="mt-12 space-y-4 md:hidden">
+            <MoreOnMobile show={3} label={"Toon alle signalen"} as="ol" className="mt-12 space-y-4 md:hidden">
               {signals.map((s) => (
                 <li key={s.title} className="overflow-hidden rounded-3xl bg-paper text-forest">
                   <div className="p-6">
@@ -295,7 +296,7 @@ export default function Page() {
                   </div>
                 </li>
               ))}
-            </ol>
+            </MoreOnMobile>
 
             <Reveal threshold={0.2} className="cmp mt-16 hidden md:block">
               <table className="w-full border-separate border-spacing-x-3 border-spacing-y-0 text-left">

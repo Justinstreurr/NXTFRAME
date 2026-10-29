@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import MoreOnMobile from "./MoreOnMobile";
 import { ArrowIcon, Button, Container, Eyebrow, Reassure, TextLink } from "./ui";
 import Reveal from "./Reveal";
 import ZigzagPath from "./ZigzagPath";
@@ -749,7 +750,8 @@ export function HomeFaq() {
 /** The questions as a list that folds open, one hairline between each; shared by the homepage and the sub pages. */
 export function FaqList({ items }: { items: { q: string; a: string }[] }) {
   return (
-    <div className="faq divide-y divide-forest/15 border-y border-forest/15">
+    // on phones the first six questions, the rest behind a button
+    <MoreOnMobile show={6} label={`Toon alle ${items.length} vragen`} className="faq divide-y divide-forest/15 border-y border-forest/15">
       {items.map((f) => (
         <details key={f.q} className="group">
           <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 font-display text-lg font-semibold tracking-tight md:text-xl">
@@ -761,7 +763,7 @@ export function FaqList({ items }: { items: { q: string; a: string }[] }) {
           <p className="faq-answer max-w-2xl pb-7 text-base leading-relaxed text-forest/75">{f.a}</p>
         </details>
       ))}
-    </div>
+    </MoreOnMobile>
   );
 }
 
@@ -844,7 +846,8 @@ export function Prices() {
                     Live in {t.time}
                   </span>
 
-                  <span className={`mt-7 block border-t pt-6 ${c.line}`}>
+                  {/* on phones the full list only on the highlighted card; the others fold to their summary, and the card itself opens /prijzen */}
+                  <span className={`mt-7 border-t pt-6 ${c.line} ${t.highlight ? "block" : "hidden md:block"}`}>
                     <span className="grid gap-3">
                       {t.items.map((it) => (
                         <span key={it} className="flex items-start gap-3 text-[15px] leading-snug">

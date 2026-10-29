@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import MoreOnMobile from "@/components/MoreOnMobile";
 import { FaqList, Platform, Work, type PathStep } from "@/components/Sections";
 import StackCards, { type StackCard } from "@/components/StackCards";
 import { Button, Container, Eyebrow, TextLink } from "@/components/ui";
@@ -250,7 +251,7 @@ export default function Page() {
                 Uitgekeken zijn op je eigen site is geen goede reden. Klanten mislopen wel. Herken je er één of meer, dan is een redesign het overwegen waard.
               </p>
             </div>
-            <ul className="mt-16 grid items-start gap-5 md:grid-cols-2 xl:grid-cols-4">
+            <MoreOnMobile show={2} label={"Toon alle signalen"} as="ul" className="mt-16 grid items-start gap-5 md:grid-cols-2 xl:grid-cols-4">
               {signs.map((p, i) => (
                 <li key={p.title} style={{ "--i": i } as React.CSSProperties} className="pain-card rounded-3xl bg-paper p-8 text-forest ring-1 ring-forest/10">
                   <span className="text-sm font-medium text-forest/45">0{i + 1}</span>
@@ -258,7 +259,7 @@ export default function Page() {
                   <p className="mt-3 text-[15px] leading-relaxed text-forest/75">{p.body}</p>
                 </li>
               ))}
-            </ul>
+            </MoreOnMobile>
           </Container>
         </section>
 
@@ -308,7 +309,7 @@ export default function Page() {
               </p>
             </div>
             {/* phones: one card per part, how it is handled on top and the ticks in a paper block under it */}
-            <ol className="mt-12 space-y-4 md:hidden">
+            <MoreOnMobile show={2} label={"Toon alles wat er verandert"} as="ol" className="mt-12 space-y-4 md:hidden">
               {parts.map((d, i) => (
                 <li key={d.title} className="overflow-hidden rounded-3xl bg-[#fcbbb9] text-[#440220]">
                   <div className="p-6">
@@ -326,7 +327,7 @@ export default function Page() {
                   </ul>
                 </li>
               ))}
-            </ol>
+            </MoreOnMobile>
             <Reveal threshold={0.25} className="cmp mt-16 hidden md:block">
               <table className="w-full border-separate border-spacing-x-3 border-spacing-y-0 text-left">
                 <thead>

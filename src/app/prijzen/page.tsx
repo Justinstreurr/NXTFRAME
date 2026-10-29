@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import MoreOnMobile from "@/components/MoreOnMobile";
 import { Comparison, FaqList } from "@/components/Sections";
 import { Button, Container, Eyebrow, Reassure, TextLink } from "@/components/ui";
 import { FrameGlyph } from "@/components/Logo";
@@ -299,7 +300,7 @@ export default function Page() {
               </p>
             </div>
 
-            <ul className="mt-12 grid gap-4 sm:grid-cols-2 md:mt-12 md:gap-5 lg:grid-cols-12 lg:grid-rows-[repeat(3,250px)]">
+            <MoreOnMobile show={3} label={"Toon alles wat erbij zit"} as="ul" className="mt-12 grid gap-4 sm:grid-cols-2 md:mt-12 md:gap-5 lg:grid-cols-12 lg:grid-rows-[repeat(3,250px)]">
               {/* tall, picture on top */}
               <li className="flex flex-col overflow-hidden rounded-[14px] bg-[#fcbbb9] text-[#440220] lg:col-span-4 lg:row-span-2">
                 <img src="/images/slim-palette.webp" alt="" className="aspect-[4/3] w-full rounded-[14px] object-cover object-[50%_30%] lg:aspect-auto lg:min-h-0 lg:flex-1" loading="lazy" decoding="async" />
@@ -344,7 +345,7 @@ export default function Page() {
                 </span>
                 <IncludedCopy label="Lancering" item={always[4]} />
               </li>
-            </ul>
+            </MoreOnMobile>
 
             <div className="mt-10 flex flex-wrap items-center justify-between gap-x-10 gap-y-5 border-t border-forest/15 pt-8">
               <p className="max-w-2xl text-[15px] leading-relaxed text-forest/70">

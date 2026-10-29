@@ -56,6 +56,17 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* MoreOnMobile: on phones a folded list shows only its first `data-fold` children */
+@media (max-width: 767px) {
+  [data-fold="0"]:not(.is-open) { display: none; }
+  [data-fold="1"]:not(.is-open) > :nth-child(n + 2),
+  [data-fold="2"]:not(.is-open) > :nth-child(n + 3),
+  [data-fold="3"]:not(.is-open) > :nth-child(n + 4),
+  [data-fold="4"]:not(.is-open) > :nth-child(n + 5),
+  [data-fold="5"]:not(.is-open) > :nth-child(n + 6),
+  [data-fold="6"]:not(.is-open) > :nth-child(n + 7) { display: none; }
+}
+
 /* skip link (layout.tsx): out of sight until a keyboard user tabs onto it, then top left above everything */
 .skip-link {
   position: fixed; left: 16px; top: 16px; z-index: 1000;

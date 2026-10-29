@@ -4,6 +4,7 @@ import FindBento, { type FindContent } from "./FindBento";
 import { LinkIn, LinkOut, type LinkRequest, type LinkSource, type LinkTile } from "./LinkFlow";
 import { LinkCalc } from "./LinkCalc";
 import { FrameGlyph } from "./Logo";
+import MoreOnMobile from "./MoreOnMobile";
 import StackCards, { type StackCard } from "./StackCards";
 import { Button, Container, Eyebrow } from "./ui";
 
@@ -86,7 +87,7 @@ export function BranchLinks({ content: c }: { content: LinksContent }) {
           ))}
         </div>
 
-        <dl className="mt-12 grid gap-x-12 gap-y-8 text-center md:mt-16 lg:grid-cols-3">
+        <MoreOnMobile show={1} label="Meer over koppelen" as="dl" className="mt-12 grid gap-x-12 gap-y-8 text-center md:mt-16 lg:grid-cols-3" buttonClassName="mx-auto flex">
           {c.facts.map((f) => (
             <div key={f.title} className="mx-auto max-w-sm">
               <dt className="flex items-center justify-center gap-3 font-display text-xl font-semibold tracking-tight">
@@ -96,7 +97,7 @@ export function BranchLinks({ content: c }: { content: LinksContent }) {
               <dd className="mt-3 text-[15px] leading-relaxed text-forest/75">{f.body}</dd>
             </div>
           ))}
-        </dl>
+        </MoreOnMobile>
       </Container>
     </section>
   );

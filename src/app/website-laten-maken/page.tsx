@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import MoreOnMobile from "@/components/MoreOnMobile";
 import CountUp from "@/components/CountUp";
 import { Comparison, Difference, FaqList, Platform, Work } from "@/components/Sections";
 import StackCards, { type StackCard } from "@/components/StackCards";
@@ -333,14 +334,15 @@ export default function Page() {
                   </p>
                   <p className={`mt-2 text-sm ${t.highlight ? "text-paper/60" : "text-forest/60"}`}>exclusief btw · live in {t.time}</p>
                   <p className={`mt-6 text-base leading-relaxed ${t.highlight ? "text-paper/80" : "text-forest/70"}`}>{t.body}</p>
-                  <ul className="mt-8 flex-1 space-y-3">
+                  {/* on phones the list of the other two tiers folds behind a button */}
+                  <MoreOnMobile show={t.highlight ? 6 : 0} label="Wat zit erin" as="ul" className="mt-8 flex-1 space-y-3" buttonClassName="self-start">
                     {t.items.map((it) => (
                       <li key={it} className="flex items-start gap-3 text-[15px] leading-snug">
                         <Tick className={t.highlight ? "bg-lime text-forest" : "bg-forest text-lime"} />
                         {it}
                       </li>
                     ))}
-                  </ul>
+                  </MoreOnMobile>
                   <Button variant={t.highlight ? "lime" : "dark"} className="mt-10 w-full" href="/contact">Plan een kennismaking</Button>
                 </div>
               ))}
@@ -350,7 +352,7 @@ export default function Page() {
               <h3 className="t-sub">
                 Wat bepaalt <span className="serif-italic">de prijs</span>
               </h3>
-              <ol className="mt-10 grid gap-x-10 gap-y-10 sm:grid-cols-2 xl:grid-cols-4">
+              <MoreOnMobile show={1} label={`Toon alle ${priceFactors.length}`} as="ol" className="mt-10 grid gap-x-10 gap-y-10 sm:grid-cols-2 xl:grid-cols-4">
                 {priceFactors.map((f, i) => (
                   <li key={f.title}>
                     <span className="grid h-10 w-14 place-items-center rounded-full border border-forest/30 font-display text-base font-semibold italic">{i + 1}</span>
@@ -358,7 +360,7 @@ export default function Page() {
                     <p className="mt-2 text-[15px] leading-relaxed text-forest/70">{f.body}</p>
                   </li>
                 ))}
-              </ol>
+              </MoreOnMobile>
             </div>
             <p className="mt-10 max-w-2xl text-[15px] leading-relaxed text-forest/70">
               Alle prijzen op een rij, ook voor onderhoud na de lancering, staan op <a href="/prijzen" className="border-b border-forest/40 font-semibold text-forest hover:border-forest">de prijzenpagina</a>.
@@ -393,7 +395,7 @@ export default function Page() {
               </p>
             </div>
             {/* phones: one card per moment, what you do on top and the ticks in a paper block under it */}
-            <ol className="mt-12 space-y-4 md:hidden">
+            <MoreOnMobile show={1} label={`Toon alle ${handover.length} momenten`} as="ol" className="mt-12 space-y-4 md:hidden">
               {handover.map((d, i) => (
                 <li key={d.title} className="overflow-hidden rounded-3xl bg-[#fcbbb9] text-[#440220]">
                   <div className="p-6">
@@ -414,7 +416,7 @@ export default function Page() {
                   </ul>
                 </li>
               ))}
-            </ol>
+            </MoreOnMobile>
             <Reveal threshold={0.25} className="cmp mt-16 hidden md:block">
               <table className="w-full border-separate border-spacing-x-3 border-spacing-y-0 text-left">
                 <thead>

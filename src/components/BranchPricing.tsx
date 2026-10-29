@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { FrameGlyph } from "./Logo";
+import MoreOnMobile from "./MoreOnMobile";
 import { ArrowIcon, Button, Container, Eyebrow, Reassure } from "./ui";
 
 /** a way to start: a figure when there is one (otherwise quoted), what it is, how long, what is in it */
@@ -94,14 +95,14 @@ export default function BranchPricing({
         </ul>
 
         <h3 className="mt-20 text-center font-display text-2xl font-semibold tracking-tight md:mt-28 md:text-[28px]">{includedTitle}</h3>
-        <ul className="mt-10 grid gap-x-16 sm:grid-cols-2">
+        <MoreOnMobile show={4} label={`Toon alle ${included.length}`} as="ul" className="mt-10 grid gap-x-16 sm:grid-cols-2">
           {included.map((item) => (
             <li key={item} className="flex items-center justify-between gap-4 border-b border-forest/15 py-4 text-[15px] text-forest/80">
               {item}
               <Check className="text-forest" />
             </li>
           ))}
-        </ul>
+        </MoreOnMobile>
 
         {/* one decision at the foot: the main button, the line that takes the doubt away, the small print */}
         <div className="mt-12 flex flex-col items-center gap-3 text-center md:mt-16">

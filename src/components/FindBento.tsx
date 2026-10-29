@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import { FrameGlyph } from "./Logo";
+import MoreOnMobile from "./MoreOnMobile";
 import { show, useStep } from "./SmartBento";
 
 /** what the three cards say and what their films show, per branch */
@@ -173,7 +174,9 @@ export default function FindBento({ content }: { content: FindContent }) {
   const { host, step } = useStep();
   const cards = cardsFor(content);
   return (
-    <div ref={host} className="grid gap-4 md:gap-5 lg:grid-cols-12">
+    // on phones the first two cards, the rest behind a button
+    <div ref={host}>
+      <MoreOnMobile show={2} label={`Toon alle ${cards.length} plekken`} className="grid gap-4 md:gap-5 lg:grid-cols-12">
       {cards.map((c) => (
         <article key={c.title} className={`relative overflow-hidden rounded-[14px] ${c.bg} ${c.text} ${c.box}`}>
           <div className={`relative z-10 p-7 md:p-9 ${c.copy}`}>
@@ -197,6 +200,7 @@ export default function FindBento({ content }: { content: FindContent }) {
           </div>
         </article>
       ))}
+      </MoreOnMobile>
     </div>
   );
 }

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, type ReactNode } from "react";
 import { FrameGlyph } from "./Logo";
+import MoreOnMobile from "./MoreOnMobile";
 
 /**
  * "Wat je krijgt" on /makelaars and /financieel-advies: the parts of the site, as a quiet grid between
@@ -125,11 +126,12 @@ function Cell({ item, index }: { item: SiteFeature; index: number }) {
 
 export default function SellerGrid({ items }: { items: SiteFeature[] }) {
   return (
-    <ul className="grid gap-px border-y border-forest/10 bg-forest/10 sm:grid-cols-2 lg:grid-cols-3">
+    // on phones the first three, the rest behind a button
+    <MoreOnMobile show={3} label={`Toon alle ${items.length}`} as="ul" className="grid gap-px border-y border-forest/10 bg-forest/10 sm:grid-cols-2 lg:grid-cols-3">
       {items.map((it, i) => (
         <Cell key={it.title} item={it} index={i} />
       ))}
-    </ul>
+    </MoreOnMobile>
   );
 }
 

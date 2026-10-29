@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import MoreOnMobile from "@/components/MoreOnMobile";
 import { Comparison, FaqList, Testimonials, Work } from "@/components/Sections";
 import StackCards, { type StackCard } from "@/components/StackCards";
 import { Button, Container, Eyebrow, TextLink } from "@/components/ui";
@@ -242,7 +243,7 @@ export default function Page() {
                 De praktische dingen die je wilt weten voordat je contact opneemt.
               </p>
             </div>
-            <dl className="mt-16 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+            <MoreOnMobile show={3} label={"Toon alle feiten"} as="dl" className="mt-16 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
               {facts.map((f) => (
                 <div key={f.k} className="rounded-3xl bg-paper p-8 ring-1 ring-forest/10">
                   <dt className="flex items-center gap-2.5 text-sm font-medium text-forest/55">
@@ -254,7 +255,7 @@ export default function Page() {
                   </dd>
                 </div>
               ))}
-            </dl>
+            </MoreOnMobile>
           </Container>
         </section>
 
