@@ -145,8 +145,7 @@ export default function Page() {
         {/* Hero, the same frame as the other pages (720px on desktop, the nav floating over it): the
             promise on the left over a full-width photo (the mascot walking past an estate agent's
             window in evening sun, the agent in the doorway; a generated image, /images/makelaars-hero).
-            The left of the photo is a dark doorway, with a forest tint on top to carry the type. On
-            phones the photo follows the copy as its own block. */}
+            The left of the photo is a dark doorway, with a forest tint on top to carry the type. On phones too the copy sits on the photo, under a shade. */}
         <section data-zone="green" className="relative isolate overflow-hidden bg-forest text-cream">
           <div
             className="absolute inset-0 -z-10 hidden bg-[linear-gradient(to_right,rgb(0_0_0/0.86)_0%,rgb(0_0_0/0.72)_28%,rgb(0_0_0/0.3)_46%,transparent_58%)] lg:block"
@@ -181,12 +180,14 @@ export default function Page() {
               </div>
             </div>
           </Container>
-          <picture className="block lg:absolute lg:inset-0 lg:-z-20">
+          {/* phones: the copy sits on the photo, so a shade from the top (copy) to the foot (buttons) keeps it readable */}
+          <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,rgb(0_0_0/0.72)_0%,rgb(0_0_0/0.5)_45%,rgb(0_0_0/0.68)_100%)] lg:hidden" aria-hidden="true" />
+          <picture className="absolute inset-0 -z-20">
             <source srcSet="/images/makelaars-hero.webp" type="image/webp" />
             <img
               src="/images/makelaars-hero.jpg"
               alt="De NXT Frame-mascotte loopt met een laptop onder de arm langs de etalage van een makelaar, waar de makelaar in de deuropening staat"
-              className="aspect-[4/3] w-full object-cover object-[80%_50%] lg:aspect-auto lg:size-full lg:object-[70%_50%]"
+              className="size-full object-cover object-[80%_50%] lg:object-[70%_50%]"
               loading="eager"
               decoding="async"
               draggable={false}

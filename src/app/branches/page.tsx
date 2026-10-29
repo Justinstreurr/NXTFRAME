@@ -65,8 +65,7 @@ export default function Page() {
             promise on the left over a full-width photo (the mascot walking down a Dutch shopping street
             past a shopkeeper and two women on a terrace; a generated image, /images/branches-hero-straat).
             The mascot walks in the middle of the frame, so the copy keeps to a narrow column on the
-            shadow side of the street, under a forest tint. On phones the photo follows the copy as its
-            own block. */}
+            shadow side of the street, under a forest tint. On phones too the copy sits on the photo, under a shade. */}
         <section data-zone="green" className="relative isolate overflow-hidden bg-forest text-cream">
           {/* a firmer tint than on the other heroes: the street behind the copy is in full sun */}
           <div
@@ -102,12 +101,14 @@ export default function Page() {
               </div>
             </div>
           </Container>
-          <picture className="block lg:absolute lg:inset-0 lg:-z-20">
+          {/* phones: the copy sits on the photo, so a shade from the top (copy) to the foot (buttons) keeps it readable */}
+          <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,rgb(0_0_0/0.72)_0%,rgb(0_0_0/0.5)_45%,rgb(0_0_0/0.68)_100%)] lg:hidden" aria-hidden="true" />
+          <picture className="absolute inset-0 -z-20">
             <source srcSet="/images/branches-hero-straat.webp" type="image/webp" />
             <img
               src="/images/branches-hero-straat.jpg"
               alt="De NXT Frame-mascotte loopt met een laptop onder de arm door een zonnige Nederlandse winkelstraat, nagekeken door een winkelier en twee vrouwen op een terras"
-              className="aspect-[4/3] w-full object-cover object-[78%_50%] lg:aspect-auto lg:size-full lg:object-[35%_50%]"
+              className="size-full object-cover object-[78%_50%] lg:object-[35%_50%]"
               loading="eager"
               decoding="async"
               draggable={false}

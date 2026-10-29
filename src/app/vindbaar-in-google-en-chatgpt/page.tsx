@@ -199,8 +199,7 @@ export default function Page() {
         {/* Hero, the frame of the aanpak and over pages (720px on desktop, the nav floating over it):
             the promise on the left over a full-width photo, black from the left to carry the type.
             TEMPORARY photo: the mascot on a chair on a sunny hilltop (/images/hero-hill-v1, unused
-            elsewhere), until the generated photo for this page is in. On phones the photo follows the
-            copy as its own block. */}
+            elsewhere), until the generated photo for this page is in. On phones too the copy sits on the photo, under a shade. */}
         <section data-zone="green" className="relative isolate overflow-hidden bg-forest text-cream">
           <div
             className="absolute inset-0 -z-10 hidden bg-[linear-gradient(to_right,rgb(0_0_0/0.66)_0%,rgb(0_0_0/0.52)_28%,rgb(0_0_0/0.2)_46%,transparent_58%)] lg:block"
@@ -235,12 +234,14 @@ export default function Page() {
               </div>
             </div>
           </Container>
-          <picture className="block lg:absolute lg:inset-0 lg:-z-20">
+          {/* phones: the copy sits on the photo, so a shade from the top (copy) to the foot (buttons) keeps it readable */}
+          <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,rgb(0_0_0/0.72)_0%,rgb(0_0_0/0.5)_45%,rgb(0_0_0/0.68)_100%)] lg:hidden" aria-hidden="true" />
+          <picture className="absolute inset-0 -z-20">
             <source srcSet="/images/hero-hill-v1.webp" type="image/webp" />
             <img
               src="/images/hero-hill-v1.jpg"
               alt="De NXT Frame-mascotte zit met een laptop op een stoel boven op een zonnige heuvel vol bloemen"
-              className="aspect-[4/3] w-full object-cover object-[68%_50%] lg:aspect-auto lg:size-full lg:object-[70%_50%]"
+              className="size-full object-cover object-[68%_50%] lg:object-[70%_50%]"
               loading="eager"
               decoding="async"
               draggable={false}

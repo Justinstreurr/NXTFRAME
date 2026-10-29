@@ -190,8 +190,7 @@ export default function Page() {
             over it): the promise on the left over a full-width photo, black from the left to carry the
             type. TEMPORARY photo: the Hypotheekhaven site on a laptop on a plinth in a flowering meadow
             (/images/advies-hero-weide, an earlier version of the financieel-advies hero), until the
-            generated hero (an older owner in warm late sun, lime accent) is in. On phones the photo
-            follows the copy as its own block. */}
+            generated hero (an older owner in warm late sun, lime accent) is in. On phones too the copy sits on the photo, under a shade. */}
         <section data-zone="green" className="relative isolate overflow-hidden bg-forest text-cream">
           <div
             className="absolute inset-0 -z-10 hidden bg-[linear-gradient(to_right,rgb(0_0_0/0.66)_0%,rgb(0_0_0/0.52)_28%,rgb(0_0_0/0.2)_46%,transparent_58%)] lg:block"
@@ -226,12 +225,14 @@ export default function Page() {
               </div>
             </div>
           </Container>
-          <picture className="block lg:absolute lg:inset-0 lg:-z-20">
+          {/* phones: the copy sits on the photo, so a shade from the top (copy) to the foot (buttons) keeps it readable */}
+          <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,rgb(0_0_0/0.72)_0%,rgb(0_0_0/0.5)_45%,rgb(0_0_0/0.68)_100%)] lg:hidden" aria-hidden="true" />
+          <picture className="absolute inset-0 -z-20">
             <source srcSet="/images/advies-hero-weide.webp" type="image/webp" />
             <img
               src="/images/advies-hero-weide.jpg"
               alt="Een laptop met de website van Hypotheekhaven op een witte sokkel in een bloeiende weide in de late zon"
-              className="aspect-[4/3] w-full object-cover object-[72%_60%] lg:aspect-auto lg:size-full lg:object-[80%_55%]"
+              className="size-full object-cover object-[72%_60%] lg:object-[80%_55%]"
               loading="eager"
               decoding="async"
               draggable={false}

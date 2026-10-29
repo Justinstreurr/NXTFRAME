@@ -57,8 +57,7 @@ export default function BranchPage({ branch }: { branch: Branch }) {
       <Nav theme="photo" />
       <main id="main">
         {/* Hero, the frame of /makelaars (720px on desktop, the nav floating over it): the promise on
-            the left over a full-width photo, black from the left to carry the type. On phones the
-            photo follows the copy as its own block. */}
+            the left over a full-width photo, black from the left to carry the type. On phones too the copy sits on the photo, under a shade. */}
         <section data-zone="green" className="relative isolate overflow-hidden bg-forest text-cream">
           <div
             className="absolute inset-0 -z-10 hidden bg-[linear-gradient(to_right,rgb(0_0_0/0.86)_0%,rgb(0_0_0/0.72)_28%,rgb(0_0_0/0.3)_46%,transparent_58%)] lg:block"
@@ -92,11 +91,13 @@ export default function BranchPage({ branch }: { branch: Branch }) {
               </div>
             </div>
           </Container>
-          <picture className="block lg:absolute lg:inset-0 lg:-z-20">
+          {/* phones: the copy sits on the photo, so a shade from the top (copy) to the foot (buttons) keeps it readable */}
+          <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,rgb(0_0_0/0.72)_0%,rgb(0_0_0/0.5)_45%,rgb(0_0_0/0.68)_100%)] lg:hidden" aria-hidden="true" />
+          <picture className="absolute inset-0 -z-20">
             <img
               src={page.hero.src}
               alt={page.hero.alt}
-              className="aspect-[4/3] w-full object-cover lg:aspect-auto lg:size-full"
+              className="size-full object-cover"
               style={page.hero.pos ? { objectPosition: page.hero.pos } : undefined}
               loading="eager"
               decoding="async"

@@ -189,7 +189,7 @@ export default function Page() {
             the promise on the left over a full-width photo, black from the left to carry the type.
             The photo, for now: a phone with the Hypotheekhaven site leaning on orange padded tubes
             (/images/advies-hero, an earlier financieel-advies hero). To be replaced by a generated
-            photo of an older person repainting a storefront. On phones the photo follows the copy. */}
+            photo of an older person repainting a storefront. On phones too the copy sits on the photo, under a shade. */}
         <section data-zone="green" className="relative isolate overflow-hidden bg-forest text-cream">
           <div
             className="absolute inset-0 -z-10 hidden bg-[linear-gradient(to_right,rgb(0_0_0/0.86)_0%,rgb(0_0_0/0.72)_28%,rgb(0_0_0/0.3)_46%,transparent_58%)] lg:block"
@@ -224,12 +224,14 @@ export default function Page() {
               </div>
             </div>
           </Container>
-          <picture className="block lg:absolute lg:inset-0 lg:-z-20">
+          {/* phones: the copy sits on the photo, so a shade from the top (copy) to the foot (buttons) keeps it readable */}
+          <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,rgb(0_0_0/0.72)_0%,rgb(0_0_0/0.5)_45%,rgb(0_0_0/0.68)_100%)] lg:hidden" aria-hidden="true" />
+          <picture className="absolute inset-0 -z-20">
             <source srcSet="/images/advies-hero.webp" type="image/webp" />
             <img
               src="/images/advies-hero.jpg"
               alt="Een telefoon met een vernieuwde website leunt tegen oranje, gecapitonneerde buizen"
-              className="aspect-[4/3] w-full object-cover object-[72%_50%] lg:aspect-auto lg:size-full lg:object-[70%_50%]"
+              className="size-full object-cover object-[72%_50%] lg:object-[70%_50%]"
               loading="eager"
               decoding="async"
               draggable={false}
