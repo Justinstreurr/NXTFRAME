@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- the tab icon: just the two frame corners, no tile. Forest in a light browser, lime in a dark one. -->
+  <style>
+    path { stroke: #02261e; }
+    @media (prefers-color-scheme: dark) { path { stroke: #dafc92; } }
+  </style>
+  <g fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 15V4h11"/>
+    <path d="M28 17v11H17"/>
+  </g>
+</svg>
