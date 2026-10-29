@@ -220,7 +220,7 @@ export default function Page() {
         </section>
 
         {/* the three packages, straight under the photo: outer cards white, the middle one forest, as on the homepage */}
-        <section id="pakketten" className="scroll-mt-20 bg-cream py-16 text-forest md:pb-32 md:pt-24">
+        <section id="pakketten" className="scroll-mt-20 bg-cream py-12 md:py-16 text-forest md:pb-32 md:pt-24">
           <Container>
             <div className="mx-auto max-w-3xl text-center">
               <Eyebrow className="mx-auto">De pakketten</Eyebrow>
@@ -288,7 +288,7 @@ export default function Page() {
             cards with the picture on top, a wide one with the picture beside the copy, two with the
             copy over the picture and one plain lime card. On desktop the grid is twelve columns and
             three rows and the cards place themselves in this order. */}
-        <section className="bg-cream pb-16 pt-4 text-forest md:pb-32 md:pt-8">
+        <section className="bg-cream pb-12 pt-4 text-forest md:pb-32 md:pt-8">
           <Container>
             <div className="mx-auto max-w-3xl text-center">
               <Eyebrow className="mx-auto">Altijd inbegrepen</Eyebrow>
@@ -360,7 +360,7 @@ export default function Page() {
         {/* after the launch there is one choice: the maintenance subscription (hosting included) or not.
             The monthly amount is still open (see the note at the top). The domain name is a line of
             its own: always in the client's name, paid by the client. */}
-        <section data-zone="green" className="bg-forest py-16 text-paper md:py-32">
+        <section data-zone="green" className="bg-forest py-12 text-paper md:py-32">
           <Container>
             <div className="grid gap-10 lg:grid-cols-2 lg:items-end lg:gap-20">
               <div>
@@ -411,7 +411,7 @@ export default function Page() {
         <Comparison />
 
         {/* the price questions, also FAQPage structured data (see jsonLd) */}
-        <section className="bg-cream pb-16 pt-4 text-forest md:pb-32 md:pt-8">
+        <section className="bg-cream pb-12 pt-4 text-forest md:pb-32 md:pt-8">
           <Container className="grid gap-12 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
             <div className="self-start lg:sticky lg:top-28">
               <Eyebrow className="max-w-xl">Veelgestelde vragen</Eyebrow>

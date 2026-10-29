@@ -109,7 +109,7 @@ export default function Page() {
             className="absolute inset-0 -z-10 hidden bg-[linear-gradient(to_right,rgb(0_0_0/0.86)_0%,rgb(0_0_0/0.72)_28%,rgb(0_0_0/0.3)_46%,transparent_58%)] lg:block"
             aria-hidden="true"
           />
-          <Container className="relative z-10 flex flex-col justify-center pb-16 pt-28 sm:pt-36 lg:min-h-[720px] lg:pb-28 lg:pt-32">
+          <Container className="relative z-10 flex flex-col justify-center pb-12 pt-28 sm:pt-36 lg:min-h-[720px] lg:pb-28 lg:pt-32">
             <div className="max-w-2xl lg:max-w-[56%]">
               <Eyebrow tone="light" className="max-w-xl">Aanpak</Eyebrow>
               <h1 className="mt-6 t-hero text-paper md:mt-8">
@@ -125,7 +125,8 @@ export default function Page() {
                   <Button className="px-8 py-4 text-base" href="/contact">
                     Plan een kennismaking
                   </Button>
-                  <TextLink light href="#stappen">Bekijk de stappen</TextLink>
+                  <span className="hidden md:inline"><TextLink light href="#stappen">Bekijk de stappen</TextLink></span>
+                  <span className="md:hidden"><TextLink light href="#per-stap">Bekijk de stappen</TextLink></span>
                 </div>
                 <ul className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 font-display text-[15px] text-paper/90">
                   {["Vaste prijs vooraf", "Eén aanspreekpunt", "Live in 3 tot 14 weken"].map((t) => (
@@ -153,7 +154,8 @@ export default function Page() {
 
         {/* the five steps on the zigzag path, the homepage section with this page's heading. Cream, so
             it gets the full top padding instead of hanging on to the dark hero */}
-        <div id="stappen" className="scroll-mt-20">
+        {/* phones: the steps follow right below as cards (Per stap), so the timeline would say it twice */}
+        <div id="stappen" className="hidden scroll-mt-20 md:block">
           <Platform
             eyebrow="Zo werkt het"
             title={<>Vijf stappen, <span className="serif-italic">één aanspreekpunt</span></>}
@@ -164,7 +166,7 @@ export default function Page() {
         </div>
 
         {/* per step: what you do, what you get, on the forest ground: a blush column for what you do and a paper one for what you get */}
-        <section data-zone="green" className="bg-forest py-16 text-paper md:py-32">
+        <section id="per-stap" data-zone="green" className="scroll-mt-20 bg-forest py-12 text-paper md:py-32">
           <Container>
             <div className="grid gap-10 lg:grid-cols-2 lg:items-end lg:gap-20">
               <div>
@@ -202,7 +204,7 @@ export default function Page() {
             </ol>
             {/* wider screens: the table of the comparison section. The steps down the side, a paper
                 column for what you do, a paper column for what you get, ticked off as it scrolls in */}
-            <Reveal threshold={0.25} className="cmp mt-16 hidden md:block">
+            <Reveal threshold={0.25} className="cmp mt-12 md:mt-16 hidden md:block">
               <table className="w-full border-separate border-spacing-x-3 border-spacing-y-0 text-left">
                 <thead>
                   <tr>
@@ -241,7 +243,7 @@ export default function Page() {
             </Reveal>
 
             {/* how long it takes, per kind of site: the numbers framed like the proof on the hub */}
-            <div className="mt-20 border-t border-paper/15 pt-16 md:mt-24 md:pt-20">
+            <div className="mt-14 border-t border-paper/15 pt-16 md:mt-24 md:pt-20">
               <h3 className="text-center t-sub">
                 Hoe lang <span className="serif-italic">het duurt</span>
               </h3>
@@ -274,7 +276,7 @@ export default function Page() {
         <Work turnDark={false} />
 
         {/* the questions about the process, laid out like the homepage FAQ */}
-        <section className="bg-cream pb-16 pt-8 text-forest md:pb-32">
+        <section className="bg-cream pb-12 pt-8 text-forest md:pb-32">
           <Container className="grid gap-12 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
             <div className="self-start lg:sticky lg:top-28">
               <Eyebrow className="max-w-xl">Veelgestelde vragen</Eyebrow>

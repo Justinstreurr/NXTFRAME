@@ -215,7 +215,7 @@ export default function Page() {
             className="absolute inset-0 -z-10 hidden bg-[linear-gradient(to_right,rgb(0_0_0/0.86)_0%,rgb(0_0_0/0.72)_28%,rgb(0_0_0/0.3)_46%,transparent_58%)] lg:block"
             aria-hidden="true"
           />
-          <Container className="relative z-10 flex flex-col justify-center pb-16 pt-28 sm:pt-36 lg:min-h-[720px] lg:pb-28 lg:pt-32">
+          <Container className="relative z-10 flex flex-col justify-center pb-12 pt-28 sm:pt-36 lg:min-h-[720px] lg:pb-28 lg:pt-32">
             <div className="max-w-2xl lg:max-w-[56%]">
               <Eyebrow tone="light" className="max-w-xl">Teksten en content</Eyebrow>
               <h1 className="mt-6 t-hero text-paper md:mt-8">
@@ -258,7 +258,7 @@ export default function Page() {
         </section>
 
         {/* what you get: centred heading, then four big cards in the brand colours (the cards of /diensten) */}
-        <section data-zone="cherry" className="bg-cream py-16 text-forest md:py-32">
+        <section data-zone="cherry" className="bg-cream py-12 text-forest md:py-32">
           <Container>
             <div className="text-center">
               <Eyebrow className="mx-auto w-fit">Wat je krijgt</Eyebrow>
@@ -293,7 +293,7 @@ export default function Page() {
 
         {/* before and after: the table of the aanpak page on forest, what you often see in a blush
             column and how I would write it in a paper column, ticked off as it scrolls in */}
-        <section id="voorbeeld" data-zone="green" className="scroll-mt-20 bg-forest py-16 text-paper md:py-32">
+        <section id="voorbeeld" data-zone="green" className="scroll-mt-20 bg-forest py-12 text-paper md:py-32">
           <Container>
             <div className="grid gap-10 lg:grid-cols-2 lg:items-end lg:gap-20">
               <div>
@@ -328,7 +328,7 @@ export default function Page() {
               ))}
             </ol>
             {/* wider screens: the parts down the side, a blush column for the weak version, a paper one for the strong */}
-            <Reveal threshold={0.25} className="cmp mt-16 hidden md:block">
+            <Reveal threshold={0.25} className="cmp mt-12 md:mt-16 hidden md:block">
               <table className="w-full border-separate border-spacing-x-3 border-spacing-y-0 text-left">
                 <thead>
                   <tr>
@@ -383,7 +383,7 @@ export default function Page() {
 
         {/* where you start from: centred heading and three cards that stack while you scroll. Paper,
             to part it from the cream above */}
-        <section data-zone="cherry" className="bg-paper py-16 text-forest md:py-32">
+        <section data-zone="cherry" className="bg-paper py-12 text-forest md:py-32">
           <Container className="text-center">
             <Eyebrow className="mx-auto w-fit">Waar je begint</Eyebrow>
             <h2 className="mx-auto mt-6 max-w-4xl t-section md:mt-8">
@@ -402,7 +402,7 @@ export default function Page() {
         <Work turnDark={false} />
 
         {/* the questions about texts, laid out like the homepage FAQ */}
-        <section className="bg-cream pb-16 pt-8 text-forest md:pb-32">
+        <section className="bg-cream pb-12 pt-8 text-forest md:pb-32">
           <Container className="grid gap-12 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
             <div className="self-start lg:sticky lg:top-28">
               <Eyebrow className="max-w-xl">Veelgestelde vragen</Eyebrow>

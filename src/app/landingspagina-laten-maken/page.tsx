@@ -182,7 +182,7 @@ export default function Page() {
             className="absolute inset-0 -z-10 hidden bg-[linear-gradient(to_right,rgb(0_0_0/0.66)_0%,rgb(0_0_0/0.52)_28%,rgb(0_0_0/0.2)_46%,transparent_58%)] lg:block"
             aria-hidden="true"
           />
-          <Container className="relative z-10 flex flex-col justify-center pb-16 pt-28 sm:pt-36 lg:min-h-[720px] lg:pb-28 lg:pt-32">
+          <Container className="relative z-10 flex flex-col justify-center pb-12 pt-28 sm:pt-36 lg:min-h-[720px] lg:pb-28 lg:pt-32">
             <div className="max-w-2xl lg:max-w-[50%]">
               <Eyebrow tone="light" className="max-w-xl">Landingspagina laten maken</Eyebrow>
               <h1 className="mt-6 t-hero text-paper md:mt-8">
@@ -225,7 +225,7 @@ export default function Page() {
         </section>
 
         {/* where the clicks get lost: the stacking cards of the homepage and the over page */}
-        <section data-zone="cherry" className="bg-cream py-16 text-forest md:py-32">
+        <section data-zone="cherry" className="bg-cream py-12 text-forest md:py-32">
           <Container>
             <div className="mb-12 grid gap-10 md:mb-20 lg:grid-cols-2 lg:items-end lg:gap-20">
               <div>
@@ -243,7 +243,7 @@ export default function Page() {
         </section>
 
         {/* what a landing page includes: three big cards in the brand colours, each with its ticks */}
-        <section id="wat-je-krijgt" data-zone="green" className="scroll-mt-20 bg-forest py-16 text-paper md:py-32">
+        <section id="wat-je-krijgt" data-zone="green" className="scroll-mt-20 bg-forest py-12 text-paper md:py-32">
           <Container>
             <div className="grid gap-10 lg:grid-cols-2 lg:items-end lg:gap-20">
               <div>
@@ -280,7 +280,7 @@ export default function Page() {
         </section>
 
         {/* an example: the rekentools of Hypotheekhaven, each a page with one goal (the kennismaking) */}
-        <section data-zone="cherry" className="bg-cream py-16 text-forest md:py-32">
+        <section data-zone="cherry" className="bg-cream py-12 text-forest md:py-32">
           <Container>
             <div className="grid gap-10 lg:grid-cols-2 lg:items-end lg:gap-20">
               <div>
@@ -332,7 +332,7 @@ export default function Page() {
 
         {/* what it costs: the price card in lime, what the fixed price includes on paper and what
             comes on top in blush, all three with the round ticks */}
-        <section id="prijzen" data-zone="green" className="scroll-mt-20 bg-forest py-16 text-paper md:py-32">
+        <section id="prijzen" data-zone="green" className="scroll-mt-20 bg-forest py-12 text-paper md:py-32">
           <Container>
             <div className="grid gap-10 lg:grid-cols-2 lg:items-end lg:gap-20">
               <div>
@@ -400,7 +400,7 @@ export default function Page() {
         </div>
 
         {/* the questions, laid out like the homepage FAQ; also FAQPage structured data (see jsonLd) */}
-        <section className="bg-cream pb-16 pt-8 text-forest md:pb-32">
+        <section className="bg-cream pb-12 pt-8 text-forest md:pb-32">
           <Container className="grid gap-12 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
             <div className="self-start lg:sticky lg:top-28">
               <Eyebrow className="max-w-xl">Veelgestelde vragen</Eyebrow>

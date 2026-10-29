@@ -60,7 +60,7 @@ export default function Burnout({
   pains = homePains,
 }: { title?: ReactNode; lead?: string; pains?: Pain[] } = {}) {
   return (
-    <section data-zone="green" className="bg-cream py-16 text-forest md:py-32">
+    <section data-zone="green" className="bg-cream py-12 text-forest md:py-32">
       <Container>
         <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-end lg:gap-20">
           <div>
@@ -102,7 +102,7 @@ export default function Burnout({
           })}
         </ul>
 
-        <div className="mt-14 flex flex-col items-start gap-6 border-t border-forest/15 pt-10 md:flex-row md:items-center md:justify-between">
+        <div className="mt-14 hidden flex-col items-start gap-6 border-t border-forest/15 pt-10 md:flex md:flex-row md:items-center md:justify-between">
           <p className="flex max-w-xl items-center gap-3 text-lg text-forest/80">
             <FrameGlyph className="size-3.5 shrink-0 text-forest" />
             In een half uur bekijken we samen waar je site nu klanten laat liggen.

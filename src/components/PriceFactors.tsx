@@ -58,7 +58,7 @@ function Direction({ dir, delay = 0 }: { dir: "down" | "up"; delay?: number }) {
  */
 export default function PriceFactors() {
   return (
-  <section data-zone="green" className="bg-forest py-16 text-paper md:py-32">
+  <section data-zone="green" className="bg-forest py-12 text-paper md:py-32">
     <Container>
       <div className="grid gap-10 lg:grid-cols-2 lg:items-end lg:gap-20">
         <div>
@@ -96,7 +96,7 @@ export default function PriceFactors() {
       </ul>
 
       {/* desktop: the four panels as columns of one table, the three questions as its rows */}
-      <Reveal threshold={0.25} className="cmp mt-16 hidden lg:block">
+      <Reveal threshold={0.25} className="cmp mt-12 md:mt-16 hidden lg:block">
         <table className="w-full table-fixed border-separate border-spacing-x-3 border-spacing-y-0 text-left">
           <thead>
             <tr>

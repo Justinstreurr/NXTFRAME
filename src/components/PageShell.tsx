@@ -22,7 +22,7 @@ export default function PageShell({
     <>
       <Nav />
       <main id="main">
-        <section data-zone="cherry" className="bg-cream pt-16 pb-16 text-forest md:pt-32 md:pb-32">
+        <section data-zone="cherry" className="bg-cream pt-16 pb-12 text-forest md:pt-32 md:pb-32">
           <Container>
             <Eyebrow className="max-w-xl">{eyebrow}</Eyebrow>
             <h1 className="mt-6 max-w-5xl t-hero text-forest md:mt-8">

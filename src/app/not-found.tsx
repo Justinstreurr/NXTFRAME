@@ -33,7 +33,7 @@ export default function NotFound() {
       <Nav />
       <main id="main">
         {/* one screen minus the 72px nav bar, so the footer's call to action starts right below the fold */}
-        <section data-zone="cherry" className="flex min-h-[calc(100svh-72px)] items-center bg-cream py-16 text-forest md:py-32">
+        <section data-zone="cherry" className="flex min-h-[calc(100svh-72px)] items-center bg-cream py-12 text-forest md:py-32">
           <Container className="grid items-center gap-8 md:grid-cols-[1fr_auto] md:gap-12">
             <div>
               <Eyebrow>404</Eyebrow>

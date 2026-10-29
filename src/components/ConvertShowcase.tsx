@@ -563,7 +563,7 @@ export default function ConvertShowcase() {
   const live = onScreen;
 
   return (
-    <section ref={host} data-zone="green" className="overflow-x-clip bg-cream pb-20 pt-4 text-forest md:pb-40 md:pt-8">
+    <section ref={host} data-zone="green" className="overflow-x-clip bg-cream pb-16 pt-4 text-forest md:pb-40 md:pt-8">
       <Container>
         {/* the copy on the left, straight on the page; the laptop playing the film on the right */}
         <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12">
@@ -609,7 +609,7 @@ export default function ConvertShowcase() {
 
           {/* right: the laptop playing the film, straight on the page */}
           <div
-            className={`cs2 relative order-2 grid lg:order-none place-items-center pb-20 pt-6 sm:pt-10 lg:min-h-[560px] ${live ? "" : "cs2-paused"}`}
+            className={`cs2 relative order-2 grid lg:order-none place-items-center pb-16 md:pb-20 pt-6 sm:pt-10 lg:min-h-[560px] ${live ? "" : "cs2-paused"}`}
             style={{ "--T": `${LOOP_S}s` } as CSSProperties}
           >
             {/* a soft floor of shade under the laptop */}

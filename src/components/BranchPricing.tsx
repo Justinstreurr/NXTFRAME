@@ -39,7 +39,7 @@ export default function BranchPricing({
   smallPrint: string;
 }) {
   return (
-    <section className="bg-cream pb-16 pt-4 text-forest md:pb-32 md:pt-8">
+    <section className="bg-cream pb-12 pt-4 text-forest md:pb-32 md:pt-8">
       <Container>
         <div className="mx-auto max-w-3xl text-center">
           <Eyebrow className="mx-auto">Investering</Eyebrow>
@@ -94,7 +94,7 @@ export default function BranchPricing({
           })}
         </ul>
 
-        <h3 className="mt-20 text-center font-display text-2xl font-semibold tracking-tight md:mt-28 md:text-[28px]">{includedTitle}</h3>
+        <h3 className="mt-14 text-center font-display text-2xl font-semibold tracking-tight md:mt-28 md:text-[28px]">{includedTitle}</h3>
         <MoreOnMobile show={4} label={`Toon alle ${included.length}`} as="ul" className="mt-10 grid gap-x-16 sm:grid-cols-2">
           {included.map((item) => (
             <li key={item} className="flex items-center justify-between gap-4 border-b border-forest/15 py-4 text-[15px] text-forest/80">

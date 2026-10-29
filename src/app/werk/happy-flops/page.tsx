@@ -77,7 +77,7 @@ export default function Page() {
         {/* a collage that moves at three speeds */}
         <Container>
           <div className="relative grid grid-cols-12 items-start gap-4">
-            <Parallax speed={4} className="col-span-4 mt-28 md:col-span-3 md:mt-40">
+            <Parallax speed={4} className="col-span-4 mt-20 md:col-span-3 md:mt-40">
               <img src={reel("lp6")} alt="Een vrouw in Happy Flops op een terras in de sneeuw" className="aspect-[4/5] w-full object-cover" loading="lazy" />
             </Parallax>
             <Parallax speed={-4} className="col-span-8 md:col-span-5">

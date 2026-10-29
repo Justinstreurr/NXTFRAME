@@ -143,7 +143,7 @@ export default function Page() {
             className="absolute inset-0 -z-10 hidden bg-[linear-gradient(to_right,rgb(0_0_0/0.86)_0%,rgb(0_0_0/0.72)_28%,rgb(0_0_0/0.3)_46%,transparent_58%)] lg:block"
             aria-hidden="true"
           />
-          <Container className="relative z-10 flex flex-col justify-center pb-16 pt-28 sm:pt-36 lg:min-h-[720px] lg:pb-28 lg:pt-32">
+          <Container className="relative z-10 flex flex-col justify-center pb-12 pt-28 sm:pt-36 lg:min-h-[720px] lg:pb-28 lg:pt-32">
             <div className="max-w-2xl lg:max-w-[52%]">
               <Eyebrow tone="light" className="max-w-xl">Diensten</Eyebrow>
               <h1 className="mt-6 t-hero text-paper md:mt-8">
@@ -213,7 +213,7 @@ export default function Page() {
 
         {/* the services, one big card each in the brand colours (the set of the stacking cards on the
             homepage): the photo fills one half and switches sides, the copy with ticks in the other */}
-        <section data-zone="cherry" className="bg-cream pb-16 pt-8 text-forest md:pb-32 md:pt-12">
+        <section data-zone="cherry" className="bg-cream pb-12 pt-8 text-forest md:pb-32 md:pt-12">
           <Container>
             {/* lg:auto-rows-fr: every row as tall as the tallest card, so all seven cards are the same
                 size. The copy sets that height; the photo only fills its half (absolutely placed), so a
@@ -283,7 +283,7 @@ export default function Page() {
         <Work turnDark={false} />
 
         {/* the questions about choosing, laid out like the homepage FAQ */}
-        <section className="bg-cream pb-16 pt-8 text-forest md:pb-32">
+        <section className="bg-cream pb-12 pt-8 text-forest md:pb-32">
           <Container className="grid gap-12 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
             <div className="self-start lg:sticky lg:top-28">
               <Eyebrow className="max-w-xl">Veelgestelde vragen</Eyebrow>

@@ -87,7 +87,7 @@ export default function HappyFlopsKit() {
         </Tile>
 
         {/* the size picker: "Maat: …" and the outlined chip move from size to size */}
-        <Tile label="Maat" className="pb-16 sm:row-span-2 md:pb-20">
+        <Tile label="Maat" className="pb-12 sm:row-span-2 md:pb-20">
           <div className="flex flex-col gap-3">
             <p className="relative h-5 text-[13px] font-light">
               Maat:{gekozen.map((m, i) => <span key={m} className="absolute ml-1" style={loop(`hfk-m-${i}`, "steps(1)")}>{m}</span>)}

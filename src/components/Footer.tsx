@@ -45,7 +45,7 @@ export default function Footer({ cta = true, flat = false }: { cta?: boolean; fl
     <div className="relative overflow-x-clip bg-cream" data-zone="green">
 
       {/* Final CTA: a lime field that stays put while the footer panel slides up over it */}
-      {cta && <section className={`footer-cta ${flat ? "footer-cta-flat" : ""} flex flex-col items-center justify-center px-6 py-20 md:sticky md:top-0 md:min-h-[72svh] md:py-16 text-center text-forest`}>
+      {cta && <section className={`footer-cta ${flat ? "footer-cta-flat" : ""} flex flex-col items-center justify-center px-6 py-16 md:sticky md:top-0 md:min-h-[72svh] md:py-16 text-center text-forest`}>
         {/* the mascot waves the visitor in; forest on the lime field, like the logo on a light ground */}
         <MascotHero
           pose="wave"
@@ -70,7 +70,7 @@ export default function Footer({ cta = true, flat = false }: { cta?: boolean; fl
           as it rises (FooterPanel) */}
       <FooterPanel>
       <footer className="relative rounded-t-[36px] bg-forest text-paper md:rounded-t-[48px]">
-        <div className="mx-auto w-full max-w-(--site-max) px-6 pb-16 pt-16 md:px-12 md:pt-24 xl:px-20">
+        <div className="mx-auto w-full max-w-(--site-max) px-6 pb-12 md:pb-16 pt-16 md:px-12 md:pt-24 xl:px-20">
         <div className="grid grid-cols-2 gap-x-6 gap-y-12 border-t border-paper/20 pt-8 sm:gap-16 lg:grid-cols-[1.2fr_1fr_1fr_1.2fr] lg:gap-10">
           <Col name="Diensten" items={diensten} arrow={false} href="/diensten" />
           <Col name="Navigatie" items={navigatie} arrow={false} />

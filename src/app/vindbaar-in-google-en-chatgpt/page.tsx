@@ -206,7 +206,7 @@ export default function Page() {
             className="absolute inset-0 -z-10 hidden bg-[linear-gradient(to_right,rgb(0_0_0/0.66)_0%,rgb(0_0_0/0.52)_28%,rgb(0_0_0/0.2)_46%,transparent_58%)] lg:block"
             aria-hidden="true"
           />
-          <Container className="relative z-10 flex flex-col justify-center pb-16 pt-28 sm:pt-36 lg:min-h-[720px] lg:pb-28 lg:pt-32">
+          <Container className="relative z-10 flex flex-col justify-center pb-12 pt-28 sm:pt-36 lg:min-h-[720px] lg:pb-28 lg:pt-32">
             <div className="max-w-2xl lg:max-w-[52%]">
               <Eyebrow tone="light" className="max-w-xl">Vindbaar in Google en AI</Eyebrow>
               <h1 className="mt-6 t-hero text-paper md:mt-8">
@@ -262,7 +262,7 @@ export default function Page() {
 
         {/* what Google and AI search engines look at, on the forest ground: the tick table of /aanpak.
             Phones get one card per point; wider screens the table with a blush and a paper column. */}
-        <section data-zone="green" className="bg-forest py-16 text-paper md:py-32">
+        <section data-zone="green" className="bg-forest py-12 text-paper md:py-32">
           <Container>
             <div className="grid gap-10 lg:grid-cols-2 lg:items-end lg:gap-20">
               <div>
@@ -298,7 +298,7 @@ export default function Page() {
               ))}
             </MoreOnMobile>
 
-            <Reveal threshold={0.2} className="cmp mt-16 hidden md:block">
+            <Reveal threshold={0.2} className="cmp mt-12 md:mt-16 hidden md:block">
               <table className="w-full border-separate border-spacing-x-3 border-spacing-y-0 text-left">
                 <thead>
                   <tr>
@@ -345,7 +345,7 @@ export default function Page() {
         </section>
 
         {/* the honest part: no guaranteed position, as stacking cards like "Waar ik voor sta" on /over */}
-        <section data-zone="cherry" className="bg-cream py-16 text-forest md:py-32">
+        <section data-zone="cherry" className="bg-cream py-12 text-forest md:py-32">
           <Container className="text-center">
             <Eyebrow className="mx-auto w-fit">Eerlijk is eerlijk</Eyebrow>
             <h2 className="mt-6 t-section md:mt-8">
@@ -361,7 +361,7 @@ export default function Page() {
         </section>
 
         {/* for a new or an existing site: two big cards in the brand colours, the build of /diensten */}
-        <section data-zone="cherry" className="bg-cream pb-16 text-forest md:pb-32">
+        <section data-zone="cherry" className="bg-cream pb-12 text-forest md:pb-32">
           <Container>
             <div className="grid gap-10 lg:grid-cols-2 lg:items-end lg:gap-20">
               <div>
@@ -411,7 +411,7 @@ export default function Page() {
         <Work turnDark={false} />
 
         {/* the questions about findability, laid out like the homepage FAQ */}
-        <section className="bg-cream pb-16 pt-8 text-forest md:pb-32">
+        <section className="bg-cream pb-12 pt-8 text-forest md:pb-32">
           <Container className="grid gap-12 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
             <div className="self-start lg:sticky lg:top-28">
               <Eyebrow className="max-w-xl">Veelgestelde vragen</Eyebrow>

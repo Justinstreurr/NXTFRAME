@@ -25,7 +25,7 @@ export function BranchPains({ title, lead, pains }: { title: ReactNode; lead: st
     cta: "Zo los ik het op", href: fixes[n % fixes.length],
   }));
   return (
-    <section data-zone="green" className="bg-cream py-16 text-forest md:py-32">
+    <section data-zone="green" className="bg-cream py-12 text-forest md:py-32">
       <Container>
         <Eyebrow className="mx-auto w-fit">Herkenbaar?</Eyebrow>
         <h2 className="mt-6 text-center t-section md:mt-8">{title}</h2>
@@ -62,7 +62,7 @@ export function BranchLinks({ content: c }: { content: LinksContent }) {
     { Picture: () => <LinkOut requests={c.back.requests} />, icon: c.back.icon, card: "bg-lime text-forest", muted: "text-forest/75", tile: "ring-forest/20", title: c.back.title, body: c.back.body },
   ];
   return (
-    <section id="koppelingen" className="scroll-mt-20 bg-cream py-16 text-forest md:py-32">
+    <section id="koppelingen" className="scroll-mt-20 bg-cream py-12 text-forest md:py-32">
       <Container>
         <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-end lg:gap-20">
           <div>
@@ -155,7 +155,7 @@ export function BranchFind({ content: c }: { content: FindSectionContent }) {
         </div>
       </Container>
 
-      <div className="relative isolate mt-16 overflow-hidden bg-moss md:mt-24 lg:h-[720px]">
+      <div className="relative isolate mt-12 overflow-hidden bg-moss md:mt-24 lg:h-[720px]">
         <picture className="absolute inset-x-0 top-0 -z-20 h-full lg:h-[112%]">
           {photo.webp && <source srcSet={photo.webp} type="image/webp" />}
           <img

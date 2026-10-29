@@ -149,7 +149,7 @@ function Caption({ label, text, className = "" }: { label: string; text: string;
 
 function Chapter({ b, n }: { b: Extract<CaseBlock, { kind: "chapter" }>; n: number }) {
   return (
-    <section className="bg-cream pb-20 pt-20 text-forest md:pb-40 md:pt-36">
+    <section className="bg-cream pb-16 pt-20 text-forest md:pb-40 md:pt-36">
       <Container>
         <div className="grid gap-6 border-t border-forest/15 pt-10 md:pt-14 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-6">
@@ -173,7 +173,7 @@ function Challenge({ b, n, bleed }: { b: Extract<CaseBlock, { kind: "challenge" 
         {/* the text in the left half; the reel fills the right half of the window, from the section's top edge
             to its bottom edge (so it meets the block under it) and from the middle to the right edge */}
         <div>
-          <div className="py-20 md:py-40 lg:w-1/2 lg:pb-80 lg:pr-16 lg:pt-48">
+          <div className="py-16 md:py-40 lg:w-1/2 lg:pb-80 lg:pr-16 lg:pt-48">
             <Label className="text-forest/50">0{n} · {b.label}</Label>
             <h2 className="mt-5 t-section">{b.title}</h2>
             <p className="mt-6 text-lg leading-relaxed text-forest/70">{b.body}</p>
@@ -202,13 +202,13 @@ function Challenge({ b, n, bleed }: { b: Extract<CaseBlock, { kind: "challenge" 
 
 function Statement({ b }: { b: Extract<CaseBlock, { kind: "statement" }> }) {
   return (
-    <section data-zone="green" className="overflow-hidden bg-forest py-24 text-cream md:py-40">
+    <section data-zone="green" className="overflow-hidden bg-forest py-16 text-cream md:py-40">
       <Container>
         <Label className="text-center text-cream/60">{b.label}</Label>
         <h2 className="mt-6 text-center font-display text-[clamp(2.4rem,11.5vw,13rem)] font-extrabold uppercase leading-[0.84] tracking-[-0.045em]">
           {b.lines.map((line) => <span key={line} className="block">{line}</span>)}
         </h2>
-        {b.visual && <div className="mt-16 md:mt-24">{b.visual}</div>}
+        {b.visual && <div className="mt-12 md:mt-24">{b.visual}</div>}
       </Container>
     </section>
   );
@@ -250,7 +250,7 @@ function Wall({ b }: { b: Extract<CaseBlock, { kind: "wall" }> }) {
 
 function Film({ b }: { b: Extract<CaseBlock, { kind: "film" }> }) {
   return (
-    <section className="bg-cream pb-20 text-forest md:pb-40">
+    <section className="bg-cream pb-16 text-forest md:pb-40">
       <Container>{b.visual}</Container>
     </section>
   );
@@ -258,7 +258,7 @@ function Film({ b }: { b: Extract<CaseBlock, { kind: "film" }> }) {
 
 function Phones({ b }: { b: Extract<CaseBlock, { kind: "phones" }> }) {
   return (
-    <section className="bg-cream py-20 text-forest md:py-40">
+    <section className="bg-cream py-16 text-forest md:py-40">
       <Container>
         <div className="max-w-xl">
           <Label className="text-forest/50">{b.label}</Label>
@@ -305,7 +305,7 @@ function Photo({ b }: { b: Extract<CaseBlock, { kind: "photo" }> }) {
 /** Suitsupply's component video: the pieces of the shop on white cards, rows drifting both ways */
 function Kit({ b }: { b: Extract<CaseBlock, { kind: "kit" }> }) {
   return (
-    <section className="overflow-hidden bg-[#e8e6e1] py-20 text-forest md:py-36">
+    <section className="overflow-hidden bg-[#e8e6e1] py-16 text-forest md:py-36">
       <Container className="grid gap-6 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-6">
           <Label className="text-forest/50">{b.label}</Label>
@@ -343,7 +343,7 @@ export default function CaseStudy({ data: c }: { data: CaseData }) {
         >
           <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/5 to-transparent" />
         </CaseHeroGround>
-        <div className={`text-cream ${c.heroVisual ? "" : "pb-24 md:pb-32"}`}>
+        <div className={`text-cream ${c.heroVisual ? "" : "pb-16 md:pb-32"}`}>
           <div className="w-full px-6 pt-32 text-center md:pt-40">
             <h1 className="mx-auto max-w-4xl">
               {c.logo ? (
@@ -365,7 +365,7 @@ export default function CaseStudy({ data: c }: { data: CaseData }) {
 
       {/* the story (Lake): one big sentence with its first line indented, a short paragraph under it in
           grey, and beside it (Clay) the services in bold and the facts */}
-      <section className="bg-cream py-20 text-forest md:py-36">
+      <section className="bg-cream py-16 text-forest md:py-36">
         <Container className="grid gap-14 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-8">
             <Label className="text-forest/50">De case</Label>
@@ -408,7 +408,7 @@ export default function CaseStudy({ data: c }: { data: CaseData }) {
       })}
 
       {/* the result (Lake): offset to the right on the dark ground, then the figures and the quote */}
-      <section data-zone="green" className="bg-forest py-20 text-cream md:py-36">
+      <section data-zone="green" className="bg-forest py-16 text-cream md:py-36">
         <Container>
           <div className="lg:ml-[41.666%] lg:max-w-[52rem]">
             <Label className="text-lime">Het resultaat</Label>
@@ -416,7 +416,7 @@ export default function CaseStudy({ data: c }: { data: CaseData }) {
             <p className="mt-8 max-w-xl text-lg leading-relaxed text-cream/60">{c.result.body}</p>
           </div>
           {c.stats && (
-            <dl className="mt-16 grid gap-8 border-t border-cream/15 pt-10 sm:grid-cols-3 md:mt-24">
+            <dl className="mt-12 grid gap-8 border-t border-cream/15 pt-10 sm:grid-cols-3 md:mt-24">
               {c.stats.map((s) => (
                 <div key={s.label}>
                   <dt className="font-display text-5xl tabular-nums tracking-[-0.04em] md:text-7xl">
@@ -428,13 +428,13 @@ export default function CaseStudy({ data: c }: { data: CaseData }) {
             </dl>
           )}
           {c.quote && (
-            <figure className="mt-16 max-w-3xl border-l-[3px] border-lime pl-6 md:mt-24">
+            <figure className="mt-12 max-w-3xl border-l-[3px] border-lime pl-6 md:mt-24">
               <blockquote className="font-display text-2xl leading-snug md:text-3xl">&ldquo;{c.quote.text}&rdquo;</blockquote>
               <figcaption className="mt-4 text-sm text-cream/60">{c.quote.who}</figcaption>
             </figure>
           )}
           {c.closing && (
-            <div className="mt-20 overflow-hidden rounded-[14px] md:mt-32">
+            <div className="mt-14 overflow-hidden rounded-[14px] md:mt-32">
               <img src={c.closing.src} alt={c.closing.alt} className="aspect-[4/3] w-full object-cover md:aspect-[16/8]" style={c.closing.pos ? { objectPosition: c.closing.pos } : undefined} loading="lazy" decoding="async" />
             </div>
           )}
@@ -442,7 +442,7 @@ export default function CaseStudy({ data: c }: { data: CaseData }) {
       </section>
 
       {/* what I did, as the roles in a few columns */}
-      <section className="bg-cream py-20 text-forest md:py-40">
+      <section className="bg-cream py-16 text-forest md:py-40">
         <Container className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
             <Label className="text-forest/50">Wat ik deed</Label>

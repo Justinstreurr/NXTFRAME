@@ -154,7 +154,7 @@ export default function Page() {
             className="absolute inset-0 -z-10 hidden bg-[linear-gradient(to_right,rgb(0_0_0/0.86)_0%,rgb(0_0_0/0.72)_28%,rgb(0_0_0/0.3)_46%,transparent_58%)] lg:block"
             aria-hidden="true"
           />
-          <Container className="relative z-10 flex flex-col justify-center pb-16 pt-28 sm:pt-36 lg:min-h-[720px] lg:pb-28 lg:pt-32">
+          <Container className="relative z-10 flex flex-col justify-center pb-12 pt-28 sm:pt-36 lg:min-h-[720px] lg:pb-28 lg:pt-32">
             <div className="max-w-2xl lg:max-w-[52%]">
               <Eyebrow tone="light" className="max-w-xl">Website voor financieel adviseurs</Eyebrow>
               <h1 className="mt-6 t-hero text-paper md:mt-8">
@@ -210,7 +210,7 @@ export default function Page() {
 
         {/* what you get: the six parts of an adviser's site, each with what it brings the practice, as
             the quiet grid of /makelaars on sand (SellerGrid) */}
-        <section id="wat-je-krijgt" data-zone="green" className="scroll-mt-20 bg-sand py-16 text-forest md:py-32">
+        <section id="wat-je-krijgt" data-zone="green" className="scroll-mt-20 bg-sand py-12 text-forest md:py-32">
           <Container>
             <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-end lg:gap-20">
               <div>
@@ -270,7 +270,7 @@ export default function Page() {
         />
 
         {/* the questions an adviser asks, also FAQPage structured data (see jsonLd) */}
-        <section className="bg-cream pb-16 pt-4 text-forest md:pb-32 md:pt-8">
+        <section className="bg-cream pb-12 pt-4 text-forest md:pb-32 md:pt-8">
           <Container className="grid gap-12 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
             <div className="self-start lg:sticky lg:top-28">
               <Eyebrow className="max-w-xl">Veelgestelde vragen</Eyebrow>

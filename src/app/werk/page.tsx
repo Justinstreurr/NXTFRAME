@@ -31,7 +31,7 @@ export default function Page() {
             className="absolute inset-0 -z-10 hidden bg-[linear-gradient(to_right,rgb(0_0_0/0.86)_0%,rgb(0_0_0/0.72)_28%,rgb(0_0_0/0.3)_46%,transparent_58%)] lg:block"
             aria-hidden="true"
           />
-          <Container className="relative z-10 flex flex-col justify-center pb-16 pt-28 sm:pt-36 lg:min-h-[720px] lg:pb-28 lg:pt-32">
+          <Container className="relative z-10 flex flex-col justify-center pb-12 pt-28 sm:pt-36 lg:min-h-[720px] lg:pb-28 lg:pt-32">
             <div className="max-w-2xl lg:max-w-[48%]">
               <Eyebrow tone="light" className="max-w-xl">Werk</Eyebrow>
               <h1 className="mt-6 t-hero text-paper md:mt-8">
@@ -74,7 +74,7 @@ export default function Page() {
         </section>
 
         {/* filter row, one big serif statement, then the cases as an editorial grid (WorkGallery) */}
-        <section id="overzicht" data-zone="cherry" className="scroll-mt-20 bg-cream pb-16 pt-10 text-forest md:pb-32 md:pt-14">
+        <section id="overzicht" data-zone="cherry" className="scroll-mt-20 bg-cream pb-12 pt-10 text-forest md:pb-32 md:pt-14">
           <Container>
             <WorkGallery
               statement={

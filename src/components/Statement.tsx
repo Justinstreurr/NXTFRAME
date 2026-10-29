@@ -17,7 +17,7 @@ const cards: { label: string; icon: IconKey; img: string; href: string; pos?: st
 
 export default function Statement() {
   return (
-    <section className="bg-cream py-16 text-forest md:py-32">
+    <section className="bg-cream py-12 text-forest md:py-32">
       <Container className="text-center">
         <h2 className="mx-auto max-w-5xl font-serif text-[clamp(2.25rem,4.4vw,4.25rem)] leading-[1.05] tracking-[-0.02em] text-forest">
           Websites die <span className="italic">snel laden, gevonden worden</span> en het merk voelbaar maken.{" "}
@@ -32,7 +32,7 @@ export default function Statement() {
         </div>
       </Container>
 
-      <Container className="mt-16 md:mt-20">
+      <Container className="mt-12 md:mt-20">
         <ul className="-mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-2 md:mx-0 md:grid md:grid-cols-4 md:overflow-visible md:px-0 md:pb-0">
           {cards.map((c) => (
             <li key={c.label} className="w-[78%] shrink-0 snap-start sm:w-[46%] md:w-auto">

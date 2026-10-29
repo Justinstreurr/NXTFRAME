@@ -197,7 +197,7 @@ export default function Page() {
             className="absolute inset-0 -z-10 hidden bg-[linear-gradient(to_right,rgb(0_0_0/0.66)_0%,rgb(0_0_0/0.52)_28%,rgb(0_0_0/0.2)_46%,transparent_58%)] lg:block"
             aria-hidden="true"
           />
-          <Container className="relative z-10 flex flex-col justify-center pb-16 pt-28 sm:pt-36 lg:min-h-[720px] lg:pb-28 lg:pt-32">
+          <Container className="relative z-10 flex flex-col justify-center pb-12 pt-28 sm:pt-36 lg:min-h-[720px] lg:pb-28 lg:pt-32">
             <div className="max-w-2xl lg:max-w-[52%]">
               <Eyebrow tone="light" className="max-w-xl">Website laten maken</Eyebrow>
               <h1 className="mt-6 t-hero text-paper md:mt-8">
@@ -241,7 +241,7 @@ export default function Page() {
 
         {/* the proof and the problems a visitor recognises: the Happy Flops numbers, then the
             stacking cards of the homepage and the webshop page */}
-        <section data-zone="cherry" className="bg-cream py-16 text-forest md:py-32">
+        <section data-zone="cherry" className="bg-cream py-12 text-forest md:py-32">
           <Container>
             {/* three numbers on the container grid: the first on the left edge, the last on the right */}
             <dl className="grid gap-8 sm:grid-cols-3">
@@ -255,7 +255,7 @@ export default function Page() {
                 </div>
               ))}
             </dl>
-            <div className="mb-12 mt-16 grid gap-10 border-t border-forest/10 pt-16 md:mb-20 md:mt-20 md:pt-20 lg:grid-cols-2 lg:items-end lg:gap-20">
+            <div className="mb-12 mt-12 grid gap-10 border-t border-forest/10 pt-16 md:mb-20 md:mt-20 md:pt-20 lg:grid-cols-2 lg:items-end lg:gap-20">
               <div>
                 <Eyebrow className="max-w-xl">Herken je dit?</Eyebrow>
                 <h2 className="mt-6 t-section md:mt-8">
@@ -271,7 +271,7 @@ export default function Page() {
         </section>
 
         {/* what every site includes: three big cards in the brand colours, each with its ticks (the cards of /webshop-laten-maken) */}
-        <section id="wat-je-krijgt" data-zone="green" className="scroll-mt-20 bg-forest py-16 text-paper md:py-32">
+        <section id="wat-je-krijgt" data-zone="green" className="scroll-mt-20 bg-forest py-12 text-paper md:py-32">
           <Container>
             <div className="grid gap-10 lg:grid-cols-2 lg:items-end lg:gap-20">
               <div>
@@ -309,7 +309,7 @@ export default function Page() {
 
         {/* what it costs: the three tiers (outside white, middle forest), then what moves the price
             in one paper panel with the number pills of the cards above */}
-        <section id="prijzen" data-zone="cherry" className="scroll-mt-20 bg-cream py-16 text-forest md:py-32">
+        <section id="prijzen" data-zone="cherry" className="scroll-mt-20 bg-cream py-12 text-forest md:py-32">
           <Container>
             <div className="grid gap-10 lg:grid-cols-2 lg:items-end lg:gap-20">
               <div>
@@ -381,7 +381,7 @@ export default function Page() {
 
         {/* what you deliver and what is yours: the table of /aanpak on forest, a blush column for
             what you do and a paper one for what you get, ticked off as it scrolls in */}
-        <section data-zone="green" className="bg-forest py-16 text-paper md:py-32">
+        <section data-zone="green" className="bg-forest py-12 text-paper md:py-32">
           <Container>
             <div className="grid gap-10 lg:grid-cols-2 lg:items-end lg:gap-20">
               <div>
@@ -417,7 +417,7 @@ export default function Page() {
                 </li>
               ))}
             </MoreOnMobile>
-            <Reveal threshold={0.25} className="cmp mt-16 hidden md:block">
+            <Reveal threshold={0.25} className="cmp mt-12 md:mt-16 hidden md:block">
               <table className="w-full border-separate border-spacing-x-3 border-spacing-y-0 text-left">
                 <thead>
                   <tr>
@@ -467,7 +467,7 @@ export default function Page() {
         <Difference />
 
         {/* FAQ, laid out like the homepage; also FAQPage structured data (see jsonLd) */}
-        <section className="bg-cream pb-16 pt-8 text-forest md:pb-32">
+        <section className="bg-cream pb-12 pt-8 text-forest md:pb-32">
           <Container className="grid gap-12 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
             <div className="self-start lg:sticky lg:top-28">
               <Eyebrow className="max-w-xl">Veelgestelde vragen</Eyebrow>

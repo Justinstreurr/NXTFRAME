@@ -49,7 +49,7 @@ const gains: StackCard[] = [
 /** The statement between Herkenbaar and Wat je krijgt: the sentence on the left, the mascot building a site on the right. */
 export function Statement() {
   return (
-    <section className="statement-bg bg-cream py-16 text-forest md:py-32">
+    <section className="statement-bg bg-cream py-12 text-forest md:py-32">
       {/* the background turns sand once the sentence sits in the middle of the window */}
       <BgOnCenter className="is-sand" />
       <Container className="grid items-center gap-10 md:grid-cols-[1fr_auto] md:gap-16">
@@ -92,7 +92,8 @@ export function AiFirst() {
           </div>
         </Container>
       </div>
-      <Container className="mt-8 text-center md:mt-10">
+      {/* phones skip this extra button: the nav keeps one in reach the whole way down */}
+      <Container className="mt-8 hidden text-center md:mt-10 md:block">
         <Button variant="dark" href="/contact">Plan een kennismaking</Button>
       </Container>
     </section>
@@ -144,7 +145,7 @@ const pillars = [
 
 export function Pillars() {
   return (
-    <section data-zone="green" className="bg-cream py-16 md:py-32">
+    <section data-zone="green" className="bg-cream py-12 md:py-32">
       <Container>
         {/* Heading, the three claims on the left and one card on the right that follows the
             chosen one, pinned together while the scroll steps through the claims. See PillarTabs;
@@ -201,7 +202,7 @@ const stats = [
 
 export function Stats() {
   return (
-    <section className="bg-forest py-16 text-paper md:py-32">
+    <section className="bg-forest py-12 text-paper md:py-32">
       <Container>
         <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-24">
           <div>
@@ -248,7 +249,7 @@ const stories = [
 
 export function CustomerStories() {
   return (
-    <section className="bg-forest pb-16 text-paper md:pb-32">
+    <section className="bg-forest pb-12 text-paper md:pb-32">
       <Container>
         <div className="grid gap-6 md:grid-cols-2">
           {stories.map((s) => (
@@ -305,7 +306,7 @@ export function Services({
   overlap?: boolean;
 } = {}) {
   return (
-    <section data-zone="cherry" className={`bg-cream py-16 text-forest md:py-32 ${overlap ? "relative z-20 -mt-12 rounded-t-[36px] md:-mt-16 md:rounded-t-[48px]" : ""}`}>
+    <section data-zone="cherry" className={`bg-cream py-12 text-forest md:py-32 ${overlap ? "relative z-20 -mt-12 rounded-t-[36px] md:-mt-16 md:rounded-t-[48px]" : ""}`}>
       {/* centred heading, then the services as a quiet three-column list: an icon tile, the name
           and one line each. No cards, so the cream ground stays calm. */}
       <Container className="text-center">
@@ -344,7 +345,7 @@ export function Work({ turnDark = true }: { /** false keeps the section cream al
   return (
     // starts in the cream of Wat je krijgt and turns black once its own halfway point reaches the middle of the window
     // (DarkOnArrive sets is-dark; the colours and their fade are .work-section in globals.css)
-    <section data-zone="green" id="ons-werk" className="work-section relative pb-16 pt-12 md:pb-32 md:pt-20">
+    <section data-zone="green" id="ons-werk" className="work-section relative pb-12 pt-12 md:pb-32 md:pt-20">
       {turnDark && <DarkOnArrive />}
       {/* heading and photos keep to the same width as the rest of the site (Container): title left,
           the way to all work right, a hairline under both */}
@@ -401,7 +402,7 @@ function ScoreIcon({ s, highlight, delay = 0 }: { s: Score; highlight?: boolean;
 
 export function Comparison() {
   return (
-    <section data-zone="cherry" className="bg-cream py-16 md:py-32">
+    <section data-zone="cherry" className="bg-cream py-12 md:py-32">
       <Container>
         <Eyebrow className="max-w-xl">NXT Frame vs. de alternatieven</Eyebrow>
         <h2 className="mt-6 max-w-4xl t-section text-brown md:mt-8">
@@ -429,7 +430,7 @@ export function Comparison() {
             ))}
           </div>
           <p className="mt-5 rounded-2xl bg-pink p-4 text-sm leading-relaxed text-brown/80">{columns[0].body}</p>
-        </div>        <Reveal threshold={0.35} className="cmp mt-16 hidden overflow-x-auto md:block">
+        </div>        <Reveal threshold={0.35} className="cmp mt-12 md:mt-16 hidden overflow-x-auto md:block">
           <table className="w-full min-w-[860px] border-separate border-spacing-x-3 border-spacing-y-0 text-left">
             <thead>
               <tr>
@@ -491,7 +492,7 @@ export function Testimonials({ dark = false }: { dark?: boolean } = {}) {
     <section
       data-zone={dark ? "green" : "cherry"}
       {...(dark && { "data-follow-dark": "" })}
-      className={`py-16 md:py-32 ${dark ? "follow-dark -mt-px text-cream" : "bg-cream text-brown"}`}
+      className={`py-12 md:py-32 ${dark ? "follow-dark -mt-px text-cream" : "bg-cream text-brown"}`}
     >
       <Container>
         <Eyebrow tone={dark ? "wine" : undefined} className="max-w-xl">Reviews</Eyebrow>
@@ -581,7 +582,7 @@ export function Platform({
       // nodes, the line, the numbers, the label and the links all follow without a second set of
       // classes. These keep the full top padding, since the ground differs from the section above.
       style={platformTones[tone] as React.CSSProperties | undefined}
-      className={`bg-forest text-paper ${tone === "forest" ? "pb-16 pt-4 md:pb-32 md:pt-8" : "py-16 md:py-32"}`}
+      className={`bg-forest text-paper ${tone === "forest" ? "pb-12 pt-4 md:pb-32 md:pt-8" : "py-12 md:py-32"}`}
     >
       <Container>
         <div className="grid gap-16 lg:grid-cols-[1fr_1.35fr] lg:gap-20">
@@ -669,7 +670,7 @@ export function Difference({
   exclude?: string;
 } = {}) {
   return (
-    <section data-zone="cherry" className="overflow-hidden bg-cream pb-16 pt-4 text-forest md:pb-32 md:pt-8">
+    <section data-zone="cherry" className="overflow-hidden bg-cream pb-12 pt-4 text-forest md:pb-32 md:pt-8">
       {/* heading left with the arrows on the right, the branch cards as a carousel under it (BranchCarousel) */}
       <BranchCarousel
         items={exclude ? segments.filter((s) => s.label !== exclude) : segments}
@@ -726,7 +727,7 @@ export function HomeFaq() {
     ],
   };
   return (
-    <section className="bg-cream pb-16 pt-8 text-forest md:pb-32">
+    <section className="bg-cream pb-12 pt-8 text-forest md:pb-32">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Container className="grid gap-12 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
         <div className="self-start lg:sticky lg:top-28">
@@ -771,7 +772,7 @@ export function FaqList({ items }: { items: { q: string; a: string }[] }) {
    (a full /slimme-tools page comes later; its content already waits in smartTools.ts) ---------- */
 export function SmartExtras() {
   return (
-    <section data-zone="cherry" className="bg-cream py-16 text-forest md:py-32">
+    <section data-zone="cherry" className="bg-cream py-12 text-forest md:py-32">
       <Container>
         <div className="grid gap-10 lg:grid-cols-2 lg:items-end lg:gap-20">
           <div>
@@ -807,7 +808,7 @@ const priceTones = [
 
 export function Prices() {
   return (
-    <section className="bg-cream pb-16 pt-4 text-forest md:pb-32 md:pt-8">
+    <section className="bg-cream pb-12 pt-4 text-forest md:pb-32 md:pt-8">
       <Container>
         {/* the heading centred, like the other sections */}
         <div className="mx-auto max-w-3xl text-center">

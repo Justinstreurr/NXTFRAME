@@ -16,7 +16,7 @@ import { Deblur, FillWords, Pausable, ScrollLine } from "./CaseDarkFx";
 /** the client's logo big, and three pages of their site on phones under it, the middle one higher */
 export function CaseDarkHero({ logo, alt, phones }: { logo: string; alt: string; phones: { src: string; alt: string }[] }) {
   return (
-    <section data-zone="green" className="px-6 pb-20 pt-32 md:pb-32 md:pt-40">
+    <section data-zone="green" className="px-6 pb-16 pt-32 md:pb-32 md:pt-40">
       <h1><img src={logo} alt={alt} className="mx-auto w-[min(82vw,1040px)]" /></h1>
       <div className="mx-auto mt-14 grid max-w-4xl grid-cols-3 items-start gap-3 md:mt-20 md:gap-10">
         {phones.map((p, i) => (
@@ -79,7 +79,7 @@ export function CaseDarkMonitor({ src, alt, to = "-83%" }: { src: string; alt: s
 /** a faded lead-in and a statement: "De uitdaging: …" */
 export function CaseDarkStatement({ lead, children }: { lead: string; children: ReactNode }) {
   return (
-    <Container className="py-24 md:py-40">
+    <Container className="py-16 md:py-40">
       <p className="max-w-3xl font-display text-[clamp(1.6rem,1.1rem+1.6vw,2.6rem)] font-medium leading-[1.08] tracking-[-0.03em]">
         <span className="block opacity-45">{lead}</span>
         {children}
@@ -91,7 +91,7 @@ export function CaseDarkStatement({ lead, children }: { lead: string; children: 
 /** a short heading and a paragraph in a narrow centred column */
 export function CaseDarkNote({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <Container className="py-20 md:py-32">
+    <Container className="py-16 md:py-32">
       <div className="mx-auto max-w-xl">
         <h3 className="font-display text-2xl font-medium tracking-[-0.02em]">{title}</h3>
         <p className="mt-5 text-[17px] leading-relaxed opacity-80">{children}</p>
@@ -132,7 +132,7 @@ export function CaseDarkField({ cards }: { cards: { src: string; x: number; y: n
 /** a page on desktop, the same page on a phone over its left side, with small labels */
 export function CaseDarkDevices({ site, page, desktop, mobile }: { site: string; page: string; desktop: { src: string; alt: string }; mobile: { src: string; alt: string } }) {
   return (
-    <Container className="pb-24 md:pb-40">
+    <Container className="pb-16 md:pb-40">
       <div className="relative md:pl-[16%]">
         <p className="mb-3 font-mono text-xs uppercase tracking-[0.1em] opacity-70 md:text-[10px]">{site} — desktop<br /><span className="opacity-60">{page}</span></p>
         <div className="overflow-hidden rounded-[8px] bg-white">
@@ -152,7 +152,7 @@ export function CaseDarkDevices({ site, page, desktop, mobile }: { site: string;
 /** "Resultaat:" and giant words that fill in as they scroll by */
 export function CaseDarkResult({ words }: { words: string[] }) {
   return (
-    <section className="overflow-hidden pb-24 md:pb-40">
+    <section className="overflow-hidden pb-16 md:pb-40">
       <p className="text-center font-mono text-xs uppercase tracking-[0.12em] opacity-70">Resultaat:</p>
       {/* as big as fits: the longest word just spans the window */}
       <div style={{ fontSize: `min(17rem, calc((100vw - 2rem) / ${(Math.max(...words.map((w) => w.length)) * 0.66).toFixed(2)}))` }}>
@@ -165,7 +165,7 @@ export function CaseDarkResult({ words }: { words: string[] }) {
 /** "Mijn rollen" in two columns */
 export function CaseDarkRoles({ roles }: { roles: { group: string; items: string[] }[] }) {
   return (
-    <Container className="pb-24 md:pb-40">
+    <Container className="pb-16 md:pb-40">
       <div className="mx-auto max-w-3xl">
         <h3 className="font-display text-2xl font-medium tracking-[-0.02em] opacity-80">Mijn rollen</h3>
         <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-8 sm:gap-10">
@@ -185,7 +185,7 @@ export function CaseDarkRoles({ roles }: { roles: { group: string; items: string
 export function CaseDarkOthers({ current }: { current: string }) {
   const others = work.filter((w) => w.href !== current).slice(0, 4);
   return (
-    <Container className="pb-24 md:pb-32">
+    <Container className="pb-16 md:pb-32">
       <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-6 border-b border-forest/20 pb-8 md:pb-10">
         <div>
           <Eyebrow className="max-w-xl">Meer werk</Eyebrow>

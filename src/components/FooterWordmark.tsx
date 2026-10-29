@@ -54,7 +54,7 @@ export default function FooterWordmark() {
   }, []);
 
   return (
-    <div ref={box} className="footer-wordmark relative mt-20 md:mt-28">
+    <div ref={box} className="footer-wordmark relative mt-14 md:mt-28">
       <Image
         ref={mark}
         src="/images/footer-wordmark.png"

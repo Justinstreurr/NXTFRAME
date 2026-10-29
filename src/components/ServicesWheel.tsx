@@ -103,7 +103,7 @@ export default function ServicesWheel({ overlap = false }: { overlap?: boolean }
     <section
       ref={host}
       data-zone="green"
-      className={`bg-forest py-16 text-cream md:py-32 ${overlap ? "relative z-20 rounded-t-[36px] md:rounded-t-[48px]" : ""}`}
+      className={`bg-forest py-12 text-cream md:py-32 ${overlap ? "relative z-20 rounded-t-[36px] md:rounded-t-[48px]" : ""}`}
     >
       <Container className="text-center">
         <Eyebrow tone="light" className="mx-auto">Diensten</Eyebrow>

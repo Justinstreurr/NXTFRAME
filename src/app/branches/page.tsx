@@ -74,7 +74,7 @@ export default function Page() {
             className="absolute inset-0 -z-10 hidden bg-[linear-gradient(to_right,rgb(0_0_0/0.82)_0%,rgb(0_0_0/0.68)_28%,rgb(0_0_0/0.28)_44%,transparent_56%)] lg:block"
             aria-hidden="true"
           />
-          <Container className="relative z-10 flex flex-col justify-center pb-16 pt-28 sm:pt-36 lg:min-h-[720px] lg:pb-28 lg:pt-32">
+          <Container className="relative z-10 flex flex-col justify-center pb-12 pt-28 sm:pt-36 lg:min-h-[720px] lg:pb-28 lg:pt-32">
             <div className="max-w-2xl lg:max-w-[44%]">
               <Eyebrow tone="light" className="max-w-xl">Branches</Eyebrow>
               <h1 className="mt-6 t-hero text-paper md:mt-8">
@@ -140,7 +140,7 @@ export default function Page() {
             "Wat je krijgt" on the homepage, here on wine with blush type. One card is forest
             instead of wine, or it would vanish into the ground. Halfway down the section the ground
             turns cream and the type wine (ShiftSection). */}
-        <ShiftSection className="bg-[#440220] py-16 text-[#fcbbb9] data-[shifted=true]:bg-cream data-[shifted=true]:text-[#440220] md:py-32">
+        <ShiftSection className="bg-[#440220] py-12 text-[#fcbbb9] data-[shifted=true]:bg-cream data-[shifted=true]:text-[#440220] md:py-32">
           <Container>
             <div className="mx-auto max-w-3xl text-center">
               <Eyebrow tone="wine" className="mx-auto">Waarom per branche</Eyebrow>

@@ -72,7 +72,7 @@ export default function HypotheekhavenKit() {
         </Tile>
 
         {/* a question opening and closing again */}
-        <Tile label="Veelgestelde vragen" className="pb-16 sm:row-span-2 md:pb-20">
+        <Tile label="Veelgestelde vragen" className="pb-12 sm:row-span-2 md:pb-20">
           <div className="w-[min(100%,260px)] text-[14px]">
             <div className="border-b border-[#081534]/15 pb-3">
               <p className="flex items-start justify-between gap-3" style={loop("hhk-q", "steps(1)")}>

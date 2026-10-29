@@ -20,7 +20,7 @@ const slippers = [
 
 export default function Case() {
   return (
-    <section className="bg-cream py-16 text-forest md:py-32">
+    <section className="bg-cream py-12 text-forest md:py-32">
       <Container>
         <div className="grid gap-16 lg:grid-cols-2 lg:gap-24">
           {/* Text column */}

@@ -19,7 +19,7 @@ const facts = [
 /* PLACEHOLDER: fill in your name */
 export default function Talent() {
   return (
-    <section data-zone="cherry" className="bg-cream py-16 text-brown md:py-32">
+    <section data-zone="cherry" className="bg-cream py-12 text-brown md:py-32">
       <Container>
         <div className="grid gap-16 lg:grid-cols-2 lg:gap-24">
           {/* portrait: one photo of the mascot, the same two-column set-up as Slim gebouwd */}

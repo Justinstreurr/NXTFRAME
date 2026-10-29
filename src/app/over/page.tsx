@@ -117,7 +117,7 @@ export default function Page() {
             className="absolute inset-0 -z-10 hidden bg-[linear-gradient(to_right,rgb(0_0_0/0.86)_0%,rgb(0_0_0/0.72)_28%,rgb(0_0_0/0.3)_46%,transparent_58%)] lg:block"
             aria-hidden="true"
           />
-          <Container className="relative z-10 flex flex-col justify-center pb-16 pt-28 sm:pt-36 lg:min-h-[720px] lg:pb-28 lg:pt-32">
+          <Container className="relative z-10 flex flex-col justify-center pb-12 pt-28 sm:pt-36 lg:min-h-[720px] lg:pb-28 lg:pt-32">
             <div className="max-w-2xl lg:max-w-[48%]">
               <Eyebrow tone="light" className="max-w-xl">Over NXT Frame</Eyebrow>
               <h1 className="mt-6 t-hero text-paper md:mt-8">
@@ -161,7 +161,7 @@ export default function Page() {
 
         {/* why NXT Frame exists: a short letter, signed, in the first person, stacked on the left; the
             photo on the right sticks while the letter scrolls past. On phones the photo follows the letter. */}
-        <section id="verhaal" className="scroll-mt-20 bg-paper py-16 text-forest md:py-32">
+        <section id="verhaal" className="scroll-mt-20 bg-paper py-12 text-forest md:py-32">
           <Container className="grid gap-12 lg:grid-cols-2 lg:gap-20">
             <div className="max-w-2xl">
               <Eyebrow className="max-w-xl">Waarom NXT Frame</Eyebrow>
@@ -207,7 +207,7 @@ export default function Page() {
 
         {/* what I stand for: built like "Wat je krijgt" on the homepage (AiFirst), the heading centred
             and the four promises as cards that stack while you scroll */}
-        <section data-zone="cherry" className="bg-cream py-16 text-forest md:py-32">
+        <section data-zone="cherry" className="bg-cream py-12 text-forest md:py-32">
           <Container className="text-center">
             <Eyebrow className="mx-auto w-fit">Waar ik voor sta</Eyebrow>
             <h2 className="mt-6 t-section md:mt-8">
@@ -230,7 +230,7 @@ export default function Page() {
         <Comparison />
 
         {/* the plain facts as a row of cards, the same paper cards as the pains on the hub */}
-        <section className="bg-cream pb-16 text-forest md:pb-32">
+        <section className="bg-cream pb-12 text-forest md:pb-32">
           <Container>
             <div className="grid gap-10 lg:grid-cols-2 lg:items-end lg:gap-20">
               <div>
@@ -243,7 +243,7 @@ export default function Page() {
                 De praktische dingen die je wilt weten voordat je contact opneemt.
               </p>
             </div>
-            <MoreOnMobile show={3} label={"Toon alle feiten"} as="dl" className="mt-16 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+            <MoreOnMobile show={3} label={"Toon alle feiten"} as="dl" className="mt-12 md:mt-16 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
               {facts.map((f) => (
                 <div key={f.k} className="rounded-3xl bg-paper p-8 ring-1 ring-forest/10">
                   <dt className="flex items-center gap-2.5 text-sm font-medium text-forest/55">
@@ -260,7 +260,7 @@ export default function Page() {
         </section>
 
         {/* the questions about working with one person, laid out like the homepage FAQ */}
-        <section className="bg-cream pb-16 text-forest md:pb-32">
+        <section className="bg-cream pb-12 text-forest md:pb-32">
           <Container className="grid gap-12 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
             <div className="self-start lg:sticky lg:top-28">
               <Eyebrow className="max-w-xl">Veelgestelde vragen</Eyebrow>

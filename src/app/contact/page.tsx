@@ -69,7 +69,7 @@ export default function Page() {
         </section>
 
         {/* the form, straight under the photo */}
-        <section id="formulier" className="scroll-mt-20 bg-cream py-16 text-forest md:pb-32 md:pt-24">
+        <section id="formulier" className="scroll-mt-20 bg-cream py-12 md:py-16 text-forest md:pb-32 md:pt-24">
           <Container className="grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-20">
             {/* on phones this column comes apart (contents): the heading, then the form, then the steps and the mail link */}
             <div className="contents lg:sticky lg:top-28 lg:block lg:self-start">
@@ -104,7 +104,7 @@ export default function Page() {
           </Container>
         </section>
 
-        <section className="bg-cream pb-16 pt-4 text-forest md:pb-32 md:pt-8">
+        <section className="bg-cream pb-12 pt-4 text-forest md:pb-32 md:pt-8">
           <Container className="grid gap-12 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
             <div className="self-start lg:sticky lg:top-28">
               <Eyebrow className="max-w-xl">Vooraf</Eyebrow>
