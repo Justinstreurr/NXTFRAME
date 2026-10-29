@@ -1,0 +1,1987 @@
+@import "tailwindcss";
+
+@theme {
+  /* one corner for every card and photo: 14px. rounded-2xl and rounded-3xl both land on it, so a
+     card and the photo inside it share the same curve. Pills and circles (rounded-full) and the
+     phone frames in the mockups keep their own radius. */
+  --radius-2xl: 14px;
+  --radius-3xl: 14px;
+  /* brand palette: cream (page), sand (quiet surfaces), paper (cards, light type), lime, forest */
+  --color-cream: #f7f1e8;
+  --color-sand: #f2e7df;
+  --color-paper: #f8f9f2;
+  --color-forest: #02261e;
+  --color-lime: #dafc92;
+  --color-lime-hover: #cdef82;
+  --color-forest-hover: #0b3a2f;
+  /* cherry-palette roles; identical to the green ones until the page is in the cherry zone */
+  --color-peach: #f7f1e8;
+  --color-brown: #02261e;
+  --color-pink: #dafc92;
+  --color-pink-hover: #cdef82;
+  --color-brown-hover: #0b3a2f;
+  --color-cocoa: #02261e;
+  --color-blush: #f2e7df;
+  --color-moss: #0b3a2f;
+  --color-ink: #02261e;
+  --color-muted: #5b6662;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-inter-tight), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument), "Times New Roman", Georgia, serif;
+
+  --animate-marquee: marquee 60s linear infinite;
+  --animate-marquee-slow: marquee 90s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 90s linear infinite;
+  --animate-marquee-reverse-slow: marquee-reverse 140s linear infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes marquee-reverse {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+  }
+}
+
+/* the widest the page content runs, gutters included (Container, nav, footer); change it here only */
+:root { --site-max: 1600px; }
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* skip link (layout.tsx): out of sight until a keyboard user tabs onto it, then top left above everything */
+.skip-link {
+  position: fixed; left: 16px; top: 16px; z-index: 1000;
+  padding: 12px 18px; border-radius: 999px;
+  background: var(--color-lime); color: var(--color-forest); font-weight: 600;
+  transform: translateY(-200%);
+}
+.skip-link:focus-visible { transform: none; outline: 2px solid var(--color-forest); outline-offset: 2px; }
+#main { scroll-margin-top: 96px; }
+
+/* Buttons (ui.tsx Button): on hover the label slides up and out of the button and comes back in
+   from below. The label is in the button twice, stacked in one grid cell; the second copy waits
+   under the edge. Motion-free visitors keep a still label. */
+.btn-slide-text { display: grid; gap: inherit; overflow: hidden; }
+.btn-slide-text > span {
+  grid-area: 1 / 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: inherit;
+  transition: transform 460ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-slide-text > span + span { transform: translateY(120%); }
+/* hover only where there is a real pointer: on touch, iOS keeps :hover after a tap and the label would stay half-slid */
+@media (hover: hover) {
+  .btn-slide:hover .btn-slide-text > span:first-child { transform: translateY(-120%); }
+  .btn-slide:hover .btn-slide-text > span + span { transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-slide-text > span { transition: none; }
+  .btn-slide:hover .btn-slide-text > span:first-child { transform: none; }
+  .btn-slide:hover .btn-slide-text > span + span { transform: translateY(120%); }
+}
+
+/* Hero logo ticker (LogoTicker): the logos stacked in one cell; "in" sits in place, "out" has
+   just slid up, "wait" is parked under the edge with no transition, ready to come up. */
+.logo-ticker > a {
+  grid-area: 1 / 1;
+  transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.logo-ticker > a[data-state="in"] { transform: translateY(0); }
+.logo-ticker > a[data-state="out"] { transform: translateY(-130%); }
+.logo-ticker > a[data-state="wait"] { transform: translateY(130%); transition: none; }
+@media (prefers-reduced-motion: reduce) {
+  .logo-ticker > a { transition: none; }
+}
+
+.serif-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.eyebrow {
+  font-size: 0.8125rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.marquee-mask {
+  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee, .animate-marquee-slow, .animate-marquee-reverse, .animate-marquee-reverse-slow { animation: none; }
+}
+
+
+/* Sliding-door reveal: both halves start hidden at the centre and slide outward */
+.door .door-l > img,
+.door .door-r > img {
+  transition: transform 1100ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+.door .door-l > img { transform: translateX(100%); }
+.door .door-r > img { transform: translateX(-100%); }
+.in .door:nth-child(2) .door-l > img,
+.in .door:nth-child(2) .door-r > img { transition-delay: 150ms; }
+.in .door:nth-child(3) .door-l > img,
+.in .door:nth-child(3) .door-r > img { transition-delay: 300ms; }
+.in .door .door-l > img,
+.in .door .door-r > img { transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .door .door-l > img, .door .door-r > img { transition: none; transform: none; }
+}
+
+/* Mega menu (MegaMenu): one cream sheet that starts at the top of the window, runs behind the bar
+   and unrolls downward, so bar and menu are a single surface with nothing to line up. Its contents
+   rise in a beat later, again each time the visitor moves to another menu; the page blur fades in. */
+.mega-sheet { animation: mega-in 420ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+@keyframes mega-in {
+  from { opacity: 0; clip-path: inset(0 0 22% 0 round 0 0 48px 48px); }
+  to { opacity: 1; clip-path: inset(0 0 0 0 round 0 0 48px 48px); }
+}
+.mega-rise { animation: mega-rise 480ms cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: calc(var(--i, 0) * 50ms + 60ms); }
+@keyframes mega-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.mega-backdrop { animation: mega-fade 320ms ease both; }
+@keyframes mega-fade { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .mega-sheet, .mega-rise, .mega-backdrop { animation: none; } }
+
+/* Slat reveal: vertical strips rise from the bottom one after another (90 ms apart) while the
+   photo eases out of a slight zoom; all strips share one zoom timeline so the seams never show */
+.slats .slat {
+  transform: translateY(102%);
+  transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1) calc(var(--i) * 90ms);
+  will-change: transform;
+}
+.slats .slat > img {
+  transform: scale(1.14);
+  transform-origin: 50% 50%;
+  transition: transform 1500ms cubic-bezier(0.22, 1, 0.36, 1) 150ms;
+}
+.in .slats .slat { transform: none; }
+.in .slats .slat > img { transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .slats .slat, .slats .slat > img { transition: none; transform: none; }
+}
+
+/* Happy Flops logo hover: slippers start hidden behind the logo and fan out around it */
+.slipper {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.4) rotate(0deg);
+  transition:
+    transform 650ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 300ms ease-out;
+  will-change: transform, opacity;
+}
+.group:hover .slipper,
+.group:focus-visible .slipper {
+  opacity: 1;
+  transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1) rotate(var(--rot));
+}
+@media (prefers-reduced-motion: reduce) {
+  .slipper { transition: opacity 200ms ease-out; }
+  .group:hover .slipper { transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))); }
+}
+
+/* Pillar icons: subtle looping animations */
+.pi-needle { transform-origin: 60px 84px; animation: pi-needle 3s ease-in-out infinite; }
+@keyframes pi-needle {
+  0%, 100% { transform: rotate(-70deg); }
+  50% { transform: rotate(70deg); }
+}
+.pi-lines { animation: pi-lines 1.2s ease-in-out infinite; }
+@keyframes pi-lines {
+  0%, 100% { transform: translateX(0); opacity: 0.7; }
+  50% { transform: translateX(-6px); opacity: 0.2; }
+}
+.pi-pulse { transform-origin: 52px 52px; animation: pi-pulse 2.4s ease-out infinite; }
+@keyframes pi-pulse {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.7); opacity: 0; }
+}
+.pi-orbit { transform-origin: 52px 52px; animation: pi-orbit 6s linear infinite; }
+@keyframes pi-orbit { to { transform: rotate(360deg); } }
+.pi-block { transform-origin: center; animation: pi-block 4s ease-in-out infinite; }
+.pi-block-2 { animation-delay: 0.3s; }
+.pi-block-3 { animation-delay: 0.6s; }
+.pi-block-4 { animation-delay: 0.9s; }
+@keyframes pi-block {
+  0%, 15% { transform: translate(-8px, 6px) scale(0.92); opacity: 0.4; }
+  35%, 80% { transform: none; opacity: 1; }
+  100% { transform: translate(-8px, 6px) scale(0.92); opacity: 0.4; }
+}
+.pi-cursor { animation: pi-cursor 4s ease-in-out infinite; }
+@keyframes pi-cursor {
+  0%, 20% { transform: translate(14px, -18px); opacity: 0; }
+  40%, 75% { transform: translate(0, 0); opacity: 1; }
+  85%, 100% { transform: translate(14px, -18px); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pi-needle, .pi-lines, .pi-pulse, .pi-orbit, .pi-block, .pi-cursor { animation: none; }
+  .pi-needle { transform: rotate(30deg); }
+}
+
+/* Corner reveal: photo starts at 55% in its centre and grows to full size, led by the two
+   brand corners which ride in from the shrunken photo's corners (22.5% inset) and settle. */
+.corner-reveal { container-type: size; }
+.corner-reveal .cr-box {
+  transform: scale(0.55);
+  transform-origin: 50% 50%;
+  transition: transform 900ms cubic-bezier(0.3, 1, 0.35, 1) 120ms;
+  will-change: transform;
+}
+.corner-reveal .cr-tl,
+.corner-reveal .cr-br,
+.corner-reveal .cr-tr,
+.corner-reveal .cr-bl {
+  scale: 0.6;
+  opacity: 0;
+  transition: translate 900ms cubic-bezier(0.3, 1, 0.35, 1) 60ms, opacity 300ms ease;
+}
+.corner-reveal .cr-tl { translate: calc(22.5cqw - 0.4rem) calc(22.5cqh - 0.4rem); transform-origin: 100% 100%; }
+.corner-reveal .cr-br { translate: calc(-22.5cqw + 0.4rem) calc(-22.5cqh + 0.4rem); transform-origin: 0 0; }
+.corner-reveal .cr-tr { translate: calc(-22.5cqw + 0.4rem) calc(22.5cqh - 0.4rem); transform-origin: 0 100%; }
+.corner-reveal .cr-bl { translate: calc(22.5cqw - 0.4rem) calc(-22.5cqh + 0.4rem); transform-origin: 100% 0; }
+.in .corner-reveal .cr-box { transform: scale(1); }
+.in .corner-reveal .cr-tl,
+.in .corner-reveal .cr-br,
+.in .corner-reveal .cr-tr,
+.in .corner-reveal .cr-bl { translate: 0 0; opacity: 1; animation: cr-corner 1000ms cubic-bezier(0.3, 1, 0.35, 1) 60ms both; }
+@keyframes cr-corner {
+  0% { scale: 0.6; }
+  55% { scale: 1.15; }
+  100% { scale: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .corner-reveal .cr-box { transition: none; transform: none; }
+  .corner-reveal .cr-tl, .corner-reveal .cr-br, .corner-reveal .cr-tr, .corner-reveal .cr-bl { transition: none; animation: none; translate: 0 0; scale: 1; opacity: 1; }
+}
+
+/* Hero word reveal: "verkopen." grows from its centre on load, led by the brand corners.
+   The corners start tiny, grow while travelling outward, and stay on the word's corners. */
+.word-reveal .wr-inner {
+  transform: scale(0.08);
+  transform-origin: 50% 55%;
+  transition: transform 1300ms cubic-bezier(0.22, 1, 0.36, 1) 480ms;
+  will-change: transform;
+}
+.word-reveal .wr-tl,
+.word-reveal .wr-br {
+  transform: scale(0.15);
+  transition:
+    left 1200ms cubic-bezier(0.22, 1, 0.36, 1) 200ms,
+    top 1200ms cubic-bezier(0.22, 1, 0.36, 1) 200ms,
+    right 1200ms cubic-bezier(0.22, 1, 0.36, 1) 200ms,
+    bottom 1200ms cubic-bezier(0.22, 1, 0.36, 1) 200ms;
+}
+.word-reveal .wr-tl { left: calc(50% - 0.75rem); top: calc(55% - 0.75rem); transform-origin: 100% 100%; }
+.word-reveal .wr-br { right: calc(50% - 0.75rem); bottom: calc(45% - 0.75rem); transform-origin: 0 0; }
+.word-reveal.in .wr-inner { transform: scale(1); }
+.word-reveal.in .wr-tl { left: -0.15em; top: 0.02em; }
+.word-reveal.in .wr-br { right: -0.22em; bottom: -0.06em; }
+.word-reveal.in .wr-tl,
+.word-reveal.in .wr-br { animation: wr-corner 1400ms cubic-bezier(0.22, 1, 0.36, 1) 200ms both; }
+@keyframes wr-corner {
+  0% { transform: scale(0.15); }
+  60% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .word-reveal .wr-inner { transition: none; transform: none; }
+  .word-reveal .wr-tl, .word-reveal .wr-br { transition: none; animation: none; transform: none; }
+  .word-reveal .wr-tl { left: -0.15em; top: 0.02em; }
+  .word-reveal .wr-br { right: -0.22em; bottom: -0.06em; }
+}
+
+/* Aanpak path: nodes pop in and text slides up when in view */
+.step .step-node { opacity: 0; transform: scale(0.5); transition: transform 700ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 300ms ease-out; }
+.step .step-text { opacity: 0; transform: translateY(16px); transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1) 150ms, opacity 500ms ease-out 150ms; }
+.step.in .step-node { opacity: 1; transform: scale(1); }
+.step.in .step-text { opacity: 1; transform: none; }
+/* mobile keeps the vertical centring of the absolutely positioned node */
+@media (max-width: 767px) {
+  .step .step-node { transform: translateY(-50%) scale(0.5); }
+  .step.in .step-node { transform: translateY(-50%) scale(1); }
+}
+
+/* Step icons: subtle loops, only while the step is in view */
+.step.in .si-bubble-a { animation: si-bob 2.4s ease-in-out infinite; }
+.step.in .si-bubble-b { animation: si-bob 2.4s ease-in-out 1.2s infinite; }
+@keyframes si-bob { 0%, 100% { transform: translateY(0); opacity: 0.6; } 50% { transform: translateY(-2px); opacity: 1; } }
+.step.in .si-node { animation: si-pop 3s ease-in-out infinite; transform-origin: center; }
+.step.in .si-node-2 { animation-delay: 0.3s; }
+.step.in .si-node-3 { animation-delay: 0.6s; }
+@keyframes si-pop { 0%, 70%, 100% { transform: scale(1); opacity: 1; } 15% { transform: scale(0.85); opacity: 0.5; } }
+.step.in .si-draw { stroke-dasharray: 112; stroke-dashoffset: 112; animation: si-draw 3s ease-in-out infinite; }
+@keyframes si-draw { 0% { stroke-dashoffset: 112; } 60%, 85% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 0; opacity: 0; } }
+.step.in .si-pen { animation: si-pen 3s ease-in-out infinite; }
+@keyframes si-pen { 0% { transform: translate(-22px, -20px); } 60%, 100% { transform: translate(0, 0); } }
+.step.in .si-slash { animation: si-blink 1.2s steps(2, end) infinite; }
+@keyframes si-blink { 50% { opacity: 0; } }
+.step.in .si-rocket { animation: si-rocket 2.6s ease-in-out infinite; }
+@keyframes si-rocket { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(2px, -3px); } }
+.step.in .si-trail { stroke-dasharray: 20; animation: si-trail 2.6s linear infinite; }
+@keyframes si-trail { to { stroke-dashoffset: -40; } }
+@media (prefers-reduced-motion: reduce) {
+  .step .step-node, .step .step-text { transition: none; opacity: 1; transform: none; }
+  .step.in .si-bubble-a, .step.in .si-bubble-b, .step.in .si-node, .step.in .si-draw, .step.in .si-pen, .step.in .si-slash, .step.in .si-rocket, .step.in .si-trail { animation: none; }
+  .step.in .si-draw { stroke-dasharray: none; stroke-dashoffset: 0; }
+}
+
+/* Edge-to-edge row whose left edge lines up with the Container (--site-max incl. padding) */
+.bleed-left {
+  --edge: 1.5rem;
+  padding-left: max(var(--edge), calc((100vw - var(--site-max)) / 2 + var(--edge)));
+  scroll-padding-left: max(var(--edge), calc((100vw - var(--site-max)) / 2 + var(--edge)));
+}
+@media (min-width: 768px) { .bleed-left { --edge: 3rem; } }
+@media (min-width: 1280px) { .bleed-left { --edge: 5rem; } }
+
+/* Vergelijking: checks spin into place one by one */
+.cmp .score { opacity: 0; transform: rotate(-200deg) scale(0.2); }
+.cmp.in .score { animation: cmp-spin 650ms cubic-bezier(0.34, 1.56, 0.64, 1) var(--d, 0ms) both; }
+@keyframes cmp-spin {
+  from { opacity: 0; transform: rotate(-200deg) scale(0.2); }
+  to { opacity: 1; transform: rotate(0deg) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cmp .score { opacity: 1; transform: none; }
+  .cmp.in .score { animation: none; }
+}
+
+/* ---------------------------------------------------------------------------------------
+   Page palette zones. The whole page is in exactly one palette at a time: green (cream,
+   forest, lime) or cherry (kept identical to green). Every colour utility resolves through the
+   theme tokens, so flipping `data-zone` on <html> recolours everything on screen together.
+   PaletteZones sets the zone from the section that has scrolled past 60% of the viewport
+   (the hero opens green and turns cherry as soon as the visitor scrolls).
+   --------------------------------------------------------------------------------------- */
+/* One colour scheme everywhere: the "cherry" zone keeps the green tokens, so scrolling never
+   changes the palette. Add overrides here if a second palette is ever wanted again. */
+html[data-zone="cherry"] {}
+/* only the hero, the nav and the logo strip ease between palettes (see .hp-t below); a transition
+   on every element of the page made each style change cost the whole page */
+
+/* Slim gebouwd: the photo corners in the section's cream, so they read on the green render;
+   the eyebrow glyph in the accent colour */
+.slim-light .cr-tl, .slim-light .cr-br { border-color: var(--color-cream); }
+.slim-light .eyebrow svg { color: var(--color-forest); }
+
+/* Hero / nav / logo strip share one set of tokens; they follow the page palette automatically */
+.hero, .nav-hero, .hp {
+  --hp-bg: var(--color-cream);
+  --hp-nav-bg: var(--color-cream); /* opaque: the bar never lets the page show through */
+  --hp-fg: var(--color-forest);
+  --hp-accent: var(--color-forest);
+  --hp-brand: var(--color-lime);
+  --hp-btn-fg: var(--color-forest);
+  --hp-btn-hover: var(--color-lime-hover);
+  --hp-outline: color-mix(in srgb, var(--color-forest) 35%, transparent);
+  --hp-outline-hover-bg: var(--color-forest);
+  --hp-outline-hover-fg: var(--color-cream);
+  --hp-tile: color-mix(in srgb, var(--color-forest) 6%, transparent);
+}
+.hero, .nav-hero, .hp, .hp-t {
+  transition: background-color 900ms ease, color 900ms ease, border-color 900ms ease;
+}
+
+/* Over: on desktop the photo waits behind the text column until the mascot pushes it in (PhotoPush). */
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .push-photo { transform: translateX(100%); }
+}
+
+/* Hero is always dark: forest green with lime accents on load, and it stays that way after scrolling: the cherry zone uses the same tokens. The nav shares the hero's
+   background only while the hero is the current section (NavPalette sets data-at-hero). */
+.hero,
+html:not([data-zone]) .nav-hero,
+html[data-at-hero] .nav-hero {
+  --hp-bg: var(--color-forest);
+  --hp-nav-bg: var(--color-forest); /* opaque: the cream body would show through a translucent bar */
+  --hp-fg: var(--color-cream);
+  --hp-accent: var(--color-lime);
+  --hp-outline: color-mix(in srgb, var(--color-cream) 40%, transparent);
+  --hp-outline-hover-bg: var(--color-cream);
+  --hp-outline-hover-fg: var(--color-forest);
+  --hp-tile: color-mix(in srgb, var(--color-cream) 10%, transparent);
+}
+/* Homepage hero: the copy sits on bright sky, so the left half gets one black gradient, solid
+   enough at the edge for the cream type and gone by 58% of the width, well before the chair.
+   Nothing else on the photo. */
+.hero-shade {
+  background:
+    /* foot: the buttons and brands sit on the bright cloud bank */
+    linear-gradient(to top, rgb(0 0 0 / 0.28) 30%, rgb(0 0 0 / 0.12) 42%, transparent 55%),
+    /* left: the headline on light sky; black so the copy reads */
+    linear-gradient(to right, rgb(0 0 0 / 0.55) 0%, rgb(0 0 0 / 0.38) 30%, rgb(0 0 0 / 0.12) 48%, transparent 60%);
+}
+
+/* phones: the photo fills the whole first screen; black from the top keeps the copy readable, the
+   mascot shows clear in the middle, and black rises again at the foot behind the buttons */
+.hero-shade-m {
+  background: linear-gradient(to bottom,
+    rgb(0 0 0 / 0.92) 0%, rgb(0 0 0 / 0.78) 30%, rgb(0 0 0 / 0.25) 50%, transparent 60%,
+    transparent 68%, rgb(0 0 0 / 0.55) 82%, rgb(0 0 0 / 0.9) 100%);
+}
+
+/* After scrolling the hero turns black (the nav shares it while the hero is the current section);
+   text stays cream and the accents lime. The logo strip under it keeps the light palette. */
+html[data-zone="cherry"] .hero,
+html[data-zone="cherry"][data-at-hero] .nav-hero {
+  --hp-bg: #000000;
+  --hp-nav-bg: #000000;
+}
+
+/* Letters rising into place one after another, once a Reveal around them adds `in`. Words stay
+   whole so the line wraps as usual; the delay is per letter, so a line arrives as a wave. */
+.wave-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+.wave-ch {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.55em);
+  transition:
+    opacity 420ms ease-out calc(var(--i) * 22ms),
+    transform 680ms cubic-bezier(0.22, 1, 0.36, 1) calc(var(--i) * 22ms);
+}
+.in .wave-ch {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .wave-ch { opacity: 1; transform: none; transition: none; }
+}
+
+/* Drie pijlers: the claims on the left as a list of tabs, one card on the right. */
+.pillar-tab { border-top: 1px solid color-mix(in srgb, var(--color-forest) 14%, transparent); }
+.pillar-tab:last-child { border-bottom: 1px solid color-mix(in srgb, var(--color-forest) 14%, transparent); }
+.pillar-tab-button {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 20px 0;
+  text-align: left;
+  cursor: pointer;
+}
+.pillar-tab-mark {
+  flex: none;
+  width: 3px;
+  height: 20px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-forest) 20%, transparent);
+  transition: background-color 300ms ease, height 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.pillar-tab.is-active .pillar-tab-mark { height: 34px; background: var(--color-forest); }
+/* the countdown to the next claim: the mark fills top to bottom over the dwell time, and holds
+   still (empty, like the timer) while the pointer or focus is on the section */
+.pillar-tab-mark { position: relative; overflow: hidden; }
+.pillar-tab-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--color-lime);
+  transform-origin: top;
+  transform: scaleY(0);
+  animation: pillar-fill linear forwards;
+}
+@keyframes pillar-fill {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+.pillar-tabs.is-paused .pillar-tab-fill { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pillar-tab-fill { display: none; }
+}
+.pillar-tab-button > span:last-child { opacity: 0.4; transition: opacity 300ms ease; }
+.pillar-tab.is-active .pillar-tab-button > span:last-child { opacity: 1; }
+.pillar-tab-button:hover > span:last-child { opacity: 0.75; }
+.pillar-tab.is-active .pillar-tab-button:hover > span:last-child { opacity: 1; }
+/* the text folds open on the chosen claim: a grid row from nothing to its own height */
+.pillar-tab-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 450ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.pillar-tab.is-active .pillar-tab-body { grid-template-rows: 1fr; }
+.pillar-tab-body > div { overflow: hidden; }
+.pillar-tab-copy {
+  padding: 0 0 22px 17px;
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+.pillar-tab.is-active .pillar-tab-copy { opacity: 1; transition-delay: 140ms; }
+
+/* the cards all stay put and cross-fade, so a demo never starts over on a switch */
+.pillar-card-slot {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(0.98);
+  pointer-events: none;
+  transition: opacity 450ms ease, transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.pillar-card-slot.is-active {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pillar-tab-body, .pillar-tab-copy, .pillar-card-slot, .pillar-tab-mark { transition: none; }
+}
+
+/* =====================================================================================
+   Drie pijlers: the little product demos inside the panels (see PillarDemos.tsx).
+
+   They sit on white, like the real tools they stand in for, but everything drawn on that
+   white is ours: forest green as the ink, lime as the accent, moss for depth. So the demos
+   read as products without ever leaving the palette.
+
+   Every static style below is the FINISHED look; the keyframes animate towards it from an
+   empty state. So a paused or disabled animation always shows a complete demo, never a
+   half-built one. Nothing runs before the panel is in view.
+   ===================================================================================== */
+/* .pillar-stage is the Reveal around the whole section; it gets `in` once scrolled into view */
+.pillar-stage:not(.in) .demo *,
+.pillar-stage:not(.in) .demo *::after,
+.pillar-card-slot:not(.is-active) .demo *,
+.pillar-card-slot:not(.is-active) .demo *::after {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .demo *, .demo *::after { animation: none !important; }
+}
+
+.pillar-demo { container-type: inline-size; }
+.demo {
+  --ink: var(--color-forest);
+  --ink-soft: color-mix(in srgb, var(--color-forest) 60%, transparent);
+  --line: color-mix(in srgb, var(--color-forest) 14%, transparent);
+  --wash: color-mix(in srgb, var(--color-forest) 5%, transparent);
+  --fill: color-mix(in srgb, var(--color-forest) 10%, transparent);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-paper);
+  color: var(--ink);
+  font-size: 12px;
+  line-height: 1.4;
+}
+/* the second column is desktop only: on a phone the demo keeps just its main panel */
+.sp-side, .se-ai, .de-side { display: none; }
+@container (min-width: 600px) {
+  .sp-side, .se-ai, .de-side { display: block; }
+}
+
+/* browser chrome */
+.demo-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 11px 15px;
+  background: var(--color-cream);
+  border-bottom: 1px solid var(--line);
+}
+.demo-dot { width: 9px; height: 9px; border-radius: 999px; background: var(--fill); }
+.demo-dot:nth-child(3) { background: var(--color-lime); }
+.demo-url {
+  margin-left: 12px;
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: var(--color-paper);
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 11px;
+}
+
+/* ---------- Snelheid: the page paints itself while the score runs up ---------- */
+.demo-body {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  padding: 16px;
+}
+@container (min-width: 600px) {
+  .demo-body { grid-template-columns: 1.45fr 1fr; gap: 26px; padding: 22px; }
+}
+.sp-page { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-content: start; }
+.sp-blk {
+  border-radius: 8px;
+  background: var(--fill);
+  animation: sp-paint 7s ease-out infinite;
+  animation-delay: calc(var(--i) * 90ms);
+}
+.sp-nav { grid-column: 1 / -1; height: 16px; }
+.sp-h1 { grid-column: 1 / -1; height: 30px; background: var(--color-forest); }
+.sp-h2 { grid-column: 1 / -1; height: 12px; width: 68%; }
+.sp-img {
+  grid-column: 1 / -1;
+  height: 84px;
+  background: linear-gradient(135deg, var(--color-lime) 0%, var(--color-moss) 100%);
+}
+.sp-col:nth-of-type(5) { background: var(--color-lime); }
+.sp-col { height: 42px; }
+@keyframes sp-paint {
+  0%, 6% { opacity: 0; transform: translateY(8px); }
+  18%, 92% { opacity: 1; transform: none; }
+  100% { opacity: 0; transform: translateY(8px); }
+}
+.sp-gauge { position: relative; width: 108px; height: 108px; }
+.sp-gauge svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.sp-track, .sp-arc { fill: none; stroke-width: 8; stroke-linecap: round; }
+.sp-track { stroke: color-mix(in srgb, var(--color-lime) 55%, var(--color-paper)); }
+.sp-arc {
+  stroke: var(--color-forest);
+  stroke-dasharray: 327;
+  stroke-dashoffset: 0;
+  animation: sp-arc 7s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+@keyframes sp-arc {
+  0%, 6% { stroke-dashoffset: 327; }
+  45%, 92% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 327; }
+}
+/* the score counts up: an animatable integer fed into a counter */
+@property --n { syntax: "<integer>"; inherits: false; initial-value: 100; }
+.sp-num {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--color-forest);
+  animation: sp-count 7s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+.sp-num::after { content: counter(n); counter-reset: n var(--n); }
+@keyframes sp-count {
+  0%, 6% { --n: 0; }
+  45%, 92% { --n: 100; }
+  100% { --n: 0; }
+}
+.sp-label {
+  margin-top: 12px;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.sp-metrics { margin-top: 14px; display: grid; gap: 9px; }
+.sp-metrics li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid var(--line);
+  padding-top: 9px;
+  color: var(--ink-soft);
+  animation: sp-paint 7s ease-out infinite;
+  animation-delay: calc(600ms + var(--i) * 140ms);
+}
+.sp-metrics b { color: var(--color-forest); font-weight: 600; }
+
+/* ---------- Vindbaar: the query types itself, results and the AI answer follow ---------- */
+.demo-search { display: grid; grid-template-columns: 1fr; gap: 18px; padding: 18px; align-content: start; }
+@container (min-width: 600px) {
+  .demo-search { grid-template-columns: 1.3fr 1fr; gap: 24px; padding: 24px; }
+}
+.se-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 10px 16px;
+  box-shadow: 0 1px 6px color-mix(in srgb, var(--color-forest) 10%, transparent);
+}
+.se-glass { width: 15px; height: 15px; flex: none; color: var(--ink-soft); }
+.se-query {
+  max-width: 10rem;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 13px;
+  color: var(--ink);
+  animation: se-type 9s steps(18, end) infinite;
+}
+@keyframes se-type {
+  0% { max-width: 0; }
+  22%, 92% { max-width: 10rem; }
+  100% { max-width: 0; }
+}
+.se-caret { width: 1.5px; height: 15px; background: var(--color-forest); animation: se-blink 1s steps(2, end) infinite; }
+@keyframes se-blink { 50% { opacity: 0; } }
+.se-results { margin-top: 16px; display: grid; gap: 10px; }
+.se-results li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 10px;
+  padding: 10px 12px;
+  animation: se-pop 9s ease-out infinite;
+  animation-delay: calc(var(--i) * 260ms);
+}
+.se-hit {
+  background: color-mix(in srgb, var(--color-lime) 40%, var(--color-paper));
+  outline: 1px solid var(--color-forest);
+}
+@keyframes se-pop {
+  0%, 24% { opacity: 0; transform: translateY(6px); }
+  34%, 92% { opacity: 1; transform: none; }
+  100% { opacity: 0; transform: translateY(6px); }
+}
+.se-rank {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 600;
+  background: var(--fill);
+  color: var(--ink-soft);
+}
+.se-hit .se-rank { background: var(--color-forest); color: var(--color-lime); }
+.se-lines { display: grid; gap: 6px; flex: 1; }
+.se-lines b { font-size: 12.5px; font-weight: 600; color: var(--color-forest); }
+.se-url { font-size: 11px; color: var(--ink-soft); }
+.se-snip { display: block; height: 6px; border-radius: 3px; background: var(--fill); }
+.se-snip-title { height: 9px; width: 58%; background: color-mix(in srgb, var(--color-forest) 20%, transparent); }
+.se-snip-short { width: 62%; }
+.se-ai {
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--color-cream);
+  padding: 16px 18px;
+  align-self: start;
+}
+.se-ai-head {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.se-spark { width: 13px; height: 13px; color: var(--color-moss); }
+.se-ai-text {
+  margin-top: 12px;
+  overflow: hidden;
+  font-size: 13px;
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--color-forest) 80%, transparent);
+  animation: se-write 9s steps(4, end) infinite;
+}
+.se-ai-text b { color: var(--color-forest); font-weight: 600; }
+@keyframes se-write {
+  0%, 40% { max-height: 0; }
+  70%, 92% { max-height: 7em; }
+  100% { max-height: 0; }
+}
+.se-cite {
+  margin-top: 14px;
+  display: inline-block;
+  border-radius: 999px;
+  padding: 4px 11px;
+  font-size: 11px;
+  background: var(--color-lime);
+  color: var(--color-forest);
+  animation: se-cite 9s ease-out infinite;
+}
+@keyframes se-cite {
+  0%, 70% { opacity: 0; transform: translateY(6px); }
+  78%, 92% { opacity: 1; transform: none; }
+  100% { opacity: 0; transform: translateY(6px); }
+}
+
+/* ---------- Design: a wireframe that turns into a designed page ---------- */
+.demo-design { display: grid; grid-template-columns: 1fr; gap: 18px; padding: 18px; align-content: start; }
+@container (min-width: 600px) {
+  .demo-design { grid-template-columns: 1.5fr 1fr; gap: 24px; padding: 24px; }
+}
+.de-canvas {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  align-content: start;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background-color: var(--color-paper);
+  background-image: radial-gradient(color-mix(in srgb, var(--color-forest) 12%, transparent) 1px, transparent 1px);
+  background-size: 14px 14px;
+  padding: 12px;
+}
+.de-block {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background-color: var(--fill);
+  animation: de-fill 8s ease-out infinite;
+  animation-delay: calc(var(--i) * 140ms);
+}
+@keyframes de-fill {
+  0%, 12% { border-style: dashed; border-color: color-mix(in srgb, var(--color-forest) 30%, transparent); background-color: transparent; }
+  32%, 92% { border-style: solid; border-color: transparent; background-color: inherit; }
+  100% { border-style: dashed; border-color: color-mix(in srgb, var(--color-forest) 30%, transparent); background-color: transparent; }
+}
+.de-nav { grid-column: 1 / -1; height: 16px; }
+.de-hero {
+  grid-column: 1 / -1;
+  min-height: 96px;
+  padding: 14px;
+  display: grid;
+  gap: 9px;
+  align-content: center;
+  background-color: var(--color-forest);
+}
+.de-img {
+  grid-column: 1 / -1;
+  height: 64px;
+  background-color: var(--color-lime);
+  background-image: linear-gradient(120deg, var(--color-lime) 0%, var(--color-moss) 100%);
+}
+.de-col { height: 38px; }
+.de-col:nth-of-type(4) { background-color: color-mix(in srgb, var(--color-lime) 55%, var(--color-paper)); }
+.de-col:nth-of-type(5) { background-color: var(--color-lime); }
+.de-line, .de-cta { animation: de-in 8s ease-out infinite; animation-delay: 700ms; }
+.de-line { height: 8px; border-radius: 4px; background: color-mix(in srgb, var(--color-cream) 45%, transparent); }
+.de-line-xl { height: 15px; width: 74%; background: var(--color-cream); }
+.de-line-lg { width: 52%; }
+.de-cta { height: 20px; width: 88px; border-radius: 999px; background: var(--color-lime); animation-delay: 900ms; }
+@keyframes de-in {
+  0%, 26% { opacity: 0; transform: translateY(6px); }
+  38%, 92% { opacity: 1; transform: none; }
+  100% { opacity: 0; transform: translateY(6px); }
+}
+.de-cursor {
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  background: var(--color-forest);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--color-lime) 60%, transparent);
+  animation: de-cursor 8s ease-in-out infinite;
+}
+@keyframes de-cursor {
+  0% { left: 14%; top: 20%; opacity: 0; }
+  14% { opacity: 1; }
+  36% { left: 64%; top: 46%; }
+  58% { left: 26%; top: 76%; }
+  82% { left: 72%; top: 32%; }
+  94%, 100% { opacity: 0; }
+}
+.de-side-head {
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.de-swatches { margin-top: 12px; display: flex; gap: 8px; }
+.de-swatches li {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  animation: de-in 8s ease-out infinite;
+  animation-delay: calc(300ms + var(--i) * 120ms);
+}
+.de-swatches li:nth-child(1) { background: var(--color-forest); }
+.de-swatches li:nth-child(2) { background: var(--color-lime); }
+.de-swatches li:nth-child(3) { background: var(--color-moss); }
+.de-swatches li:nth-child(4) { background: var(--color-cream); border: 1px solid var(--line); }
+.de-type { margin-top: 18px; display: flex; align-items: baseline; gap: 12px; animation: de-in 8s ease-out infinite; animation-delay: 800ms; }
+.de-type-lg { font-size: 34px; font-weight: 600; line-height: 1; color: var(--ink); }
+.de-type-sm { font-size: 11px; line-height: 1.5; color: var(--ink-soft); }
+.de-checks { margin-top: 18px; display: grid; gap: 8px; color: var(--ink-soft); }
+.de-checks li { display: flex; gap: 8px; animation: de-in 8s ease-out infinite; animation-delay: calc(1000ms + var(--i) * 140ms); }
+.de-checks li::before { content: "✓"; color: var(--color-moss); }
+
+/* The header slides away on the way down and back on the way up (NavReveal). At rest it has no
+   transform at all, so the menus that hang off it keep the window as their frame. The colour
+   transitions are repeated here because this shorthand would otherwise replace them. */
+.nav-bar {
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), background-color 900ms ease, color 900ms ease, border-color 900ms ease;
+}
+.nav-bar.nav-hidden { transform: translateY(-100%); }
+@media (prefers-reduced-motion: reduce) {
+  .nav-bar { transition: background-color 900ms ease, color 900ms ease, border-color 900ms ease; }
+}
+
+/* A header floating over a photo hero (Nav theme="photo"): see-through with cream type at the top
+   of the page, solid cream with forest type once scrolled (NavTint) or while a menu is open, so
+   the dropdown never hangs off a see-through bar. */
+.nav-photo {
+  /* on load: clear glass over the hero, cream type */
+  --hp-nav-bg: rgba(255, 255, 255, 0.09);
+  --glass-edge: rgba(255, 255, 255, 0.22);
+  --glass-sheen: rgba(255, 255, 255, 0.28);
+  --hp-fg: var(--color-cream);
+  --hp-brand: var(--color-lime);
+  --hp-btn-fg: var(--color-forest);
+  --hp-btn-hover: var(--color-lime-hover);
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), background-color 300ms ease, color 300ms ease;
+}
+.nav-photo.nav-solid,
+.nav-photo:has([aria-expanded="true"]) {
+  /* over page content or with a menu open: frosted cream, forest type */
+  --hp-nav-bg: color-mix(in srgb, var(--color-cream) 48%, transparent);
+  --glass-edge: rgba(255, 255, 255, 0.65);
+  --glass-sheen: rgba(255, 255, 255, 0.55);
+  --hp-fg: var(--color-forest);
+}
+/* scrolled with no menu open: lighter still, so more of the page shows through the glass (an open
+   menu keeps the 48% above, so the dropdown stays easy to read) */
+.nav-photo.nav-solid:not(:has([aria-expanded="true"])) {
+  --hp-nav-bg: color-mix(in srgb, var(--color-cream) 30%, transparent);
+  --glass-edge: rgba(255, 255, 255, 0.5);
+}
+.nav-photo .hp-t { transition-duration: 300ms; }
+
+/* Liquid glass. One recipe for the floating nav pill (.nav-glass) and the phone menu
+   (.glass-sheet): the page behind is blurred and its colours
+   pushed up a notch, a translucent tint sits on top, a hairline of light traces the edge, and a
+   sheen slides slowly across the surface like light over glass. The blur lives on these elements
+   only, never on the header: a child of a backdrop-filtered parent can only blur that parent. */
+.nav-glass,
+.glass-sheet {
+  position: relative;
+  isolation: isolate;
+  background: var(--hp-nav-bg, color-mix(in srgb, var(--color-cream) 48%, transparent));
+  -webkit-backdrop-filter: blur(16px) saturate(170%);
+  backdrop-filter: blur(16px) saturate(170%);
+  border: 1px solid var(--glass-edge, rgba(255, 255, 255, 0.6));
+  box-shadow:
+    inset 0 1px 0 var(--glass-sheen, rgba(255, 255, 255, 0.55)),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.08),
+    0 12px 40px -16px rgba(2, 38, 30, 0.45);
+  transition: background-color 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
+}
+.nav-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 0%, var(--glass-sheen, rgba(255, 255, 255, 0.5)) 18%, transparent 34%, transparent 66%, rgba(255, 255, 255, 0.14) 82%, transparent 100%);
+  background-size: 260% 100%;
+  opacity: 0.55;
+  /* static: a looping sheen on a blurred bar repaints the blur every frame, which costs scroll smoothness */
+  background-position: 60% 0;
+}
+@keyframes glass-sheen {
+  from { background-position: 100% 0; }
+  to   { background-position: 0% 0; }
+}
+/* while a menu is open the pill gives up its own glass: the cream sheet of the mega menu lies
+   behind it (.mega-sheet), so the bar and the menu are one surface and there is no edge between
+   them to show */
+.nav-photo:has([aria-expanded="true"]) .nav-glass {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.nav-photo:has([aria-expanded="true"]) .nav-glass::before { opacity: 0; }
+.glass-sheet {
+  --hp-nav-bg: color-mix(in srgb, var(--color-cream) 82%, transparent);
+  --glass-edge: transparent;
+  --glass-sheen: transparent;
+  box-shadow: none;
+}
+/* At the top of the page the bar is bare: no tint, no blur, no edge, just the cream type over the
+   hero. The glass arrives once the visitor scrolls (NavTint sets nav-solid) or opens a menu. */
+.nav-photo:not(.nav-solid):not(:has([aria-expanded="true"])) .nav-glass {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.nav-photo:not(.nav-solid):not(:has([aria-expanded="true"])) .nav-glass::before { opacity: 0; }
+.nav-glass::before { transition: opacity 300ms ease; }
+/* the mega panel sits inside the fixed header; the header itself carries no blur (see above) */
+@supports not (backdrop-filter: blur(1px)) {
+  .nav-glass, .glass-sheet { background: var(--color-cream); }
+  .nav-photo:not(.nav-solid) .nav-glass { background: color-mix(in srgb, var(--color-forest) 80%, transparent); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-glass::before { animation: none; }
+}
+
+/* Statement (LetterFill): every letter starts light grey and turns forest green in turn as the
+   sentence scrolls up the window, and back to grey when it scrolls down again. The script keeps
+   `--p` (0 -> 1) on the wrapper and `--n` (letter count); each letter derives its own share from
+   its index `--i`, with a soft edge of `--spread` letters between grey and green. Motion-free
+   visitors get the green straight away. */
+.letter-fill {
+  --p: 0;
+  --spread: 12;
+}
+.letter-fill .lf {
+  --lp: clamp(0, calc((var(--p) * (var(--n) + var(--spread)) - var(--i)) / var(--spread)), 1);
+  color: color-mix(in srgb, var(--color-forest) calc(22% + 78% * var(--lp)), var(--color-cream));
+}
+@media (prefers-reduced-motion: reduce) {
+  .letter-fill .lf { color: var(--color-forest); }
+}
+
+/* Ons werk: both rows drift slower than the other marquees on the page */
+.work-rows .animate-marquee-slow,
+.work-rows .animate-marquee-reverse {
+  animation-duration: 150s;
+}
+
+/* Ons werk: the round label that replaces the pointer over the cards (WorkCursor). Position comes
+   from the script; only the appearance is here. Fine pointers only. */
+.work-cursor {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  width: 96px;
+  height: 96px;
+  margin: -48px 0 0 -48px;
+  display: grid;
+  place-items: center;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: var(--color-lime);
+  color: var(--color-forest);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+  pointer-events: none;
+  opacity: 0;
+  scale: 0.6;
+  transition: opacity 200ms ease, scale 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+.work-cursor.is-on { opacity: 1; scale: 1; }
+@media (hover: hover) and (pointer: fine) {
+  .work-rows li a { cursor: none; }
+}
+@media not ((hover: hover) and (pointer: fine)) {
+  .work-cursor { display: none; }
+}
+
+/* Happy Flops case hero (HfShowcase): the timeline lives in the component (Web Animations API);
+   here only the parts that never change: the card box and a slow bob on every card. */
+.hf-card {
+  width: min(var(--w), 44vw);
+  will-change: transform, opacity, filter;
+}
+/* the bare screen: its width comes from the component (--pw-sm on phones, --pw-md from 768px) */
+.hf-phone { width: var(--pw-sm); }
+@media (min-width: 768px) {
+  .hf-phone { width: var(--pw-md); }
+}
+.hf-bob { animation: hf-bob 5.5s ease-in-out infinite alternate; }
+@keyframes hf-bob {
+  from { transform: translate3d(0, -1.5%, 0) rotate(-0.4deg); }
+  to   { transform: translate3d(0, 1.5%, 0) rotate(0.4deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hf-bob { animation: none; }
+}
+
+/* The pointer as the brand glyph (BrandCursor): the native arrow goes, two lime corners frame the
+   spot instead. They open up over anything clickable and step aside for the text cursor in fields. */
+html.brand-cursor,
+html.brand-cursor * { cursor: none !important; }
+html.brand-cursor input,
+html.brand-cursor textarea,
+html.brand-cursor [contenteditable="true"] { cursor: text !important; }
+.brand-cursor-el {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  margin: -12px 0 0 -12px;
+  pointer-events: none;
+  color: var(--color-lime);
+  opacity: 0;
+  filter: drop-shadow(0 0 1px rgba(2, 38, 30, 0.6));
+  transition: opacity 180ms ease;
+}
+.brand-cursor-el.is-in { opacity: 1; }
+.brand-cursor-el.is-text { opacity: 0; }
+/* over the work cards the round "Bekijk case" badge stands in for the pointer (WorkCursor) */
+html.work-cursor-on .brand-cursor-el { opacity: 0; }
+.brand-cursor-el svg { display: block; transition: transform 220ms cubic-bezier(0.2, 0.9, 0.3, 1); }
+.brand-cursor-el.is-hot svg { transform: scale(1.6); }
+
+/* Hero aurora (HeroAurora): soft fields of brand colour drifting over forest. Each field is one
+   radial gradient on an oversized square, moved by a slow transform loop; no blur filters, so it
+   stays cheap on any GPU. The scrim darkens the copy side and fades the foot into forest. */
+.aurora {
+  background: linear-gradient(160deg, #0c5240 0%, #063d30 50%, #02261e 100%);
+}
+.aurora-field {
+  position: absolute;
+  width: 120vmax;
+  height: 120vmax;
+  margin: -60vmax 0 0 -60vmax; /* left/top now place the centre of the field */
+  border-radius: 50%;
+  will-change: transform;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+.aurora-lime {
+  left: 82%;
+  top: 12%;
+  background: radial-gradient(circle at center, rgba(218, 252, 146, 0.95) 0%, rgba(218, 252, 146, 0.45) 24%, rgba(218, 252, 146, 0.14) 48%, transparent 72%);
+  animation-name: aurora-a;
+  animation-duration: 26s;
+}
+.aurora-teal {
+  left: 48%;
+  top: 25%;
+  background: radial-gradient(circle at center, rgba(248, 249, 242, 0.55) 0%, rgba(248, 249, 242, 0.22) 24%, rgba(248, 249, 242, 0.08) 48%, transparent 72%);
+  animation-name: aurora-b;
+  animation-duration: 34s;
+}
+.aurora-blush {
+  left: 8%;
+  top: 92%;
+  background: radial-gradient(circle at center, rgba(242, 231, 223, 0.7) 0%, rgba(242, 231, 223, 0.3) 24%, rgba(242, 231, 223, 0.1) 48%, transparent 72%);
+  animation-name: aurora-c;
+  animation-duration: 30s;
+}
+.aurora-moss {
+  left: 60%;
+  top: 100%;
+  background: radial-gradient(circle at center, rgba(218, 252, 146, 0.5) 0%, rgba(218, 252, 146, 0.2) 24%, rgba(218, 252, 146, 0.08) 48%, transparent 72%);
+  animation-name: aurora-d;
+  animation-duration: 40s;
+}
+.aurora-core {
+  left: 50%;
+  top: 55%;
+  background: radial-gradient(circle at center, rgba(218, 252, 146, 0.35) 0%, rgba(218, 252, 146, 0.15) 26%, rgba(218, 252, 146, 0.05) 50%, transparent 72%);
+  animation-name: aurora-e;
+  animation-duration: 22s;
+}
+@keyframes aurora-e {
+  from { transform: scale(0.95); }
+  to   { transform: scale(1.2); }
+}
+@keyframes aurora-a {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(-12%, 10%, 0) scale(1.15); }
+}
+@keyframes aurora-b {
+  from { transform: translate3d(-6%, -4%, 0) scale(1.05); }
+  to   { transform: translate3d(6%, 6%, 0) scale(1.15); }
+}
+@keyframes aurora-c {
+  from { transform: translate3d(0, 0, 0) scale(0.95); }
+  to   { transform: translate3d(14%, -12%, 0) scale(1.12); }
+}
+@keyframes aurora-d {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(-12%, -8%, 0) scale(1.1); }
+}
+/* fine grain: an SVG noise tile, blended over the gradients so they never band */
+.aurora-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.14;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+/* darker behind the copy so the cream headline reads on any field; the foot eases into forest */
+.aurora-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, transparent 82%, rgba(2, 38, 30, 0.7) 100%),
+    linear-gradient(90deg, rgba(2, 38, 30, 0.5) 0%, rgba(2, 38, 30, 0.22) 40%, rgba(2, 38, 30, 0) 65%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .aurora-field { animation: none; }
+}
+
+/* FAQ accordion (website-laten-maken): native <details>, native marker hidden on every browser */
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::marker { content: ""; }
+
+/* "Herken je dit?" cards (website-laten-maken): one card at a time turns lime and lifts, then
+   drops back while the next one takes over; four cards, six seconds per round */
+.pain-card {
+  --i: 0;
+  animation: pain-glow 6s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 1.5s);
+  will-change: transform, background-color;
+}
+@keyframes pain-glow {
+  0%, 28%, 100% { background-color: var(--color-paper); transform: none; box-shadow: none; }
+  7%, 20% { background-color: var(--color-lime); transform: translateY(-8px) scale(1.03); box-shadow: 0 30px 60px -30px rgba(2, 38, 30, 0.45); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pain-card { animation: none; }
+}
+
+/* Branch pages: the FAQ accordion is a plain <details>, so it works without JavaScript and every
+   answer stands in the page for Google and the AI answers. Only the default marker is taken off
+   and the answer is given a short fold-open. */
+.faq > summary {
+  list-style: none;
+}
+.faq > summary::-webkit-details-marker {
+  display: none;
+}
+.faq[open] > .faq-answer {
+  animation: faq-open 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes faq-open {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .faq[open] > .faq-answer { animation: none; }
+}
+
+/* Diensten: liquid glass cards over a drifting aurora (HeroAurora). The aurora is toned down for a
+   section: no scrim darkening the left, a little dimmer overall. Each card blurs and brightens what
+   drifts behind it, with a hairline of light on the edge; hover fills it lime. */
+.services-aurora { opacity: 0.7; }
+.services-aurora .aurora-scrim { background: linear-gradient(180deg, rgba(2, 38, 30, 0.45) 0%, rgba(2, 38, 30, 0.2) 35%, rgba(2, 38, 30, 0.2) 70%, rgba(2, 38, 30, 0.7) 100%); }
+.svc-glass {
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.1) 55%, rgba(255, 255, 255, 0.06) 100%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%) brightness(1.08);
+  backdrop-filter: blur(28px) saturate(190%) brightness(1.08);
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 1px 0 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.08),
+    0 30px 70px -28px rgba(0, 0, 0, 0.7),
+    0 2px 6px rgba(0, 0, 0, 0.12);
+  transition: background-color 500ms ease, color 500ms ease, border-color 500ms ease, transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.svc-glass:hover {
+  background: var(--color-lime);
+  border-color: var(--color-lime);
+  transform: translateY(-4px);
+}
+@supports not (backdrop-filter: blur(1px)) {
+  .svc-glass { background: rgba(2, 38, 30, 0.75); }
+}
+
+/* Footer call to action: a lime field with soft lighter and deeper patches drifting slowly, like
+   light moving over it. It sticks while the footer panel slides up over it (see Footer). */
+.footer-cta {
+  background-color: var(--color-lime);
+  background-image:
+    radial-gradient(60% 55% at 22% 30%, rgba(246, 255, 222, 0.85) 0%, transparent 70%),
+    radial-gradient(55% 60% at 80% 70%, rgba(190, 236, 96, 0.9) 0%, transparent 70%),
+    radial-gradient(40% 40% at 60% 15%, rgba(255, 255, 255, 0.45) 0%, transparent 70%);
+  background-size: 160% 160%;
+  /* static: a drifting full-screen gradient repaints the whole window every frame */
+  background-position: 30% 30%;
+}
+@keyframes footer-light {
+  from { background-position: 0% 0%; }
+  to   { background-position: 100% 100%; }
+}
+.footer-panel { transition: padding-inline 80ms linear; }
+@media (prefers-reduced-motion: reduce) {
+  .footer-cta { animation: none; }
+}
+
+
+
+
+.footer-cta-flat { background-image: none; }
+
+/* Slim gebouwd (AiFirst): jumps to the sand of Ons werk once its sticky copy has ridden all the
+   way down and the button stops (BgOnArrive sets is-sand), so the run of sections below reads as one sand block */
+.slim-bg { transition: background-color 450ms ease; }
+.slim-bg.is-sand { background-color: var(--color-sand); }
+@media (prefers-reduced-motion: reduce) { .slim-bg { transition: none; } }
+
+/* Hero proof line: every 5 seconds a bright band of light sweeps across the three points, one
+   after another, and the lime glyph in front of each flares up as the light passes */
+.proof-shine {
+  --i: 0;
+  position: relative;
+  color: color-mix(in srgb, var(--color-cream) 92%, transparent);
+  background-image: linear-gradient(105deg,
+    color-mix(in srgb, var(--color-cream) 92%, transparent) 0%,
+    color-mix(in srgb, var(--color-cream) 92%, transparent) 38%,
+    #ffffff 46%, var(--color-lime) 50%, #ffffff 54%,
+    color-mix(in srgb, var(--color-cream) 92%, transparent) 62%,
+    color-mix(in srgb, var(--color-cream) 92%, transparent) 100%);
+  background-size: 250% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: proof-shine 5s ease-in-out infinite;
+  animation-delay: calc(0.8s + var(--i) * 0.28s);
+}
+@keyframes proof-shine {
+  0% { background-position: 100% 0; text-shadow: none; }
+  18% { text-shadow: 0 0 12px rgba(218, 252, 146, 0.45); }
+  32%, 100% { background-position: 0% 0; text-shadow: none; }
+}
+.proof-glyph { animation: proof-glyph 5s ease-in-out infinite; animation-delay: calc(0.8s + var(--i) * 0.28s); }
+@keyframes proof-glyph {
+  0%, 30%, 100% { filter: none; transform: none; }
+  10% { filter: drop-shadow(0 0 6px rgba(218, 252, 146, 0.9)) brightness(1.3); transform: scale(1.25); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .proof-shine { animation: none; -webkit-text-fill-color: currentColor; background: none; }
+  .proof-glyph { animation: none; }
+}
+
+/* Ons werk and the circle scene stay in the page cream, like Herkenbaar: they no longer turn sand
+   with the statement above them */
+
+/* Statement: turns sand once the sentence reaches the middle of the window (BgOnCenter) */
+.statement-bg { transition: background-color 450ms ease; }
+.statement-bg.is-sand,
+html[data-statement-sand] .slim-bg { background-color: var(--color-sand); }
+@media (prefers-reduced-motion: reduce) { .statement-bg { transition: none; } }
+
+/* Frosted tab on photo cards (Voor wie): the picture shows through, blurred and a touch lighter */
+.glass-tab {
+  background: rgba(255, 255, 255, 0.16);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+/* "Niet alleen mooi" scroll scene (CircleReveal). --p runs 0 -> 1 over the section:
+   0.20-0.50  the lime circle rises from the bottom of the window and grows until it covers it
+   0.22-0.48  the statement grows in with the circle, centred, in forest
+   0.54-0.70  the forest panel is pushed in from the right until it sits behind the text
+   0.58-0.70  the statement slides left and turns cream;  0.68-0.78 the copy comes in under it
+   0.72-0.86  the animated mockup comes in on the right */
+.cr-circle { clip-path: var(--clip, circle(0px at 50% 100%)); }
+.cr-stage[style*="--p: 1"] .cr-circle { clip-path: none; }
+.cr-panel {
+  --in: clamp(0, calc((var(--p) - 0.54) / 0.16), 1);
+  transform: translateX(calc((1 - var(--in)) * 105vw));
+}
+.cr-one {
+  --in: clamp(0, calc((var(--p) - 0.22) / 0.26), 1);
+  --left: clamp(0, calc((var(--p) - 0.58) / 0.12), 1);
+  opacity: var(--in);
+  transform: translateX(calc(var(--shift, 0px) * (1 - var(--left)))) scale(calc(0.55 + var(--in) * 0.45));
+  transform-origin: center;
+}
+.cr-ink { color: color-mix(in srgb, var(--color-paper) calc(var(--left, 0) * 100%), var(--color-forest)); }
+.cr-accent { color: color-mix(in srgb, var(--color-lime) calc(var(--left, 0) * 100%), var(--color-forest)); }
+.cr-two {
+  --in: clamp(0, calc((var(--p) - 0.68) / 0.1), 1);
+  opacity: var(--in);
+  transform: translateY(calc((1 - var(--in)) * 30px));
+}
+.cr-rows {
+  --in: clamp(0, calc((var(--p) - 0.72) / 0.14), 1);
+  opacity: var(--in);
+  transform: translateX(calc((1 - var(--in)) * 60px));
+}
+@media (prefers-reduced-motion: reduce) {
+  .cr-one, .cr-two, .cr-rows, .cr-panel { transform: none; opacity: 1; }
+}
+
+/* Wat je krijgt (StackCards): every card sticks a tab lower than the one before, right under the nav,
+   so the next card slides over it and leaves its number row showing */
+.stack-card { position: sticky; top: var(--top-m); }
+@media (min-width: 768px) {
+  .stack-card { top: var(--top); }
+}
+
+/* Diensten wheel (ServicesWheel): the pitch fades up each time the next service turns in */
+.svc-pitch { animation: svc-pitch 500ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+@keyframes svc-pitch { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .svc-pitch { animation: none; } }
+
+/* Nav call to action (NavCta): folded away while the hero's own buttons are in view, then it grows
+   in from the right and the links slide over to make room. The width runs through a grid column
+   (0fr -> 1fr), the button itself only fades and slides, so the bar never jumps. */
+.nav-cta {
+  grid-template-columns: 0fr;
+  transition: grid-template-columns 450ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-cta > div > * {
+  opacity: 0;
+  transform: translateX(12px) scale(0.92);
+  transition: opacity 300ms ease, transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-cta.is-on { grid-template-columns: 1fr; }
+.nav-cta.is-on > div > * { opacity: 1; transform: none; transition-delay: 80ms; }
+@media (prefers-reduced-motion: reduce) {
+  .nav-cta, .nav-cta > div > * { transition: none; }
+}
+
+/* ---------- Conversie film (ConvertShowcase): one 18 s timeline, looping seamlessly ----------
+   Every moving part shares the loop length (--T) and its easing; the keyframe percentages are the
+   script: 0-20 the product page (colour, size, into the cart), 20-37 the cart drawer (quantity 2),
+   37-62 the Shopify checkout (typing, address, free shipping, iDEAL | Wero), 62-72 the iDEAL page, 72-82
+   thank-you with confetti, 82-95 the result tiles, then a fade back. Positions on the film's 460 x 300 grid. */
+.cs2 .cs2-a {
+  animation-duration: var(--T, 16s);
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.45, 0, 0.2, 1);
+  animation-fill-mode: both;
+}
+.cs2-paused .cs2-a { animation-play-state: paused; }
+
+/* resting state, also what motion-free visitors see: the product page, light blue, size 34/35 */
+.cs3-pink, .cs3-pink-label, .cs3-size-b, .cs3-adding, .cs3-badge, .cs3-q2, .cs3-dim, .cs3-co, .cs3-idealpage,
+.cs3-done, .cs3-result, .cs3-ring, .cs3-fill1, .cs3-fill2, .cs3-fill3, .cs3-ship-b, .cs3-ideal, .cs3-spin, .cs3-paid,
+.cs3-url2, .cs3-url3, .cs3-confetti0, .cs3-confetti1, .cs3-confetti2, .cs3-confetti3 { opacity: 0; }
+.cs3-swatch { transform: translateX(165px); }
+.cs3-drawer { transform: translateX(105%); }
+.cs3-cursor { transform: translate(470px, 320px); }
+.cs3-ship, .cs2-progress { transform: scaleX(0); }
+
+/* 0-20: the product page. Pink at 7.5, size 40/41 at 13.5, "In Winkelwagen" at 17.5. The page is
+   reset at 76, while the checkout and the pages after it cover it. */
+.cs3-pink, .cs3-pink-label { animation-name: cs3-pink; }
+@keyframes cs3-pink { 0%, 7.5% { opacity: 0; } 9%, 76% { opacity: 1; } 76.5%, 100% { opacity: 0; } }
+.cs3-blue-label { animation-name: cs3-blue-label; }
+@keyframes cs3-blue-label { 0%, 7.5% { opacity: 1; } 9%, 76% { opacity: 0; } 76.5%, 100% { opacity: 1; } }
+.cs3-swatch { animation-name: cs3-swatch; }
+@keyframes cs3-swatch { 0%, 7.5% { transform: translateX(165px); } 9%, 76% { transform: translateX(99px); } 76.5%, 100% { transform: translateX(165px); } }
+.cs3-size { animation-name: cs3-size; }
+@keyframes cs3-size { 0%, 13.5% { transform: translateX(0); } 15%, 76% { transform: translateX(84px); } 76.5%, 100% { transform: translateX(0); } }
+.cs3-size-a { animation-name: cs3-size-a; }
+@keyframes cs3-size-a { 0%, 13.5% { opacity: 1; } 15%, 76% { opacity: 0; } 76.5%, 100% { opacity: 1; } }
+.cs3-size-b { animation-name: cs3-size-b; }
+@keyframes cs3-size-b { 0%, 13.5% { opacity: 0; } 15%, 76% { opacity: 1; } 76.5%, 100% { opacity: 0; } }
+.cs3-add { animation-name: cs3-press-add; }
+@keyframes cs3-press-add { 0%, 17.3% { transform: none; } 17.8% { transform: scale(0.97); } 18.5%, 100% { transform: none; } }
+.cs3-adding { animation-name: cs3-adding; }
+@keyframes cs3-adding { 0%, 17.5% { opacity: 0; } 18%, 20% { opacity: 1; } 21%, 100% { opacity: 0; } }
+.cs3-badge { animation-name: cs3-badge; }
+@keyframes cs3-badge { 0%, 20% { opacity: 0; transform: scale(0); } 21.5%, 76% { opacity: 1; transform: none; } 76.5%, 100% { opacity: 0; transform: scale(0); } }
+
+/* 20-37: the cart drawer. The quantity goes to 2 at 27.5, Afrekenen at 33.5 */
+.cs3-dim { animation-name: cs3-dim; }
+@keyframes cs3-dim { 0%, 19.5% { opacity: 0; } 21.5%, 36% { opacity: 0.4; } 38%, 100% { opacity: 0; } }
+.cs3-drawer { animation-name: cs3-drawer; }
+@keyframes cs3-drawer { 0%, 19.5% { transform: translateX(105%); } 22.5%, 37% { transform: translateX(0); } 39%, 100% { transform: translateX(105%); } }
+.cs3-plus { animation-name: cs3-plus; }
+@keyframes cs3-plus { 0%, 27.3% { transform: none; } 27.8% { transform: scale(0.85); } 28.5%, 100% { transform: none; } }
+.cs3-q1 { animation-name: cs3-q1; }
+@keyframes cs3-q1 { 0%, 27.5% { opacity: 1; } 28.2%, 76% { opacity: 0; } 76.5%, 100% { opacity: 1; } }
+.cs3-q2 { animation-name: cs3-q2; }
+@keyframes cs3-q2 { 0%, 27.5% { opacity: 0; } 28.2%, 76% { opacity: 1; } 76.5%, 100% { opacity: 0; } }
+.cs3-ship { animation-name: cs3-ship; }
+@keyframes cs3-ship { 0%, 28% { transform: scaleX(0); } 32%, 76% { transform: scaleX(0.33); } 76.5%, 100% { transform: scaleX(0); } }
+.cs3-checkout { animation-name: cs3-checkout; }
+@keyframes cs3-checkout { 0%, 33.3% { transform: none; } 33.8% { transform: scale(0.96); } 34.6%, 100% { transform: none; } }
+
+/* 37-62: the Shopify checkout. The e-mail types itself (40.5-46), the address fills in, shipping
+   turns free, iDEAL | Wero at 53.5, "Bestelling nakijken" at 58.5 */
+.cs3-co { animation-name: cs3-co; }
+@keyframes cs3-co { 0%, 35.5% { opacity: 0; transform: translateY(8px); } 37.5%, 95% { opacity: 1; transform: none; } 97.5%, 100% { opacity: 0; transform: none; } }
+.cs3-url1 { animation-name: cs3-url1; }
+@keyframes cs3-url1 { 0%, 36% { opacity: 1; } 37%, 96% { opacity: 0; } 97%, 100% { opacity: 1; } }
+.cs3-url2 { animation-name: cs3-url2; }
+@keyframes cs3-url2 { 0%, 36% { opacity: 0; } 37%, 61% { opacity: 1; } 62%, 72% { opacity: 0; } 73%, 96% { opacity: 1; } 97%, 100% { opacity: 0; } }
+.cs3-url3 { animation-name: cs3-url3; }
+@keyframes cs3-url3 { 0%, 61% { opacity: 0; } 62%, 72% { opacity: 1; } 73%, 100% { opacity: 0; } }
+.cs3-email-ph { animation-name: cs3-ph-out; }
+@keyframes cs3-ph-out { 0%, 40.5% { opacity: 1; } 41%, 100% { opacity: 0; } }
+.cs2 .cs3-type { animation-name: cs3-type; animation-timing-function: steps(17, end); }
+@keyframes cs3-type { 0%, 41% { clip-path: inset(0 100% 0 0); } 46%, 100% { clip-path: inset(0 0 0 0); } }
+.cs3-ph1 { animation-name: cs3-ph1; }
+.cs3-ph2 { animation-name: cs3-ph2; }
+.cs3-ph3 { animation-name: cs3-ph3; }
+@keyframes cs3-ph1 { 0%, 47% { opacity: 1; } 47.8%, 100% { opacity: 0; } }
+@keyframes cs3-ph2 { 0%, 48% { opacity: 1; } 48.8%, 100% { opacity: 0; } }
+@keyframes cs3-ph3 { 0%, 49% { opacity: 1; } 49.8%, 100% { opacity: 0; } }
+.cs3-fill1 { animation-name: cs3-fill1; }
+.cs3-fill2 { animation-name: cs3-fill2; }
+.cs3-fill3 { animation-name: cs3-fill3; }
+@keyframes cs3-fill1 { 0%, 47% { opacity: 0; } 48%, 100% { opacity: 1; } }
+@keyframes cs3-fill2 { 0%, 48% { opacity: 0; } 49%, 100% { opacity: 1; } }
+@keyframes cs3-fill3 { 0%, 49% { opacity: 0; } 50%, 100% { opacity: 1; } }
+.cs3-ship-a { animation-name: cs3-ship-a; }
+@keyframes cs3-ship-a { 0%, 50.5% { opacity: 1; } 51.5%, 100% { opacity: 0; } }
+.cs3-ship-b { animation-name: cs3-ship-b; }
+@keyframes cs3-ship-b { 0%, 50.5% { opacity: 0; } 51.5%, 100% { opacity: 1; } }
+.cs3-ideal { animation-name: cs3-ideal; }
+@keyframes cs3-ideal { 0%, 53.5% { opacity: 0; } 54.5%, 100% { opacity: 1; } }
+.cs3-pay { animation-name: cs3-pay; }
+@keyframes cs3-pay { 0%, 58.3% { transform: none; } 58.8% { transform: scale(0.97); } 59.6%, 100% { transform: none; } }
+.cs3-spin { animation-name: cs3-spin; }
+@keyframes cs3-spin { 0%, 58.6% { opacity: 0; } 59.2%, 62% { opacity: 1; } 63%, 100% { opacity: 0; } }
+
+/* 62-72: the iDEAL | Wero page, paid in the bank app at 68.5 */
+.cs3-idealpage { animation-name: cs3-idealpage; }
+@keyframes cs3-idealpage { 0%, 61% { opacity: 0; } 62.5%, 74% { opacity: 1; } 75%, 100% { opacity: 0; } }
+.cs3-paid { animation-name: cs3-paid; }
+@keyframes cs3-paid { 0%, 68% { opacity: 0; transform: scale(0.8); } 69.5%, 74% { opacity: 1; transform: none; } 75%, 100% { opacity: 0; } }
+
+/* 72-82: the thank-you page, with confetti */
+.cs3-done { animation-name: cs3-done; }
+@keyframes cs3-done { 0%, 71.5% { opacity: 0; } 73.5%, 95% { opacity: 1; } 97.5%, 100% { opacity: 0; } }
+.cs3-check { animation-name: cs3-check; }
+@keyframes cs3-check { 0%, 73.5% { transform: scale(0); } 75.5% { transform: scale(1.15); } 76.5%, 100% { transform: none; } }
+.cs3-confetti0 { animation-name: cs3-confetti0; }
+.cs3-confetti1 { animation-name: cs3-confetti1; }
+.cs3-confetti2 { animation-name: cs3-confetti2; }
+.cs3-confetti3 { animation-name: cs3-confetti3; }
+@keyframes cs3-confetti0 { 0%, 74% { opacity: 0; transform: translateY(-10px) rotate(0); } 75% { opacity: 1; } 83% { opacity: 1; transform: translateY(170px) rotate(220deg); } 85%, 100% { opacity: 0; transform: translateY(190px) rotate(260deg); } }
+@keyframes cs3-confetti1 { 0%, 74.5% { opacity: 0; transform: translateY(-10px) rotate(0); } 75.5% { opacity: 1; } 84% { opacity: 1; transform: translateY(160px) rotate(-200deg); } 86%, 100% { opacity: 0; transform: translateY(180px) rotate(-240deg); } }
+@keyframes cs3-confetti2 { 0%, 75% { opacity: 0; transform: translateY(-10px) rotate(0); } 76% { opacity: 1; } 84.5% { opacity: 1; transform: translateY(180px) rotate(180deg); } 86.5%, 100% { opacity: 0; transform: translateY(200px) rotate(210deg); } }
+@keyframes cs3-confetti3 { 0%, 75.5% { opacity: 0; transform: translateY(-10px) rotate(0); } 76.5% { opacity: 1; } 85% { opacity: 1; transform: translateY(150px) rotate(-160deg); } 87%, 100% { opacity: 0; transform: translateY(170px) rotate(-190deg); } }
+
+/* 82-95: the result tiles, then everything fades back to the product page */
+.cs3-result { animation-name: cs3-result; }
+@keyframes cs3-result { 0%, 82% { opacity: 0; transform: translateY(12px); } 85%, 94% { opacity: 1; transform: none; } 96%, 100% { opacity: 0; transform: none; } }
+
+/* the cursor and its click ring */
+.cs3-cursor { animation-name: cs3-cursor; }
+@keyframes cs3-cursor {
+  0% { transform: translate(470px, 320px); }
+  4% { transform: translate(330px, 200px); }
+  7%, 7.5% { transform: translate(365px, 162px); }
+  10.5% { transform: translate(330px, 185px); }
+  13%, 13.5% { transform: translate(348px, 201px); }
+  16% { transform: translate(340px, 230px); }
+  17.3%, 17.5% { transform: translate(349px, 253px); }
+  22% { transform: translate(300px, 200px); }
+  25% { transform: translate(400px, 140px); }
+  27%, 27.5% { transform: translate(438px, 103px); }
+  30% { transform: translate(400px, 200px); }
+  33%, 33.5% { transform: translate(365px, 279px); }
+  37% { transform: translate(250px, 160px); }
+  40%, 40.5% { transform: translate(100px, 58px); }
+  46% { transform: translate(120px, 70px); }
+  50% { transform: translate(160px, 140px); }
+  53%, 53.5% { transform: translate(110px, 214px); }
+  56% { transform: translate(150px, 245px); }
+  58%, 58.5% { transform: translate(145px, 278px); }
+  62% { transform: translate(250px, 230px); }
+  68.5% { transform: translate(120px, 150px); }
+  74% { transform: translate(200px, 200px); }
+  86% { transform: translate(330px, 250px); }
+  95%, 100% { transform: translate(470px, 320px); }
+}
+.cs3-ring { animation-name: cs3-ring; }
+@keyframes cs3-ring {
+  0%, 7.4% { opacity: 0; transform: translate(365px, 162px) translate(-50%, -50%) scale(0.3); }
+  8% { opacity: 1; transform: translate(365px, 162px) translate(-50%, -50%) scale(0.6); }
+  9.5% { opacity: 0; transform: translate(365px, 162px) translate(-50%, -50%) scale(1.6); }
+  13.4% { opacity: 0; transform: translate(348px, 201px) translate(-50%, -50%) scale(0.3); }
+  14% { opacity: 1; transform: translate(348px, 201px) translate(-50%, -50%) scale(0.6); }
+  15.5% { opacity: 0; transform: translate(348px, 201px) translate(-50%, -50%) scale(1.6); }
+  17.4% { opacity: 0; transform: translate(349px, 253px) translate(-50%, -50%) scale(0.3); }
+  18% { opacity: 1; transform: translate(349px, 253px) translate(-50%, -50%) scale(0.6); }
+  19.5% { opacity: 0; transform: translate(349px, 253px) translate(-50%, -50%) scale(1.6); }
+  27.4% { opacity: 0; transform: translate(438px, 103px) translate(-50%, -50%) scale(0.3); }
+  28% { opacity: 1; transform: translate(438px, 103px) translate(-50%, -50%) scale(0.6); }
+  29.5% { opacity: 0; transform: translate(438px, 103px) translate(-50%, -50%) scale(1.6); }
+  33.4% { opacity: 0; transform: translate(365px, 279px) translate(-50%, -50%) scale(0.3); }
+  34% { opacity: 1; transform: translate(365px, 279px) translate(-50%, -50%) scale(0.6); }
+  35.5% { opacity: 0; transform: translate(365px, 279px) translate(-50%, -50%) scale(1.6); }
+  40.4% { opacity: 0; transform: translate(100px, 58px) translate(-50%, -50%) scale(0.3); }
+  41% { opacity: 1; transform: translate(100px, 58px) translate(-50%, -50%) scale(0.6); }
+  42.5% { opacity: 0; transform: translate(100px, 58px) translate(-50%, -50%) scale(1.6); }
+  53.4% { opacity: 0; transform: translate(110px, 214px) translate(-50%, -50%) scale(0.3); }
+  54% { opacity: 1; transform: translate(110px, 214px) translate(-50%, -50%) scale(0.6); }
+  55.5% { opacity: 0; transform: translate(110px, 214px) translate(-50%, -50%) scale(1.6); }
+  58.4% { opacity: 0; transform: translate(145px, 278px) translate(-50%, -50%) scale(0.3); }
+  59% { opacity: 1; transform: translate(145px, 278px) translate(-50%, -50%) scale(0.6); }
+  60.5%, 100% { opacity: 0; transform: translate(145px, 278px) translate(-50%, -50%) scale(1.6); }
+}
+.cs2 .cs2-progress { animation-name: cs2-progress; animation-timing-function: linear; }
+@keyframes cs2-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .cs2 .cs2-a { animation: none; }
+}
+
+/* the two floating cards bob gently, out of step with each other */
+.cs-float { animation: cs-float 6s ease-in-out infinite; }
+.cs-float-late { animation-delay: -3s; }
+@keyframes cs-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+.cs2-paused .cs-float { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .cs-float { animation: none; } }
+
+/* ---------- Type scale: one size per role, used across the whole site ----------
+   Two levels, so the page stays calm: the big moments (the hero and the footer's closing line)
+   and one size for every section title.
+   t-hero     the page title (h1) and the footer's closing line   44px on phones -> 96px
+   t-section  every section title (h2), on every page          32px -> 56px, scaling smoothly in between
+   t-sub      a title inside a section on the sub pages          26px -> 36px
+   t-band     the title in a lime call-to-action band     28px -> 40px
+   Spacing that goes with it: eyebrow -> title mt-6 md:mt-8, title -> intro mt-6, header -> content
+   mt-12 md:mt-16, sections py-16 md:py-32; a section on the same background as the one above it
+   starts with pt-4 md:pt-8 instead, so two paddings never add up to a gap. */
+@utility t-hero {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 1.6rem + 4.6vw, 6rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+}
+@utility t-section {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 1.45rem + 2.2vw, 3.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+@utility t-sub {
+  font-family: var(--font-display);
+  font-size: clamp(1.625rem, 1.3rem + 1.1vw, 2.25rem);
+  line-height: 1.03;
+  letter-spacing: -0.03em;
+}
+@utility t-band {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 1.35rem + 1.3vw, 2.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+/* the intro under a section or page title: 18px, 20px from tablets, always mt-6 under the title */
+@utility t-lead {
+  font-size: 1.125rem;
+  line-height: 1.65;
+  @media (min-width: 768px) { font-size: 1.25rem; }
+}
+
+/* Ons werk (WorkCases): the photos drift a little inside their frames as the page scrolls, and each
+   case rises into place as it comes in. Scroll-driven CSS, no script; browsers without it show the
+   cases standing still. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .case-photo {
+      animation: case-drift linear both;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+    }
+    .case-item {
+      animation: case-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+  }
+}
+@keyframes case-drift {
+  from { transform: scale(1.12) translateY(-4%); }
+  to   { transform: scale(1.12) translateY(4%); }
+}
+@keyframes case-rise {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* the water effect on the case photos (WaterHover): rings run out from the pointer, a soft light
+   follows it */
+.water-ring {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  margin: -110px 0 0 -110px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 0 24px rgba(218, 252, 146, 0.25), inset 0 0 18px rgba(255, 255, 255, 0.18);
+  animation: water-ring 1.1s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+@keyframes water-ring {
+  from { opacity: 0.9; transform: scale(0.1); }
+  to   { opacity: 0; transform: scale(1.6); }
+}
+.water-light {
+  background: radial-gradient(260px circle at var(--wx, 50%) var(--wy, 50%), rgba(255, 255, 255, 0.22), transparent 70%);
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+.is-water .water-light { opacity: 1; }
+
+/* Ons werk: cream like Wat je krijgt above it, fading to black once its halfway point reaches the middle of the
+   window (DarkOnArrive toggles is-dark). Text follows the colour; label and link swap versions. */
+.work-section {
+  background-color: var(--color-cream);
+  color: var(--color-forest);
+  transition: background-color 700ms ease, color 700ms ease;
+}
+.work-section.is-dark { background-color: #000; color: var(--color-cream); }
+.work-section .work-line {
+  border-color: color-mix(in srgb, currentColor 15%, transparent);
+  transition: border-color 700ms ease;
+}
+.work-section .work-accent { color: var(--color-forest); transition: color 700ms ease; }
+.work-section.is-dark .work-accent { color: #fcbbb9; }
+.work-section:not(.is-dark) .work-when-dark,
+.work-section.is-dark .work-when-light { display: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .work-section, .work-section .work-line, .work-section .work-accent { transition: none; }
+}
+
+/* Meer dan een website (SmartBento): a new value pops in, the typing dots bounce, and the lit
+   connection line runs like a current from the site to the system */
+.sb-pop { animation: sb-pop 450ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+@keyframes sb-pop { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.sb-dot { animation: sb-dot 900ms ease-in-out infinite; }
+@keyframes sb-dot { 0%, 100% { opacity: 0.35; transform: translateY(0); } 50% { opacity: 1; transform: translateY(-3px); } }
+.sb-flow { stroke-dasharray: 6 6; animation: sb-flow 700ms linear infinite; }
+@keyframes sb-flow { to { stroke-dashoffset: -12; } }
+@media (prefers-reduced-motion: reduce) { .sb-pop, .sb-dot, .sb-flow { animation: none; } }
+/* the bento backgrounds: soft light instead of flat colour. Paper with a lime glow rising from the
+   foot; an aurora of lime, mint and a touch of blush; night as dark as the laptop render's studio
+   (#050406) so the image melts into the card; lime with white light from the top */
+.sb-bg-paper {
+  background:
+    radial-gradient(70% 45% at 70% 100%, rgba(218, 252, 146, 0.75), transparent 70%),
+    radial-gradient(50% 40% at 0% 100%, rgba(190, 235, 215, 0.6), transparent 70%),
+    #fbfbf7;
+}
+.sb-bg-aurora {
+  background:
+    radial-gradient(55% 60% at 0% 100%, rgba(218, 252, 146, 0.95), transparent 70%),
+    radial-gradient(50% 60% at 100% 0%, rgba(186, 236, 214, 0.95), transparent 70%),
+    radial-gradient(45% 50% at 100% 100%, rgba(252, 187, 185, 0.45), transparent 70%),
+    radial-gradient(40% 40% at 30% 0%, rgba(255, 255, 255, 0.9), transparent 70%),
+    #f3f1ea;
+}
+.sb-bg-night { background: #050406; }
+/* the laptop render (laptop-assistent.webp) is cut out on the same black, its grey studio glow
+   painted away, so it sits in the card without an edge */
+.sb-bg-lime {
+  background:
+    radial-gradient(70% 55% at 50% 0%, rgba(255, 255, 255, 0.55), transparent 70%),
+    radial-gradient(60% 50% at 100% 100%, rgba(120, 200, 80, 0.45), transparent 70%),
+    #dafc92;
+}
+/* the current through a pipe: a short bright stretch that runs from the site to the system */
+.sb-current { stroke-dasharray: 18 100; stroke-dashoffset: 18; animation: sb-current 1300ms cubic-bezier(0.45, 0, 0.25, 1) forwards; }
+@keyframes sb-current { to { stroke-dashoffset: -100; } }
+/* the glossy icon floats */
+.sb-float { animation: sb-float 5s ease-in-out infinite; }
+@keyframes sb-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+@media (prefers-reduced-motion: reduce) { .sb-current, .sb-float { animation: none; } .sb-current { stroke-dasharray: none; } }
+/* a photo faded in at its top edge, so it melts into the card behind it */
+.sb-fade-top { mask-image: linear-gradient(to bottom, transparent, black 22%); }
+/* the follow-up card: the pale studio grey of the phone-in-hands photo, lighter in the middle */
+.sb-bg-studio { background: radial-gradient(70% 60% at 50% 40%, #f3f5f4, #e8eaec); }
+/* Vindbaar in je werkgebied (FindBento), the map card: blush and coral with a touch of wine, the
+   wine pin and type on it */
+.fb-bg-blush {
+  background:
+    radial-gradient(55% 60% at 0% 100%, rgba(252, 187, 185, 0.95), transparent 70%),
+    radial-gradient(50% 60% at 100% 0%, rgba(232, 129, 124, 0.55), transparent 70%),
+    radial-gradient(45% 50% at 100% 100%, rgba(68, 2, 32, 0.22), transparent 70%),
+    radial-gradient(40% 40% at 30% 0%, rgba(255, 255, 255, 0.85), transparent 70%),
+    #f8e4df;
+}
+/* Vindbaar in je werkgebied (FindBento), the AI card as dark liquid glass: forest with soft glows of
+   lime, mint and blush underneath, a frosted pane over them with a light rim and a sheen across the
+   top-left */
+.fb-glass {
+  background:
+    radial-gradient(45% 80% at 8% 100%, rgba(155, 225, 93, 0.45), transparent 70%),
+    radial-gradient(40% 90% at 62% 0%, rgba(120, 210, 180, 0.35), transparent 70%),
+    radial-gradient(35% 80% at 100% 90%, rgba(232, 129, 124, 0.35), transparent 70%),
+    radial-gradient(30% 60% at 85% 20%, rgba(218, 252, 146, 0.25), transparent 70%),
+    #02261e;
+  isolation: isolate;
+}
+.fb-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(125deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.05) 32%, rgba(255, 255, 255, 0) 55%, rgba(255, 255, 255, 0.08) 100%),
+    rgba(2, 38, 30, 0.25);
+  backdrop-filter: blur(28px) saturate(1.5);
+  -webkit-backdrop-filter: blur(28px) saturate(1.5);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.14),
+    inset 0 -18px 40px -24px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+}
+/* the Conversie laptop film: browsers show video a touch lighter than the same colour in CSS, so its
+   cream would read as a whiter box. darken keeps the darker of video and page per pixel: the cream
+   drops out against the section (even where the video overlaps the copy, the dark text stays), the
+   laptop stays. */
+.cs-video { mix-blend-mode: darken; }
+
+/* Koppelingen on /makelaars (LinkFlow.tsx). LinkIn: hairline dashed paths, a short dark dash running
+   along each from package to hub, and a pulse out of the hub. LinkOut: three request cards in a deck;
+   each takes a third of the 9 s loop at the front, drops away, reappears at the back and moves up. */
+.lf-line { fill: none; stroke: rgb(2 38 30 / 0.25); stroke-width: 1.25; stroke-dasharray: 3 4; }
+.lf-dash {
+  fill: none;
+  stroke: var(--color-forest);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 8 92;
+  animation: lf-run 2.4s linear infinite;
+}
+@keyframes lf-run { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
+.lf-pulse { animation: lf-pulse 2.4s ease-out infinite; }
+@keyframes lf-pulse {
+  from { box-shadow: 0 0 0 0 rgb(218 252 146 / 0.8); }
+  to { box-shadow: 0 0 0 18px rgb(218 252 146 / 0); }
+}
+.lf-card {
+  transform-origin: 50% 0;
+  animation: lf-deck 9s ease-in-out infinite;
+  animation-delay: calc(var(--i) * -6s);
+}
+@keyframes lf-deck {
+  0%, 26% { transform: translateY(0) scale(1); opacity: 1; z-index: 3; }
+  33% { transform: translateY(46px) scale(1); opacity: 0; z-index: 3; }
+  34% { transform: translateY(-40px) scale(0.88); opacity: 0; z-index: 1; }
+  40%, 60% { transform: translateY(-34px) scale(0.9); opacity: 0.55; z-index: 1; }
+  66%, 93% { transform: translateY(-17px) scale(0.95); opacity: 0.85; z-index: 2; }
+  100% { transform: translateY(0) scale(1); opacity: 1; z-index: 3; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lf-dash, .lf-pulse { animation: none; }
+  .lf-dash { stroke-dasharray: none; stroke-opacity: 0; }
+  .lf-card { animation: none; transform: translateY(calc(var(--i) * -17px)) scale(calc(1 - var(--i) * 0.05)); z-index: calc(3 - var(--i)); }
+}
+
+/* the search pills over the photo card on /makelaars: each bobs gently, out of step with the others */
+.search-pill { animation: search-bob 5.2s ease-in-out infinite; }
+@keyframes search-bob { 0%, 100% { translate: 0 0; } 50% { translate: 0 -7px; } }
+@media (prefers-reduced-motion: reduce) { .search-pill { animation: none; } }
+
+/* the scrolling browser window in a case hero (CaseWindow with scroll): a thin, quiet scrollbar */
+.case-scroll { scrollbar-width: thin; scrollbar-color: rgb(2 38 30 / 0.25) transparent; }
+.case-scroll::-webkit-scrollbar { width: 6px; }
+.case-scroll::-webkit-scrollbar-thumb { background: rgb(2 38 30 / 0.25); border-radius: 999px; }
+
+/* Case wall (CaseStudy Wall): columns of screens slide by half their height (the content is in them
+   twice), every second one the other way; soft edges top and bottom */
+.case-wall-col { animation: case-wall 60s linear infinite; will-change: transform; }
+.case-wall-col[data-rev] { animation-direction: reverse; }
+@keyframes case-wall { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+.case-wall-mask { mask-image: linear-gradient(to bottom, transparent, #000 8%, #000 92%, transparent); }
+@media (prefers-reduced-motion: reduce) { .case-wall-col { animation: none; } }
+
+/* the case reel (CaseReel): the camera and rows move from script; these are the actions on a screen */
+.reel-next, .reel-sheet { transform: translateY(101%); transition: transform 0.75s cubic-bezier(0.65, 0, 0.35, 1); }
+.reel-tile[data-step="done"] .reel-next, .reel-tile[data-step="done"] .reel-sheet { transform: none; }
+.reel-tile[data-step="done"] .reel-sheet { transition-delay: 0.15s; }
+.reel-badge { transform: translate(-50%, -50%) scale(0); transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.reel-tile[data-step="done"] .reel-badge { transform: translate(-50%, -50%) scale(1); transition-delay: 0.5s; }
+.reel-tap { opacity: 0; transition: opacity 0.3s; }
+.reel-tile[data-step="tap"] .reel-tap { opacity: 1; }
+.reel-tile[data-step="tap"] .reel-dot { animation: reel-press 0.45s ease-in-out both; }
+.reel-tile[data-step="done"] .reel-ring { animation: reel-ripple 0.6s ease-out both; }
+.reel-ring { opacity: 0; }
+@keyframes reel-press { 0% { transform: scale(1); } 60% { transform: scale(0.72); } 100% { transform: scale(0.8); } }
+@keyframes reel-ripple { from { opacity: 0.9; transform: scale(0.6); } to { opacity: 0; transform: scale(2.2); } }
+.reel-tile[data-step="done"] .reel-tap { animation: reel-fade 0.9s both; }
+@keyframes reel-fade { 0%, 50% { opacity: 1; } 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .reel-cam { transform: scale(0.476); } }
+
+/* the Happy Flops showreel (HappyFlopsReel): the motion inside each shot, as long as the shot (--d) */
+@keyframes hfr-logo { from { opacity: 0; transform: scale(0.92); } 35% { opacity: 1; } to { transform: scale(1); } }
+@keyframes hfr-type { from { transform: scale(1.05); } to { transform: scale(1); } }
+@keyframes hfr-pack { from { transform: translateY(8%) scale(0.92); } to { transform: none; } }
+@keyframes hfr-push { from { transform: scale(1); } to { transform: scale(1.08); } }
+@keyframes hfr-wall { from { transform: scale(1); } to { transform: scale(1.14); } }
+@keyframes hfr-rise { from { transform: translateY(14%); opacity: 0; } 40% { opacity: 1; } to { transform: none; } }
+@keyframes hfr-close { from { transform: scale(1.25); } to { transform: scale(1.4); } }
+@keyframes hfr-drift { from { transform: translateX(0); } to { transform: translateX(-16cqw); } }
+@keyframes hfr-slide { from { transform: translateX(70cqw); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes hfr-row-l { from { transform: translateX(0); } to { transform: translateX(-8cqw); } }
+@keyframes hfr-row-r { from { transform: translateX(-16cqw); } to { transform: translateX(-8cqw); } }
+@keyframes hfr-blink { from { opacity: 0; } to { opacity: 1; } }
+@keyframes hfr-pan-x { from { transform: translateX(0) scale(1.1); } to { transform: translateX(-4%) scale(1.1); } }
+@keyframes hfr-pan { from { transform: translateX(0); } to { transform: translateX(-44cqw); } }
+
+/* the dark case page (CaseDarkFx, CaseDark: the case pages): the moving visuals, paused by their button */
+[data-paused] * { animation-play-state: paused !important; }
+@keyframes hfd-scroll { 0%, 6% { transform: translateY(0); } 94%, 100% { transform: translateY(var(--to, -80%)); } }
+@keyframes hfd-float { from { transform: translate3d(var(--x0, 8%), 0, 0) scale(var(--s, 1)); } to { transform: translate3d(var(--x1, -8%), 0, 0) scale(var(--s, 1)); } }
+@media (prefers-reduced-motion: reduce) { .hfd-move { animation: none !important; } }
+
+/* the Happy Flops building blocks (HappyFlopsKit): one 4.8s loop for every tile; the label swaps (o, m, tab)
+   run on steps(1), so each keyframe holds until the next */
+@keyframes hfk-swap-0 { 0%, 28% { opacity: 1; transform: none; } 34%, 94% { opacity: 0; transform: translateX(-12%); } 100% { opacity: 1; transform: none; } }
+@keyframes hfk-swap-1 { 0%, 28% { opacity: 0; transform: translateX(12%); } 34%, 61% { opacity: 1; transform: none; } 67%, 100% { opacity: 0; transform: translateX(-12%); } }
+@keyframes hfk-swap-2 { 0%, 61% { opacity: 0; transform: translateX(12%); } 67%, 94% { opacity: 1; transform: none; } 100% { opacity: 0; transform: translateX(-12%); } }
+@media (prefers-reduced-motion: reduce) { [style*="hfk-"] { animation: none !important; } }
+@keyframes hfk-float { 0%, 100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-16px) rotate(1deg); } }
+@keyframes hfk-shadow { 0%, 100% { transform: scaleX(1); opacity: 1; } 50% { transform: scaleX(0.82); opacity: 0.6; } }
+@keyframes hfk-press { 0%, 12% { transform: scale(1); } 17% { transform: scale(0.96); } 24%, 100% { transform: scale(1); } }
+@keyframes hfk-out { 0%, 15% { opacity: 1; } 18%, 74% { opacity: 0; } 80%, 100% { opacity: 1; } }
+@keyframes hfk-load { 0%, 16% { opacity: 0; transform: rotate(0); } 18% { opacity: 1; } 32% { opacity: 1; transform: rotate(540deg); } 35%, 100% { opacity: 0; transform: rotate(540deg); } }
+@keyframes hfk-in { 0%, 32% { opacity: 0; transform: translateY(6px); } 36%, 72% { opacity: 1; transform: none; } 78%, 100% { opacity: 0; transform: translateY(6px); } }
+@keyframes hfk-badge { 0%, 34% { transform: scale(0); } 42%, 72% { transform: scale(1); } 78%, 100% { transform: scale(0); } }
+@keyframes hfk-ring { 0%, 28% { transform: translateX(0); } 34%, 61% { transform: translateX(64px); } 67%, 94% { transform: translateX(128px); } 100% { transform: translateX(0); } }
+@keyframes hfk-o-0 { 0% { opacity: 1; } 31% { opacity: 0; } 97% { opacity: 1; } }
+@keyframes hfk-o-1 { 0% { opacity: 0; } 31% { opacity: 1; } 64% { opacity: 0; } }
+@keyframes hfk-o-2 { 0% { opacity: 0; } 64% { opacity: 1; } 97% { opacity: 0; } }
+@keyframes hfk-size { 0%, 14% { transform: translate(116px, 0); } 22%, 36% { transform: translate(174px, 0); } 44%, 58% { transform: translate(0, 46px); } 66%, 80% { transform: translate(58px, 0); } 88%, 100% { transform: translate(116px, 0); } }
+@keyframes hfk-m-0 { 0% { opacity: 1; } 18% { opacity: 0; } 84% { opacity: 1; } }
+@keyframes hfk-m-1 { 0% { opacity: 0; } 18% { opacity: 1; } 40% { opacity: 0; } }
+@keyframes hfk-m-2 { 0% { opacity: 0; } 40% { opacity: 1; } 62% { opacity: 0; } }
+@keyframes hfk-m-3 { 0% { opacity: 0; } 62% { opacity: 1; } 84% { opacity: 0; } }
+@keyframes hfk-ping { 0% { transform: scale(1); opacity: 0.6; } 40%, 100% { transform: scale(2.6); opacity: 0; } }
+@keyframes hfk-nudge { 0%, 40%, 100% { transform: none; } 50% { transform: scale(1.03); } 60% { transform: none; } }
+@keyframes hfk-tab-0 { 0% { background: #000; color: #fff; border-color: #000; } 33% { background: #fff; color: #111; border-color: rgb(0 0 0 / 0.15); } }
+@keyframes hfk-tab-1 { 0% { background: #fff; color: #111; border-color: rgb(0 0 0 / 0.15); } 33% { background: #000; color: #fff; border-color: #000; } 66% { background: #fff; color: #111; border-color: rgb(0 0 0 / 0.15); } }
+@keyframes hfk-tab-2 { 0% { background: #fff; color: #111; border-color: rgb(0 0 0 / 0.15); } 66% { background: #000; color: #fff; border-color: #000; } }
+
+/* the Hypotheekhaven building blocks (HypotheekhavenKit): one 4.8s loop; the swaps run on steps(1) */
+@keyframes hhk-row-0 { 0% { opacity: 1; } 25% { opacity: 0.45; } }
+@keyframes hhk-row-1 { 0% { opacity: 0.45; } 25% { opacity: 1; } 50% { opacity: 0.45; } }
+@keyframes hhk-row-2 { 0% { opacity: 0.45; } 50% { opacity: 1; } 75% { opacity: 0.45; } }
+@keyframes hhk-row-3 { 0% { opacity: 0.45; } 75% { opacity: 1; } }
+@keyframes hhk-dot-0 { 0% { background: #8e4f4b; color: #fff; border-color: #8e4f4b; } 25% { background: #8e4f4b; color: #fff; border-color: #8e4f4b; } }
+@keyframes hhk-dot-1 { 0% { background: transparent; color: inherit; border-color: rgb(8 21 52 / 0.3); } 25% { background: #8e4f4b; color: #fff; border-color: #8e4f4b; } }
+@keyframes hhk-dot-2 { 0% { background: transparent; color: inherit; border-color: rgb(8 21 52 / 0.3); } 50% { background: #8e4f4b; color: #fff; border-color: #8e4f4b; } }
+@keyframes hhk-dot-3 { 0% { background: transparent; color: inherit; border-color: rgb(8 21 52 / 0.3); } 75% { background: #8e4f4b; color: #fff; border-color: #8e4f4b; } }
+@keyframes hhk-res-0 { 0% { opacity: 1; } 78% { opacity: 0; } }
+@keyframes hhk-res-1 { 0%, 78% { opacity: 0; transform: translateY(8px); } 84%, 100% { opacity: 1; transform: none; } }
+@keyframes hhk-press { 0%, 12% { transform: scale(1); } 17% { transform: scale(0.96); } 24%, 100% { transform: scale(1); } }
+@keyframes hhk-arrow { 0%, 17% { transform: none; } 26% { transform: translateX(5px); } 36%, 100% { transform: none; } }
+@keyframes hhk-term-0 { 0% { background: #081534; color: #fff; border-color: #081534; } 33% { background: #fff; color: #081534; border-color: rgb(8 21 52 / 0.2); } }
+@keyframes hhk-term-1 { 0% { background: #fff; color: #081534; border-color: rgb(8 21 52 / 0.2); } 66% { background: #081534; color: #fff; border-color: #081534; } }
+@keyframes hhk-term-2 { 0% { background: #fff; color: #081534; border-color: rgb(8 21 52 / 0.2); } 33% { background: #081534; color: #fff; border-color: #081534; } 66% { background: #fff; color: #081534; border-color: rgb(8 21 52 / 0.2); } }
+@keyframes hhk-term-3 { 0%, 100% { background: #fff; color: #081534; border-color: rgb(8 21 52 / 0.2); } }
+@keyframes hhk-term-4 { 0%, 100% { background: #fff; color: #081534; border-color: rgb(8 21 52 / 0.2); } }
+@keyframes hhk-q { 0% { color: #081534; } 15% { color: #8e4f4b; } 80% { color: #081534; } }
+@keyframes hhk-plus { 0%, 12% { transform: scaleY(1); } 20%, 76% { transform: scaleY(0); } 84%, 100% { transform: scaleY(1); } }
+@keyframes hhk-open { 0%, 12% { max-height: 0; opacity: 0; } 24%, 74% { max-height: 120px; opacity: 1; } 86%, 100% { max-height: 0; opacity: 0; } }
+@keyframes hhk-switch { 0%, 40% { transform: translateX(0); } 50%, 90% { transform: translateX(100%); } 100% { transform: translateX(0); } }
+@keyframes hhk-sw-0 { 0% { color: #fff; } 45% { color: #081534; } 95% { color: #fff; } }
+@keyframes hhk-sw-1 { 0% { color: #081534; } 45% { color: #fff; } 95% { color: #081534; } }
+@keyframes hhk-rev-0 { 0%, 42% { opacity: 1; transform: none; } 50%, 92% { opacity: 0; transform: translateY(-8px); } 100% { opacity: 1; transform: none; } }
+@keyframes hhk-rev-1 { 0%, 42% { opacity: 0; transform: translateY(8px); } 50%, 92% { opacity: 1; transform: none; } 100% { opacity: 0; transform: translateY(8px); } }
+@media (prefers-reduced-motion: reduce) { [style*="hhk-"] { animation: none !important; } }
+
+/* photos have square corners on every page: photos and videos themselves, and any rounded box whose
+   content is a photo filling it; panels, cards and buttons stay round. A card that is a photo over a
+   colour block rounds only the block's side (rounded-b- or rounded-t-), so it is left alone here */
+:is(img.object-cover, picture > img, video):not([class*="rounded-full"]) { border-radius: 0 !important; }
+[class*="rounded"]:not([class*="rounded-b-"], [class*="rounded-t-"], [class*="rounded-full"]):has(> img.object-cover, > picture, > video, > span > img.object-cover, > div > img.object-cover:only-child) { border-radius: 0 !important; }
