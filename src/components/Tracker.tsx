@@ -30,6 +30,8 @@ export default function Tracker() {
 
   useEffect(() => {
     if (SKIP.some((p) => path.startsWith(p))) return;
+    // only the live site counts: not the dev server, a phone on the local network, or a Vercel preview
+    if (!/(^|\.)nxtframe\.ai$/.test(location.hostname)) return;
     const nav = navigator as Navigator & { globalPrivacyControl?: boolean };
     if (nav.doNotTrack === "1" || nav.globalPrivacyControl) return;
 

@@ -35,7 +35,8 @@ export const viewport: Viewport = { themeColor: "#02261e" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="nl" className={`${inter.variable} ${interTight.variable} ${instrument.variable}`}>
+    // data-scroll-behavior: Next 16 only turns the smooth scrolling off during a page change with this, so a new page opens at the top
+    <html lang="nl" data-scroll-behavior="smooth" className={`${inter.variable} ${interTight.variable} ${instrument.variable}`}>
       <body>
         {/* the first stop for keyboard users: straight past the menu to the content */}
         <a href="#main" className="skip-link">Naar de inhoud</a>

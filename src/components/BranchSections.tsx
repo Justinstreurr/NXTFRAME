@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from "react";
+import type { ReactNode } from "react";
 import BranchIcon, { type IconKey } from "./BranchIcons";
 import FindBento, { type FindContent } from "./FindBento";
 import { LinkIn, LinkOut, type LinkRequest, type LinkSource, type LinkTile } from "./LinkFlow";
@@ -6,7 +6,7 @@ import { LinkCalc } from "./LinkCalc";
 import { FrameGlyph } from "./Logo";
 import MoreOnMobile from "./MoreOnMobile";
 import StackCards, { type StackCard } from "./StackCards";
-import { Button, Container, Eyebrow } from "./ui";
+import { Button, Container, Eyebrow, Marquee } from "./ui";
 
 /* ---------- Herkenbaar: what goes wrong today, recognition before any solution ---------- */
 
@@ -111,13 +111,6 @@ const logos = {
   chatgpt: { name: "ChatGPT", src: "/images/logos/chatgpt.webp" },
 };
 
-/* where each pill floats in the sky of the photo card from lg up, left and right of the man at his
-   laptop in /images/makelaars-zoeken; the searches fill these spots in order */
-const spots = [
-  { x: "5%", y: "33%" }, { x: "21%", y: "40%" }, { x: "4%", y: "49%" }, { x: "20%", y: "57%" },
-  { x: "61%", y: "27%" }, { x: "77%", y: "35%" }, { x: "62%", y: "44%" }, { x: "76%", y: "53%" },
-];
-
 export type FindSectionContent = {
   title: ReactNode;
   lead: string;
@@ -134,9 +127,9 @@ const defaultPhoto = { src: "/images/makelaars-zoeken.jpg", webp: "/images/makel
 /**
  * Vindbaar in je werkgebied on the branch pages: the heading and lead, the three places a customer
  * looks (FindBento), and under it the searches the pages are built on, as one wide photo card: the
- * title in the sky, the searches floating around the man at his laptop as pills with the logo of
- * where they are typed. From lg up the photo runs 12% below the card so his head sits under the
- * title. On phones the pills wrap in a row. No promise of a position.
+ * title and the next step in the sky, the photo free in the middle, and the searches as one slow
+ * row of pills along the bottom edge, each with the logo of where it is typed. From lg up the photo
+ * runs 12% below the card so his head sits under the title. No promise of a position.
  */
 export function BranchFind({ content: c }: { content: FindSectionContent }) {
   const photo = c.photo ?? defaultPhoto;
@@ -155,8 +148,10 @@ export function BranchFind({ content: c }: { content: FindSectionContent }) {
         </div>
       </Container>
 
-      <div className="relative isolate mt-12 overflow-hidden bg-moss md:mt-24 lg:h-[720px]">
-        <picture className="absolute inset-x-0 top-0 -z-20 h-full lg:h-[112%]">
+      {/* phones: the title and button on their own moss ground, the photo below them, so neither sits on his head;
+            from md up the photo fills the card, zoomed from its top edge so his head drops under the button */}
+      <div className="relative isolate mt-12 h-[640px] overflow-hidden bg-moss md:mt-24 md:h-[660px] lg:h-[720px]">
+        <picture className="absolute inset-x-0 top-[250px] -z-20 h-[calc(100%-250px)] md:top-0 md:h-full md:origin-top md:scale-[1.2] lg:h-[112%]">
           {photo.webp && <source srcSet={photo.webp} type="image/webp" />}
           <img
             src={photo.src}
@@ -168,35 +163,39 @@ export function BranchFind({ content: c }: { content: FindSectionContent }) {
           />
         </picture>
         <span className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,rgb(0_0_0/0.45)_0%,rgb(0_0_0/0.05)_30%,transparent_55%,rgb(0_0_0/0.6)_100%)]" aria-hidden="true" />
+        {/* phones: the photo's top edge melts into the moss above it */}
+        <span className="absolute inset-x-0 top-[250px] -z-10 h-20 bg-gradient-to-b from-moss to-transparent md:hidden" aria-hidden="true" />
 
-        <h3 className="px-6 pt-12 text-center t-section text-paper md:pt-16">
-          Gebouwd op wat {c.who}
-          <br />
-          <span className="serif-italic text-lime">echt zoeken</span>
-        </h3>
+        <div className="flex flex-col items-center px-6 pt-12 text-center md:pt-16">
+          <h3 className="t-section text-paper">
+            Gebouwd op wat {c.who}
+            <br />
+            <span className="serif-italic text-lime">echt zoeken</span>
+          </h3>
+          <Button href="/contact" className="mt-7 w-fit px-7 py-4 text-base">Plan een kennismaking</Button>
+        </div>
 
-        <ul className="mt-8 flex flex-wrap justify-center gap-2.5 px-6 lg:mt-0 lg:block lg:p-0">
-          {c.searches.slice(0, spots.length).map((s, n) => (
-            <li
-              key={s.q}
-              className="lg:absolute lg:left-[var(--x)] lg:top-[var(--y)]"
-              style={{ "--x": spots[n].x, "--y": spots[n].y } as CSSProperties}
-            >
+        {/* the searches, one slow row along the bottom edge so the photo stays free */}
+        <div className="absolute inset-x-0 bottom-8 md:bottom-12">
+          <Marquee gap="gap-3" className="py-3">
+            {c.searches.map((s) => (
               <span
-                className="search-pill inline-flex items-center gap-2.5 rounded-xl bg-paper/95 py-2 pl-2.5 pr-4 text-[15px] font-semibold text-forest shadow-[0_14px_30px_-16px_rgba(0,0,0,0.5)] ring-1 ring-black/5 backdrop-blur"
-                style={{ animationDelay: `${(n % 4) * -1.3}s` }}
+                key={s.q}
+                className="inline-flex shrink-0 items-center gap-3 rounded-full bg-white/95 py-1.5 pl-1.5 pr-5 text-[15px] font-medium text-forest shadow-[0_18px_36px_-18px_rgba(0,0,0,0.6)] ring-1 ring-black/[0.06] backdrop-blur-md"
               >
-                <img src={logos[s.on].src} alt={logos[s.on].name} className="size-5 object-contain" loading="lazy" />
-                {s.q}
+                <span className="grid size-8 shrink-0 place-items-center rounded-full bg-paper ring-1 ring-forest/10">
+                  <img src={logos[s.on].src} alt={logos[s.on].name} className="size-[18px] object-contain" loading="lazy" />
+                </span>
+                <span className="whitespace-nowrap">
+                  {/* "[plaats]" in a search is the customer's own town: a lime tag instead of brackets */}
+                  {s.q.split(/\[(.+?)\]/).map((part, i) =>
+                    i % 2 ? <span key={i} className="rounded-md bg-lime px-1.5 py-0.5 text-[13px] font-semibold">{part}</span> : part,
+                  )}
+                </span>
               </span>
-            </li>
-          ))}
-        </ul>
-
-        {/* the foot, on the page margins: the next step, bottom right */}
-        <Container className="mt-10 flex pb-10 lg:absolute lg:inset-x-0 lg:bottom-0 lg:mt-0 lg:justify-end lg:pb-14">
-          <Button href="/contact" className="w-fit shrink-0 px-7 py-4 text-base">Plan een kennismaking</Button>
-        </Container>
+            ))}
+          </Marquee>
+        </div>
       </div>
     </section>
   );

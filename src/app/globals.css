@@ -1899,11 +1899,6 @@ html[data-statement-sand] .slim-bg { background-color: var(--color-sand); }
   .lf-card { animation: none; transform: translateY(calc(var(--i) * -17px)) scale(calc(1 - var(--i) * 0.05)); z-index: calc(3 - var(--i)); }
 }
 
-/* the search pills over the photo card on /makelaars: each bobs gently, out of step with the others */
-.search-pill { animation: search-bob 5.2s ease-in-out infinite; }
-@keyframes search-bob { 0%, 100% { translate: 0 0; } 50% { translate: 0 -7px; } }
-@media (prefers-reduced-motion: reduce) { .search-pill { animation: none; } }
-
 /* the scrolling browser window in a case hero (CaseWindow with scroll): a thin, quiet scrollbar */
 .case-scroll { scrollbar-width: thin; scrollbar-color: rgb(2 38 30 / 0.25) transparent; }
 .case-scroll::-webkit-scrollbar { width: 6px; }
