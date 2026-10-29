@@ -83,7 +83,7 @@ export default function WorkGallery({ statement }: { statement: ReactNode }) {
 
 /* the filter row parts, shared with the Branches page (BranchGallery) */
 export function Label({ children }: { children: ReactNode }) {
-  return <span className="mr-1 text-[11px] font-medium uppercase tracking-[0.14em] text-forest/55">{children}</span>;
+  return <span className="mr-1 text-xs font-medium uppercase tracking-[0.14em] text-forest/55">{children}</span>;
 }
 
 export function Pill({ active, onClick, children }: { active: boolean; onClick: () => void; children: ReactNode }) {
@@ -92,7 +92,7 @@ export function Pill({ active, onClick, children }: { active: boolean; onClick: 
       type="button"
       onClick={onClick}
       aria-pressed={active}
-      className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.12em] transition-colors ${
+      className={`inline-flex min-h-10 items-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] transition-colors ${
         active ? "bg-forest text-cream" : "bg-forest/[0.07] text-forest hover:bg-forest/[0.12]"
       }`}
     >
@@ -131,7 +131,7 @@ function WorkCard({ item: w, ratio, compact = false }: { item: WorkItem; ratio: 
           <h2 className="mt-2 max-w-2xl font-display text-2xl leading-snug tracking-tight text-forest md:text-[1.75rem]">{w.headline}</h2>
         </>
       )}
-      <p className={`${compact ? "mt-1.5" : "mt-3"} text-[11px] font-medium uppercase tracking-[0.14em] text-forest/45`}># {w.kind}</p>
+      <p className={`${compact ? "mt-1.5" : "mt-3"} text-xs font-medium uppercase tracking-[0.14em] text-forest/45`}># {w.kind}</p>
     </a>
   );
 }

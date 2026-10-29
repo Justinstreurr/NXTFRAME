@@ -76,7 +76,7 @@ export default function Burnout({
           {pains.map((p, i) => {
             const t = panels[i % panels.length];
             return (
-              <li key={p.src} className="group relative h-[440px] overflow-hidden rounded-b-3xl bg-moss sm:h-[520px] md:h-[600px]">
+              <li key={p.src} className="group relative h-[360px] overflow-hidden rounded-b-3xl bg-moss sm:h-[520px] md:h-[600px]">
                 <img
                   src={p.src}
                   alt=""

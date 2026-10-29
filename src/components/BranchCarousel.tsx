@@ -90,9 +90,9 @@ export default function BranchCarousel({
 
       <div
         ref={strip}
-        className="bleed-left mt-12 overflow-x-auto pb-4 md:mt-16 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="bleed-left mt-12 snap-x snap-mandatory scroll-pl-6 overflow-x-auto pb-4 md:mt-16 md:scroll-pl-12 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
-        <ul className="flex w-max snap-x snap-mandatory gap-5 pr-6 md:pr-12">
+        <ul className="flex w-max gap-5 pr-6 md:pr-12">
           {items.map((sg, i) => {
             const t = tones[i % tones.length];
             return (

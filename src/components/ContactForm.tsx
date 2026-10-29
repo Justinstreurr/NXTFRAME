@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import { sendContact } from "@/app/contact/actions";
 import { topics, type ContactField, type ContactState } from "@/app/contact/fields";
 import { FrameGlyph } from "./Logo";
@@ -10,7 +10,7 @@ const MAIL = "hallo@nxtframe.ai";
 const initial: ContactState = { status: "idle" };
 
 const input =
-  "mt-2 w-full rounded-2xl border border-forest/15 bg-cream/60 px-4 py-3.5 text-base text-forest outline-none transition-colors placeholder:text-forest/40 focus:border-forest focus:bg-paper aria-[invalid=true]:border-forest";
+  "mt-2 w-full rounded-2xl border border-forest/15 bg-cream/60 px-4 py-3.5 text-base text-forest outline-none transition-colors placeholder:text-forest/40 focus:border-forest focus:bg-paper aria-[invalid=true]:border-[#b3261e] aria-[invalid=true]:bg-[#fdf3f2]";
 
 function Field({
   name,
@@ -41,7 +41,7 @@ function Field({
         className: input,
       })}
       {error && (
-        <p id={`cf-${name}-error`} className="mt-2 text-sm font-medium text-forest">
+        <p id={`cf-${name}-error`} className="mt-2 text-sm font-medium text-[#b3261e]">
           {error}
         </p>
       )}
@@ -56,6 +56,15 @@ function Field({
  */
 export default function ContactForm() {
   const [state, action, pending] = useActionState(sendContact, initial);
+
+  // after a rejected send, take the visitor to the first field that needs them (on a phone it is
+  // usually above the screen, out of sight)
+  useEffect(() => {
+    if (state.status !== "invalid") return;
+    const first = document.querySelector<HTMLElement>('form [aria-invalid="true"]');
+    first?.focus({ preventScroll: true });
+    first?.scrollIntoView({ block: "center", behavior: "smooth" });
+  }, [state]);
 
   if (state.status === "sent") {
     return (
@@ -141,7 +150,7 @@ export default function ContactForm() {
       </div>
 
       <div aria-live="polite">
-        {state.status === "invalid" && <p className="mt-5 text-sm font-medium text-forest">Er ontbreekt nog iets. Kijk de velden hierboven na.</p>}
+        {state.status === "invalid" && <p className="mt-5 text-sm font-medium text-[#b3261e]">Er ontbreekt nog iets. Kijk de velden hierboven na.</p>}
         {state.status === "failed" && (
           <div className="mt-6 rounded-2xl bg-lime p-5 text-forest">
             <p className="font-semibold">Versturen lukt op dit moment niet.</p>

@@ -283,13 +283,14 @@ export default function Page() {
                     <p className="mt-2 text-[15px] leading-relaxed text-forest/75">{s.body}</p>
                   </div>
                   <div className="grid grid-cols-2 bg-[#fcbbb9] text-[#440220]">
-                    <p className="flex items-center gap-3 px-6 py-4 text-[15px] font-medium">
+                    <p className="flex min-w-0 items-center gap-2 px-4 py-4 text-[15px] font-medium sm:gap-3 sm:px-6">
                       <Tick tone="bg-[#440220] text-[#fcbbb9]" />
                       Google
                     </p>
-                    <p className="flex items-center gap-3 px-6 py-4 text-[15px] font-medium">
+                    <p className="flex min-w-0 items-center gap-2 px-4 py-4 text-[15px] font-medium sm:gap-3 sm:px-6">
                       <Tick tone="bg-[#440220] text-[#fcbbb9]" />
-                      AI-zoekmachines
+                      <span className="sm:hidden">AI-zoeken</span>
+                      <span className="hidden sm:inline">AI-zoekmachines</span>
                     </p>
                   </div>
                 </li>

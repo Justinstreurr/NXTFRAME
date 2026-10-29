@@ -36,7 +36,7 @@ export default function CaseBgShift({ children, bg, fg, className = "" }: { chil
   }, [bg, fg]);
 
   return (
-    <main id="main" ref={ref} className={`transition-colors duration-700 ease-out ${className}`} style={{ backgroundColor: bg, color: fg }}>
+    <main id="main" ref={ref} className={`overflow-x-clip transition-colors duration-700 ease-out ${className}`} style={{ backgroundColor: bg, color: fg }}>
       {children}
     </main>
   );

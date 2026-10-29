@@ -73,8 +73,8 @@ export default function GainsRail({ items, header }: { items: Gain[]; header?: R
         <Container className="mt-10 md:mt-12">
           {/* on desktop the row is cut off at the left page margin, as if the cards slide in behind a
               panel there, and runs on freely to the right */}
-          <div className="-mx-6 overflow-x-auto px-6 pb-2 md:-mx-12 md:px-12 lg:mx-0 lg:overflow-visible lg:px-0 lg:pb-0 lg:[clip-path:inset(-4rem_-100vw_-4rem_0)]">
-            <ul ref={track} className="flex w-max snap-x snap-mandatory gap-5 will-change-transform lg:snap-none">
+          <div className="-mx-6 snap-x snap-mandatory scroll-pl-6 overflow-x-auto px-6 pb-2 md:-mx-12 md:scroll-pl-12 lg:snap-none md:px-12 lg:mx-0 lg:overflow-visible lg:px-0 lg:pb-0 lg:[clip-path:inset(-4rem_-100vw_-4rem_0)]">
+            <ul ref={track} className="flex w-max gap-5 will-change-transform">
               {items.map((g, i) => (
                 <li
                   key={g.label}

@@ -71,13 +71,16 @@ export default function Page() {
         {/* the form, straight under the photo */}
         <section id="formulier" className="scroll-mt-20 bg-cream py-16 text-forest md:pb-32 md:pt-24">
           <Container className="grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-20">
-            <div className="self-start lg:sticky lg:top-28">
-              <Eyebrow className="max-w-xl">Zo gaat het verder</Eyebrow>
-              <h2 className="mt-6 t-section md:mt-8">
-                Een paar zinnen <span className="serif-italic">is genoeg</span>
-              </h2>
+            {/* on phones this column comes apart (contents): the heading, then the form, then the steps and the mail link */}
+            <div className="contents lg:sticky lg:top-28 lg:block lg:self-start">
+              <div>
+                <Eyebrow className="max-w-xl">Zo gaat het verder</Eyebrow>
+                <h2 className="mt-6 t-section md:mt-8">
+                  Een paar zinnen <span className="serif-italic">is genoeg</span>
+                </h2>
+              </div>
 
-              <ol className="mt-10 space-y-6 border-t border-forest/15 pt-8 md:mt-12">
+              <ol className="order-last space-y-6 border-t border-forest/15 pt-8 lg:order-none lg:mt-12">
                 {next.map((n, i) => (
                   <li key={n.title} className="flex gap-4">
                     <span className="grid h-10 w-14 shrink-0 place-items-center rounded-full border border-forest font-display text-base font-semibold italic">
@@ -91,7 +94,7 @@ export default function Page() {
                 ))}
               </ol>
 
-              <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <div className="order-last flex flex-wrap items-center gap-x-6 gap-y-3 lg:order-none lg:mt-10">
                 <p className="text-[15px] text-forest/70">Liever gewoon mailen?</p>
                 <TextLink href="mailto:hallo@nxtframe.ai">hallo@nxtframe.ai</TextLink>
               </div>

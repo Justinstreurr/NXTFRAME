@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { ArrowIcon, Button, Container, Eyebrow, Reassure, TextLink } from "./ui";
 import Reveal from "./Reveal";
 import ZigzagPath from "./ZigzagPath";
@@ -405,24 +406,29 @@ export function Comparison() {
         <h2 className="mt-6 max-w-4xl t-section text-brown md:mt-8">
           Bureau, freelancer of AI-tool, <span className="serif-italic text-brown">naast elkaar gezet</span>
         </h2>
-        {/* phones: only the NXT Frame card, everything it ticks off; the full comparison is for wider screens */}
-        {columns
-          .filter((c) => c.highlight)
-          .map((c) => (
-            <div key={c.name} className="mt-12 rounded-3xl bg-pink p-6 text-brown md:hidden">
-              <p className="font-display text-2xl font-semibold tracking-tight">{c.name}</p>
-              <ul className="mt-5 space-y-3">
-                {criteria.map((crit, ri) => (
-                  <li key={crit} className="flex items-center justify-between gap-4 text-[15px]">
-                    <span className="text-brown/80">{crit}</span>
-                    <ScoreIcon s={c.scores[ri]} highlight />
-                  </li>
+        {/* phones: the same comparison as a compact grid, the criteria down the side and the four
+            options as narrow icon columns (NXT Frame on pink), with what sets NXT Frame apart under it */}
+        <div className="mt-10 rounded-3xl bg-paper p-4 text-brown md:hidden">
+          <div className="grid grid-cols-[minmax(0,1fr)_repeat(4,2.9rem)] items-center gap-y-2.5">
+            <span />
+            {columns.map((c) => (
+              <span key={c.name} className={`mx-auto max-w-full rounded-full px-1 py-1 text-center text-[11px] font-semibold leading-tight [hyphens:manual] ${c.highlight ? "bg-pink" : "text-brown/70"}`}>
+                {c.highlight ? "NXT" : c.name === "AI-sitebuilder" ? "AI-tool" : c.name === "Freelancer" ? "Free­lancer" : c.name}
+              </span>
+            ))}
+            {criteria.map((crit, ri) => (
+              <Fragment key={crit}>
+                <span className="hyphens-auto border-t border-brown/10 pt-2.5 pr-1 text-sm leading-snug text-brown/80 [overflow-wrap:anywhere]">{crit}</span>
+                {columns.map((c) => (
+                  <span key={c.name} className="grid place-items-center border-t border-brown/10 pt-2.5">
+                    <ScoreIcon s={c.scores[ri]} highlight={c.highlight} />
+                  </span>
                 ))}
-              </ul>
-              <p className="mt-5 border-t border-brown/10 pt-4 text-sm leading-relaxed text-brown/80">{c.body}</p>
-            </div>
-          ))}
-        <Reveal threshold={0.35} className="cmp mt-16 hidden overflow-x-auto md:block">
+              </Fragment>
+            ))}
+          </div>
+          <p className="mt-5 rounded-2xl bg-pink p-4 text-sm leading-relaxed text-brown/80">{columns[0].body}</p>
+        </div>        <Reveal threshold={0.35} className="cmp mt-16 hidden overflow-x-auto md:block">
           <table className="w-full min-w-[860px] border-separate border-spacing-x-3 border-spacing-y-0 text-left">
             <thead>
               <tr>
@@ -481,7 +487,11 @@ const reviews = [
 /** `dark` puts the reviews on the black of the work above them (the over page), so the two read as one block */
 export function Testimonials({ dark = false }: { dark?: boolean } = {}) {
   return (
-    <section data-zone={dark ? "green" : "cherry"} className={`py-16 md:py-32 ${dark ? "-mt-px bg-black text-cream" : "bg-cream text-brown"}`}>
+    <section
+      data-zone={dark ? "green" : "cherry"}
+      {...(dark && { "data-follow-dark": "" })}
+      className={`py-16 md:py-32 ${dark ? "follow-dark -mt-px text-cream" : "bg-cream text-brown"}`}
+    >
       <Container>
         <Eyebrow tone={dark ? "wine" : undefined} className="max-w-xl">Reviews</Eyebrow>
         <h2 className={`mt-6 t-section md:mt-8 ${dark ? "text-cream" : "text-brown"}`}>

@@ -215,7 +215,8 @@ export default function Page() {
               </div>
             </div>
           </Container>
-          <picture className="block lg:absolute lg:inset-0 lg:-z-20">
+          {/* on phones the sky would be a block of its own with nothing in it; there the hero is copy only */}
+          <picture className="hidden lg:absolute lg:inset-0 lg:-z-20 lg:block">
             <img
               src="/images/hero-sky.jpg"
               alt="Een zachtblauwe lucht met wolken"
@@ -350,7 +351,7 @@ export default function Page() {
                 Geen uren achteraf en geen verrassingen. Wil je iets groters, zoals een nieuwe pagina of een campagne, dan krijg je daar eerst een vaste prijs voor.
               </p>
             </div>
-            <div className="mt-16 grid gap-6 lg:grid-cols-2">
+            <div className="mt-16 grid gap-6 lg:grid-cols-2 [&>*]:min-w-0">
               <article className="flex flex-col rounded-3xl bg-forest p-8 text-paper md:p-12">
                 <p className="flex items-center gap-3 text-[15px] font-medium">
                   <span className="grid size-10 place-items-center rounded-full border border-current">
@@ -358,7 +359,7 @@ export default function Page() {
                   </span>
                   Onderhoudsabonnement
                 </p>
-                <p className="mt-10 font-serif text-4xl leading-tight text-lime md:text-5xl">[INVULLEN: bedrag onderhoudsabonnement per maand]</p>
+                <p className="mt-10 font-serif text-4xl leading-tight text-lime [overflow-wrap:anywhere] md:text-5xl">[INVULLEN: bedrag onderhoudsabonnement per maand]</p>
                 <p className="mt-3 text-sm text-paper/60">exclusief btw · per maand opzegbaar</p>
                 <p className="mt-6 max-w-md text-base leading-relaxed text-paper/80 md:text-lg">
                   Je site draait bij mij en ik houd hem bij. Eén vast bedrag per maand, en je hebt er geen omkijken naar.

@@ -8,11 +8,11 @@ export type LegalSection = { id: string; title: string; body: ReactNode };
    wrapper so the page files stay plain markup */
 const prose =
   "max-w-2xl text-base leading-relaxed text-forest/75 " +
-  "[&_p+p]:mt-4 [&_ul]:mt-4 [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5 [&_ol]:mt-4 [&_ol]:list-decimal [&_ol]:space-y-2 [&_ol]:pl-5 " +
+  "[&_p+p]:mt-4 [&_ul+p]:mt-4 [&_ol+p]:mt-4 [&_table+p]:mt-5 [&_ul]:mt-4 [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5 [&_ol]:mt-4 [&_ol]:list-decimal [&_ol]:space-y-2 [&_ol]:pl-5 " +
   "[&_li]:marker:text-forest/40 [&_strong]:font-semibold [&_strong]:text-forest " +
   "[&_a]:border-b [&_a]:border-forest/30 [&_a]:font-medium [&_a]:text-forest [&_a]:transition-colors hover:[&_a]:border-forest " +
   "[&_h3]:mt-8 [&_h3]:font-display [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:text-forest [&_h3+p]:mt-2 " +
-  "[&_table]:mt-5 [&_table]:w-full [&_table]:text-left [&_table]:text-[15px] [&_th]:border-b [&_th]:border-forest/15 [&_th]:py-3 [&_th]:pr-4 [&_th]:font-semibold [&_th]:text-forest " +
+  "[&_table]:mt-5 [&_table]:w-full max-md:[&_table]:block max-md:[&_table]:overflow-x-auto max-md:[&_td]:min-w-[11rem] max-md:[&_th]:min-w-[11rem] [&_table]:text-left [&_table]:text-[15px] [&_th]:border-b [&_th]:border-forest/15 [&_th]:py-3 [&_th]:pr-4 [&_th]:font-semibold [&_th]:text-forest " +
   "[&_td]:border-b [&_td]:border-forest/10 [&_td]:py-3 [&_td]:pr-4 [&_td]:align-top";
 
 /**
@@ -36,13 +36,13 @@ export default function LegalPage({
 }) {
   return (
     <PageShell eyebrow={eyebrow} title={title} intro={intro}>
-      <div className="mt-12 grid gap-12 md:mt-16 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
+      <div className="mt-12 grid grid-cols-1 gap-12 md:mt-16 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
         <nav aria-label="Op deze pagina" className="self-start lg:sticky lg:top-28">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-forest/60">Op deze pagina</p>
-          <ol className="mt-5 space-y-3">
+          <ol className="mt-4 space-y-1">
             {sections.map((s, i) => (
               <li key={s.id}>
-                <a href={`#${s.id}`} className="group flex gap-3 text-[15px] text-forest/70 transition-colors hover:text-forest">
+                <a href={`#${s.id}`} className="group flex gap-3 py-2 text-[15px] text-forest/70 transition-colors hover:text-forest">
                   <span className="tabular-nums text-forest/40 transition-colors group-hover:text-forest">{String(i + 1).padStart(2, "0")}</span>
                   {s.title}
                 </a>

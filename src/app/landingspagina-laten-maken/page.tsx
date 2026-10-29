@@ -294,13 +294,17 @@ export default function Page() {
               </p>
             </div>
             <article className="mt-12 grid overflow-hidden rounded-3xl bg-[#081534] text-[#f5f0ea] md:mt-16 lg:grid-cols-2">
-              <img
-                src="/images/cases/hypotheekhaven/d-maandlasten.webp"
-                alt="De maandlasten-rekentool van Hypotheekhaven op desktop"
-                className="aspect-[4/3] size-full bg-paper object-cover object-top lg:aspect-auto lg:min-h-[480px]"
-                loading="lazy"
-                decoding="async"
-              />
+              {/* phones get the phone screenshot: the desktop one was unreadable and cut off at that width */}
+              <picture>
+                <source media="(min-width: 1024px)" srcSet="/images/cases/hypotheekhaven/d-maandlasten.webp" />
+                <img
+                  src="/images/cases/hypotheekhaven/m-maandlasten.webp"
+                  alt="De maandlasten-rekentool van Hypotheekhaven"
+                  className="aspect-[4/5] size-full bg-paper object-cover object-top lg:aspect-auto lg:min-h-[480px]"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
               <div className="flex flex-col p-8 md:p-12 lg:p-14">
                 <p className="text-[15px] font-medium text-[#f5f0ea]/80">Rekentools · tekst, ontwerp en bouw</p>
                 <ul className="mt-10 space-y-4">

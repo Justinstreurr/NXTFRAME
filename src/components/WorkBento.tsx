@@ -162,8 +162,8 @@ export default function WorkBento({ items }: { items: WorkItem[] }) {
   return (
     <>
       {/* phones and tablets: a row you swipe, panel and wide in turn */}
-      <div className="-mx-6 scroll-pl-6 overflow-x-auto pb-2 pl-6 md:-mx-12 md:scroll-pl-12 md:pl-12 lg:hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        <ul className="flex w-max snap-x snap-mandatory gap-3 pr-6 md:pr-12">
+      <div className="-mx-6 snap-x snap-mandatory scroll-pl-6 overflow-x-auto pb-2 pl-6 md:-mx-12 md:scroll-pl-12 md:pl-12 lg:hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <ul className="flex w-max gap-3 pr-6 md:pr-12">
           {cases.map((w, i) => (
             <li key={w.name} className="w-[82vw] max-w-[360px] shrink-0 snap-start">
               <CaseLink w={w} className="h-[470px]">

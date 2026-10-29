@@ -38,7 +38,7 @@ export default function HappyFlopsKit() {
   return (
     <Pausable className="grid gap-2 md:grid-cols-[1fr_1fr] md:gap-2.5">
       {/* a slipper, floating gently over its shadow */}
-      <Tile label="Zacht voetbed" className="min-h-[360px] md:min-h-0" bg="#f7f7f7">
+      <Tile label="Zacht voetbed" className="min-h-[300px] sm:min-h-[360px] md:min-h-0" bg="#f7f7f7">
         <div className="relative flex w-[min(86%,520px)] flex-col items-center">
           <img src={R + "p-sky-clean.webp"} alt="" className="relative z-10 w-full" style={loop("hfk-float", "ease-in-out")} />
           <span className="mt-4 h-5 w-[70%] rounded-[50%] bg-black/20 blur-md" style={loop("hfk-shadow", "ease-in-out")} />
@@ -47,7 +47,7 @@ export default function HappyFlopsKit() {
 
       <div className="grid gap-2 sm:grid-cols-2 md:gap-2.5">
         {/* "In Winkelwagen": pressed, it loads, says it is added, and the cart counts one */}
-        <Tile label="Knoppen" className="aspect-square">
+        <Tile label="Knoppen" className="min-h-[170px] sm:aspect-square sm:min-h-0">
           <div className="flex w-52 flex-col items-end gap-4">
             <span className="relative">
               <svg viewBox="0 0 24 24" className="size-6" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M3 4h2l2.2 10.5h10.6L20 7H6.2" /><circle cx="9" cy="19" r="1.4" /><circle cx="17" cy="19" r="1.4" /></svg>
@@ -65,7 +65,7 @@ export default function HappyFlopsKit() {
         </Tile>
 
         {/* the colour picker: photo swatches, the name after "Kleur:" and the slipper change together */}
-        <Tile label="Kleur" className="aspect-square">
+        <Tile label="Kleur" className="min-h-[170px] sm:aspect-square sm:min-h-0">
           <div className="flex flex-col items-start gap-3">
             <div className="relative h-14 w-44">
               {kleuren.map((k, i) => (
@@ -102,7 +102,7 @@ export default function HappyFlopsKit() {
         </Tile>
 
         {/* in stock, and the offer box under the button */}
-        <Tile label="Voorraad" className="min-h-[190px]">
+        <Tile label="Voorraad" className="min-h-[150px] sm:min-h-[190px]">
           <div className="flex w-52 flex-col gap-3">
             <p className="flex items-center gap-2 text-[13px] font-light text-[#2e2a39]/75">
               <span className="relative flex size-2.5">
@@ -118,7 +118,7 @@ export default function HappyFlopsKit() {
         </Tile>
 
         {/* the collection tabs: the black one moves along */}
-        <Tile label="Filters" className="min-h-[190px]">
+        <Tile label="Filters" className="min-h-[150px] sm:min-h-[190px]">
           <div className="flex gap-1.5 text-[11.5px]">
             {["All Products", "Nieuw Binnen", "Best Sellers"].map((t, i) => (
               <span key={t} className="flex h-9 w-[88px] items-center justify-center rounded-[6px] border border-black/15" style={loop(`hfk-tab-${i}`, "steps(1)")}>{t}</span>

@@ -100,8 +100,8 @@ export default function WorkCases({ items, header }: { items: WorkItem[]; header
     <>
       {header}
       {/* phones: a row you swipe */}
-      <div className="-mx-6 mt-10 scroll-pl-6 overflow-x-auto pb-2 pl-6 md:hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        <ul className="flex w-max snap-x snap-mandatory gap-4 pr-6">
+      <div className="-mx-6 mt-10 snap-x snap-mandatory scroll-pl-6 overflow-x-auto pb-2 pl-6 md:hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <ul className="flex w-max gap-4 pr-6">
           {cases.map((w, i) => (
             <li key={w.name} className="w-[84vw] max-w-[380px] shrink-0 snap-start">
               <CaseCard w={w} n={i + 1} />

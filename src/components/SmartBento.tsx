@@ -58,13 +58,14 @@ export function WidgetCalculator({ step }: { step: number }) {
   );
 }
 
-/* ---------- 2. Koppelingen: the glossy icon with thick pipes to the systems, a pulse running along one ---------- */
+/* ---------- 2. Koppelingen: the glossy icon with thick pipes to the systems, a pulse running along one ----------
+   The pills sit close to the icon (x 150-540): on a phone the sliced viewBox only shows the middle of the stage. */
 
 const pipes = [
-  { name: "Realworks", d: "M280 175 H150 Q120 175 120 145 V80 Q120 50 90 50 H-40", at: [120, 112] },
-  { name: "Mollie", d: "M420 175 H560 Q590 175 590 205 V255 Q590 285 620 285 H760", at: [590, 230] },
+  { name: "Realworks", d: "M280 175 H150 Q120 175 120 145 V80 Q120 50 90 50 H-40", at: [205, 175] },
+  { name: "Mollie", d: "M420 175 H560 Q590 175 590 205 V255 Q590 285 620 285 H760", at: [495, 175] },
   { name: "Agenda", d: "M350 245 V400", at: [350, 318] },
-  { name: "Shopify", d: "M350 105 V70 Q350 40 380 40 H760", at: [520, 40] },
+  { name: "Shopify", d: "M350 105 V70 Q350 40 380 40 H760", at: [455, 40] },
 ];
 
 function Connections({ step }: { step: number }) {

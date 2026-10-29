@@ -91,7 +91,7 @@ export function Pausable({ children, className = "", style }: { children: ReactN
       <button
         type="button"
         onClick={() => setPaused((v) => !v)}
-        className="absolute bottom-4 left-4 z-10 flex size-7 items-center justify-center rounded-full bg-black/85 text-white md:bottom-5 md:left-5"
+        className="absolute bottom-4 left-4 z-10 flex size-7 items-center justify-center rounded-full bg-black/85 text-white after:absolute after:-inset-2 after:content-[''] md:bottom-5 md:left-5"
         aria-label={paused ? "Afspelen" : "Pauzeren"}
       >
         {paused ? (

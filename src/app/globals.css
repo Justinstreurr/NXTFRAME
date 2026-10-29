@@ -950,6 +950,14 @@ html[data-zone="cherry"][data-at-hero] .nav-hero {
   --hp-nav-bg: color-mix(in srgb, var(--color-cream) 30%, transparent);
   --glass-edge: rgba(255, 255, 255, 0.5);
 }
+/* on phones the pill sits over the dark sections for screens at a time; at 30% the forest logo was
+   lost on black, so there the glass stays mostly cream */
+@media (max-width: 1023px) {
+  .nav-photo.nav-solid:not(:has([aria-expanded="true"])) {
+    --hp-nav-bg: color-mix(in srgb, var(--color-cream) 92%, transparent);
+    --glass-edge: rgba(2, 38, 30, 0.08);
+  }
+}
 .nav-photo .hp-t { transition-duration: 300ms; }
 
 /* Liquid glass. One recipe for the floating nav pill (.nav-glass) and the phone menu
@@ -1000,7 +1008,11 @@ html[data-zone="cherry"][data-at-hero] .nav-hero {
 }
 .nav-photo:has([aria-expanded="true"]) .nav-glass::before { opacity: 0; }
 .glass-sheet {
-  --hp-nav-bg: color-mix(in srgb, var(--color-cream) 82%, transparent);
+  /* the shared glass rule above sets position: relative, which (unlayered) beats the sheet's
+     Tailwind `fixed`: without this the phone menu opened at the foot of the page, out of sight */
+  position: fixed;
+  /* solid: a see-through sheet let the hero's headline read through the menu */
+  --hp-nav-bg: var(--color-cream);
   --glass-edge: transparent;
   --glass-sheen: transparent;
   box-shadow: none;
@@ -1416,6 +1428,11 @@ html[data-statement-sand] .slim-bg { background-color: var(--color-sand); }
 @media (min-width: 768px) {
   .stack-card { top: var(--top); }
 }
+/* short phones: a card taller than the space under the stack would be covered before its foot was
+   seen, so there the cards simply follow one another */
+@media (max-width: 767px) and (max-height: 700px) {
+  .stack-card { position: relative; top: auto; }
+}
 
 /* Diensten wheel (ServicesWheel): the pitch fades up each time the next service turns in */
 .svc-pitch { animation: svc-pitch 500ms cubic-bezier(0.22, 1, 0.36, 1) both; }
@@ -1727,6 +1744,10 @@ html[data-statement-sand] .slim-bg { background-color: var(--color-sand); }
   transition: background-color 700ms ease, color 700ms ease;
 }
 .work-section.is-dark { background-color: #000; color: var(--color-cream); }
+/* the black reviews right after it (Testimonials dark) turn with it, on the same clock (DarkOnArrive);
+   on their own, or before the script runs, they are simply black */
+.follow-dark { background-color: #000; transition: background-color 700ms ease; }
+.follow-dark.has-leader:not(.is-dark) { background-color: var(--color-cream); }
 .work-section .work-line {
   border-color: color-mix(in srgb, currentColor 15%, transparent);
   transition: border-color 700ms ease;
@@ -1736,7 +1757,7 @@ html[data-statement-sand] .slim-bg { background-color: var(--color-sand); }
 .work-section:not(.is-dark) .work-when-dark,
 .work-section.is-dark .work-when-light { display: none !important; }
 @media (prefers-reduced-motion: reduce) {
-  .work-section, .work-section .work-line, .work-section .work-accent { transition: none; }
+  .work-section, .work-section .work-line, .work-section .work-accent, .follow-dark { transition: none; }
 }
 
 /* Meer dan een website (SmartBento): a new value pops in, the typing dots bounce, and the lit

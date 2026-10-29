@@ -23,7 +23,7 @@ function Col({ name, items, arrow = true, href }: { name: string; items: string[
       <ul className="mt-5 space-y-3.5">
         {items.map((i) => (
           <li key={i}>
-            <a href={hrefs[i] ?? "#"} className="text-[15px] text-paper/60 transition-colors hover:text-paper">{i}</a>
+            <a href={hrefs[i] ?? "#"} className="inline-block py-1 text-[15px] text-paper/60 transition-colors hover:text-paper">{i}</a>
           </li>
         ))}
       </ul>

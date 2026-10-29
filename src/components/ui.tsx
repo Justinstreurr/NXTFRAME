@@ -58,12 +58,12 @@ export function Eyebrow({
   }[tone];
   return (
     <p className={`flex w-fit items-center ${className}`}>
-      <span className={`relative -mr-2.5 size-7 rounded-full border-2 opacity-30 ${t.fill} ${t.edge}`} aria-hidden="true" />
-      <span className={`relative -mr-2.5 size-7 rounded-full border-2 opacity-60 ${t.fill} ${t.edge}`} aria-hidden="true" />
-      <span className={`relative z-10 -mr-2.5 grid size-7 place-items-center rounded-full border-2 ${t.fill} ${t.edge} ${t.ink}`} aria-hidden="true">
+      <span className={`relative -mr-2.5 size-7 shrink-0 rounded-full border-2 opacity-30 ${t.fill} ${t.edge}`} aria-hidden="true" />
+      <span className={`relative -mr-2.5 size-7 shrink-0 rounded-full border-2 opacity-60 ${t.fill} ${t.edge}`} aria-hidden="true" />
+      <span className={`relative z-10 -mr-2.5 grid size-7 shrink-0 place-items-center rounded-full border-2 ${t.fill} ${t.edge} ${t.ink}`} aria-hidden="true">
         <FrameGlyph className="size-3" />
       </span>
-      <span className={`relative rounded-full border-2 px-4 py-1 text-xs font-semibold uppercase tracking-[0.16em] ${t.fill} ${t.edge} ${t.ink}`}>
+      <span className={`relative rounded-full border-2 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] sm:text-xs sm:tracking-[0.16em] ${t.fill} ${t.edge} ${t.ink}`}>
         {children}
       </span>
     </p>
@@ -123,7 +123,7 @@ export function TextLink({ children, href, light = false, className = "" }: { ch
   return (
     <a
       href={href}
-      className={`group inline-flex items-center gap-2 border-b pb-0.5 text-[15px] font-semibold transition-colors ${light ? "border-cream/40 text-cream hover:border-cream" : "border-forest/30 text-forest hover:border-forest"} ${className}`}
+      className={`group relative inline-flex items-center gap-2 border-b pb-0.5 text-[15px] font-semibold transition-colors after:absolute after:inset-x-0 after:-inset-y-2.5 after:content-[''] ${light ? "border-cream/40 text-cream hover:border-cream" : "border-forest/30 text-forest hover:border-forest"} ${className}`}
     >
       {children}
       <ArrowIcon className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

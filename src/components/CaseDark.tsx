@@ -17,7 +17,7 @@ import { Deblur, FillWords, Pausable, ScrollLine } from "./CaseDarkFx";
 export function CaseDarkHero({ logo, alt, phones }: { logo: string; alt: string; phones: { src: string; alt: string }[] }) {
   return (
     <section data-zone="green" className="px-6 pb-20 pt-32 md:pb-32 md:pt-40">
-      <img src={logo} alt={alt} className="mx-auto w-[min(82vw,1040px)]" />
+      <h1><img src={logo} alt={alt} className="mx-auto w-[min(82vw,1040px)]" /></h1>
       <div className="mx-auto mt-14 grid max-w-4xl grid-cols-3 items-start gap-3 md:mt-20 md:gap-10">
         {phones.map((p, i) => (
           <CasePhone key={p.src} src={p.src} alt={p.alt} className={`ring-1 ring-white/15 ${i === 1 ? "" : "mt-10 md:mt-20"}`} eager />
@@ -31,7 +31,7 @@ export function CaseDarkHero({ logo, alt, phones }: { logo: string; alt: string;
 export function CaseDarkIntro({ crumb, tags, children }: { crumb: string; tags: string[]; children: ReactNode }) {
   return (
     <Container>
-      <div className="flex items-center justify-between border-b border-current/15 pb-3 text-[11px] uppercase tracking-[0.08em]">
+      <div className="flex items-center justify-between border-b border-current/15 pb-3 text-xs uppercase tracking-[0.08em]">
         <p><Link href="/" className="hover:underline">Home</Link> <span className="opacity-40">/</span> <Link href="/werk" className="hover:underline">Werk</Link> <span className="opacity-40">/</span> <span className="opacity-50">{crumb}</span></p>
         <p className="hidden gap-4 opacity-50 sm:flex">{tags.map((t) => <span key={t}>#{t}</span>)}</p>
       </div>
@@ -44,7 +44,7 @@ export function CaseDarkIntro({ crumb, tags, children }: { crumb: string; tags: 
 export function CaseDarkTitle({ children }: { children: ReactNode }) {
   return (
     <section className="relative pb-10 pt-32 md:pt-48">
-      <p className="text-center font-mono text-[11px] uppercase tracking-[0.12em]">Wat ik deed</p>
+      <p className="text-center font-mono text-xs uppercase tracking-[0.12em]">Wat ik deed</p>
       <ScrollLine className="absolute left-[6%] top-48 hidden h-40 md:block" />
       <Container>
         <Deblur className="mx-auto mt-10 max-w-5xl text-center font-display text-[clamp(3.2rem,1rem+8vw,9.5rem)] font-extrabold uppercase leading-[0.86] tracking-[-0.045em] will-change-[filter,transform]">
@@ -114,7 +114,8 @@ export function CaseDarkPhoto({ src, alt, ratio = "3/2" }: { src: string; alt: s
 /** a field of cards in depth on black, drifting by: x/y in %, z from 0 (near, sharp) to 1 (far, blurred) */
 export function CaseDarkField({ cards }: { cards: { src: string; x: number; y: number; z: number; w: number }[] }) {
   return (
-    <Container className="pt-24 md:pt-40">
+    // phones skip the field: at that width its min-height forced a 756px wide box (sideways scroll) and the cards were too small to read
+    <Container className="hidden pt-24 md:block md:pt-40">
       <Pausable className="relative aspect-[2.7/1] min-h-[280px] overflow-hidden rounded-[14px] bg-black">
         {cards.map((c) => (
           <div key={c.src + c.x} className="absolute" style={{ left: `${c.x}%`, top: `${c.y}%`, width: `${c.w}%`, zIndex: Math.round((1 - c.z) * 10) }}>
@@ -133,12 +134,12 @@ export function CaseDarkDevices({ site, page, desktop, mobile }: { site: string;
   return (
     <Container className="pb-24 md:pb-40">
       <div className="relative md:pl-[16%]">
-        <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.1em] opacity-70">{site} — desktop<br /><span className="opacity-35">{page}</span></p>
+        <p className="mb-3 font-mono text-xs uppercase tracking-[0.1em] opacity-70 md:text-[10px]">{site} — desktop<br /><span className="opacity-60">{page}</span></p>
         <div className="overflow-hidden rounded-[8px] bg-white">
           <img src={desktop.src} alt={desktop.alt} className="block w-full" loading="lazy" />
         </div>
-        <div className="mt-8 w-[46%] md:absolute md:left-0 md:top-[32%] md:mt-0 md:w-[19%]">
-          <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.1em] opacity-70">{site} — mobiel<br /><span className="opacity-35">{page}</span></p>
+        <div className="mt-8 w-[62%] md:absolute md:left-0 md:top-[32%] md:mt-0 md:w-[19%]">
+          <p className="mb-3 font-mono text-xs uppercase tracking-[0.1em] opacity-70 md:text-[10px]">{site} — mobiel<br /><span className="opacity-60">{page}</span></p>
           <div className="overflow-hidden rounded-[18px] bg-white shadow-[0_30px_60px_-20px_rgba(0,0,0,0.7)]">
             <img src={mobile.src} alt={mobile.alt} className="block w-full" loading="lazy" />
           </div>
@@ -152,7 +153,7 @@ export function CaseDarkDevices({ site, page, desktop, mobile }: { site: string;
 export function CaseDarkResult({ words }: { words: string[] }) {
   return (
     <section className="overflow-hidden pb-24 md:pb-40">
-      <p className="text-center font-mono text-[11px] uppercase tracking-[0.12em] opacity-70">Resultaat:</p>
+      <p className="text-center font-mono text-xs uppercase tracking-[0.12em] opacity-70">Resultaat:</p>
       {/* as big as fits: the longest word just spans the window */}
       <div style={{ fontSize: `min(17rem, calc((100vw - 2rem) / ${(Math.max(...words.map((w) => w.length)) * 0.66).toFixed(2)}))` }}>
         <FillWords words={words} className="mt-8 text-center font-display font-extrabold uppercase leading-[0.82] tracking-[-0.05em]" />
@@ -167,10 +168,10 @@ export function CaseDarkRoles({ roles }: { roles: { group: string; items: string
     <Container className="pb-24 md:pb-40">
       <div className="mx-auto max-w-3xl">
         <h3 className="font-display text-2xl font-medium tracking-[-0.02em] opacity-80">Mijn rollen</h3>
-        <div className="mt-8 grid gap-10 sm:grid-cols-2">
+        <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-8 sm:gap-10">
           {roles.map((r) => (
             <div key={r.group}>
-              <p className="text-[10px] uppercase tracking-[0.12em] opacity-60">{r.group}</p>
+              <p className="text-xs uppercase tracking-[0.12em] opacity-60">{r.group}</p>
               <ul className="mt-4 space-y-2 text-[15px] opacity-75">{r.items.map((i) => <li key={i}>{i}</li>)}</ul>
             </div>
           ))}

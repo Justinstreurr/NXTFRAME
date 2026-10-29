@@ -224,7 +224,7 @@ export default function Page() {
                 return (
                   <li key={s.id} id={s.id} className="scroll-mt-24">
                     <article className={`grid h-full overflow-hidden rounded-3xl lg:grid-cols-2 ${t.card}`}>
-                      <div className={`relative aspect-[4/3] lg:aspect-auto ${i % 2 ? "lg:order-last" : ""}`}>
+                      <div className={`relative aspect-[16/9] sm:aspect-[4/3] lg:aspect-auto ${i % 2 ? "lg:order-last" : ""}`}>
                         <img
                           src={s.img}
                           alt={s.alt}

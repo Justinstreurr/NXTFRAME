@@ -47,10 +47,10 @@ export default function BranchGallery({ header }: { header: ReactNode }) {
       </Container>
 
       {/* three in a row, flush, square corners, from the left edge of the window to the right */}
-      <ul className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:mt-10 lg:grid-cols-3">
+      <ul className="mt-8 grid grid-cols-2 md:mt-10 lg:grid-cols-3">
         {items.map((b) => (
           <li key={b.slug}>
-            <a href={branchHref(b)} className="group relative block aspect-[4/5] overflow-hidden bg-forest text-paper lg:aspect-square">
+            <a href={branchHref(b)} className="group relative block aspect-[3/4] overflow-hidden bg-forest text-paper sm:aspect-[4/5] lg:aspect-square">
               {/* the photo, under water while the mouse is over the tile (WaterHover), as on the Ons werk cards */}
               <WaterHover>
                 <img
@@ -62,18 +62,18 @@ export default function BranchGallery({ header }: { header: ReactNode }) {
               </WaterHover>
               <FrameCorners className="text-lime opacity-0 transition-opacity duration-300 group-hover:opacity-100" inset="inset-5" corners="anti" />
               <span
-                className={`absolute left-5 top-5 rounded-full px-3 py-1 text-xs font-semibold ${
+                className={`absolute left-3 top-3 rounded-full px-2.5 py-1 text-[11px] font-semibold sm:left-5 sm:top-5 sm:px-3 sm:text-xs ${
                   b.concept ? "bg-lime text-forest" : "bg-black/45 text-paper/90 backdrop-blur-sm"
                 }`}
               >
                 {b.concept ? "Concept live" : "In de maak"}
               </span>
-              <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 bg-gradient-to-t from-black/75 via-black/25 to-transparent px-6 pb-6 pt-24">
-                <span className="flex items-center gap-2.5 font-display text-2xl font-medium tracking-tight md:text-3xl">
-                  <BranchIcon name={b.icon} className="size-5 text-lime md:size-6" />
+              <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 bg-gradient-to-t from-black/75 via-black/25 to-transparent px-4 pb-4 pt-16 sm:px-6 sm:pb-6 sm:pt-24">
+                <span className="flex items-center gap-2 font-display text-lg font-medium leading-tight tracking-tight sm:gap-2.5 sm:text-2xl md:text-3xl">
+                  <BranchIcon name={b.icon} className="size-4 shrink-0 text-lime sm:size-5 md:size-6" />
                   {b.label}
                 </span>
-                <span className="grid size-10 shrink-0 place-items-center rounded-full bg-paper/15 transition-colors group-hover:bg-lime group-hover:text-forest">
+                <span className="hidden size-10 shrink-0 place-items-center rounded-full bg-paper/15 transition-colors group-hover:bg-lime group-hover:text-forest sm:grid">
                   <ArrowIcon className="size-4" />
                 </span>
               </div>
@@ -82,8 +82,8 @@ export default function BranchGallery({ header }: { header: ReactNode }) {
         ))}
         {/* the ninth tile: not a branch but the way in for everyone else */}
         {filter === "alle" && (
-          <li className="sm:col-span-2 lg:col-span-1">
-            <a href="/contact" className="group flex h-full min-h-[320px] flex-col justify-between bg-[#fcbbb9] p-6 text-[#440220] md:p-8">
+          <li className="col-span-2 lg:col-span-1">
+            <a href="/contact" className="group flex h-full min-h-[240px] flex-col justify-between bg-[#fcbbb9] p-6 sm:min-h-[320px] text-[#440220] md:p-8">
               <span className="w-fit rounded-full bg-[#440220] px-3 py-1 text-xs font-semibold text-[#fcbbb9]">Jouw branche</span>
               <span>
                 <span className="block font-display text-3xl font-medium leading-tight tracking-tight md:text-4xl">

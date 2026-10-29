@@ -30,7 +30,7 @@ export default function HypotheekhavenKit() {
   return (
     <Pausable className="grid gap-2 md:grid-cols-[1fr_1fr] md:gap-2.5">
       {/* the maandlasten tool: the steps light up one by one, then the outcome appears */}
-      <Tile label="Rekentool" className="min-h-[380px] md:min-h-0" bg="#f5f0ea">
+      <Tile label="Rekentool" className="min-h-[320px] sm:min-h-[380px] md:min-h-0" bg="#f5f0ea">
         <div className="grid w-[min(92%,520px)] gap-3 sm:grid-cols-[1.3fr_1fr]">
           <div className="flex flex-col gap-2">
             {steps.map((s, i) => (
@@ -55,7 +55,7 @@ export default function HypotheekhavenKit() {
 
       <div className="grid gap-2 sm:grid-cols-2 md:gap-2.5">
         {/* the call to action, pressed, its arrow nudging on */}
-        <Tile label="Knoppen" className="aspect-square">
+        <Tile label="Knoppen" className="min-h-[170px] sm:aspect-square sm:min-h-0">
           <span className="flex h-[50px] items-center gap-3 whitespace-nowrap px-5 text-[14px] font-medium text-white" style={{ background: WINE, ...loop("hhk-press") }}>
             Plan een gratis kennismaking
             <svg viewBox="0 0 16 16" className="size-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" style={loop("hhk-arrow")} aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5" /></svg>
@@ -63,7 +63,7 @@ export default function HypotheekhavenKit() {
         </Tile>
 
         {/* the term: the chosen button moves along */}
-        <Tile label="Looptijd" className="aspect-square">
+        <Tile label="Looptijd" className="min-h-[170px] sm:aspect-square sm:min-h-0">
           <div className="flex flex-wrap justify-center gap-1.5 text-[13px]">
             {terms.map((t, i) => (
               <span key={t} className="flex h-10 w-[74px] items-center justify-center border" style={loop(`hhk-term-${i}`, "steps(1)")}>{t}</span>
@@ -96,7 +96,7 @@ export default function HypotheekhavenKit() {
         </Tile>
 
         {/* annuïtair or lineair: the dark block slides across */}
-        <Tile label="Aflossing" className="min-h-[190px]">
+        <Tile label="Aflossing" className="min-h-[150px] sm:min-h-[190px]">
           <div className="relative flex border text-[13px]" style={{ borderColor: NAVY }}>
             <span className="absolute inset-y-0 left-0 w-1/2" style={{ background: NAVY, ...loop("hhk-switch") }} />
             {["Annuïtair", "Lineair"].map((t, i) => (
@@ -106,7 +106,7 @@ export default function HypotheekhavenKit() {
         </Tile>
 
         {/* the scores, Google and Trustoo in turn */}
-        <Tile label="Reviews" className="min-h-[190px]">
+        <Tile label="Reviews" className="min-h-[150px] sm:min-h-[190px]">
           <div className="relative h-14 w-44 text-center">
             {[["5,0", "op Google"], ["9,8", "op Trustoo"]].map(([score, where], i) => (
               <div key={where} className="absolute inset-0 flex flex-col items-center justify-center" style={loop(`hhk-rev-${i}`, "ease-in-out")}>

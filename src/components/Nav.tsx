@@ -26,8 +26,8 @@ export default function Nav({ theme = "cherry" }: { theme?: "cherry" | "hero" | 
   // gutter + pill padding add up to the Container gutter (24/48/80px), so the logo and the CTA sit on
   // the same lines as the page content below.
   const bar = photo
-    ? "nav-glass mx-auto grid h-[64px] w-full max-w-[calc(var(--site-max)-40px)] grid-cols-[1fr_auto_1fr] items-center rounded-full px-3 md:px-7 xl:px-15"
-    : "mx-auto grid h-[72px] w-full max-w-(--site-max) grid-cols-[1fr_auto_1fr] items-center px-6 md:px-12 xl:px-20";
+    ? "nav-glass mx-auto grid h-[64px] w-full max-w-[calc(var(--site-max)-40px)] grid-cols-[auto_1fr_auto] items-center lg:grid-cols-[1fr_auto_1fr] rounded-full px-3 md:px-7 xl:px-15"
+    : "mx-auto grid h-[72px] w-full max-w-(--site-max) grid-cols-[auto_1fr_auto] items-center lg:grid-cols-[1fr_auto_1fr] px-6 md:px-12 xl:px-20";
   const fg = tokens ? "text-(--hp-fg) hp-t" : "text-brown";
   const link = tokens
     ? "text-(--hp-fg) opacity-90 hover:opacity-100 hp-t"
@@ -53,8 +53,10 @@ export default function Nav({ theme = "cherry" }: { theme?: "cherry" | "hero" | 
           </a>
           {/* over a photo hero the button waits until the hero's own buttons have scrolled away */}
           <NavCta waitForHero={photo}>
-            <Button variant="custom" className={`px-4 py-2 text-[13px] sm:px-5 sm:py-2.5 sm:text-sm ${btn}`} href="/contact">
-              Plan een kennismaking
+            {/* on phones the full label didn't fit next to the logo and the menu button, and was cut off */}
+            <Button variant="custom" className={`whitespace-nowrap px-4 py-2 text-[13px] sm:px-5 sm:py-2.5 sm:text-sm ${btn}`} href="/contact">
+              <span className="sm:hidden">Kennismaken</span>
+              <span className="hidden sm:inline">Plan een kennismaking</span>
             </Button>
           </NavCta>
           <MobileMenu items={menu} hero={tokens} />

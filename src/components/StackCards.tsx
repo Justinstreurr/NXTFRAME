@@ -50,17 +50,17 @@ export default function StackCards({ items, tones = defaultTones }: { items: Sta
                 <p className={`mt-5 max-w-md text-base leading-relaxed md:text-lg ${t.body}`}>{it.body}</p>
                 <a
                   href={it.href}
-                  className="group/l mt-8 inline-flex w-fit items-center gap-2 border-b border-current/40 pb-0.5 text-[15px] font-semibold transition-colors hover:border-current md:mb-auto"
+                  className="group/l relative mt-8 inline-flex w-fit items-center gap-2 border-b border-current/40 pb-0.5 text-[15px] font-semibold transition-colors after:absolute after:inset-x-0 after:-inset-y-2.5 after:content-[''] hover:border-current md:mb-auto"
                 >
                   {it.cta}
                   <ArrowIcon className="size-3.5" />
                 </a>
               </div>
-              <div className="mt-6 flex items-center justify-center md:mt-0 md:w-[42%]">
+              <div className="mt-5 flex items-center justify-center md:mt-0 md:w-[42%]">
                 <img
                   src={it.img}
                   alt=""
-                  className="aspect-square w-full max-w-[190px] rounded-full object-cover sm:max-w-[300px] md:max-w-[340px]"
+                  className="aspect-square w-full max-w-[130px] rounded-full object-cover sm:max-w-[300px] md:max-w-[340px]"
                   style={{ objectPosition: it.pos }}
                   loading="lazy"
                   decoding="async"
