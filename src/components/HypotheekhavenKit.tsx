@@ -14,7 +14,7 @@ const WINE = "#8E4F4B";
 
 function Tile({ label, children, className = "", bg = "#fff" }: { label: string; children: ReactNode; className?: string; bg?: string }) {
   return (
-    <div className={`relative flex flex-col items-center justify-center rounded-[14px] px-4 pb-12 pt-8 text-[#081534] ${className}`} style={{ background: bg }}>
+    <div className={`relative flex h-[340px] w-[82%] shrink-0 snap-start flex-col items-center justify-center rounded-[14px] px-4 pb-12 pt-8 md:h-auto md:w-auto text-[#081534] ${className}`} style={{ background: bg }}>
       <div className="flex flex-1 items-center justify-center">{children}</div>
       <p className="absolute inset-x-0 bottom-5 text-center text-[15px] text-black/50 md:bottom-6 md:text-base">{label}</p>
     </div>
@@ -28,7 +28,9 @@ const terms = ["30 jaar", "25 jaar", "20 jaar", "15 jaar", "10 jaar"];
 
 export default function HypotheekhavenKit() {
   return (
-    <Pausable className="grid gap-2 md:grid-cols-[1fr_1fr] md:gap-2.5">
+    <Pausable>
+      {/* phones: one swipe row, a tile and a half in view; from md the tall tile left and the grid right */}
+      <div className="-mx-6 flex snap-x snap-mandatory scroll-pl-6 gap-2 overflow-x-auto px-6 pb-1 [scrollbar-width:none] md:mx-0 md:grid md:grid-cols-[1fr_1fr] md:gap-2.5 md:overflow-visible md:px-0 md:pb-0 [&::-webkit-scrollbar]:hidden">
       {/* the maandlasten tool: the steps light up one by one, then the outcome appears */}
       <Tile label="Rekentool" className="min-h-[320px] sm:min-h-[380px] md:min-h-0" bg="#f5f0ea">
         <div className="grid w-[min(92%,520px)] gap-3 sm:grid-cols-[1.3fr_1fr]">
@@ -53,7 +55,7 @@ export default function HypotheekhavenKit() {
         </div>
       </Tile>
 
-      <div className="grid gap-2 sm:grid-cols-2 md:gap-2.5">
+      <div className="contents md:grid md:grid-cols-2 md:gap-2.5">
         {/* the call to action, pressed, its arrow nudging on */}
         <Tile label="Knoppen" className="min-h-[170px] sm:aspect-square sm:min-h-0">
           <span className="flex h-[50px] items-center gap-3 whitespace-nowrap px-5 text-[14px] font-medium text-white" style={{ background: WINE, ...loop("hhk-press") }}>
@@ -116,6 +118,7 @@ export default function HypotheekhavenKit() {
             ))}
           </div>
         </Tile>
+      </div>
       </div>
     </Pausable>
   );

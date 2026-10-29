@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 const painArt: { label: string; title: ReactNode; src: string; pos?: string }[] = [
   { label: "Doorgeefluik", title: <>Je site is een <span className="serif-italic">doorgeefluik naar Funda</span></>, src: "/images/pain-mobiel.webp", pos: "50% 40%" },
   { label: "De verkoper", title: <>De verkoper zoekt <span className="serif-italic">iets anders</span></>, src: "/images/segment-makelaars.jpg", pos: "50% 45%" },
-  { label: "Waardebepaling", title: <>Elke waardebepaling <span className="serif-italic">begint met bellen</span></>, src: "/images/makelaardij-laptop.webp", pos: "78% 50%" },
+  { label: "Waardebepaling", title: <>Elke waardebepaling <span className="serif-italic">begint met bellen</span></>, src: "/images/slim-search.webp", pos: "78% 50%" },
 ];
 const pains = makelaars.pains.map((p, i) => ({ ...p, ...painArt[i] }));
 

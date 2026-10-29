@@ -48,7 +48,8 @@
 /* the widest the page content runs, gutters included (Container, nav, footer); change it here only */
 :root { --site-max: 1600px; }
 
-html { scroll-behavior: smooth; }
+/* forest behind the page: what shows when a phone or trackpad bounces past the footer */
+html { scroll-behavior: smooth; background-color: var(--color-forest); }
 body {
   background: var(--color-cream);
   color: var(--color-ink);
@@ -1898,6 +1899,11 @@ html[data-statement-sand] .slim-bg { background-color: var(--color-sand); }
   .lf-dash { stroke-dasharray: none; stroke-opacity: 0; }
   .lf-card { animation: none; transform: translateY(calc(var(--i) * -17px)) scale(calc(1 - var(--i) * 0.05)); z-index: calc(3 - var(--i)); }
 }
+
+/* the search pills floating over the photo card on the branch pages (desktop): each bobs gently, out of step */
+.search-pill { animation: search-bob 5.2s ease-in-out infinite; }
+@keyframes search-bob { 0%, 100% { translate: 0 0; } 50% { translate: 0 -7px; } }
+@media (prefers-reduced-motion: reduce) { .search-pill { animation: none; } }
 
 /* the scrolling browser window in a case hero (CaseWindow with scroll): a thin, quiet scrollbar */
 .case-scroll { scrollbar-width: thin; scrollbar-color: rgb(2 38 30 / 0.25) transparent; }

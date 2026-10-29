@@ -34,15 +34,17 @@ export default function BranchGallery({ header }: { header: ReactNode }) {
         <div className="mt-10 flex flex-wrap items-center justify-between gap-x-8 gap-y-4 border-t border-forest/15 pt-6 md:mt-12">
           <div className="flex flex-wrap items-center gap-2">
             <Label>Filter:</Label>
-            {filters.map((f) => (
+            {filters.filter((f) => f.key !== "live" || live > 0).map((f) => (
               <Pill key={f.key} active={filter === f.key} onClick={() => setFilter(f.key)}>
                 {f.label}
               </Pill>
             ))}
           </div>
-          <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-forest/55">
-            {live} van de {branches.length} concepten live
-          </p>
+          {live > 0 && (
+            <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-forest/55">
+              {live} van de {branches.length} concepten live
+            </p>
+          )}
         </div>
       </Container>
 

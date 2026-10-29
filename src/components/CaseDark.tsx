@@ -4,6 +4,7 @@ import { Container, Eyebrow, TextLink } from "./ui";
 import WorkCases from "./WorkCases";
 import WorkCursor from "./WorkCursor";
 import { CasePhone } from "./CaseStudy";
+import PhoneFrame from "./PhoneFrame";
 import { work } from "./workData";
 import { Deblur, FillWords, Pausable, ScrollLine } from "./CaseDarkFx";
 
@@ -18,9 +19,10 @@ export function CaseDarkHero({ logo, alt, phones }: { logo: string; alt: string;
   return (
     <section data-zone="green" className="px-6 pb-16 pt-32 md:pb-32 md:pt-40">
       <h1><img src={logo} alt={alt} className="mx-auto w-[min(82vw,1040px)]" /></h1>
-      <div className="mx-auto mt-14 grid max-w-4xl grid-cols-3 items-start gap-3 md:mt-20 md:gap-10">
+      {/* phones: the middle one larger in front, the outer two smaller beside it */}
+      <div className="-mx-2 mt-14 grid max-w-4xl grid-cols-[0.8fr_1.25fr_0.8fr] items-start gap-2.5 sm:mx-auto sm:grid-cols-3 md:mt-20 md:gap-10">
         {phones.map((p, i) => (
-          <CasePhone key={p.src} src={p.src} alt={p.alt} className={`ring-1 ring-white/15 ${i === 1 ? "" : "mt-10 md:mt-20"}`} eager />
+          <CasePhone key={p.src} src={p.src} alt={p.alt} className={i === 1 ? "z-10" : "mt-12 md:mt-20"} eager />
         ))}
       </div>
     </section>
@@ -140,9 +142,7 @@ export function CaseDarkDevices({ site, page, desktop, mobile }: { site: string;
         </div>
         <div className="mt-8 w-[62%] md:absolute md:left-0 md:top-[32%] md:mt-0 md:w-[19%]">
           <p className="mb-3 font-mono text-xs uppercase tracking-[0.1em] opacity-70 md:text-[10px]">{site} — mobiel<br /><span className="opacity-60">{page}</span></p>
-          <div className="overflow-hidden rounded-[18px] bg-white shadow-[0_30px_60px_-20px_rgba(0,0,0,0.7)]">
-            <img src={mobile.src} alt={mobile.alt} className="block w-full" loading="lazy" />
-          </div>
+          <PhoneFrame src={mobile.src} alt={mobile.alt} />
         </div>
       </div>
     </Container>

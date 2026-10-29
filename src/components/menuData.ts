@@ -27,7 +27,7 @@ export type Branch = {
 
 export const branches: Branch[] = [
   {
-    slug: "makelaars", name: "makelaars", label: "Makelaars", icon: "house", img: "/images/work-makelaardij.jpg",
+    slug: "makelaars", name: "makelaars", label: "Makelaars", icon: "house", img: "/images/branches-hero-straat.webp",
     title: { lead: "Een website die", italic: "huizen én kopers aantrekt" },
     intro: "Lokaal vindbaar, snel op mobiel, met woningaanbod en een waardebepaling die leads oplevert. Gebouwd voor makelaars.",
     pains: [
@@ -49,7 +49,6 @@ export const branches: Branch[] = [
       { title: "Gevonden in je regio", body: "Een eigen pagina per plaats en per dienst, opgebouwd voor Google en ChatGPT, zodat je kans maakt op 'makelaar' plus de plaatsen waar je werkt." },
       { title: "Leads uit waardebepaling", body: "Een waardebepaling in een paar stappen die verkopers nieuwsgierig maakt, met de uitkomst per mail en de aanvraag bij jou, als je pakket het toelaat ook in je CRM." },
     ],
-    concept: { url: "oosting-makelaardij.vercel.app", img: "/images/work-makelaardij.jpg" },
     price: { from: "4.500", span: "6 tot 10 weken", note: "Inclusief de koppeling met je aanbod en een waardebepaling die leads oplevert." },
     faq: [
       {
@@ -95,7 +94,7 @@ export const branches: Branch[] = [
     ],
   },
   {
-    slug: "horeca", name: "horeca", label: "Horeca", icon: "cup", img: "/images/tile-10.jpg",
+    slug: "horeca", name: "horeca", label: "Horeca", icon: "cup", img: "/images/prijzen-hero.webp",
     title: { lead: "Een website die", italic: "tafels vult" },
     intro: "Reserveren in drie tikken, een menukaart die goed leest op een telefoon en een Google-profiel dat klopt.",
     pains: [
@@ -201,7 +200,7 @@ export const branches: Branch[] = [
     ],
   },
   {
-    slug: "financieel-advies", name: "financieel adviseurs", label: "Financieel advies", icon: "chart", img: "/images/tile-14.jpg",
+    slug: "financieel-advies", name: "financieel adviseurs", label: "Financieel advies", icon: "chart", img: "/images/advies-hero.webp",
     title: { lead: "Een website die", italic: "vertrouwen wekt en leads oplevert" },
     intro: "Voor hypotheekadviseurs, accountants en planners. Helder over wat je doet, met een eerste stap die weinig moeite kost.",
     pains: [
@@ -264,7 +263,7 @@ export const branches: Branch[] = [
     ],
   },
   {
-    slug: "bouw-en-installatie", name: "bouw- en installatiebedrijven", label: "Bouw en installatie", icon: "wrench", img: "/images/ladder.jpg",
+    slug: "bouw-en-installatie", name: "bouw- en installatiebedrijven", label: "Bouw en installatie", icon: "wrench", img: "/images/mascot-build.webp",
     title: { lead: "Een website die", italic: "offertes binnenhaalt" },
     intro: "Voor aannemers, installateurs en vakmensen. Laat je werk zien en maak het aanvragen van een offerte simpel.",
     pains: [
@@ -315,7 +314,7 @@ export const branches: Branch[] = [
     ],
   },
   {
-    slug: "zorg-en-praktijken", name: "zorgpraktijken", label: "Zorg en praktijken", icon: "heart", img: "/images/woman-cup.jpg",
+    slug: "zorg-en-praktijken", name: "zorgpraktijken", label: "Zorg en praktijken", icon: "heart", img: "/images/slim-choice.webp",
     title: { lead: "Een website die", italic: "rust geeft en afspraken maakt" },
     intro: "Voor tandartsen, fysiotherapeuten, psychologen en andere praktijken. Een site die ook je oudere patiënten zonder hulp kunnen gebruiken.",
     pains: [
@@ -366,7 +365,7 @@ export const branches: Branch[] = [
     ],
   },
   {
-    slug: "beauty-en-wellness", name: "beauty- en wellnessondernemers", label: "Beauty en wellness", icon: "sparkle", img: "/images/talent.jpg",
+    slug: "beauty-en-wellness", name: "beauty- en wellnessondernemers", label: "Beauty en wellness", icon: "sparkle", img: "/images/slim-palette.webp",
     title: { lead: "Een website die", italic: "je agenda vult" },
     intro: "Voor salons, studio's en spa's. Een site met de sfeer van je zaak, waar klanten zelf online een plek boeken.",
     pains: [
@@ -417,7 +416,7 @@ export const branches: Branch[] = [
     ],
   },
   {
-    slug: "coaches-en-adviseurs", name: "coaches en adviseurs", label: "Coaches en adviseurs", icon: "chat", img: "/images/burnout.jpg",
+    slug: "coaches-en-adviseurs", name: "coaches en adviseurs", label: "Coaches en adviseurs", icon: "chat", img: "/images/over-mascot.webp",
     title: { lead: "Een website die", italic: "je aanbod uitlegt en gesprekken oplevert" },
     intro: "Voor coaches, trainers en consultants. Een site die klinkt zoals jij, met een aanbod dat mensen ook zonder gesprek begrijpen.",
     pains: [
@@ -496,9 +495,9 @@ export const menu: MenuItem[] = [
     listLabel: "Per branche",
     cardsLabel: "Uitgelicht",
     cards: [
-      { title: "Makelaars", body: "Woningaanbod, waardebepaling en lokaal gevonden worden.", href: "/makelaars", img: "/images/work-makelaardij.jpg", tag: "Concept live" },
+      { title: "Makelaars", body: "Woningaanbod, waardebepaling en lokaal gevonden worden.", href: "/makelaars", img: "/images/branches-hero-straat.webp" },
       { title: "Webshops", body: "Productpagina's die overtuigen en een checkout zonder afhakers.", href: "/branches/webshops", img: "/images/happyflops-hero-2.jpg" },
-      { title: "Horeca", body: "Reserveren in drie tikken en een menukaart die leest op een telefoon.", href: "/branches/horeca", img: "/images/horeca-booth.webp", pos: "40% 55%" },
+      { title: "Horeca", body: "Reserveren in drie tikken en een menukaart die leest op een telefoon.", href: "/branches/horeca", img: "/images/prijzen-hero.webp", pos: "50% 40%" },
     ],
     links: branches.map((b) => ({ label: b.label, href: branchHref(b), icon: b.icon })),
   },
@@ -510,12 +509,10 @@ export const menu: MenuItem[] = [
     cards: [
       { title: "Happy Flops", body: "Een webshop die net zo lekker loopt als de slippers.", href: "/werk/happy-flops", img: "/images/happyflops-mockup.jpg", pos: "50% 62%", tag: "Klant" },
       { title: "Hypotheekhaven", body: "Van hypotheekadvies naar een site die afspraken oplevert.", href: "/werk/hypotheekhaven", img: "/images/hypotheekhaven-fauteuil.webp", pos: "70% 55%", tag: "Klant" },
-      { title: "Makelaardij", body: "Woningaanbod, lokale vindbaarheid en reviews in één werkend concept.", href: "https://oosting-makelaardij.vercel.app/", img: "/images/makelaardij-mockup.webp", pos: "50% 42%", tag: "Concept", external: true },
     ],
     links: [
       { label: "Alle cases", href: "/werk", icon: "grid" },
       { label: "Concepten per branche", href: "/branches", icon: "layout" },
-      { label: "Bekijk een concept live", href: "https://oosting-makelaardij.vercel.app/", icon: "eye", external: true },
     ],
   },
   {
@@ -524,8 +521,8 @@ export const menu: MenuItem[] = [
     listLabel: "Wat ik doe",
     cardsLabel: "Meest gevraagd",
     cards: [
-      { title: "Website laten maken", body: "Van strategie tot lancering. Snel, vindbaar en gebouwd rond jouw klant.", href: "/website-laten-maken", img: "/images/workflow.jpg" },
-      { title: "Redesign", body: "Je huidige site opnieuw gebouwd, zonder verlies van vindbaarheid.", href: "/website-redesign", img: "/images/laptop.jpg" },
+      { title: "Website laten maken", body: "Van strategie tot lancering. Snel, vindbaar en gebouwd rond jouw klant.", href: "/website-laten-maken", img: "/images/happyflops-laptop-hands.webp" },
+      { title: "Redesign", body: "Je huidige site opnieuw gebouwd, zonder verlies van vindbaarheid.", href: "/website-redesign", img: "/images/andere-tijd.webp" },
       { title: "Vindbaar in Google en AI", body: "Structuur en content die Google én ChatGPT begrijpen.", href: "/vindbaar-in-google-en-chatgpt", img: "/images/slim-search.webp", pos: "48% 50%" },
     ],
     links: [

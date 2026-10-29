@@ -15,8 +15,8 @@ export const metadata = {
   description: "Hoe ik de Shopify-webshop van Happy Flops opnieuw opbouwde, met de telefoon als uitgangspunt. Een case van NXT Frame.",
 };
 
-/* The Happy Flops case, in the layout of CaseDark (after Instrument's Nike case): black, then forest
-   green, cream, black and lime to the end. PLACEHOLDERS: the texts are a first version for Happy Flops
+/* The Happy Flops case, in the layout of CaseDark (after Instrument's Nike case): black, then wine,
+   the NXT pink, black and lime to the end (no forest: the owner prefers the pink and wine here). PLACEHOLDERS: the texts are a first version for Happy Flops
    to check. */
 
 const shot = (n: string) => `/images/cases/happy-flops/${n}.webp`;
@@ -44,7 +44,7 @@ export default function Page() {
 
         <CaseDarkTitle>Een webshop zo zacht als de slippers</CaseDarkTitle>
 
-        <BgMark bg="#02261e" fg="#f7f1e8" />
+        <BgMark bg="#440220" fg="#fcbbb9" />
 
         <CaseDarkMonitor src={shot("d-home-full")} alt="De homepage van Happy Flops op een beeldscherm" />
 
@@ -70,7 +70,7 @@ export default function Page() {
           <HappyFlopsKit />
         </Container>
 
-        <BgMark bg="#f7f1e8" fg="#02261e" />
+        <BgMark bg="#fcbbb9" fg="#440220" />
 
         <CaseDarkStatement lead="Het systeem:">Vaste bouwstenen, zodat elke nieuwe collectie er meteen uitziet als Happy Flops.</CaseDarkStatement>
 

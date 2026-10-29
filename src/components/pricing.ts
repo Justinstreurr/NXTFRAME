@@ -4,7 +4,7 @@ export const tiers = [
   {
     name: "Landingspagina",
     from: "1.950",
-    img: "/images/laptop.jpg",
+    img: "/images/advies-hero.webp",
     time: "3 tot 4 weken",
     body: "Eén pagina, één doel. Voor een campagne, een dienst of een branche.",
     items: ["Strategie en tekststructuur", "Ontwerp op maat", "Formulier of afsprakenplanner", "Gericht op één zoekvraag"],
@@ -12,7 +12,7 @@ export const tiers = [
   {
     name: "Website",
     from: "4.500",
-    img: "/images/tile-14.jpg",
+    img: "/images/hypotheekhaven-fauteuil.webp",
     time: "6 tot 10 weken",
     body: "De complete site voor een bedrijf dat gevonden wil worden en aanvragen wil.",
     items: ["Alles van de landingspagina", "5 tot 12 pagina's, elk met een doel", "Vindbaar in Google en AI", "Zelf te beheren", "Aangemeld bij Google en Bing"],

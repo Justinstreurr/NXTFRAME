@@ -18,7 +18,7 @@ import LetterFill from "./LetterFill";
 import BranchIcon from "./BranchIcons";
 import WorkCases from "./WorkCases";
 import DarkOnArrive from "./DarkOnArrive";
-import { FrameGlyph } from "./Logo";
+import { FrameCorners, FrameGlyph } from "./Logo";
 import { work } from "./workData";
 import { services, type ServiceCard } from "./services";
 import SmartBento from "./SmartBento";
@@ -238,12 +238,12 @@ const stories = [
   {
     brand: "Colgate-Palmolive",
     title: "“A brand that better reflects our purpose:” How Superside became Colgate-Palmolive’s strategic creative partner",
-    img: "/images/tile-2.jpg",
+    img: "/images/happyflops-hero-2.jpg",
   },
   {
     brand: "Mekanism",
     title: "“Bringing in the AI perspective”: Why Mekanism chose Superside as a partner for their AI journey",
-    img: "/images/tile-5.jpg",
+    img: "/images/hypotheekhaven-fauteuil.webp",
   },
 ];
 
@@ -477,11 +477,15 @@ const reviews = [
   {
     name: "Happy Flops",
     role: "Eigenaar, Happy Flops",
+    logo: "/images/happy-flops-logo.png",
+    href: "/werk/happy-flops",
     quote: "De nieuwe webshop laadt snel, ook op mobiel, en het afrekenen gaat in een paar tikken. Justin dacht mee als ondernemer, niet alleen als bouwer. Dat zie je terug in de bestellingen.",
   },
   {
     name: "Sabrina",
     role: "Hypotheekadviseur, Hypotheekhaven",
+    logo: "/images/hypotheekhaven-logo.svg",
+    href: "/werk/hypotheekhaven",
     quote: "Justin vertaalde mijn persoonlijke manier van werken naar een site die rust en vertrouwen uitstraalt. Klanten weten na het lezen al wie ik ben en plannen makkelijker een gesprek. En als ik iets wilde aanpassen, was het snel geregeld.",
   },
 ];
@@ -499,19 +503,35 @@ export function Testimonials({ dark = false }: { dark?: boolean } = {}) {
         <h2 className={`mt-6 t-section md:mt-8 ${dark ? "text-cream" : "text-brown"}`}>
           Wat klanten <span className={`serif-italic ${dark ? "text-[#fcbbb9]" : ""}`}>erover zeggen</span>
         </h2>
-        <div className="mt-12 grid gap-5 md:mt-16 md:grid-cols-2">
-          {reviews.map((r, i) => (
-            <figure key={i} className="relative flex flex-col justify-between rounded-3xl bg-paper p-8 md:p-10">
-              <FrameGlyph className="size-5 text-forest" />
-              <blockquote className="mt-6 font-display text-xl leading-snug tracking-tight text-brown md:text-[28px]">
+        {/* two quiet cards in the house style: the brand's frame corners in lime, five stars and the
+            client's logo on top, the quote in body type (not a display size), and who said it with the
+            way to their case at the foot */}
+        <div className="mt-10 grid gap-4 md:mt-14 md:grid-cols-2 md:gap-5">
+          {reviews.map((r) => (
+            <figure
+              key={r.name}
+              className={`relative flex flex-col rounded-[14px] p-6 md:p-8 ${dark ? "bg-white/[0.05] ring-1 ring-white/10" : "bg-paper ring-1 ring-forest/10"}`}
+            >
+              <FrameCorners className={dark ? "text-lime" : "text-forest"} corners="diagonal" size="size-4" inset="inset-3" />
+              <div className="flex items-center justify-between gap-4">
+                <span className={`flex gap-0.5 ${dark ? "text-lime" : "text-forest"}`} role="img" aria-label="5 van 5 sterren">
+                  {[0, 1, 2, 3, 4].map((s) => (
+                    <svg key={s} viewBox="0 0 20 20" className="size-4" fill="currentColor" aria-hidden="true">
+                      <path d="M10 1.8l2.4 5 5.4.7-4 3.8 1 5.4L10 14.1l-4.8 2.6 1-5.4-4-3.8 5.4-.7z" />
+                    </svg>
+                  ))}
+                </span>
+                <img src={r.logo} alt={r.name} className={`h-4 w-auto brightness-0 md:h-5 ${dark ? "invert opacity-80" : "opacity-70"}`} loading="lazy" />
+              </div>
+              <blockquote className={`mt-5 flex-1 text-[17px] leading-relaxed md:text-lg ${dark ? "text-cream/90" : "text-brown/85"}`}>
                 &ldquo;{r.quote}&rdquo;
               </blockquote>
-              <figcaption className="mt-8 flex items-center gap-4">
-                <span className="size-11 rounded-full bg-pink/60" aria-hidden="true" />
+              <figcaption className={`mt-6 flex flex-wrap items-end justify-between gap-x-6 gap-y-3 border-t pt-5 ${dark ? "border-white/10" : "border-forest/10"}`}>
                 <span>
-                  <span className="block font-semibold text-brown">{r.name}</span>
-                  <span className="block text-sm text-brown/60">{r.role}</span>
+                  <span className={`block font-semibold ${dark ? "text-cream" : "text-brown"}`}>{r.name}</span>
+                  <span className={`block text-sm ${dark ? "text-cream/60" : "text-brown/60"}`}>{r.role}</span>
                 </span>
+                <TextLink light={dark} href={r.href}>Bekijk de case</TextLink>
               </figcaption>
             </figure>
           ))}
@@ -649,10 +669,10 @@ export function Platform({
 const segments: Segment[] = [
   { label: "Makelaars", icon: "house", title: "Lokaal gevonden, meer bezichtigingen", tags: ["woningaanbod", "waardebepaling", "lokale SEO"], img: "/images/segment-makelaars.jpg", href: "/makelaars" },
   { label: "Webshops", icon: "bag", title: "Snel laden, meer bestellingen", tags: ["productpagina's", "checkout", "AI-vindbaar"], img: "/images/happyflops-hero-3.jpg", href: "/branches/webshops" },
-  { label: "Adviseurs", icon: "chart", title: "Vertrouwen vóór het eerste gesprek", tags: ["hypotheek", "financieel", "juridisch"], img: "/images/tile-14.jpg", href: "/financieel-advies" },
-  { label: "Horeca", icon: "cup", title: "Van zoekopdracht naar reservering", tags: ["reserveren", "menukaart", "Google-profiel"], img: "/images/tile-10.jpg", href: "/branches/horeca" },
-  { label: "Coaches en trainers", icon: "chat", title: "Van volger naar klant", tags: ["programma's", "boekingen", "persoonlijk merk"], img: "/images/woman-cup.jpg", href: "/branches/coaches-en-adviseurs" },
-  { label: "Bouw en installatie", icon: "wrench", title: "Offerteaanvragen die binnenkomen", tags: ["projecten", "offerte", "regio's"], img: "/images/ladder.jpg", href: "/branches/bouw-en-installatie" },
+  { label: "Adviseurs", icon: "chart", title: "Vertrouwen vóór het eerste gesprek", tags: ["hypotheek", "financieel", "juridisch"], img: "/images/advies-hero.webp", href: "/financieel-advies" },
+  { label: "Horeca", icon: "cup", title: "Van zoekopdracht naar reservering", tags: ["reserveren", "menukaart", "Google-profiel"], img: "/images/prijzen-hero.webp", href: "/branches/horeca" },
+  { label: "Coaches en trainers", icon: "chat", title: "Van volger naar klant", tags: ["programma's", "boekingen", "persoonlijk merk"], img: "/images/slim-palette.webp", href: "/branches/coaches-en-adviseurs" },
+  { label: "Bouw en installatie", icon: "wrench", title: "Offerteaanvragen die binnenkomen", tags: ["projecten", "offerte", "regio's"], img: "/images/mascot-build.webp", href: "/branches/bouw-en-installatie" },
 ];
 
 export function Difference({
@@ -661,7 +681,7 @@ export function Difference({
       Gebouwd rond <span className="serif-italic">jouw branche</span>
     </>
   ),
-  lead = "Een makelaar heeft andere vragen dan een restaurant. Per branche weet ik wat de site moet doen, en voor de meeste staat een werkend concept online.",
+  lead = "Een makelaar heeft andere vragen dan een restaurant. Per branche weet ik wat de site moet doen.",
   exclude,
 }: {
   title?: React.ReactNode;

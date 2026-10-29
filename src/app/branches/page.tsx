@@ -13,12 +13,11 @@ import { Button, Container, Eyebrow, TextLink } from "@/components/ui";
 export const metadata: Metadata = {
   title: "Websites per branche | Makelaars, horeca, webshops en meer | NXT Frame",
   description:
-    "Een website gebouwd rond jouw branche: makelaars, horeca, webshops, adviseurs, bouw, zorg, beauty en coaches. Per branche lees je wat de site moet doen, en voor makelaars staat een werkend concept online.",
+    "Een website gebouwd rond jouw branche: makelaars, horeca, webshops, adviseurs, bouw, zorg, beauty en coaches. Per branche lees je wat de site moet doen, en hoe ik dat voor jou bouw.",
   alternates: { canonical: "/branches" },
 };
 
 /* how many branches have a concept site online; the copy below follows this number, so it never claims more than there is */
-const live = branches.filter((b) => b.concept);
 
 /* why a site per branch beats a template with another logo: three cards that stack while you scroll, as
    "Wat je krijgt" on the homepage (StackCards) */
@@ -36,9 +35,9 @@ const reasons: StackCard[] = [
     cta: "Bekijk de aanpak", href: "/aanpak",
   },
   {
-    label: "Testbaar", img: "/images/slim-desk.webp", pos: "50% 18%",
+    label: "Vooraf helder", img: "/images/slim-desk.webp", pos: "50% 18%",
     title: <>Zien <span className="serif-italic">voordat je beslist</span></>,
-    body: "Staat het concept van jouw branche live, dan open je het op je telefoon, klik je erdoorheen en voel je hoe snel het laadt. Bij de andere branches lees je per pagina precies wat de site gaat doen.",
+    body: "Per branche lees je precies wat de site gaat doen, en in de cases zie je hoe het eruitziet als het af is: open ze op je telefoon en voel hoe snel ze laden.",
     cta: "Bekijk het werk", href: "/werk",
   },
 ];
@@ -53,7 +52,7 @@ const reasonTones: StackTone[] = [
 /* from branch page to your own site, in three steps on the zigzag path (Platform) */
 const steps: PathStep[] = [
   { title: "Kies je branche", body: "Bekijk de pagina die bij jouw vak hoort, of het dichtst in de buurt komt.", Icon: MapIcon },
-  { title: "Kijk wat de site moet doen", body: "Je leest wat er nu misgaat, wat de site oplost en wat het kost. Staat het concept live, dan test je het zelf.", Icon: PenIcon },
+  { title: "Kijk wat de site moet doen", body: "Je leest wat er nu misgaat, wat de site oplost en wat het kost.", Icon: PenIcon },
   { title: "Ik bouw jouw versie", body: "Met je eigen naam, aanbod en werkgebied. De branchepagina geeft de basis, de kennismaking de rest.", Icon: LaunchIcon },
 ];
 
@@ -93,7 +92,7 @@ export default function Page() {
                   <TextLink light href="#branches">Bekijk de branches</TextLink>
                 </div>
                 <ul className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 font-display text-[15px] text-paper/90">
-                  {[`${branches.length} branches`, live.length === 1 ? "1 concept live" : `${live.length} concepten live`, "Gebouwd door één maker"].map((t) => (
+                  {[`${branches.length} branches`, "Een plan per branche", "Gebouwd door één maker"].map((t) => (
                     <li key={t} className="flex items-center gap-2">
                       <FrameGlyph className="size-3 text-lime" />
                       {t}
@@ -129,7 +128,7 @@ export default function Page() {
                   </h2>
                 </div>
                 <p className="max-w-md text-forest/75 t-lead">
-                  Op elke pagina staat wat een site in die branche moet doen. Waar een concept live staat, kun je het zelf openen en testen.
+                  Op elke pagina staat wat een site in die branche moet doen.
                 </p>
               </div>
             }

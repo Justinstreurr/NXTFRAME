@@ -86,10 +86,12 @@ export default function Hero() {
               </span>
             </h1>
             <p className="mt-6 max-w-lg text-cream/80 t-lead">
-              Vindbaar in Google en ChatGPT, snel op elk scherm en gebouwd om aanvragen op te leveren. Je werkt direct met de maker, niet met een bureau.
+              Vindbaar in Google en ChatGPT, snel op elk scherm en gebouwd om aanvragen op te leveren.
+              {/* phones keep the hero to the promise; the second line comes from sm up */}
+              <span className="hidden sm:inline"> Je werkt direct met de maker, niet met een bureau.</span>
             </p>
             {/* one line of proof under the promise; PLACEHOLDERS until the real Happy Flops numbers are in */}
-            <ul className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2 text-[15px] font-medium text-cream/90">
+            <ul className="mt-7 hidden flex-wrap items-center gap-x-6 gap-y-2 text-[15px] font-medium text-cream/90 sm:flex">
               {["0,9 s laadtijd", "100 PageSpeed", "Vindbaar in Google en AI"].map((t, i) => (
                 <li key={t} className="flex items-center gap-2" style={{ "--i": i } as React.CSSProperties}>
                   <span className="proof-glyph inline-flex"><FrameGlyph className="size-3 text-lime" /></span>
@@ -122,7 +124,7 @@ export default function Hero() {
             <LogoTicker logos={logos} />
             <a
               href="/contact"
-              className="group inline-flex items-center gap-2 rounded-full border border-dashed border-cream/35 px-4 py-2 text-sm font-medium text-cream/75 transition-colors hover:border-lime hover:bg-lime hover:text-forest"
+              className="group hidden items-center gap-2 rounded-full border border-dashed border-cream/35 px-4 py-2 text-sm font-medium text-cream/75 transition-colors hover:border-lime hover:bg-lime hover:text-forest sm:inline-flex"
             >
               Jouw merk hier?
               <ArrowIcon className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

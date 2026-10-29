@@ -105,7 +105,7 @@ const honest: StackCard[] = [
     cta: "Bekijk de aanpak", href: "/aanpak",
   },
   {
-    label: "Tijd", img: "/images/ladder.jpg", pos: "45% 40%",
+    label: "Tijd", img: "/images/prijzen-hero.webp", pos: "50% 40%",
     title: <>Vindbaarheid <span className="serif-italic">groeit mee</span></>,
     body: "Een nieuwe pagina staat niet de volgende dag bovenaan. Vindbaarheid bouw je op, met elke pagina en elke vraag die je beantwoordt. Daarom hoort het bij doorontwikkeling na de lancering.",
     cta: "Bekijk de prijzen", href: "/prijzen",

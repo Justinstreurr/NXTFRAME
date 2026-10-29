@@ -62,7 +62,7 @@ const list: Service[] = [
     id: "landingspaginas", icon: "grid", title: "Landingspagina's",
     lead: "Eén pagina, één doel. Voor een campagne, een dienst of een branche, en gericht op die ene stap die je bezoeker moet zetten.",
     items: ["Strategie en tekststructuur", "Ontwerp op maat", "Formulier of afsprakenplanner", "Ingericht op één zoekvraag"],
-    img: "/images/laptop.jpg", pos: "50% 50%", alt: "Een laptop met een landingspagina op een bureau",
+    img: "/images/advies-hero.webp", pos: "50% 50%", alt: "Een landingspagina van Hypotheekhaven op een telefoon",
     price: tier("Landingspagina") && { from: tier("Landingspagina")!.from, time: tier("Landingspagina")!.time },
     link: { href: "/landingspagina-laten-maken", label: "Alles over een landingspagina laten maken" },
   },

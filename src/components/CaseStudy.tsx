@@ -4,6 +4,7 @@ import CaseReel, { type ReelTile } from "./CaseReel";
 import CountUp from "./CountUp";
 import { work } from "./workData";
 import { ArrowIcon, Button, Container, Marquee } from "./ui";
+import PhoneFrame from "./PhoneFrame";
 
 /* ---------- The case page, one shape for every case (Happy Flops is the first) ----------
    Learnt from four top cases: Webfluencer's Lake Cycling (an inset photo hero with pills, the story as
@@ -108,11 +109,7 @@ export function CaseWindow({ url, src, alt = "", className = "", scroll = false,
 
 /** a phone with a screenshot of the live site */
 export function CasePhone({ src, alt = "", className = "", eager = false }: { src: string; alt?: string; className?: string; eager?: boolean }) {
-  return (
-    <div className={`overflow-hidden rounded-[2.2rem] border-[7px] border-[#111] bg-[#111] shadow-[0_40px_70px_-28px_rgba(0,0,0,0.6)] ${className}`}>
-      <img src={src} alt={alt} className="block w-full rounded-[1.75rem]" loading={eager ? "eager" : "lazy"} decoding="async" />
-    </div>
-  );
+  return <PhoneFrame src={src} alt={alt} className={className} eager={eager} />;
 }
 
 /** the coloured ground a visual stands on, full width of the container */

@@ -45,9 +45,9 @@ export const stepsFor = (intake: string): PathStep[] => [
 
 export const branchPages: Record<string, BranchPageData> = {
   horeca: {
-    hero: { src: "/images/horeca-booth.webp", alt: "Een gedekte tafel in een warme restaurantnis, met wijn en gerechten", pos: "40% 55%" },
+    hero: { src: "/images/prijzen-hero.webp", alt: "De NXT Frame-mascotte aan een laptop in een café", pos: "50% 40%" },
     painArt: [
-      { label: "Menukaart", title: <>Je menukaart is {i("een pdf")}</>, src: "/images/tile-10.jpg" },
+      { label: "Menukaart", title: <>Je menukaart is {i("een pdf")}</>, src: "/images/slim-search.webp" },
       { label: "Reserveren", title: <>Reserveringen komen {i("binnen via DM")}</>, src: "/images/pain-mobiel.webp", pos: "50% 40%" },
       { label: "Google", title: <>Google heeft {i("verouderde informatie")}</>, src: "/images/herkenbaar-2.webp", pos: "50% 28%" },
     ],
@@ -74,7 +74,7 @@ export const branchPages: Record<string, BranchPageData> = {
   },
 
   webshops: {
-    hero: { src: "/images/happyflops-hero-3.jpg", alt: "Roze slippers van Happy Flops aan twee voeten in een spijkerbroek" },
+    hero: { src: "/images/happyflops-laptop-hands.webp", alt: "De webshop van Happy Flops op een roze laptop, in twee handen", pos: "50% 45%" },
     painArt: [
       { label: "Snelheid", title: <>Je shop laadt {i("traag op 4G")}</>, src: "/images/traag-mobiel.webp", pos: "58% 50%" },
       { label: "Checkout", title: <>Bezoekers haken af {i("in de checkout")}</>, src: "/images/happyflops-phones.jpg" },
@@ -103,7 +103,7 @@ export const branchPages: Record<string, BranchPageData> = {
   },
 
   "bouw-en-installatie": {
-    hero: { src: "/images/ladder.jpg", alt: "Een man op een groene trap met een laptop op schoot", pos: "50% 30%" },
+    hero: { src: "/images/mascot-build.webp", alt: "De NXT Frame-mascotte bouwt een website van blokken", pos: "50% 35%" },
     painArt: [
       { label: "Je werk", title: <>Je beste werk staat {i("op je telefoon")}</>, src: "/images/pain-mobiel.webp", pos: "50% 40%" },
       { label: "Offertes", title: <>Offertes lopen via de telefoon {i("tijdens het werk")}</>, src: "/images/traag-mobiel.webp", pos: "58% 50%" },
@@ -132,7 +132,7 @@ export const branchPages: Record<string, BranchPageData> = {
   },
 
   "zorg-en-praktijken": {
-    hero: { src: "/images/woman-cup.jpg", alt: "Een vrouw met een kop koffie in de zon", pos: "50% 30%" },
+    hero: { src: "/images/slim-choice.webp", alt: "De NXT Frame-mascotte aan het werk in een bloeiende weide", pos: "50% 40%" },
     painArt: [
       { label: "De telefoon", title: <>De telefoon gaat {i("de hele ochtend")}</>, src: "/images/pain-mobiel.webp", pos: "50% 40%" },
       { label: "Aanmelden", title: <>Nieuwe patiënten weten niet {i("of je plek hebt")}</>, src: "/images/herkenbaar-2.webp", pos: "50% 28%" },
@@ -160,10 +160,10 @@ export const branchPages: Record<string, BranchPageData> = {
   },
 
   "beauty-en-wellness": {
-    hero: { src: "/images/tile-13.jpg", alt: "Een hand met ringen en armbanden in zacht licht" },
+    hero: { src: "/images/slim-palette.webp", alt: "De NXT Frame-mascotte met kleurstalen in de hand", pos: "50% 40%" },
     painArt: [
       { label: "Instagram", title: <>Je bio-link is {i("je website")}</>, src: "/images/pain-mobiel.webp", pos: "50% 40%" },
-      { label: "Je agenda", title: <>Gaten in je agenda zie je {i("pas 's avonds")}</>, src: "/images/talent.jpg" },
+      { label: "Je agenda", title: <>Gaten in je agenda zie je {i("pas 's avonds")}</>, src: "/images/slim-desk.webp" },
       { label: "Nieuwe klanten", title: <>Nieuwe klanten vinden je alleen {i("als ze je al volgen")}</>, src: "/images/herkenbaar-2.webp", pos: "50% 28%" },
     ],
     features: [
@@ -188,9 +188,9 @@ export const branchPages: Record<string, BranchPageData> = {
   },
 
   "coaches-en-adviseurs": {
-    hero: { src: "/images/talent.jpg", alt: "Drie zelfverzekerde mensen met zonnebrillen in de zon", pos: "50% 30%" },
+    hero: { src: "/images/over-mascot.webp", alt: "De NXT Frame-mascotte op de bank met een laptop", pos: "50% 40%" },
     painArt: [
-      { label: "Je aanbod", title: <>Je aanbod is niet te begrijpen {i("zonder gesprek")}</>, src: "/images/burnout.jpg" },
+      { label: "Je aanbod", title: <>Je aanbod is niet te begrijpen {i("zonder gesprek")}</>, src: "/images/hero-hill-v1.webp" },
       { label: "Kennismakingen", title: <>Kennismakingen die {i("nooit iets worden")}</>, src: "/images/pain-mobiel.webp", pos: "50% 40%" },
       { label: "LinkedIn", title: <>Je beste inzichten {i("verdwijnen in LinkedIn")}</>, src: "/images/herkenbaar-2.webp", pos: "50% 28%" },
     ],

@@ -27,7 +27,7 @@ export const work: WorkItem[] = [
   {
     name: "Happy Flops", kind: "Klant", tags: "Webshop, branding, vindbaarheid", short: "Een webshop die verkoopt",
     headline: "Een webshop met een eigen gezicht, gebouwd om gevonden te worden.",
-    img: "/images/happyflops-mockup.jpg", pos: "50% 62%", href: "/werk/happy-flops",
+    img: "/images/happyflops-fold.webp", pos: "50% 45%", href: "/werk/happy-flops",
     cover: { src: "/images/happyflops-hero-2.jpg", pos: "50% 55%" },
     result: "+40% bestellingen",
   },
@@ -39,27 +39,21 @@ export const work: WorkItem[] = [
     result: "2x meer afspraken",
   },
   {
-    name: "Makelaardij", kind: "Concept", tags: "Woningaanbod, lokale vindbaarheid, reviews", short: "Lokaal gevonden",
-    headline: "Woningaanbod, lokale vindbaarheid en reviews in één werkend concept.",
-    img: "/images/makelaardij-mockup.webp", pos: "50% 42%", href: "https://oosting-makelaardij.vercel.app/",
-    result: "0,8 s laadtijd",
-  },
-  {
     name: "Horeca", kind: "Concept", tags: "Reserveren, menukaart, Google-profiel", short: "Van zoeken naar reserveren",
     headline: "Reserveren, de menukaart en het Google-profiel, klaar om te testen.",
-    img: "/images/horeca-booth.webp", pos: "40% 55%", href: "/branches/horeca",
+    img: "/images/prijzen-hero.webp", pos: "40% 55%", href: "/branches/horeca",
     result: "Reserveren in 3 tikken",
   },
   {
     name: "Bouw en installatie", kind: "Concept", tags: "Projecten, offerte, regio's", short: "Offertes die binnenkomen",
     headline: "Een site die offerteaanvragen binnenhaalt, met foto-upload vanaf de bouwplaats.",
-    img: "/images/ladder.jpg", href: "/branches/bouw-en-installatie",
+    img: "/images/mascot-build.webp", href: "/branches/bouw-en-installatie",
     result: "Offerte in 1 minuut",
   },
   {
     name: "Zorg en praktijken", kind: "Concept", tags: "Afspraken, toegankelijkheid", short: "Rust vanaf de eerste blik",
     headline: "Een rustige site waar patiënten zelf online een afspraak maken.",
-    img: "/images/woman-cup.jpg", href: "/branches/zorg-en-praktijken",
+    img: "/images/slim-choice.webp", href: "/branches/zorg-en-praktijken",
     result: "Afspraak in 3 tikken",
   },
 ];

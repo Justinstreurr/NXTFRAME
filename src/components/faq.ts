@@ -30,6 +30,6 @@ export const faq = [
   },
   {
     q: "Werk je ook voor mijn branche?",
-    a: "Ik bouw websites voor makelaars, horeca, webshops, financieel adviseurs, bouw- en installatiebedrijven, zorgpraktijken, beauty en wellness, en coaches. Voor de meeste branches staat een werkend concept online dat je zelf kunt testen.",
+    a: "Ik bouw websites voor makelaars, horeca, webshops, financieel adviseurs, bouw- en installatiebedrijven, zorgpraktijken, beauty en wellness, en coaches. Per branche staat beschreven wat de site moet doen.",
   },
 ];

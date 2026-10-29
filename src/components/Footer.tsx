@@ -42,7 +42,9 @@ export default function Footer({ cta = true, flat = false }: { cta?: boolean; fl
   return (
     // overflow-x-clip, not overflow-hidden: a hidden overflow would turn this into a scroll box and
     // stop the call to action from sticking
-    <div className="relative overflow-x-clip bg-cream" data-zone="green">
+    // the ground behind the panel's rounded shoulders and side gutters: the lime of the call to action
+    // above it (cream on /contact, which has no call to action)
+    <div className={`relative overflow-x-clip ${cta ? "bg-lime" : "bg-cream"}`} data-zone="green">
 
       {/* Final CTA: a lime field that stays put while the footer panel slides up over it */}
       {cta && <section className={`footer-cta ${flat ? "footer-cta-flat" : ""} flex flex-col items-center justify-center px-6 py-16 md:sticky md:top-0 md:min-h-[72svh] md:py-16 text-center text-forest`}>

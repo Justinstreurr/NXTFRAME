@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import BranchIcon, { type IconKey } from "./BranchIcons";
 import FindBento, { type FindContent } from "./FindBento";
 import { LinkIn, LinkOut, type LinkRequest, type LinkSource, type LinkTile } from "./LinkFlow";
@@ -111,6 +111,17 @@ const logos = {
   chatgpt: { name: "ChatGPT", src: "/images/logos/chatgpt.webp" },
 };
 
+/* where each pill floats in the sky of the photo card from lg up, left and right of the man at his
+   laptop in /images/makelaars-zoeken; the searches fill these spots in order */
+const spots = [
+  { x: "5%", y: "33%" }, { x: "21%", y: "40%" }, { x: "4%", y: "49%" }, { x: "20%", y: "57%" },
+  { x: "61%", y: "27%" }, { x: "77%", y: "35%" }, { x: "62%", y: "44%" }, { x: "76%", y: "53%" },
+];
+
+/** a search as typed; "[plaats]" (the customer's own town) becomes a small lime tag */
+function SearchText({ q }: { q: string }) {
+  return <>{q.split(/\[(.+?)\]/).map((part, i) => (i % 2 ? <span key={i} className="rounded-md bg-lime px-1.5 py-0.5 text-[13px] font-semibold">{part}</span> : part))}</>;
+}
 export type FindSectionContent = {
   title: ReactNode;
   lead: string;
@@ -148,10 +159,12 @@ export function BranchFind({ content: c }: { content: FindSectionContent }) {
         </div>
       </Container>
 
-      {/* phones: the title and button on their own moss ground, the photo below them, so neither sits on his head;
-            from md up the photo fills the card, zoomed from its top edge so his head drops under the button */}
+      {/* Phones and tablets: the title and button centred at the top (on phones on their own moss ground,
+          the photo below them), the searches as one slow band along the bottom edge.
+          Desktop (lg): as designed, the title in the sky, the searches floating left and right of the
+          man at his laptop, the button bottom right. */}
       <div className="relative isolate mt-12 h-[640px] overflow-hidden bg-moss md:mt-24 md:h-[660px] lg:h-[720px]">
-        <picture className="absolute inset-x-0 top-[250px] -z-20 h-[calc(100%-250px)] md:top-0 md:h-full md:origin-top md:scale-[1.2] lg:h-[112%]">
+        <picture className="absolute inset-x-0 top-[250px] -z-20 h-[calc(100%-250px)] md:top-0 md:h-full md:origin-top md:scale-[1.2] lg:h-[112%] lg:scale-100">
           {photo.webp && <source srcSet={photo.webp} type="image/webp" />}
           <img
             src={photo.src}
@@ -172,11 +185,11 @@ export function BranchFind({ content: c }: { content: FindSectionContent }) {
             <br />
             <span className="serif-italic text-lime">echt zoeken</span>
           </h3>
-          <Button href="/contact" className="mt-7 w-fit px-7 py-4 text-base">Plan een kennismaking</Button>
+          <Button href="/contact" className="mt-7 w-fit px-7 py-4 text-base lg:hidden">Plan een kennismaking</Button>
         </div>
 
-        {/* the searches, one slow row along the bottom edge so the photo stays free */}
-        <div className="absolute inset-x-0 bottom-8 md:bottom-12">
+        {/* phones and tablets: the searches as one slow band along the bottom edge */}
+        <div className="absolute inset-x-0 bottom-8 md:bottom-12 lg:hidden">
           <Marquee gap="gap-3" className="py-3">
             {c.searches.map((s) => (
               <span
@@ -186,17 +199,30 @@ export function BranchFind({ content: c }: { content: FindSectionContent }) {
                 <span className="grid size-8 shrink-0 place-items-center rounded-full bg-paper ring-1 ring-forest/10">
                   <img src={logos[s.on].src} alt={logos[s.on].name} className="size-[18px] object-contain" loading="lazy" />
                 </span>
-                <span className="whitespace-nowrap">
-                  {/* "[plaats]" in a search is the customer's own town: a lime tag instead of brackets */}
-                  {s.q.split(/\[(.+?)\]/).map((part, i) =>
-                    i % 2 ? <span key={i} className="rounded-md bg-lime px-1.5 py-0.5 text-[13px] font-semibold">{part}</span> : part,
-                  )}
-                </span>
+                <span className="whitespace-nowrap"><SearchText q={s.q} /></span>
               </span>
             ))}
           </Marquee>
         </div>
-      </div>
-    </section>
+
+        {/* desktop: the searches floating around the man, each bobbing gently out of step */}
+        <ul className="hidden lg:block">
+          {c.searches.slice(0, spots.length).map((s, n) => (
+            <li key={s.q} className="absolute left-[var(--x)] top-[var(--y)]" style={{ "--x": spots[n].x, "--y": spots[n].y } as CSSProperties}>
+              <span
+                className="search-pill inline-flex items-center gap-2.5 rounded-xl bg-paper/95 py-2 pl-2.5 pr-4 text-[15px] font-semibold text-forest shadow-[0_14px_30px_-16px_rgba(0,0,0,0.5)] ring-1 ring-black/5 backdrop-blur"
+                style={{ animationDelay: `${(n % 4) * -1.3}s` }}
+              >
+                <img src={logos[s.on].src} alt={logos[s.on].name} className="size-5 object-contain" loading="lazy" />
+                <SearchText q={s.q} />
+              </span>
+            </li>
+          ))}
+        </ul>
+        {/* desktop: the next step, bottom right on the page margins */}
+        <Container className="absolute inset-x-0 bottom-0 hidden justify-end pb-14 lg:flex">
+          <Button href="/contact" className="w-fit shrink-0 px-7 py-4 text-base">Plan een kennismaking</Button>
+        </Container>
+      </div>    </section>
   );
 }

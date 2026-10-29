@@ -8,7 +8,7 @@ import LetterFill from "@/components/LetterFill";
 export const metadata = {
   title: "Werk | NXT Frame",
   alternates: { canonical: "/werk" },
-  description: "Alle cases en concepten van NXT Frame op één plek: websites voor klanten en per branche een werkend concept dat live staat.",
+  description: "Alle cases en concepten van NXT Frame op één plek: websites voor klanten en concepten per branche.",
 };
 
 /* the words that matter, in italic: lime is unreadable on cream, italic is the site accent on light backgrounds */
@@ -37,10 +37,10 @@ export default function Page() {
               <h1 className="mt-6 t-hero text-paper md:mt-8">
                 Werk dat je
                 <br />
-                <span className="serif-italic text-lime">zelf kunt testen</span>
+                <span className="serif-italic text-lime">zelf kunt bekijken</span>
               </h1>
               <p className="mt-6 max-w-lg text-paper t-lead">
-                Websites voor klanten als Happy Flops en Hypotheekhaven, en per branche een werkend concept dat live staat. Klik ze gerust open.
+                Websites voor klanten als Happy Flops en Hypotheekhaven, en per branche een concept van wat de site daar moet doen.
               </p>
               <div data-hero-cta className="mt-8">
                 <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
@@ -81,7 +81,7 @@ export default function Page() {
                 <h2 className="mt-14 max-w-6xl font-serif text-[clamp(2.25rem,4.6vw,4.25rem)] leading-[1.05] tracking-[-0.02em] text-forest md:mt-20">
                   Websites die <Mark>snel laden, gevonden worden</Mark> en daarna ook verkopen.{" "}
                   {/* the second sentence opens light grey and fills in letter by letter on load */}
-                  <LetterFill parts={[{ text: "Voor klanten, en per branche als " }, { text: "werkend concept", italic: true }, { text: "." }]} />
+                  <LetterFill parts={[{ text: "Voor klanten, en per branche als " }, { text: "concept", italic: true }, { text: "." }]} />
                 </h2>
               }
             />
