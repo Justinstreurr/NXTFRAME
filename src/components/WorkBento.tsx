@@ -120,7 +120,7 @@ function CleanCard({ w }: { w: WorkItem }) {
         <Media w={w} className="absolute inset-0 size-full" />
       </span>
       <span className="block pt-4">
-        <Eyebrow w={w} className="text-forest/60" />
+        <Eyebrow w={w} className="text-forest/70" />
         <Title w={w} />
         <Foot w={w} className="mt-3" />
       </span>

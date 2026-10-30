@@ -79,7 +79,7 @@ export default function MobileMenu({
         className="glass-sheet fixed inset-0 z-[60] flex flex-col text-brown lg:hidden"
       >
         <div className="flex h-[72px] items-center justify-between px-6">
-          <Link href="/" aria-label="NXT Frame home" onClick={close} className="py-2">
+          <Link href="/" aria-label="nxtframe, naar de homepage" onClick={close} className="py-2">
             <Logo size="md" />
           </Link>
           <button

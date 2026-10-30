@@ -38,25 +38,25 @@ export default function LegalPage({
     <PageShell eyebrow={eyebrow} title={title} intro={intro}>
       <div className="mt-12 grid grid-cols-1 gap-12 md:mt-16 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
         <nav aria-label="Op deze pagina" className="self-start lg:sticky lg:top-28">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-forest/60">Op deze pagina</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-forest/70">Op deze pagina</p>
           <ol className="mt-4 space-y-1">
             {sections.map((s, i) => (
               <li key={s.id}>
                 <a href={`#${s.id}`} className="group flex gap-3 py-2 text-[15px] text-forest/70 transition-colors hover:text-forest">
-                  <span className="tabular-nums text-forest/40 transition-colors group-hover:text-forest">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="tabular-nums text-forest/70 transition-colors group-hover:text-forest">{String(i + 1).padStart(2, "0")}</span>
                   {s.title}
                 </a>
               </li>
             ))}
           </ol>
-          <p className="mt-8 border-t border-forest/15 pt-6 text-[13px] text-forest/60">Laatst bijgewerkt op {updated}</p>
+          <p className="mt-8 border-t border-forest/15 pt-6 text-[13px] text-forest/70">Laatst bijgewerkt op {updated}</p>
           <TextLink href="/contact" className="mt-4">Vraag erover? Neem contact op</TextLink>
         </nav>
 
         <div className="divide-y divide-forest/15 border-y border-forest/15">
           {sections.map((s, i) => (
             <section key={s.id} id={s.id} className="scroll-mt-28 py-10 md:py-12">
-              <span className="text-sm tabular-nums text-forest/50">{String(i + 1).padStart(2, "0")}</span>
+              <span className="text-sm tabular-nums text-forest/70">{String(i + 1).padStart(2, "0")}</span>
               <h2 className="mt-2 t-sub text-forest">{s.title}</h2>
               <div className={`mt-5 ${prose}`}>{s.body}</div>
             </section>

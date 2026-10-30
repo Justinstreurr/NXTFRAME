@@ -151,6 +151,9 @@ export default function ServicesWheel({ overlap = false }: { overlap?: boolean }
                   return (
                     <li
                       key={s.title}
+                      // two or more rows from the pill a name is faded scenery, too pale to read, so it is
+                      // out of reach for clicks, keys and screen readers
+                      inert={dist > 1}
                       className={`absolute inset-x-0 top-1/2 flex justify-center pl-3 pr-12 md:px-12 xl:pl-3 xl:pr-12 ${wrapped ? "" : "transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"}`}
                       style={{
                         transform: `translateY(calc(-50% + ${o * ROW}px))`,
@@ -169,7 +172,6 @@ export default function ServicesWheel({ overlap = false }: { overlap?: boolean }
                           hoverLock.current = e.timeStamp + 550;
                           pick(i);
                         }}
-                        tabIndex={dist > 2 ? -1 : 0}
                         aria-current={dist === 0 ? "true" : undefined}
                         className={`group/svc flex max-w-full items-center gap-3 py-1.5 text-[15px] transition-colors md:text-[17px] ${dist === 0 ? "font-semibold text-cream" : "font-medium text-cream hover:text-lime"}`}
                       >

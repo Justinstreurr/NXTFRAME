@@ -23,8 +23,8 @@ const result = "rounded-2xl bg-white px-5 py-4 shadow-[0_18px_40px_-22px_rgba(2,
 function GoogleSearch({ step, c }: { step: number; c: FindContent["google"] }) {
   const other = (url: string, title: string, at: number) => (
     <div className={`${result} ${show(step >= at)}`}>
-      <p className="text-[12px] text-forest/45">{url}</p>
-      <p className="mt-0.5 text-[15px] font-semibold text-forest/45">{title}</p>
+      <p className="text-[12px] text-forest/70">{url}</p>
+      <p className="mt-0.5 text-[15px] font-semibold text-forest/70">{title}</p>
       <span className="mt-2 block h-1.5 w-10/12 rounded-full bg-forest/[0.07]" />
     </div>
   );
@@ -39,7 +39,7 @@ function GoogleSearch({ step, c }: { step: number; c: FindContent["google"] }) {
       {/* the office's own page: lit up, no number in front of it (nobody can promise a place) */}
       <div className={`${result} ring-2 ring-lime ${show(step >= 2)}`}>
         <div className="flex items-center justify-between gap-3">
-          <p className="text-[12px] text-forest/55">{c.url}</p>
+          <p className="text-[12px] text-forest/70">{c.url}</p>
           <span className={`whitespace-nowrap rounded-full bg-lime px-2.5 py-0.5 text-[11px] font-semibold text-forest ${show(step >= 3)}`}>Jouw pagina</span>
         </div>
         <p className="mt-0.5 text-[15px] font-semibold text-forest">{c.page}</p>
@@ -72,7 +72,7 @@ function MapProfile({ step, c }: { step: number; c: FindContent["map"] }) {
         <div className="flex items-start justify-between gap-3">
           <span>
             <span className="block text-[15px] font-semibold text-forest">{c.name}</span>
-            <span className="block text-[12px] text-forest/55">{c.meta}</span>
+            <span className="block text-[12px] text-forest/70">{c.meta}</span>
           </span>
           <span className="whitespace-nowrap text-[13px] font-semibold text-forest">
             4,9 <span className={`tracking-[0.08em] text-[#e0a526] transition-opacity duration-500 ${step >= 3 ? "opacity-100" : "opacity-25"}`}>★★★★★</span>

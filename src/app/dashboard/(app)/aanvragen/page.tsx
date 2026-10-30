@@ -38,14 +38,14 @@ export default async function Requests({ searchParams }: { searchParams: Promise
               <article id={s.id} className="scroll-mt-24">
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
-                    <h2 className="font-display text-lg font-semibold tracking-tight">{s.naam}{s.onderwerp && <span className="font-normal text-forest/55"> · {s.onderwerp}</span>}</h2>
+                    <h2 className="font-display text-lg font-semibold tracking-tight">{s.naam}{s.onderwerp && <span className="font-normal text-forest/70"> · {s.onderwerp}</span>}</h2>
                     <p className="mt-1 text-sm text-forest/65">
                       <a href={`mailto:${s.email}?subject=${encodeURIComponent(`Re: je aanvraag bij NXT Frame`)}`} className="underline underline-offset-4">{s.email}</a>
                       {s.telefoon && <> · <a href={`tel:${s.telefoon}`} className="underline underline-offset-4">{s.telefoon}</a></>}
                       {s.website && <> · <a href={s.website.startsWith("http") ? s.website : `https://${s.website}`} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">{s.website}</a></>}
                     </p>
                   </div>
-                  <div className="flex flex-wrap items-center gap-1.5 text-xs text-forest/55">
+                  <div className="flex flex-wrap items-center gap-1.5 text-xs text-forest/70">
                     <Badge tone={s.status === "nieuw" ? "lime" : s.status === "klant" ? "forest" : "soft"}>{SUBMISSION_STATUS.find((x) => x.key === s.status)?.label}</Badge>
                     {!s.mailed && <Badge tone="muted">niet gemaild</Badge>}
                     <span title={date(s.created_at, true)}>{ago(s.created_at)}</span>

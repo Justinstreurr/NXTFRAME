@@ -30,7 +30,7 @@ function Field({
     <div>
       <label htmlFor={`cf-${name}`} className="flex items-baseline justify-between gap-3 text-sm font-semibold text-forest">
         {label}
-        {optional && <span className="text-[13px] font-normal text-forest/50">mag leeg blijven</span>}
+        {optional && <span className="text-[13px] font-normal text-forest/70">mag leeg blijven</span>}
       </label>
       {children({
         id: `cf-${name}`,
@@ -146,7 +146,7 @@ export default function ContactForm() {
             <span aria-hidden="true">{pending ? "Bezig met versturen" : "Verstuur mijn aanvraag"}</span>
           </span>
         </button>
-        <p className="text-[13px] text-forest/60">Gratis · 30 minuten · vrijblijvend</p>
+        <p className="text-[13px] text-forest/70">Gratis · 30 minuten · vrijblijvend</p>
       </div>
 
       <div aria-live="polite">
@@ -160,7 +160,7 @@ export default function ContactForm() {
         )}
       </div>
 
-      <p className="mt-6 border-t border-forest/15 pt-5 text-[13px] leading-relaxed text-forest/60">
+      <p className="mt-6 border-t border-forest/15 pt-5 text-[13px] leading-relaxed text-forest/70">
         Ik gebruik je gegevens alleen om op je aanvraag te reageren. Meer daarover in de{" "}
         <a href="/privacy" className="border-b border-forest/30 font-medium text-forest hover:border-forest">privacyverklaring</a>.
       </p>

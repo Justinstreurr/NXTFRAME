@@ -140,9 +140,9 @@ const jsonLd = {
 /* the tones of the Altijd inbegrepen cards: the label and the line under the title per ground. Wine and blush are
    the same pair as the stacking cards on the homepage (StackCards). */
 const copyTones = {
-  dark: { label: "text-forest/55", body: "text-forest/70" },
+  dark: { label: "text-forest/70", body: "text-forest/70" },
   light: { label: "text-lime", body: "text-cream/80" },
-  wine: { label: "text-[#440220]/60", body: "text-[#440220]/80" },
+  wine: { label: "text-[#440220]/75", body: "text-[#440220]/80" },
   blush: { label: "text-[#fcbbb9]/70", body: "text-cream/85" },
 };
 

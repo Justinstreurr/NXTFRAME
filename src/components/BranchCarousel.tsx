@@ -10,8 +10,8 @@ export type Segment = { label: string; icon: IconKey; title: string; tags?: stri
 /* the card colours in turn: forest, blush, lime, wine */
 const tones = [
   { card: "bg-forest text-cream", muted: "text-cream/70", count: "text-lime", tab: "bg-cream/10" },
-  { card: "bg-[#fcbbb9] text-[#440220]", muted: "text-[#440220]/75", count: "text-[#440220]/60", tab: "bg-[#440220]/10" },
-  { card: "bg-lime text-forest", muted: "text-forest/70", count: "text-forest/55", tab: "bg-forest/10" },
+  { card: "bg-[#fcbbb9] text-[#440220]", muted: "text-[#440220]/75", count: "text-[#440220]/75", tab: "bg-[#440220]/10" },
+  { card: "bg-lime text-forest", muted: "text-forest/70", count: "text-forest/70", tab: "bg-forest/10" },
   { card: "bg-[#440220] text-[#fcbbb9]", muted: "text-cream/75", count: "text-[#fcbbb9]/70", tab: "bg-cream/10" },
 ];
 

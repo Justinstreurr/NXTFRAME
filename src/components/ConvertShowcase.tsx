@@ -136,7 +136,7 @@ export function Film() {
 
           {/* the buy box */}
           <div className="absolute left-[252px] top-[48px] w-[194px]">
-            <p className="flex items-center gap-1 text-[5.5px] text-black/50">
+            <p className="flex items-center gap-1 text-[5.5px] text-black/60">
               <span className="tracking-[0.5px]" style={{ color: HF.yellow }}>★★★★★</span>
               (16,892)
             </p>
@@ -226,7 +226,7 @@ export function Film() {
             <img src="/images/slipper-3.jpg" alt="" className="h-[30px] w-[34px] rounded-[3px] object-cover" />
             <div className="flex-1">
               <p className="text-[6.5px] font-semibold">HappyFlops Original</p>
-              <p className="text-[5px] text-black/50">Roze • 40/41</p>
+              <p className="text-[5px] text-black/60">Roze • 40/41</p>
               <p className="mt-0.5 text-[6.5px] font-semibold">€34,95</p>
             </div>
             <span className="flex items-center gap-1 text-[6px]">
@@ -244,7 +244,7 @@ export function Film() {
             <span className="flex-1 text-[5.5px]">
               <b>HappyFlops Original</b>
               <br />
-              <span className="text-black/50">Beige</span>
+              <span className="text-black/60">Beige</span>
             </span>
             <span className="rounded-[3px] bg-black px-1.5 py-1 text-[5.5px] font-semibold text-white">+ €34,95</span>
           </div>
@@ -252,7 +252,7 @@ export function Film() {
             <span className="text-[5.5px]">
               <b>Bescherming van verzending: €1,99</b>
               <br />
-              <span className="text-black/50">Tegen schade, verlies of diefstal</span>
+              <span className="text-black/60">Tegen schade, verlies of diefstal</span>
             </span>
             <span className="h-[8px] w-[14px] rounded-full bg-black/15" />
           </div>
@@ -282,12 +282,12 @@ export function Film() {
               </span>
               <span className="flex-1 text-[6px]">
                 <span className="block font-semibold">HappyFlops Original</span>
-                <span className="block text-black/50">Roze / 40/41</span>
+                <span className="block text-black/60">Roze / 40/41</span>
               </span>
               <span className="text-[6px]">€ 69,90</span>
             </span>
             <span className="mt-2.5 flex gap-1.5">
-              <span className="h-[16px] flex-1 rounded-[3px] border border-black/15 bg-white px-1.5 text-[5px] leading-[16px] text-black/40">Kortingscode of cadeaubon</span>
+              <span className="h-[16px] flex-1 rounded-[3px] border border-black/15 bg-white px-1.5 text-[5px] leading-[16px] text-black/60">Kortingscode of cadeaubon</span>
               <span className="grid h-[16px] place-items-center rounded-[3px] px-1.5 text-[5px] font-semibold text-black/60" style={{ background: "#f6e7a6" }}>
                 Toepassen
               </span>
@@ -299,13 +299,13 @@ export function Film() {
               </span>
               <span className="relative flex justify-between">
                 <span>Verzending</span>
-                <span className="cs2-a cs3-ship-a text-black/50">Bezorgadres invoeren</span>
+                <span className="cs2-a cs3-ship-a text-black/60">Bezorgadres invoeren</span>
                 <span className="cs2-a cs3-ship-b absolute right-0 font-semibold">GRATIS</span>
               </span>
               <span className="flex justify-between pt-1 text-[8px] font-bold">
                 <span>Totaal</span>
                 <span>
-                  <span className="text-[5px] font-normal text-black/50">EUR </span>€ 69,90
+                  <span className="text-[5px] font-normal text-black/60">EUR </span>€ 69,90
                 </span>
               </span>
             </span>
@@ -317,7 +317,7 @@ export function Film() {
               <span className="text-[5.5px] font-normal text-[#2463c7] underline">Inloggen</span>
             </p>
             <span className="relative mt-1 flex h-[16px] items-center rounded-[3px] border border-black/20 px-1.5 text-[6px]">
-              <span className="cs2-a cs3-email-ph absolute text-black/40">E-mail</span>
+              <span className="cs2-a cs3-email-ph absolute text-black/60">E-mail</span>
               <span className="cs2-a cs3-type whitespace-nowrap">anna@voorbeeld.nl</span>
             </span>
             <p className="mt-2 text-[8px] font-semibold">Bezorging</p>
@@ -335,7 +335,7 @@ export function Film() {
               <span key={r} className="mt-1 grid gap-1" style={{ gridTemplateColumns: row.map((f) => f.w).join(" ") }}>
                 {row.map((f) => (
                   <span key={f.ph} className="relative flex h-[16px] items-center rounded-[3px] border border-black/20 px-1.5 text-[6px]">
-                    <span className={`cs2-a cs3-ph${f.d} absolute text-black/40`}>{f.ph}</span>
+                    <span className={`cs2-a cs3-ph${f.d} absolute text-black/60`}>{f.ph}</span>
                     <span className={`cs2-a cs3-fill${f.d}`}>{f.v}</span>
                   </span>
                 ))}
@@ -343,7 +343,7 @@ export function Film() {
             ))}
             <p className="mt-2 text-[7px] font-semibold">Verzendwijze</p>
             <span className="relative mt-1 block h-[14px]">
-              <span className="cs2-a cs3-ship-a absolute inset-0 grid place-items-center rounded-[3px] bg-[#f3f3f3] text-[5px] text-black/50">
+              <span className="cs2-a cs3-ship-a absolute inset-0 grid place-items-center rounded-[3px] bg-[#f3f3f3] text-[5px] text-black/60">
                 Voer je bezorgadres in om de verzendmethoden te zien.
               </span>
               <span className="cs2-a cs3-ship-b absolute inset-0 flex items-center justify-between rounded-[3px] border border-[#2463c7] bg-[#f2f7ff] px-1.5 text-[5.5px] font-semibold">
@@ -452,7 +452,7 @@ export function Film() {
                 ✓
               </span>
               <span>
-                <span className="block text-[6px] text-black/50">Bestelling #HF10482</span>
+                <span className="block text-[6px] text-black/60">Bestelling #HF10482</span>
                 <span className="block font-display text-[12px] font-black tracking-tight">Bedankt, Anna!</span>
               </span>
             </span>
@@ -491,7 +491,7 @@ export function Film() {
             </span>
           ))}
         </div>
-        <span className="cs2-a cs3-result absolute bottom-[12px] right-[14px] text-[7px] text-black/40">Voorbeeld, ter illustratie</span>
+        <span className="cs2-a cs3-result absolute bottom-[12px] right-[14px] text-[7px] text-black/60">Voorbeeld, ter illustratie</span>
 
         {/* the cursor, with a ring at every click */}
         <span className="cs2-a cs3-ring absolute left-0 top-0 size-6 rounded-full border-2 border-black/70" />
@@ -649,7 +649,7 @@ export default function ConvertShowcase() {
                 </span>
                 {chapters.map((c) => (
                   <span key={c.label} className="absolute top-0 h-1 w-px bg-cream" style={{ left: `${c.at}%` }}>
-                    <span className={`absolute top-2.5 hidden whitespace-nowrap text-[10px] text-forest/55 sm:block ${c.at === 0 ? "left-0" : "-translate-x-1/2"}`}>{c.label}</span>
+                    <span className={`absolute top-2.5 hidden whitespace-nowrap text-[10px] text-forest/70 sm:block ${c.at === 0 ? "left-0" : "-translate-x-1/2"}`}>{c.label}</span>
                   </span>
                 ))}
               </div>

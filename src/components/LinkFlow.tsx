@@ -182,7 +182,7 @@ export function LinkOut({ requests = makelaarsRequests }: { requests?: LinkReque
               </span>
               <span className="min-w-0 flex-1">
                 <span className="block text-[15px] font-semibold text-forest">{r.title}</span>
-                <span className="block truncate text-[13px] text-forest/60">{r.meta}</span>
+                <span className="block truncate text-[13px] text-forest/70">{r.meta}</span>
               </span>
               <span className="shrink-0 rounded-full border border-forest/15 px-2.5 py-1 text-[11px] font-medium text-forest/70">{r.tag}</span>
             </div>

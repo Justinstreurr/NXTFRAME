@@ -12,7 +12,7 @@ export function PageHead({ title, intro, children }: { title: ReactNode; intro?:
     <header className="mb-8 flex flex-wrap items-end justify-between gap-4">
       <div>
         <h1 className="font-display text-3xl font-semibold tracking-[-0.03em] md:text-4xl">{title}</h1>
-        {intro && <p className="mt-2 max-w-2xl text-sm text-forest/60">{intro}</p>}
+        {intro && <p className="mt-2 max-w-2xl text-sm text-forest/70">{intro}</p>}
       </div>
       {children}
     </header>
@@ -26,7 +26,7 @@ export function Card({ title, action, children, className = "" }: { title?: Reac
         <div className="mb-4 flex items-center justify-between gap-3">
           {title && (
             <h2 className="flex items-center gap-2 font-display text-base font-semibold tracking-tight">
-              <FrameGlyph className="size-2.5 text-forest/40" />
+              <FrameGlyph className="size-2.5 text-forest/70" />
               {title}
             </h2>
           )}
@@ -41,9 +41,9 @@ export function Card({ title, action, children, className = "" }: { title?: Reac
 export function Stat({ label, value, hint, accent = false }: { label: string; value: ReactNode; hint?: ReactNode; accent?: boolean }) {
   return (
     <div className={`rounded-[14px] p-5 ring-1 ${accent ? "bg-forest text-cream ring-forest" : "bg-paper ring-forest/10"}`}>
-      <p className={`text-xs font-medium uppercase tracking-[0.08em] ${accent ? "text-lime" : "text-forest/55"}`}>{label}</p>
+      <p className={`text-xs font-medium uppercase tracking-[0.08em] ${accent ? "text-lime" : "text-forest/70"}`}>{label}</p>
       <p className="mt-3 font-display text-3xl font-semibold tracking-[-0.03em] tabular-nums md:text-4xl">{value}</p>
-      {hint && <p className={`mt-1 text-xs ${accent ? "text-cream/70" : "text-forest/55"}`}>{hint}</p>}
+      {hint && <p className={`mt-1 text-xs ${accent ? "text-cream/70" : "text-forest/70"}`}>{hint}</p>}
     </div>
   );
 }
@@ -66,7 +66,7 @@ export function BarList({ rows, format = (n) => String(n), empty = "Nog geen dat
             <span className="relative min-w-0 truncate">{r.label}</span>
             <span className="relative ml-auto shrink-0 pl-3 tabular-nums text-forest/70">
               {format(r.value)}
-              {r.sub && <span className="ml-2 text-forest/45">{r.sub}</span>}
+              {r.sub && <span className="ml-2 text-forest/70">{r.sub}</span>}
             </span>
           </>
         );
@@ -95,7 +95,7 @@ export function DayColumns({ days }: { days: { day: string; visitors: number; vi
         {[0.5, 1].map((g) => (
           <span key={g} className="pointer-events-none absolute inset-x-0 border-t border-dashed border-forest/10" style={{ bottom: `${g * 100}%` }} aria-hidden="true" />
         ))}
-        <span className="pointer-events-none absolute -top-1 right-0 -translate-y-full text-[11px] tabular-nums text-forest/45">{max}</span>
+        <span className="pointer-events-none absolute -top-1 right-0 -translate-y-full text-[11px] tabular-nums text-forest/70">{max}</span>
         {days.map((d) => (
           <div key={d.day} className="group relative flex h-full flex-1 items-end">
             <div className="w-full rounded-t-[4px] bg-forest transition-colors group-hover:bg-forest-hover" style={{ height: `${(d.visitors / max) * 100}%`, minHeight: d.visitors ? 3 : 0 }} />
@@ -106,7 +106,7 @@ export function DayColumns({ days }: { days: { day: string; visitors: number; vi
           </div>
         ))}
       </div>
-      <div className="mt-2 flex text-[11px] text-forest/45">
+      <div className="mt-2 flex text-[11px] text-forest/70">
         {days.map((d, i) => (
           <span key={d.day} className="flex-1 text-center">{i % step === 0 ? new Date(d.day).getDate() : ""}</span>
         ))}
@@ -137,14 +137,14 @@ const tones: Record<string, string> = {
   lime: "bg-lime text-forest",
   forest: "bg-forest text-cream",
   soft: "bg-forest/[0.07] text-forest/80",
-  muted: "bg-transparent text-forest/50 ring-1 ring-forest/15",
+  muted: "bg-transparent text-forest/70 ring-1 ring-forest/15",
 };
 export function Badge({ children, tone = "soft" }: { children: ReactNode; tone?: keyof typeof tones }) {
   return <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${tones[tone]}`}>{children}</span>;
 }
 
 export function Empty({ children }: { children: ReactNode }) {
-  return <p className="rounded-[10px] border border-dashed border-forest/15 px-4 py-6 text-center text-sm text-forest/50">{children}</p>;
+  return <p className="rounded-[10px] border border-dashed border-forest/15 px-4 py-6 text-center text-sm text-forest/70">{children}</p>;
 }
 
 /* ---------- forms ---------- */
@@ -154,7 +154,7 @@ export const inputClass =
 
 export function Field({ label, children, className = "" }: { label: string; children: ReactNode; className?: string }) {
   return (
-    <label className={`block text-xs font-medium text-forest/60 ${className}`}>
+    <label className={`block text-xs font-medium text-forest/70 ${className}`}>
       {label}
       <span className="mt-1 block">{children}</span>
     </label>
@@ -162,7 +162,7 @@ export function Field({ label, children, className = "" }: { label: string; chil
 }
 
 export function Submit({ children, tone = "forest" }: { children: ReactNode; tone?: "forest" | "lime" | "ghost" }) {
-  const t = { forest: "bg-forest text-cream hover:bg-forest-hover", lime: "bg-lime text-forest hover:bg-lime-hover", ghost: "text-forest/60 hover:bg-forest/[0.06] hover:text-forest" }[tone];
+  const t = { forest: "bg-forest text-cream hover:bg-forest-hover", lime: "bg-lime text-forest hover:bg-lime-hover", ghost: "text-forest/70 hover:bg-forest/[0.06] hover:text-forest" }[tone];
   return <button type="submit" className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors ${t}`}>{children}</button>;
 }
 
@@ -171,7 +171,7 @@ export function Table({ head, children }: { head: string[]; children: ReactNode 
     <div className="-mx-5 overflow-x-auto md:-mx-6">
       <table className="w-full min-w-[640px] text-left text-sm">
         <thead>
-          <tr className="border-b border-forest/10 text-xs uppercase tracking-[0.06em] text-forest/50">
+          <tr className="border-b border-forest/10 text-xs uppercase tracking-[0.06em] text-forest/70">
             {head.map((h, i) => <th key={i} className="px-5 py-2.5 font-medium first:pl-5 md:px-6">{h}</th>)}
           </tr>
         </thead>

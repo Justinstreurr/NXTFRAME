@@ -42,7 +42,7 @@ export default function Nav({ theme = "cherry" }: { theme?: "cherry" | "hero" | 
       {hero && <NavPalette />}
       {photo && <NavTint />}
       <div className={bar}>
-        <Link href="/" className={`col-start-1 justify-self-start ${fg}`} aria-label="NXT Frame home">
+        <Link href="/" className={`col-start-1 justify-self-start ${fg}`} aria-label="nxtframe, naar de homepage">
           <span className="sm:hidden"><Logo size="sm" /></span>
           <span className="hidden sm:inline"><Logo size="md" /></span>
         </Link>

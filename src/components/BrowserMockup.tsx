@@ -28,7 +28,7 @@ export default function BrowserMockup({
             <span className="size-2.5 rounded-full bg-[#28c840]" />
           </span>
           {url && (
-            <span className="ml-1 flex h-5 flex-1 items-center rounded-md bg-paper px-2 text-[10px] text-forest/50">
+            <span className="ml-1 flex h-5 flex-1 items-center rounded-md bg-paper px-2 text-[10px] text-forest/70">
               {url}
             </span>
           )}

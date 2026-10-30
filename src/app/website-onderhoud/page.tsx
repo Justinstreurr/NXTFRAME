@@ -280,7 +280,7 @@ export default function Page() {
               {parts.map((d, i) => (
                 <li key={d.title} className="overflow-hidden rounded-3xl bg-[#fcbbb9] text-[#440220]">
                   <div className="p-6">
-                    <span className="text-sm font-medium text-[#440220]/55">0{i + 1}</span>
+                    <span className="text-sm font-medium text-[#440220]/75">0{i + 1}</span>
                     <h3 className="mt-1 font-display text-2xl font-semibold tracking-tight">{d.title}</h3>
                     <p className="mt-3 text-[15px] leading-relaxed text-[#440220]/85">
                       <span className="font-semibold">Zonder: </span>
@@ -302,7 +302,7 @@ export default function Page() {
               <table className="w-full border-separate border-spacing-x-3 border-spacing-y-0 text-left">
                 <thead>
                   <tr>
-                    <th className="w-[26%] pb-4" />
+                    <td className="w-[26%] pb-4" />
                     <th className="w-[34%] rounded-t-3xl bg-[#fcbbb9] px-8 pb-4 pt-8 align-top font-display text-xl font-semibold tracking-tight text-[#440220]">Zonder onderhoud</th>
                     <th className="rounded-t-3xl bg-paper px-8 pb-4 pt-8 align-top font-display text-xl font-semibold tracking-tight text-forest">Met onderhoud</th>
                   </tr>

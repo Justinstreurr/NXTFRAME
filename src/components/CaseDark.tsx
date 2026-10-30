@@ -136,12 +136,12 @@ export function CaseDarkDevices({ site, page, desktop, mobile }: { site: string;
   return (
     <Container className="pb-16 md:pb-40">
       <div className="relative md:pl-[16%]">
-        <p className="mb-3 font-mono text-xs uppercase tracking-[0.1em] opacity-70 md:text-[10px]">{site} — desktop<br /><span className="opacity-60">{page}</span></p>
+        <p className="mb-3 font-mono text-xs uppercase tracking-[0.1em] opacity-70 md:text-[10px]">{site} — desktop<br /><span className="opacity-80">{page}</span></p>
         <div className="overflow-hidden rounded-[8px] bg-white">
           <img src={desktop.src} alt={desktop.alt} className="block w-full" loading="lazy" />
         </div>
         <div className="mt-8 w-[62%] md:absolute md:left-0 md:top-[32%] md:mt-0 md:w-[19%]">
-          <p className="mb-3 font-mono text-xs uppercase tracking-[0.1em] opacity-70 md:text-[10px]">{site} — mobiel<br /><span className="opacity-60">{page}</span></p>
+          <p className="mb-3 font-mono text-xs uppercase tracking-[0.1em] opacity-70 md:text-[10px]">{site} — mobiel<br /><span className="opacity-80">{page}</span></p>
           <PhoneFrame src={mobile.src} alt={mobile.alt} />
         </div>
       </div>
@@ -193,7 +193,7 @@ export function CaseDarkOthers({ current }: { current: string }) {
             Andere cases en <span className="serif-italic">concepten per branche</span>
           </h2>
         </div>
-        <TextLink href="/werk" className="mb-2">Bekijk al het werk</TextLink>
+        <TextLink inherit href="/werk" className="mb-2">Bekijk al het werk</TextLink>
       </div>
       <WorkCases items={others} />
       <WorkCursor />

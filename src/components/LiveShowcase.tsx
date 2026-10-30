@@ -28,7 +28,7 @@ function Window({ url, src, alt }: { url: string; src: string; alt: string }) {
           <span className="size-2 rounded-full bg-[#febc2e]" />
           <span className="size-2 rounded-full bg-[#28c840]" />
         </span>
-        <span className="flex h-[18px] flex-1 items-center truncate rounded-md bg-paper px-2 text-[10px] text-forest/50">{url}</span>
+        <span className="flex h-[18px] flex-1 items-center truncate rounded-md bg-paper px-2 text-[10px] text-forest/70">{url}</span>
       </div>
       <img src={src} alt={alt} className="block w-full" loading="lazy" decoding="async" />
     </div>
@@ -73,7 +73,7 @@ export default function LiveShowcase({
                 {stats.map((s) => (
                   <div key={s.label}>
                     <dd className="font-display text-4xl tracking-[-0.03em]">{s.value}</dd>
-                    <dt className="text-sm text-forest/60">{s.label}</dt>
+                    <dt className="text-sm text-forest/70">{s.label}</dt>
                   </div>
                 ))}
               </dl>

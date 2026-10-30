@@ -52,7 +52,7 @@ export default async function Overview({ searchParams }: { searchParams: Promise
       </div>
 
       <div className="mt-3 grid gap-3 xl:grid-cols-[1.6fr_1fr]">
-        <Card title="Bezoekers per dag" action={<Link href={`/dashboard/verkeer?p=${p.key}`} className="text-xs text-forest/60 underline underline-offset-4">Alles over bezoekers</Link>}>
+        <Card title="Bezoekers per dag" action={<Link href={`/dashboard/verkeer?p=${p.key}`} className="text-xs text-forest/70 underline underline-offset-4">Alles over bezoekers</Link>}>
           <DayColumns days={perDay(views, p.days === 1 ? 1 : p.days)} />
         </Card>
         <Card title="Waar ze vandaan komen">
@@ -61,16 +61,16 @@ export default async function Overview({ searchParams }: { searchParams: Promise
       </div>
 
       <div className="mt-3 grid gap-3 lg:grid-cols-3">
-        <Card title="Nieuwe aanvragen" action={<Link href="/dashboard/aanvragen" className="text-xs text-forest/60 underline underline-offset-4">Alle aanvragen</Link>}>
+        <Card title="Nieuwe aanvragen" action={<Link href="/dashboard/aanvragen" className="text-xs text-forest/70 underline underline-offset-4">Alle aanvragen</Link>}>
           {newSubs?.length ? (
             <ul className="divide-y divide-forest/[0.07]">
               {newSubs.map((s) => (
                 <li key={s.id} className="py-2.5 first:pt-0">
                   <Link href={`/dashboard/aanvragen#${s.id}`} className="block hover:underline">
                     <span className="font-medium">{s.naam}</span>
-                    {s.onderwerp && <span className="text-forest/55"> · {s.onderwerp}</span>}
+                    {s.onderwerp && <span className="text-forest/70"> · {s.onderwerp}</span>}
                   </Link>
-                  <p className="mt-0.5 line-clamp-1 text-xs text-forest/55">{ago(s.created_at)} · {s.bericht}</p>
+                  <p className="mt-0.5 line-clamp-1 text-xs text-forest/70">{ago(s.created_at)} · {s.bericht}</p>
                 </li>
               ))}
             </ul>
@@ -84,13 +84,13 @@ export default async function Overview({ searchParams }: { searchParams: Promise
             <ul className="space-y-2 text-sm">
               {deadlines.map((x) => (
                 <li key={x.id} className="flex items-start justify-between gap-3">
-                  <Link href={`/dashboard/projecten/${x.id}`} className="hover:underline">Deadline: {x.name}<span className="block text-xs text-forest/55">{clientName.get(x.client_id)}</span></Link>
+                  <Link href={`/dashboard/projecten/${x.id}`} className="hover:underline">Deadline: {x.name}<span className="block text-xs text-forest/70">{clientName.get(x.client_id)}</span></Link>
                   <Badge tone={x.deadline! < today ? "forest" : "lime"}>{date(x.deadline)}</Badge>
                 </li>
               ))}
               {dueTasks.map((t) => (
                 <li key={t.id} className="flex items-start justify-between gap-3">
-                  <Link href={`/dashboard/projecten/${t.project_id}`} className="hover:underline">{t.title}<span className="block text-xs text-forest/55">{projectName.get(t.project_id)}</span></Link>
+                  <Link href={`/dashboard/projecten/${t.project_id}`} className="hover:underline">{t.title}<span className="block text-xs text-forest/70">{projectName.get(t.project_id)}</span></Link>
                   <Badge tone={t.due! < today ? "forest" : "soft"}>{date(t.due)}</Badge>
                 </li>
               ))}
@@ -102,9 +102,9 @@ export default async function Overview({ searchParams }: { searchParams: Promise
 
         <Card title="Omzet">
           <dl className="space-y-3 text-sm">
-            <div className="flex justify-between gap-3"><dt className="text-forest/60">In de pijplijn (lead, offerte)</dt><dd className="font-semibold tabular-nums">{euro(pipeline)}</dd></div>
-            <div className="flex justify-between gap-3"><dt className="text-forest/60">In uitvoering</dt><dd className="font-semibold tabular-nums">{euro(running)}</dd></div>
-            <div className="flex justify-between gap-3 border-t border-forest/10 pt-3"><dt className="text-forest/60">Terugkerend per maand</dt><dd className="font-semibold tabular-nums">{euro(monthly)}</dd></div>
+            <div className="flex justify-between gap-3"><dt className="text-forest/70">In de pijplijn (lead, offerte)</dt><dd className="font-semibold tabular-nums">{euro(pipeline)}</dd></div>
+            <div className="flex justify-between gap-3"><dt className="text-forest/70">In uitvoering</dt><dd className="font-semibold tabular-nums">{euro(running)}</dd></div>
+            <div className="flex justify-between gap-3 border-t border-forest/10 pt-3"><dt className="text-forest/70">Terugkerend per maand</dt><dd className="font-semibold tabular-nums">{euro(monthly)}</dd></div>
           </dl>
           <div className="mt-5 flex flex-wrap gap-1.5">
             {["lead", "offerte", "bezig", "live", "onderhoud"].map((s) => {

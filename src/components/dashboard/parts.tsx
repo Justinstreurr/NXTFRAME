@@ -36,7 +36,7 @@ export function PhaseSteps({ project, editable = false }: { project: Pick<Projec
   return (
     <ol className="grid grid-cols-5 gap-1.5" aria-label="Fase">
       {PHASES.map((name, i) => {
-        const tone = i < project.phase ? "bg-forest text-cream" : i === project.phase ? "bg-lime text-forest" : "bg-forest/[0.06] text-forest/55";
+        const tone = i < project.phase ? "bg-forest text-cream" : i === project.phase ? "bg-lime text-forest" : "bg-forest/[0.06] text-forest/70";
         const body = (
           <>
             <span className="block text-[11px] font-semibold tabular-nums opacity-70">{i + 1}</span>
@@ -75,7 +75,7 @@ export function ProjectCard({ project, client, openTasks, next, bare = false }: 
   const shell = bare ? "" : "rounded-[12px] bg-paper ring-1 ring-forest/10 transition-shadow hover:shadow-[0_10px_30px_-18px_rgba(2,38,30,0.45)]";
   return (
     <article className={`relative p-4 ${shell}`}>
-      {client && <p className="pr-24 text-xs font-medium uppercase tracking-[0.06em] text-forest/50 [overflow-wrap:anywhere]">{client}</p>}
+      {client && <p className="pr-24 text-xs font-medium uppercase tracking-[0.06em] text-forest/70 [overflow-wrap:anywhere]">{client}</p>}
       <h3 className="mt-1 pr-2 font-display text-[15px] font-semibold leading-snug [overflow-wrap:anywhere]">
         <Link href={`/dashboard/projecten/${project.id}`} draggable={false} className="after:absolute after:inset-0 after:rounded-[12px] hover:underline">
           {project.name}
@@ -84,14 +84,14 @@ export function ProjectCard({ project, client, openTasks, next, bare = false }: 
       <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-forest/10" role="img" aria-label={`Fase ${project.phase + 1} van 5: ${PHASES[project.phase]}`}>
         <span className="block h-full rounded-full bg-forest" style={{ width: `${((project.phase + 1) / PHASES.length) * 100}%` }} />
       </div>
-      <p className="mt-2 text-xs text-forest/60">Fase {project.phase + 1}: {PHASES[project.phase]}</p>
+      <p className="mt-2 text-xs text-forest/70">Fase {project.phase + 1}: {PHASES[project.phase]}</p>
       {next && (
         <p className="mt-3 rounded-[8px] bg-cream/80 px-2.5 py-2 text-xs leading-snug">
-          <span className="block text-[10px] font-semibold uppercase tracking-[0.08em] text-forest/45">Volgende taak</span>
+          <span className="block text-[10px] font-semibold uppercase tracking-[0.08em] text-forest/70">Volgende taak</span>
           {next}
         </p>
       )}
-      <p className="mt-3 flex flex-wrap items-center gap-1.5 text-xs text-forest/60">
+      <p className="mt-3 flex flex-wrap items-center gap-1.5 text-xs text-forest/70">
         {!bare && <Badge tone={project.status === "bezig" ? "lime" : "soft"}>{statusLabel(project.status)}</Badge>}
         {project.price ? <span className="font-semibold tabular-nums text-forest">{euro(project.price)}</span> : null}
         {project.monthly ? <span className="tabular-nums">+ {euro(project.monthly)} p/m</span> : null}
@@ -109,7 +109,7 @@ export function DocumentList({ docs }: { docs: Doc[] }) {
       {docs.map((d) => (
         <li key={d.id} className="flex items-center justify-between gap-3 py-2.5 text-sm">
           <a href={`/dashboard/doc/${d.id}`} className="min-w-0 truncate font-medium hover:underline">{d.name}</a>
-          <span className="flex shrink-0 items-center gap-3 text-xs text-forest/55">
+          <span className="flex shrink-0 items-center gap-3 text-xs text-forest/70">
             {bytes(d.size)} · {date(d.created_at)}
             <form action={deleteDocument}>
               <input type="hidden" name="id" value={d.id} />

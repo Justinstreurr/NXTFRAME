@@ -100,7 +100,7 @@ export default function PriceFactors() {
         <table className="w-full table-fixed border-separate border-spacing-x-3 border-spacing-y-0 text-left">
           <thead>
             <tr>
-              <th className="w-36" />
+              <td className="w-36" />
               {factors.map((f) => (
                 <th key={f.title} scope="col" className="rounded-t-3xl bg-paper px-6 pb-2 pt-8 align-top text-forest">
                   <span className="grid size-12 place-items-center rounded-2xl bg-forest/[0.06]">
@@ -113,7 +113,7 @@ export default function PriceFactors() {
           </thead>
           <tbody>
             <tr>
-              <th scope="row" className="pr-4 align-top text-sm font-medium text-paper/70" />
+              <td className="pr-4 align-top text-sm font-medium text-paper/70" />
               {factors.map((f) => (
                 <td key={f.title} className="bg-paper px-6 pb-6 align-top text-[15px] leading-relaxed text-forest/70">
                   {f.body}

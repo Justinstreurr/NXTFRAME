@@ -187,8 +187,8 @@ export default function Page() {
                   <FrameGlyph className="size-4" />
                 </span>
                 <span>
-                  <span className="block font-serif text-2xl italic leading-none">Justin Streur</span>
-                  <span className="mt-1 block text-sm text-forest/60">Eigenaar en maker, NXT Frame</span>
+                  <span className="serif-italic block text-2xl leading-none">Justin Streur</span>
+                  <span className="mt-1 block text-sm text-forest/70">Eigenaar en maker, NXT Frame</span>
                 </span>
               </div>
             </div>
@@ -248,7 +248,7 @@ export default function Page() {
             <MoreOnMobile show={3} label={"Toon alle feiten"} as="dl" className="mt-12 md:mt-16 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
               {facts.map((f) => (
                 <div key={f.k} className="rounded-3xl bg-paper p-8 ring-1 ring-forest/10">
-                  <dt className="flex items-center gap-2.5 text-sm font-medium text-forest/55">
+                  <dt className="flex items-center gap-2.5 text-sm font-medium text-forest/70">
                     <FrameGlyph className="size-3 shrink-0 text-forest" />
                     {f.k}
                   </dt>

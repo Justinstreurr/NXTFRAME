@@ -70,7 +70,7 @@ export default async function Clicks({ searchParams }: { searchParams: Promise<{
                   />
                 ))}
               </div>
-              <p className="mt-3 text-xs text-forest/55">Boven is de bovenkant van de pagina, onder de diepste klik ({Math.round(maxY)} px). Donkerder is vaker. Wijs een stip aan voor het element.</p>
+              <p className="mt-3 text-xs text-forest/70">Boven is de bovenkant van de pagina, onder de diepste klik ({Math.round(maxY)} px). Donkerder is vaker. Wijs een stip aan voor het element.</p>
             </>
           ) : (
             <Empty>{page ? "Geen klikken op deze pagina." : "Kies een pagina hierboven."}</Empty>

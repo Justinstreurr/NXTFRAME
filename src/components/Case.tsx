@@ -57,7 +57,7 @@ export default function Case() {
               {stats.map((s) => (
                 <div key={s.label}>
                   <dt className="font-display text-4xl tracking-[-0.04em] text-forest md:text-5xl">{s.value}</dt>
-                  <dd className="mt-2 text-sm text-forest/60">{s.label}</dd>
+                  <dd className="mt-2 text-sm text-forest/70">{s.label}</dd>
                 </div>
               ))}
             </dl>
@@ -67,7 +67,7 @@ export default function Case() {
                 &ldquo;Quote van Happy Flops komt hier. Twee zinnen over de samenwerking en wat de nieuwe site heeft
                 opgeleverd.&rdquo;
               </blockquote>
-              <figcaption className="mt-3 text-sm text-forest/60">Naam, functie bij Happy Flops</figcaption>
+              <figcaption className="mt-3 text-sm text-forest/70">Naam, functie bij Happy Flops</figcaption>
             </figure>
 
             <div className="mt-10 flex flex-wrap items-center gap-6">

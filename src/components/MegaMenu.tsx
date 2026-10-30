@@ -30,7 +30,7 @@ function SlatIn({ children, className = "" }: { children: React.ReactNode; class
   );
 }
 
-const label = "text-xs font-semibold uppercase tracking-[0.16em] text-forest/55";
+const label = "text-xs font-semibold uppercase tracking-[0.16em] text-forest/70";
 
 export default function MegaMenu({
   items,
@@ -179,7 +179,7 @@ export default function MegaMenu({
               <div className="flex flex-wrap items-center justify-between gap-x-10 gap-y-3 border-t border-forest/10 py-6">
                 <TextLink href={active.href}>Alles over {active.label.toLowerCase()}</TextLink>
                 <span className="flex flex-wrap items-center gap-x-6 gap-y-2">
-                  <span className="text-[13px] text-forest/60">Gratis · 30 minuten · vrijblijvend</span>
+                  <span className="text-[13px] text-forest/70">Gratis · 30 minuten · vrijblijvend</span>
                   <TextLink href="/contact">Plan een kennismaking</TextLink>
                 </span>
               </div>

@@ -59,7 +59,7 @@ export default async function Traffic({ searchParams }: { searchParams: Promise<
                 <td className="px-5 py-2.5 md:px-6">
                   <span className="flex items-center gap-2">
                     <span className="h-1.5 w-16 overflow-hidden rounded-full bg-forest/10"><span className="block h-full rounded-full bg-forest" style={{ width: `${r.scroll}%` }} /></span>
-                    <span className="tabular-nums text-forest/60">{r.scroll}%</span>
+                    <span className="tabular-nums text-forest/70">{r.scroll}%</span>
                   </span>
                 </td>
               </tr>

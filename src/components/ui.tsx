@@ -117,13 +117,15 @@ export function ArrowIcon({ className = "size-4" }: { className?: string }) {
 /**
  * The secondary action: an underlined text link with an arrow. Every page keeps one filled button,
  * "Plan een kennismaking"; everything else (see the work, the services, the approach) is this, so
- * the main action never has to compete. `light` for dark grounds.
+ * the main action never has to compete. `light` for dark grounds, `inherit` for a ground that changes
+ * colour on scroll (it takes the colour of the text around it).
  */
-export function TextLink({ children, href, light = false, className = "" }: { children: ReactNode; href: string; light?: boolean; className?: string }) {
+export function TextLink({ children, href, light = false, inherit = false, className = "" }: { children: ReactNode; href: string; light?: boolean; inherit?: boolean; className?: string }) {
+  const tone = inherit ? "border-current/40 hover:border-current" : light ? "border-cream/40 text-cream hover:border-cream" : "border-forest/30 text-forest hover:border-forest";
   return (
     <a
       href={href}
-      className={`group relative inline-flex items-center gap-2 border-b pb-0.5 text-[15px] font-semibold transition-colors after:absolute after:inset-x-0 after:-inset-y-2.5 after:content-[''] ${light ? "border-cream/40 text-cream hover:border-cream" : "border-forest/30 text-forest hover:border-forest"} ${className}`}
+      className={`group relative inline-flex items-center gap-2 border-b pb-0.5 text-[15px] font-semibold transition-colors after:absolute after:inset-x-0 after:-inset-y-2.5 after:content-[''] ${tone} ${className}`}
     >
       {children}
       <ArrowIcon className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -134,6 +136,6 @@ export function TextLink({ children, href, light = false, className = "" }: { ch
 /** The line that takes the doubt away, under the main button: free, short, no strings. */
 export function Reassure({ light = false, className = "" }: { light?: boolean; className?: string }) {
   return (
-    <p className={`text-[13px] ${light ? "text-cream/70" : "text-forest/60"} ${className}`}>Gratis · 30 minuten · vrijblijvend</p>
+    <p className={`text-[13px] ${light ? "text-cream/70" : "text-forest/70"} ${className}`}>Gratis · 30 minuten · vrijblijvend</p>
   );
 }

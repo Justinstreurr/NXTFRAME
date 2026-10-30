@@ -60,12 +60,12 @@ export default function Board({
             >
               <h2 className="mb-2.5 flex items-baseline justify-between gap-2 px-1.5 pt-0.5">
                 <span className="text-sm font-semibold">{col.label}</span>
-                <span className="text-xs tabular-nums text-forest/55">
+                <span className="text-xs tabular-nums text-forest/70">
                   {list.length}
                   {format === "euro" && sum > 0 ? ` · ${euro(sum)}` : ""}
                 </span>
               </h2>
-              {col.hint && list.length === 0 && <p className="px-1.5 pb-2 text-xs text-forest/45">{col.hint}</p>}
+              {col.hint && list.length === 0 && <p className="px-1.5 pb-2 text-xs text-forest/70">{col.hint}</p>}
               <ul className="min-h-16 space-y-2">
                 {list.map((c) => (
                   <li

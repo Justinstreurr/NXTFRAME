@@ -67,8 +67,8 @@ export default async function Projects({ searchParams }: { searchParams: Promise
       column: t.status,
       node: (
         <div className="p-3.5 pr-24">
-          <p className={`text-sm font-medium leading-snug [overflow-wrap:anywhere] ${t.status === "klaar" ? "text-forest/45 line-through" : ""}`}>{t.title}</p>
-          <p className="mt-2 flex flex-wrap items-center gap-1.5 text-xs text-forest/55">
+          <p className={`text-sm font-medium leading-snug [overflow-wrap:anywhere] ${t.status === "klaar" ? "text-forest/70 line-through" : ""}`}>{t.title}</p>
+          <p className="mt-2 flex flex-wrap items-center gap-1.5 text-xs text-forest/70">
             {p && <Link href={`/dashboard/projecten/${p.id}`} draggable={false} className="hover:underline">{clientName.get(p.client_id)} · {p.name}</Link>}
             {t.due && <Badge tone={t.status !== "klaar" && t.due < today ? "forest" : "muted"}>{date(t.due)}</Badge>}
           </p>

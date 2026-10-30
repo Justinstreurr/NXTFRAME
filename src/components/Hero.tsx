@@ -1,9 +1,13 @@
-"use client";
-
-import { useEffect, useRef } from "react";
+import { preload } from "react-dom";
 import { ArrowIcon, Button, Container, Reassure, TextLink } from "./ui";
 import { FrameGlyph } from "./Logo";
 import LogoTicker, { type TickerLogo } from "./LogoTicker";
+
+/* phones in portrait get their own crop of the photo, just the chair and the sky around it (a
+   third of the bytes); every other screen gets the full picture */
+const PHONE = "(max-width: 639px) and (max-aspect-ratio: 5/8)";
+const HERO_M = "/images/hero-hill-m.webp";
+const HERO = "/images/hero-hill.webp?v=3";
 
 /* the brands under the hero copy, in cream on the dark photo */
 const logos: TickerLogo[] = [
@@ -22,29 +26,17 @@ const logos: TickerLogo[] = [
  * close the hero at the bottom.
  */
 export default function Hero() {
-  const wordRef = useRef<HTMLSpanElement>(null);
-
-  // On load: "verkopen." grows from its centre, led by the brand corners
-  useEffect(() => {
-    const el = wordRef.current;
-    if (!el) return;
-    let r1 = 0;
-    let r2 = 0;
-    r1 = requestAnimationFrame(() => {
-      r2 = requestAnimationFrame(() => el.classList.add("in"));
-    });
-    return () => {
-      cancelAnimationFrame(r1);
-      cancelAnimationFrame(r2);
-    };
-  }, []);
+  // the photo is the largest thing on the first screen: ask for it in the <head>, ahead of the fonts and scripts
+  preload(HERO_M, { as: "image", type: "image/webp", fetchPriority: "high", media: PHONE });
+  preload(HERO, { as: "image", type: "image/webp", fetchPriority: "high", media: `not all and ${PHONE}` });
 
   return (
     <section data-zone="green" className="hero relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-forest text-cream lg:block lg:min-h-0">
       {/* the picture fills the hero edge to edge on every screen: anchored top right on desktop so the
           mascot on its cloud stays in frame, cropped onto the mascot on phones */}
       <picture className="absolute inset-0 -z-20">
-        <source srcSet="/images/hero-hill.webp?v=3" type="image/webp" />
+        <source srcSet={HERO_M} media={PHONE} type="image/webp" />
+        <source srcSet={HERO} type="image/webp" />
         <img
           src="/images/hero-hill.jpg?v=3"
           alt="De NXT Frame-mascotte, werkend op een MacBook op een wolk"
@@ -73,7 +65,7 @@ export default function Hero() {
               <span className="serif-italic text-lime">gevonden worden</span>
               <br />
               en{" "}
-              <span ref={wordRef} className="word-reveal relative inline-block align-baseline">
+              <span className="word-reveal relative inline-block align-baseline">
                 <span className="wr-inner inline-block">verkopen.</span>
                 <span
                   className="wr-tl pointer-events-none absolute size-6 rounded-tl-md border-l-[3px] border-t-[3px] border-lime md:size-8 md:border-l-4 md:border-t-4"

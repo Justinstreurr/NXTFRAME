@@ -44,11 +44,11 @@ export function WidgetCalculator({ step }: { step: number }) {
     <div className="relative aspect-square w-full">
       <img src="/images/widget-rekentool.webp" alt="" className="sb-float absolute inset-0 size-full object-contain" loading="lazy" decoding="async" />
       <span className={`${chip} left-[2%] top-[4%] ${show(step >= 1 && step < 7)}`}>
-        <span className="text-forest/55">Maandlast</span>
+        <span className="text-forest/70">Maandlast</span>
         <span className="font-semibold tabular-nums">€ 1.229</span>
       </span>
       <span className={`${chip} right-[6%] top-[14%] ${show(step >= 2 && step < 7)}`}>
-        <span className="text-forest/55">Rente</span>
+        <span className="text-forest/70">Rente</span>
         <span className="font-semibold tabular-nums">3,9% · 30 jaar</span>
       </span>
       <span className={`${chip} bottom-[30%] left-[0%] bg-forest/95 text-cream ${show(step >= 4 && step < 7)}`}>
@@ -155,7 +155,7 @@ function LaptopChat({ step }: { step: number }) {
               <span className="grid size-[1.5em] place-items-center rounded-full bg-forest text-[0.8em] text-lime">✓</span>
               <span>
                 <span className="block font-semibold">Bezichtiging ingepland</span>
-                <span className="block text-[0.8em] text-forest/60">Za 13:00 · bevestiging is gemaild</span>
+                <span className="block text-[0.8em] text-forest/70">Za 13:00 · bevestiging is gemaild</span>
               </span>
             </div>
           </div>
@@ -217,7 +217,7 @@ function PhoneHand({ step }: { step: number }) {
                   </span>
                   {n.tag && <span className={`whitespace-nowrap rounded-full bg-lime px-2 py-0.5 text-[10.5px] font-semibold ${show(step >= 2)}`}>{n.tag}</span>}
                 </div>
-                <p className="mt-1.5 pl-8 text-[12.5px] text-forest/60">{n.body}</p>
+                <p className="mt-1.5 pl-8 text-[12.5px] text-forest/70">{n.body}</p>
               </div>
             ))}
           </div>

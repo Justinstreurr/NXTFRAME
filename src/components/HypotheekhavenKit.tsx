@@ -15,8 +15,9 @@ const WINE = "#8E4F4B";
 function Tile({ label, children, className = "", bg = "#fff" }: { label: string; children: ReactNode; className?: string; bg?: string }) {
   return (
     <div className={`relative flex h-[340px] w-[82%] shrink-0 snap-start flex-col items-center justify-center rounded-[14px] px-4 pb-12 pt-8 md:h-auto md:w-auto text-[#081534] ${className}`} style={{ background: bg }}>
-      <div className="flex flex-1 items-center justify-center">{children}</div>
-      <p className="absolute inset-x-0 bottom-5 text-center text-[15px] text-black/50 md:bottom-6 md:text-base">{label}</p>
+      {/* the moving piece is a picture of the client's site, not controls: out of reach for keys and screen readers */}
+      <div className="flex flex-1 items-center justify-center" inert aria-hidden="true">{children}</div>
+      <p className="absolute inset-x-0 bottom-5 text-center text-[15px] text-black/60 md:bottom-6 md:text-base">{label}</p>
     </div>
   );
 }
@@ -30,7 +31,7 @@ export default function HypotheekhavenKit() {
   return (
     <Pausable>
       {/* phones: one swipe row, a tile and a half in view; from md the tall tile left and the grid right */}
-      <div className="-mx-6 flex snap-x snap-mandatory scroll-pl-6 gap-2 overflow-x-auto px-6 pb-1 [scrollbar-width:none] md:mx-0 md:grid md:grid-cols-[1fr_1fr] md:gap-2.5 md:overflow-visible md:px-0 md:pb-0 [&::-webkit-scrollbar]:hidden">
+      <div tabIndex={0} role="region" aria-label="Onderdelen van de site" className="-mx-6 flex snap-x snap-mandatory scroll-pl-6 gap-2 overflow-x-auto px-6 pb-1 [scrollbar-width:none] md:mx-0 md:grid md:grid-cols-[1fr_1fr] md:gap-2.5 md:overflow-visible md:px-0 md:pb-0 [&::-webkit-scrollbar]:hidden">
       {/* the maandlasten tool: the steps light up one by one, then the outcome appears */}
       <Tile label="Rekentool" className="min-h-[320px] sm:min-h-[380px] md:min-h-0" bg="#f5f0ea">
         <div className="grid w-[min(92%,520px)] gap-3 sm:grid-cols-[1.3fr_1fr]">

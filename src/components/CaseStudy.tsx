@@ -84,9 +84,9 @@ export function CaseWindow({ url, src, alt = "", className = "", scroll = false,
           <span className="size-2.5 rounded-full bg-[#febc2e]" />
           <span className="size-2.5 rounded-full bg-[#28c840]" />
         </span>
-        <span className="flex h-5 flex-1 items-center truncate rounded-md bg-paper px-2 text-[11px] text-forest/50">{url}</span>
+        <span className="flex h-5 flex-1 items-center truncate rounded-md bg-paper px-2 text-[11px] text-forest/70">{url}</span>
         {scroll && (
-          <span className="hidden items-center gap-1.5 whitespace-nowrap text-[11px] font-medium text-forest/55 md:flex">
+          <span className="hidden items-center gap-1.5 whitespace-nowrap text-[11px] font-medium text-forest/70 md:flex">
             Scroll door de site
             <svg viewBox="0 0 16 16" className="size-3 animate-bounce" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M8 3v10M4 9l4 4 4-4" /></svg>
           </span>
@@ -150,7 +150,7 @@ function Chapter({ b, n }: { b: Extract<CaseBlock, { kind: "chapter" }>; n: numb
       <Container>
         <div className="grid gap-6 border-t border-forest/15 pt-10 md:pt-14 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-6">
-            <Label className="text-forest/50">0{n} · {b.label}</Label>
+            <Label className="text-forest/70">0{n} · {b.label}</Label>
             <h2 className="mt-5 t-section">{b.title}</h2>
           </div>
           <p className="max-w-xl text-lg leading-relaxed text-forest/70 md:text-xl lg:col-span-5 lg:col-start-8 lg:pt-10">{b.body}</p>
@@ -171,7 +171,7 @@ function Challenge({ b, n, bleed }: { b: Extract<CaseBlock, { kind: "challenge" 
             to its bottom edge (so it meets the block under it) and from the middle to the right edge */}
         <div>
           <div className="py-16 md:py-40 lg:w-1/2 lg:pb-80 lg:pr-16 lg:pt-48">
-            <Label className="text-forest/50">0{n} · {b.label}</Label>
+            <Label className="text-forest/70">0{n} · {b.label}</Label>
             <h2 className="mt-5 t-section">{b.title}</h2>
             <p className="mt-6 text-lg leading-relaxed text-forest/70">{b.body}</p>
             <ol className="mt-10 border-t border-forest/15">
@@ -258,7 +258,7 @@ function Phones({ b }: { b: Extract<CaseBlock, { kind: "phones" }> }) {
     <section className="bg-cream py-16 text-forest md:py-40">
       <Container>
         <div className="max-w-xl">
-          <Label className="text-forest/50">{b.label}</Label>
+          <Label className="text-forest/70">{b.label}</Label>
           <h2 className="mt-5 t-section">{b.title}</h2>
           <p className="mt-6 text-lg leading-relaxed text-forest/70">{b.body}</p>
         </div>
@@ -305,7 +305,7 @@ function Kit({ b }: { b: Extract<CaseBlock, { kind: "kit" }> }) {
     <section className="overflow-hidden bg-[#e8e6e1] py-16 text-forest md:py-36">
       <Container className="grid gap-6 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-6">
-          <Label className="text-forest/50">{b.label}</Label>
+          <Label className="text-forest/70">{b.label}</Label>
           <h2 className="mt-5 t-section">{b.title}</h2>
         </div>
         <p className="max-w-xl text-lg leading-relaxed text-forest/70 md:text-xl lg:col-span-5 lg:col-start-8 lg:pt-10">{b.body}</p>
@@ -365,9 +365,9 @@ export default function CaseStudy({ data: c }: { data: CaseData }) {
       <section className="bg-cream py-16 text-forest md:py-36">
         <Container className="grid gap-14 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-8">
-            <Label className="text-forest/50">De case</Label>
+            <Label className="text-forest/70">De case</Label>
             <p className="mt-8 font-display text-[clamp(1.6rem,3vw,2.9rem)] font-medium leading-[1.14] tracking-[-0.03em] [text-indent:12%]">{c.intro.lead}</p>
-            <p className="mt-8 max-w-xl text-lg leading-relaxed text-forest/60">{c.intro.body}</p>
+            <p className="mt-8 max-w-xl text-lg leading-relaxed text-forest/70">{c.intro.body}</p>
           </div>
           <aside className="lg:col-span-3 lg:col-start-10 lg:pt-14">
             <ul className="space-y-2 font-display text-lg font-semibold tracking-tight">
@@ -376,7 +376,7 @@ export default function CaseStudy({ data: c }: { data: CaseData }) {
             <dl className="mt-10 space-y-4 border-t border-forest/15 pt-6 text-[15px]">
               {c.facts.map((f) => (
                 <div key={f.label} className="flex justify-between gap-4">
-                  <dt className="text-forest/50">{f.label}</dt>
+                  <dt className="text-forest/70">{f.label}</dt>
                   <dd className="text-right font-medium">
                     {f.href ? (
                       <a href={f.href} target="_blank" rel="noopener noreferrer" className="underline decoration-forest/30 underline-offset-4 hover:decoration-forest">{f.value}</a>
@@ -442,13 +442,13 @@ export default function CaseStudy({ data: c }: { data: CaseData }) {
       <section className="bg-cream py-16 text-forest md:py-40">
         <Container className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
-            <Label className="text-forest/50">Wat ik deed</Label>
+            <Label className="text-forest/70">Wat ik deed</Label>
             <h2 className="mt-5 t-section">Eén maker, <span className="serif-italic">van schets tot live</span></h2>
           </div>
           <div className="grid gap-10 sm:grid-cols-2 lg:col-span-7 lg:col-start-6 lg:grid-cols-4 lg:pt-4">
             {c.roles.map((r) => (
               <div key={r.group}>
-                <h3 className="text-[12px] font-semibold uppercase tracking-[0.16em] text-forest/55">{r.group}</h3>
+                <h3 className="text-[12px] font-semibold uppercase tracking-[0.16em] text-forest/70">{r.group}</h3>
                 <ul className="mt-4 space-y-2 text-[15px]">
                   {r.items.map((it) => <li key={it}>{it}</li>)}
                 </ul>

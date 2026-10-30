@@ -81,7 +81,8 @@ const sections: LegalSection[] = [
           Ik verwerk alleen wat nodig is om je te antwoorden en om mijn werk voor je te doen. Je kunt de hele site bekijken zonder iets in te vullen of een
           account aan te maken.
         </p>
-        <table>
+        {/* scrolls sideways on phones, so it takes keyboard focus to be scrolled with the arrow keys */}
+        <table tabIndex={0}>
           <thead>
             <tr>
               <th>Gegeven</th>

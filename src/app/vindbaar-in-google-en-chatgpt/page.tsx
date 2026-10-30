@@ -303,7 +303,7 @@ export default function Page() {
               <table className="w-full border-separate border-spacing-x-3 border-spacing-y-0 text-left">
                 <thead>
                   <tr>
-                    <th className="w-[52%] pb-4" />
+                    <td className="w-[52%] pb-4" />
                     <th className="rounded-t-3xl bg-[#fcbbb9] px-6 pb-4 pt-8 text-center align-top font-display text-xl font-semibold tracking-tight text-[#440220]">
                       <Logo src="/images/logos/google.webp" />
                       Google

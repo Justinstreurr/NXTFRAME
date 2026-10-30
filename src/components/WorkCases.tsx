@@ -58,7 +58,7 @@ function CaseCard({ w, n, frame = "aspect-[4/3]", className = "" }: { w: WorkIte
 
         <span className="absolute inset-0 grid place-items-center px-8">
           {mark ? (
-            <img src={mark.src} alt={w.name} className={`w-auto brightness-0 invert ${mark.className}`} />
+            <img src={mark.src} alt={w.name} className={`w-auto brightness-0 invert ${mark.className}`} loading="lazy" decoding="async" />
           ) : (
             <span className="text-center font-display text-[clamp(2.5rem,5vw,4.5rem)] font-semibold leading-none tracking-[-0.03em]">{w.name}</span>
           )}

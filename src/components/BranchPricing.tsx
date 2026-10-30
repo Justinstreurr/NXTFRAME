@@ -110,7 +110,7 @@ export default function BranchPricing({
             Plan een kennismaking
           </Button>
           <Reassure />
-          <p className="mt-2 max-w-xl text-[13px] leading-relaxed text-forest/60">
+          <p className="mt-2 max-w-xl text-[13px] leading-relaxed text-forest/70">
             {smallPrint} De doorlooptijd telt vanaf het moment dat teksten, foto&apos;s en toegang binnen zijn. <a href="/prijzen" className="underline underline-offset-2 hover:text-forest">Bekijk alle prijzen</a>
           </p>
         </div>

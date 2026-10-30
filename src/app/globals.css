@@ -116,7 +116,7 @@ body {
 }
 
 .serif-italic {
-  font-family: var(--font-serif);
+  font-family: var(--font-instrument-italic), "Times New Roman", Georgia, serif;
   font-style: italic;
   font-weight: 400;
   letter-spacing: -0.01em;
@@ -282,39 +282,41 @@ body {
 }
 
 /* Hero word reveal: "verkopen." grows from its centre on load, led by the brand corners.
-   The corners start tiny, grow while travelling outward, and stay on the word's corners. */
+   The corners start tiny, grow while travelling outward, and stay on the word's corners.
+   Pure CSS, so it starts with the first paint instead of waiting for the scripts. */
 .word-reveal .wr-inner {
-  transform: scale(0.08);
   transform-origin: 50% 55%;
-  transition: transform 1300ms cubic-bezier(0.22, 1, 0.36, 1) 480ms;
-  will-change: transform;
+  animation: wr-grow 1300ms cubic-bezier(0.22, 1, 0.36, 1) 480ms both;
 }
-.word-reveal .wr-tl,
+.word-reveal .wr-tl { left: -0.15em; top: 0.02em; transform-origin: 100% 100%; }
+.word-reveal .wr-br { right: -0.22em; bottom: -0.06em; transform-origin: 0 0; }
+.word-reveal .wr-tl {
+  animation:
+    wr-tl-move 1200ms cubic-bezier(0.22, 1, 0.36, 1) 200ms both,
+    wr-corner 1400ms cubic-bezier(0.22, 1, 0.36, 1) 200ms both;
+}
 .word-reveal .wr-br {
-  transform: scale(0.15);
-  transition:
-    left 1200ms cubic-bezier(0.22, 1, 0.36, 1) 200ms,
-    top 1200ms cubic-bezier(0.22, 1, 0.36, 1) 200ms,
-    right 1200ms cubic-bezier(0.22, 1, 0.36, 1) 200ms,
-    bottom 1200ms cubic-bezier(0.22, 1, 0.36, 1) 200ms;
+  animation:
+    wr-br-move 1200ms cubic-bezier(0.22, 1, 0.36, 1) 200ms both,
+    wr-corner 1400ms cubic-bezier(0.22, 1, 0.36, 1) 200ms both;
 }
-.word-reveal .wr-tl { left: calc(50% - 0.75rem); top: calc(55% - 0.75rem); transform-origin: 100% 100%; }
-.word-reveal .wr-br { right: calc(50% - 0.75rem); bottom: calc(45% - 0.75rem); transform-origin: 0 0; }
-.word-reveal.in .wr-inner { transform: scale(1); }
-.word-reveal.in .wr-tl { left: -0.15em; top: 0.02em; }
-.word-reveal.in .wr-br { right: -0.22em; bottom: -0.06em; }
-.word-reveal.in .wr-tl,
-.word-reveal.in .wr-br { animation: wr-corner 1400ms cubic-bezier(0.22, 1, 0.36, 1) 200ms both; }
+@keyframes wr-grow {
+  from { transform: scale(0.08); }
+  to { transform: scale(1); }
+}
+@keyframes wr-tl-move {
+  from { left: calc(50% - 0.75rem); top: calc(55% - 0.75rem); }
+}
+@keyframes wr-br-move {
+  from { right: calc(50% - 0.75rem); bottom: calc(45% - 0.75rem); }
+}
 @keyframes wr-corner {
   0% { transform: scale(0.15); }
   60% { transform: scale(1.25); }
   100% { transform: scale(1); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .word-reveal .wr-inner { transition: none; transform: none; }
-  .word-reveal .wr-tl, .word-reveal .wr-br { transition: none; animation: none; transform: none; }
-  .word-reveal .wr-tl { left: -0.15em; top: 0.02em; }
-  .word-reveal .wr-br { right: -0.22em; bottom: -0.06em; }
+  .word-reveal .wr-inner, .word-reveal .wr-tl, .word-reveal .wr-br { animation: none; }
 }
 
 /* Aanpak path: nodes pop in and text slides up when in view */
@@ -1760,6 +1762,9 @@ html[data-statement-sand] .slim-bg { background-color: var(--color-sand); }
    on their own, or before the script runs, they are simply black */
 .follow-dark { background-color: #000; transition: background-color 700ms ease; }
 .follow-dark.has-leader:not(.is-dark) { background-color: var(--color-cream); }
+/* while cream (only ever out of view) the text is forest, so it never sits cream-on-cream; it turns
+   with the background once the section comes in */
+.follow-dark.has-leader:not(.is-dark) * { color: var(--color-forest); }
 .work-section .work-line {
   border-color: color-mix(in srgb, currentColor 15%, transparent);
   transition: border-color 700ms ease;

@@ -41,7 +41,7 @@ export default function BranchGallery({ header }: { header: ReactNode }) {
             ))}
           </div>
           {live > 0 && (
-            <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-forest/55">
+            <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-forest/70">
               {live} van de {branches.length} concepten live
             </p>
           )}

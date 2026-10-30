@@ -322,7 +322,7 @@ export default function Page() {
                     <Tick />
                     <p className="text-[15px] leading-snug">
                       <span className="block font-semibold">{e.after}</span>
-                      <span className="mt-1 block text-forest/60">{e.why}</span>
+                      <span className="mt-1 block text-forest/70">{e.why}</span>
                     </p>
                   </div>
                 </li>
@@ -333,7 +333,7 @@ export default function Page() {
               <table className="w-full border-separate border-spacing-x-3 border-spacing-y-0 text-left">
                 <thead>
                   <tr>
-                    <th className="w-[20%] pb-4" />
+                    <td className="w-[20%] pb-4" />
                     <th className="w-[36%] rounded-t-3xl bg-[#fcbbb9] px-8 pb-4 pt-8 align-top font-display text-xl font-semibold tracking-tight text-[#440220]">Zo staat het er vaak</th>
                     <th className="rounded-t-3xl bg-paper px-8 pb-4 pt-8 align-top font-display text-xl font-semibold tracking-tight text-forest">Zo schrijf ik het</th>
                   </tr>
@@ -357,7 +357,7 @@ export default function Page() {
                             <Tick delay={i * 120} />
                             <p className="text-[15px] leading-snug">
                               <span className="block font-semibold">{e.after}</span>
-                              <span className="mt-1 block text-forest/60">{e.why}</span>
+                              <span className="mt-1 block text-forest/70">{e.why}</span>
                             </p>
                           </div>
                         </td>

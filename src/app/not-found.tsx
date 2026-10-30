@@ -48,7 +48,7 @@ export default function NotFound() {
                 <Button variant="dark" className="px-8 py-4 text-base" href="/">Terug naar home</Button>
               </div>
               <nav aria-label="Veelgezochte pagina's" className="mt-10">
-                <p className="text-[13px] text-forest/60">Of ga direct naar</p>
+                <p className="text-[13px] text-forest/70">Of ga direct naar</p>
                 <ul className="mt-4 flex flex-wrap gap-x-8 gap-y-4">
                   {links.map((l) => (
                     <li key={l.href}>

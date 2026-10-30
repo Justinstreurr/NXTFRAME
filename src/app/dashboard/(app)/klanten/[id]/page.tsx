@@ -28,7 +28,7 @@ export default async function ClientPage({ params }: { params: Promise<{ id: str
 
   return (
     <>
-      <p className="mb-2 text-sm"><Link href="/dashboard/klanten" className="text-forest/60 hover:underline">← Klanten</Link></p>
+      <p className="mb-2 text-sm"><Link href="/dashboard/klanten" className="text-forest/70 hover:underline">← Klanten</Link></p>
       <PageHead title={client.name} intro={[client.contact_name, client.email, client.phone].filter(Boolean).join(" · ") || undefined}>
         {client.website && (
           <a href={client.website.startsWith("http") ? client.website : `https://${client.website}`} target="_blank" rel="noopener noreferrer" className="rounded-full px-4 py-2 text-sm ring-1 ring-forest/20 hover:bg-forest/[0.06]">
@@ -85,7 +85,7 @@ export default async function ClientPage({ params }: { params: Promise<{ id: str
                 {subs.map((s) => (
                   <li key={s.id}>
                     <Link href={`/dashboard/aanvragen#${s.id}`} className="font-medium hover:underline">{s.onderwerp ?? "Aanvraag"}</Link>
-                    <span className="text-xs text-forest/55"> · {ago(s.created_at)}</span>
+                    <span className="text-xs text-forest/70"> · {ago(s.created_at)}</span>
                     <p className="line-clamp-2 text-forest/65">{s.bericht}</p>
                   </li>
                 ))}
@@ -94,7 +94,7 @@ export default async function ClientPage({ params }: { params: Promise<{ id: str
           )}
 
           {/* two steps, so one stray click can't wipe a client */}
-          <details className="text-right text-sm text-forest/60">
+          <details className="text-right text-sm text-forest/70">
             <summary className="cursor-pointer list-none hover:text-forest">Klant verwijderen…</summary>
             <form action={deleteClient} className="mt-2 rounded-[10px] bg-paper p-4 text-left ring-1 ring-forest/10">
               <input type="hidden" name="id" value={client.id} />

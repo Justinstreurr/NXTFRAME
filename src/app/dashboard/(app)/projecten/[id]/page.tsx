@@ -27,8 +27,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
   return (
     <>
       <p className="mb-2 text-sm">
-        <Link href="/dashboard/projecten" className="text-forest/60 hover:underline">← Projecten</Link>
-        {client && <> · <Link href={`/dashboard/klanten/${client.id}`} className="text-forest/60 hover:underline">{client.name}</Link></>}
+        <Link href="/dashboard/projecten" className="text-forest/70 hover:underline">← Projecten</Link>
+        {client && <> · <Link href={`/dashboard/klanten/${client.id}`} className="text-forest/70 hover:underline">{client.name}</Link></>}
       </p>
       <PageHead title={project.name} intro={`${project.kind} · ${euro(project.price)}${project.monthly ? ` + ${euro(project.monthly)} p/m` : ""}${project.deadline ? ` · deadline ${date(project.deadline)}` : ""}`}>
         <div className="flex items-center gap-2">
@@ -39,7 +39,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
 
       <Card title={`Fase ${project.phase + 1} van ${PHASES.length}: ${PHASES[project.phase]}`}>
         <PhaseSteps project={project} editable />
-        <p className="mt-3 text-xs text-forest/55">Klik op een stap om het project daarop te zetten.</p>
+        <p className="mt-3 text-xs text-forest/70">Klik op een stap om het project daarop te zetten.</p>
       </Card>
 
       <div className="mt-3 grid gap-3 xl:grid-cols-[1.2fr_1fr]">
@@ -60,7 +60,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                         {t.done && <svg viewBox="0 0 24 24" className="size-3.5" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10" /></svg>}
                       </button>
                     </form>
-                    <span className={`flex-1 ${t.done ? "text-forest/45 line-through" : ""}`}>{t.title}</span>
+                    <span className={`flex-1 ${t.done ? "text-forest/70 line-through" : ""}`}>{t.title}</span>
                     {t.due && <Badge tone={!t.done && t.due < today ? "forest" : "muted"}>{date(t.due)}</Badge>}
                     <form action={deleteTask}>
                       <input type="hidden" name="id" value={t.id} />
@@ -94,7 +94,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
               <Submit>Opslaan</Submit>
             </form>
           </Card>
-          <details className="text-right text-sm text-forest/60">
+          <details className="text-right text-sm text-forest/70">
             <summary className="cursor-pointer list-none hover:text-forest">Project verwijderen…</summary>
             <form action={deleteProject} className="mt-2 rounded-[10px] bg-paper p-4 text-left ring-1 ring-forest/10">
               <input type="hidden" name="id" value={project.id} />

@@ -35,15 +35,15 @@ export default async function Clients() {
                   <tr key={c.id} className="hover:bg-forest/[0.03]">
                     <td className="px-5 py-3 md:px-6">
                       <Link href={`/dashboard/klanten/${c.id}`} className="font-medium hover:underline">{c.name}</Link>
-                      {c.contact_name && <span className="block text-xs text-forest/55">{c.contact_name}</span>}
+                      {c.contact_name && <span className="block text-xs text-forest/70">{c.contact_name}</span>}
                     </td>
                     <td className="px-5 py-3 tabular-nums md:px-6">{ps.length}</td>
                     <td className="px-5 py-3 md:px-6">
                       <span className="flex flex-wrap gap-1">{ps.map((p) => <Badge key={p.id} tone={p.status === "bezig" ? "lime" : "soft"}>{statusLabel(p.status)}</Badge>)}</span>
                     </td>
-                    <td className="px-5 py-3 tabular-nums md:px-6">{euro(value)}{monthly > 0 && <span className="block text-xs text-forest/55">+ {euro(monthly)} p/m</span>}</td>
+                    <td className="px-5 py-3 tabular-nums md:px-6">{euro(value)}{monthly > 0 && <span className="block text-xs text-forest/70">+ {euro(monthly)} p/m</span>}</td>
                     <td className="px-5 py-3 tabular-nums md:px-6">{docCount.get(c.id) ?? 0}</td>
-                    <td className="px-5 py-3 text-forest/60 md:px-6">{date(c.created_at)}</td>
+                    <td className="px-5 py-3 text-forest/70 md:px-6">{date(c.created_at)}</td>
                   </tr>
                 );
               })}

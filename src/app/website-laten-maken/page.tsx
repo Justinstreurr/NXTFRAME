@@ -252,7 +252,7 @@ export default function Page() {
                     <FrameCorners className="text-lime" corners="diagonal" inset="inset-0" size="size-5" />
                     <CountUp value={s.value} decimals={s.decimals} prefix={s.prefix} suffix={s.suffix} />
                   </dt>
-                  <dd className="mt-2 text-sm text-forest/60">{s.label} · Happy Flops</dd>
+                  <dd className="mt-2 text-sm text-forest/70">{s.label} · Happy Flops</dd>
                 </div>
               ))}
             </dl>
@@ -333,7 +333,7 @@ export default function Page() {
                   <p className={`mt-6 font-display text-5xl tracking-[-0.04em] ${t.highlight ? "text-lime" : "text-forest"}`}>
                     <span className="align-top text-2xl font-normal tracking-normal opacity-60">vanaf </span>€ {t.from}
                   </p>
-                  <p className={`mt-2 text-sm ${t.highlight ? "text-paper/60" : "text-forest/60"}`}>exclusief btw · live in {t.time}</p>
+                  <p className={`mt-2 text-sm ${t.highlight ? "text-paper/60" : "text-forest/70"}`}>exclusief btw · live in {t.time}</p>
                   <p className={`mt-6 text-base leading-relaxed ${t.highlight ? "text-paper/80" : "text-forest/70"}`}>{t.body}</p>
                   {/* on phones the list of the other two tiers folds behind a button */}
                   <MoreOnMobile show={t.highlight ? 6 : 0} label="Wat zit erin" as="ul" className="mt-8 flex-1 space-y-3" buttonClassName="self-start">
@@ -400,7 +400,7 @@ export default function Page() {
               {handover.map((d, i) => (
                 <li key={d.title} className="overflow-hidden rounded-3xl bg-[#fcbbb9] text-[#440220]">
                   <div className="p-6">
-                    <span className="text-sm font-medium text-[#440220]/55">0{i + 1}</span>
+                    <span className="text-sm font-medium text-[#440220]/75">0{i + 1}</span>
                     <h3 className="mt-1 font-display text-2xl font-semibold tracking-tight">{d.title}</h3>
                     <p className="mt-3 text-[15px] leading-relaxed text-[#440220]/85">
                       <span className="font-semibold">Jij: </span>
@@ -422,7 +422,7 @@ export default function Page() {
               <table className="w-full border-separate border-spacing-x-3 border-spacing-y-0 text-left">
                 <thead>
                   <tr>
-                    <th className="w-[26%] pb-4" />
+                    <td className="w-[26%] pb-4" />
                     <th className="w-[34%] rounded-t-3xl bg-[#fcbbb9] px-8 pb-4 pt-8 align-top font-display text-xl font-semibold tracking-tight text-[#440220]">Wat jij doet</th>
                     <th className="rounded-t-3xl bg-paper px-8 pb-4 pt-8 align-top font-display text-xl font-semibold tracking-tight text-forest">Wat je krijgt</th>
                   </tr>

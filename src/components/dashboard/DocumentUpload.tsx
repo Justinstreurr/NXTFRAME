@@ -46,7 +46,7 @@ export default function DocumentUpload({ clientId, projectId = null }: { clientI
         }}
       >
         <span className="font-semibold">{state.busy ? "Bezig met uploaden…" : "Sleep bestanden hierheen of klik"}</span>
-        <span className="text-xs text-forest/55">Offertes, contracten, briefings, logo&apos;s. Tot 50 MB per bestand.</span>
+        <span className="text-xs text-forest/70">Offertes, contracten, briefings, logo&apos;s. Tot 50 MB per bestand.</span>
         <input ref={input} type="file" multiple className="sr-only" disabled={state.busy} onChange={(e) => upload(e.target.files)} />
       </label>
       {state.error && <p className="mt-2 text-sm text-forest" role="alert">{state.error}</p>}

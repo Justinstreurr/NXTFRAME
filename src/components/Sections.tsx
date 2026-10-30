@@ -434,7 +434,7 @@ export function Comparison() {
           <table className="w-full min-w-[860px] border-separate border-spacing-x-3 border-spacing-y-0 text-left">
             <thead>
               <tr>
-                <th className="w-44 align-bottom pb-4" />
+                <td className="w-44 align-bottom pb-4" />
                 {columns.map((c) => (
                   <th key={c.name} className={`rounded-t-3xl px-6 pt-8 pb-4 align-top font-display text-xl font-semibold tracking-tight ${c.highlight ? "bg-pink text-brown" : "bg-paper text-brown"}`}>
                     {c.name}
@@ -811,7 +811,7 @@ export function SmartExtras() {
         </div>
         <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
           <TextLink href="/contact">Vraag wat er kan voor jouw bedrijf</TextLink>
-          <p className="text-[15px] text-forest/60">Iets anders in gedachten? Vraag het gerust, dan zoek ik uit of het kan.</p>
+          <p className="text-[15px] text-forest/70">Iets anders in gedachten? Vraag het gerust, dan zoek ik uit of het kan.</p>
         </div>
       </Container>
     </section>
