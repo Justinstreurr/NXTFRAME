@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Inter_Tight, Instrument_Serif } from "next/font/google";
 import BrandCursor from "@/components/BrandCursor";
 import Tracker from "@/components/Tracker";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
@@ -53,6 +54,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         {children}
         <BrandCursor />
         <Tracker />
+        {/* Vercel Speed Insights: load speed as real visitors get it (the Real Experience Score), no cookies */}
+        <SpeedInsights />
       </body>
     </html>
   );

@@ -29,7 +29,7 @@ import LegalPage, { type LegalSection } from "@/components/LegalPage";
  *    website, onderwerp, bericht); adjust the table if the form changes
  *  - the form mails through the service set up in src/app/contact/actions.ts (Resend, once its key
  *    is configured): name that service under "Contactformulier" below when it is live
- *  - "no cookies, own cookieless analytics (components/Tracker.tsx), no third-party trackers" is true for the code as of 29 October 2026; rewrite the
+ *  - "no cookies, own cookieless analytics (components/Tracker.tsx) plus Vercel Speed Insights (layout.tsx), no third-party trackers" is true for the code as of 30 October 2026; rewrite the
  *    section "cookies" (and add a consent banner where needed) the moment analytics, a pixel, an
  *    embedded scheduler or any other third-party script is added
  *  - `updated` below
@@ -117,6 +117,12 @@ const sections: LegalSection[] = [
               <td>13 maanden, daarna automatisch verwijderd</td>
             </tr>
             <tr>
+              <td>Laadsnelheid: hoe snel een pagina bij je verschijnt en reageert, met de pagina, het soort apparaat en browser en het land. Niet gekoppeld aan je naam of IP-adres</td>
+              <td>Zien of de site bij echte bezoekers snel is, en dat verbeteren</td>
+              <td>Gerechtvaardigd belang: een snelle site</td>
+              <td>[INVULLEN: bewaartermijn Vercel Speed Insights]</td>
+            </tr>
+            <tr>
               <td>IP-adres, tijdstip en opgevraagde pagina in de serverlogs</td>
               <td>De site afleveren, storingen oplossen en misbruik tegengaan</td>
               <td>Gerechtvaardigd belang: een veilige, werkende site</td>
@@ -146,6 +152,10 @@ const sections: LegalSection[] = [
             Ik meet wel hoe de site gebruikt wordt, met een eigen meting zonder cookies: welke pagina&apos;s bekeken worden, hoe lang, en waarop geklikt wordt.
             Je IP-adres wordt daarvoor niet opgeslagen. Er wordt alleen een code van gemaakt die elke dag verandert, zodat ik bezoekers niet van dag tot dag
             kan volgen en niet kan zien wie je bent. Er gaat niets naar Google of andere partijen.
+          </li>
+          <li>
+            Ook meet ik hoe snel de pagina&apos;s bij bezoekers laden, met Speed Insights van Vercel, de partij die de site host. Ook zonder cookies: het
+            gaat om laadtijden per pagina, apparaatsoort en land, niet om wie je bent.
           </li>
           <li>Staat <em>Do Not Track</em> of <em>Global Privacy Control</em> aan in je browser? Dan meet ik je bezoek helemaal niet.</li>
           <li>Geen advertentiepixels of trackers van sociale media.</li>

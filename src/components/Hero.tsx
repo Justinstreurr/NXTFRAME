@@ -82,9 +82,9 @@ export default function Hero() {
               {/* phones keep the hero to the promise; the second line comes from sm up */}
               <span className="hidden sm:inline"> Je werkt direct met de maker, niet met een bureau.</span>
             </p>
-            {/* one line of proof under the promise; PLACEHOLDERS until the real Happy Flops numbers are in */}
+            {/* one line of proof under the promise: this site's own PageSpeed result (mobile, 30 Oct 2026: LCP 1,2 s, score 100) */}
             <ul className="mt-7 hidden flex-wrap items-center gap-x-6 gap-y-2 text-[15px] font-medium text-cream/90 sm:flex">
-              {["0,9 s laadtijd", "100 PageSpeed", "Vindbaar in Google en AI"].map((t, i) => (
+              {["1,2 s laadtijd", "100 PageSpeed", "Vindbaar in Google en AI"].map((t, i) => (
                 <li key={t} className="flex items-center gap-2" style={{ "--i": i } as React.CSSProperties}>
                   <span className="proof-glyph inline-flex"><FrameGlyph className="size-3 text-lime" /></span>
                   {/* every 5 s a band of light sweeps across the words and the glyph flares, one after another */}
