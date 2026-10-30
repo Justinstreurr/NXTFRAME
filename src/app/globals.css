@@ -2020,6 +2020,7 @@ html[data-statement-sand] .slim-bg { background-color: var(--color-sand); }
 
 /* photos have square corners on every page: photos and videos themselves, and any rounded box whose
    content is a photo filling it; panels, cards and buttons stay round. A card that is a photo over a
-   colour block rounds only the block's side (rounded-b- or rounded-t-), so it is left alone here */
+   colour block rounds only the block's side (rounded-b- or rounded-t-), so it is left alone here.
+   A device screen (.keep-round, the phone mockups) is not a photo: it keeps the rounded corners of its frame */
 :is(img.object-cover, picture > img, video):not([class*="rounded-full"]) { border-radius: 0 !important; }
-[class*="rounded"]:not([class*="rounded-b-"], [class*="rounded-t-"], [class*="rounded-full"]):has(> img.object-cover, > picture, > video, > span > img.object-cover, > div > img.object-cover:only-child) { border-radius: 0 !important; }
+[class*="rounded"]:not([class*="rounded-b-"], [class*="rounded-t-"], [class*="rounded-full"], .keep-round):has(> img.object-cover, > picture, > video, > span > img.object-cover, > div > img.object-cover:only-child) { border-radius: 0 !important; }

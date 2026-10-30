@@ -13,7 +13,7 @@ import { Button, Container, Eyebrow, TextLink } from "@/components/ui";
 export const metadata: Metadata = {
   title: "Websites per branche | Makelaars, horeca, webshops en meer | NXT Frame",
   description:
-    "Een website gebouwd rond jouw branche: makelaars, horeca, webshops, adviseurs, bouw, zorg, beauty en coaches. Per branche lees je wat de site moet doen, en hoe ik dat voor jou bouw.",
+    "Een website gebouwd rond jouw branche: makelaars, horeca, webshops, adviseurs, bouw, zorg, beauty en coaches. Per branche een concept voor een bedrijf dat nog niet bestaat, zodat je ziet wat ik voor jouw vak kan bouwen.",
   alternates: { canonical: "/branches" },
 };
 
@@ -31,13 +31,13 @@ const reasons: StackCard[] = [
   {
     label: "Passend", img: "/images/slim-palette.webp", pos: "42% 50%",
     title: <>De juiste onderdelen, <span className="serif-italic">op de juiste plek</span></>,
-    body: "Woningaanbod, een reserveringsknop, een afspraakplanner of een offertevraag: per branche ligt vast wat de site moet doen, en dat staat waar de bezoeker het verwacht.",
+    body: "Woningaanbod, een reserveringsknop, een afspraakplanner of een offertevraag: per branche zoek ik uit wat de site moet doen, en dat komt te staan waar de bezoeker het verwacht.",
     cta: "Bekijk de aanpak", href: "/aanpak",
   },
   {
     label: "Vooraf helder", img: "/images/slim-desk.webp", pos: "50% 18%",
     title: <>Zien <span className="serif-italic">voordat je beslist</span></>,
-    body: "Per branche lees je precies wat de site gaat doen, en in de cases zie je hoe het eruitziet als het af is: open ze op je telefoon en voel hoe snel ze laden.",
+    body: "Per branche bouw ik een concept voor een bedrijf dat niet bestaat, en in de cases zie je echte klantsites: open ze op je telefoon en voel hoe snel ze laden.",
     cta: "Bekijk het werk", href: "/werk",
   },
 ];
@@ -53,7 +53,7 @@ const reasonTones: StackTone[] = [
 const steps: PathStep[] = [
   { title: "Kies je branche", body: "Bekijk de pagina die bij jouw vak hoort, of het dichtst in de buurt komt.", Icon: MapIcon },
   { title: "Kijk wat de site moet doen", body: "Je leest wat er nu misgaat, wat de site oplost en wat het kost.", Icon: PenIcon },
-  { title: "Ik bouw jouw versie", body: "Met je eigen naam, aanbod en werkgebied. De branchepagina geeft de basis, de kennismaking de rest.", Icon: LaunchIcon },
+  { title: "Ik bouw jouw site", body: "Vanaf nul, rond je eigen naam, aanbod en werkgebied. Het concept laat zien wat er kan; jouw site wordt van jou.", Icon: LaunchIcon },
 ];
 
 export default function Page() {
@@ -81,7 +81,7 @@ export default function Page() {
                 <span className="serif-italic text-lime">jouw branche</span>
               </h1>
               <p className="mt-6 max-w-lg text-paper t-lead">
-                Een makelaar heeft andere vragen dan een restaurant. Per branche weet ik wat de site moet doen.
+                Een makelaar heeft andere vragen dan een restaurant. Per branche zoek ik uit waar ondernemers tegenaan lopen, en bouw ik een concept dat laat zien hoe het beter kan.
               </p>
               <div data-hero-cta className="mt-8">
                 <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
@@ -90,8 +90,8 @@ export default function Page() {
                   </Button>
                   <TextLink light href="#branches">Bekijk de branches</TextLink>
                 </div>
-                <ul className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 font-display text-[15px] text-paper/90">
-                  {[`${branches.length} branches`, "Een plan per branche", "Gebouwd door één maker"].map((t) => (
+                <ul className="mt-6 flex flex-col gap-2 font-display text-[15px] text-paper/90 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6">
+                  {[`${branches.length} branches`, "Een concept per branche", "Gebouwd door één maker"].map((t) => (
                     <li key={t} className="flex items-center gap-2">
                       <FrameGlyph className="size-3 text-lime" />
                       {t}
@@ -125,11 +125,11 @@ export default function Page() {
                 <div>
                   <Eyebrow className="max-w-xl">Kies je vak</Eyebrow>
                   <h2 className="mt-6 t-section md:mt-8">
-                    Acht branches, <span className="serif-italic">elk met een eigen pagina</span>
+                    Acht branches, <span className="serif-italic">elk met een eigen concept</span>
                   </h2>
                 </div>
                 <p className="max-w-md text-forest/75 t-lead">
-                  Op elke pagina staat wat een site in die branche moet doen.
+                  Per branche een site voor een bedrijf dat (nog) niet bestaat, om te laten zien wat ik voor jouw vak kan bouwen.
                 </p>
               </div>
             }
@@ -166,10 +166,10 @@ export default function Page() {
           eyebrow="Zo werkt het"
           title={
             <>
-              Van branchepagina <span className="serif-italic">naar jouw site</span>
+              Van concept <span className="serif-italic">naar jouw site</span>
             </>
           }
-          intro="Drie stappen, één aanspreekpunt. Je kiest je vak, je ziet wat de site moet doen, en daarna bouw ik jouw versie."
+          intro="Drie stappen, één aanspreekpunt. Je kiest je vak, je ziet wat er kan, en daarna bouw ik jouw site vanaf nul."
           action={<TextLink light className="mt-8" href="/aanpak">Bekijk de aanpak</TextLink>}
           items={steps}
           straight

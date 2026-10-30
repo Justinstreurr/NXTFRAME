@@ -17,14 +17,14 @@ Prijzen zijn vanaf-prijzen exclusief btw; na een gratis kennismaking van een hal
 
 ## Branches
 
-- [Makelaars](https://nxtframe.ai/makelaars)
-- [Financieel advies](https://nxtframe.ai/financieel-advies)
-- [Horeca](https://nxtframe.ai/branches/horeca)
-- [Webshops](https://nxtframe.ai/branches/webshops)
-- [Bouw en installatie](https://nxtframe.ai/branches/bouw-en-installatie)
-- [Zorg en praktijken](https://nxtframe.ai/branches/zorg-en-praktijken)
-- [Beauty en wellness](https://nxtframe.ai/branches/beauty-en-wellness)
-- [Coaches en adviseurs](https://nxtframe.ai/branches/coaches-en-adviseurs)
+- [Makelaars](https://nxtframe.ai/makelaar-website)
+- [Financieel advies](https://nxtframe.ai/financieel-adviseur-website)
+- [Horeca](https://nxtframe.ai/horeca-website)
+- [Webshops](https://nxtframe.ai/webshop-laten-maken)
+- [Bouw en installatie](https://nxtframe.ai/bouw-en-installatie-website)
+- [Zorg en praktijken](https://nxtframe.ai/praktijk-website)
+- [Beauty en wellness](https://nxtframe.ai/salon-website)
+- [Coaches en adviseurs](https://nxtframe.ai/coach-website)
 
 ## Werk
 

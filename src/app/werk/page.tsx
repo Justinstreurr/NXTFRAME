@@ -3,18 +3,12 @@ import Footer from "@/components/Footer";
 import WorkGallery from "@/components/WorkGallery";
 import { FrameGlyph } from "@/components/Logo";
 import { Button, Container, Eyebrow, TextLink } from "@/components/ui";
-import LetterFill from "@/components/LetterFill";
 
 export const metadata = {
   title: "Werk | NXT Frame",
   alternates: { canonical: "/werk" },
   description: "Alle cases en concepten van NXT Frame op één plek: websites voor klanten en concepten per branche.",
 };
-
-/* the words that matter, in italic: lime is unreadable on cream, italic is the site accent on light backgrounds */
-function Mark({ children }: { children: React.ReactNode }) {
-  return <span className="italic">{children}</span>;
-}
 
 export default function Page() {
   return (
@@ -49,7 +43,7 @@ export default function Page() {
                   </Button>
                   <TextLink light href="#overzicht">Bekijk het werk</TextLink>
                 </div>
-                <ul className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 font-display text-[15px] text-paper/90">
+                <ul className="mt-6 flex flex-col gap-2 font-display text-[15px] text-paper/90 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6">
                   {["Echte klanten", "Live te bekijken", "Een concept per branche"].map((t) => (
                     <li key={t} className="flex items-center gap-2">
                       <FrameGlyph className="size-3 text-lime" />
@@ -75,19 +69,24 @@ export default function Page() {
           </picture>
         </section>
 
-        {/* filter row, one big serif statement, then the cases as an editorial grid (WorkGallery) */}
-        <section id="overzicht" data-zone="cherry" className="scroll-mt-20 bg-cream pb-12 pt-10 text-forest md:pb-32 md:pt-14">
-          <Container>
-            <WorkGallery
-              statement={
-                <h2 className="mt-14 max-w-6xl font-serif text-[clamp(2.25rem,4.6vw,4.25rem)] leading-[1.05] tracking-[-0.02em] text-forest md:mt-20">
-                  Websites die <Mark>snel laden, gevonden worden</Mark> en daarna ook verkopen.{" "}
-                  {/* the second sentence opens light grey and fills in letter by letter on load */}
-                  <LetterFill parts={[{ text: "Voor klanten, en per branche als " }, { text: "concept", italic: true }, { text: "." }]} />
-                </h2>
-              }
-            />
-          </Container>
+        {/* every case as one edge-to-edge grid, with the filter above it (WorkGallery), built like the
+            Branches page. No padding at the foot: the photos run straight into the footer */}
+        <section id="overzicht" data-zone="cherry" className="scroll-mt-20 bg-cream pt-16 text-forest md:pt-24">
+          <WorkGallery
+            header={
+              <div className="grid gap-10 lg:grid-cols-2 lg:items-end lg:gap-20">
+                <div>
+                  <Eyebrow className="max-w-xl">Ons werk</Eyebrow>
+                  <h2 className="mt-6 t-section md:mt-8">
+                    Klanten en concepten, <span className="serif-italic">alles op één plek</span>
+                  </h2>
+                </div>
+                <p className="max-w-md text-forest/75 t-lead">
+                  Sites voor echte klanten, en per branche een concept voor een bedrijf dat (nog) niet bestaat. Open ze op je telefoon en voel hoe snel ze laden.
+                </p>
+              </div>
+            }
+          />
         </section>
       </main>
       <Footer />

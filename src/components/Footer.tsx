@@ -8,7 +8,7 @@ import FooterPanel from "./FooterPanel";
 const diensten = ["Nieuwe website", "Redesign", "Landingspagina's", "Vindbaar in Google en AI", "Doorontwikkeling en onderhoud", "Teksten en content"];
 const navigatie = ["Werk", "Diensten", "Prijzen", "Aanpak", "Voor makelaars", "Over", "Contact"];
 const branches = ["Makelaars", "Webshops", "Adviseurs", "Horeca"];
-const hrefs: Record<string, string> = { "Nieuwe website": "/website-laten-maken", Werk: "/werk", Diensten: "/diensten", Prijzen: "/prijzen", Aanpak: "/aanpak", "Voor makelaars": "/makelaars", Over: "/over", Contact: "/contact", Makelaars: "/makelaars", Redesign: "/website-redesign", "Landingspagina's": "/landingspagina-laten-maken", "Vindbaar in Google en AI": "/vindbaar-in-google-en-chatgpt", "Doorontwikkeling en onderhoud": "/website-onderhoud", "Teksten en content": "/website-teksten", Webshops: "/branches/webshops", Adviseurs: "/financieel-advies", Horeca: "/branches/horeca" };
+const hrefs: Record<string, string> = { "Nieuwe website": "/website-laten-maken", Werk: "/werk", Diensten: "/diensten", Prijzen: "/prijzen", Aanpak: "/aanpak", "Voor makelaars": "/makelaar-website", Over: "/over", Contact: "/contact", Makelaars: "/makelaar-website", Redesign: "/website-redesign", "Landingspagina's": "/landingspagina-laten-maken", "Vindbaar in Google en AI": "/vindbaar-in-google-en-chatgpt", "Doorontwikkeling en onderhoud": "/website-onderhoud", "Teksten en content": "/website-teksten", Webshops: "/webshop-laten-maken", Adviseurs: "/financieel-adviseur-website", Horeca: "/horeca-website" };
 
 /** a column of links; with `href` its heading links to the overview page */
 function Col({ name, items, arrow = true, href }: { name: string; items: string[]; arrow?: boolean; href?: string }) {

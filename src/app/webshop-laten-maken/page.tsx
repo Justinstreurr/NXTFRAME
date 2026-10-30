@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import CountUp from "@/components/CountUp";
@@ -8,7 +7,7 @@ import StackCards, { type StackCard } from "@/components/StackCards";
 import { ArrowIcon, Button, Container, Eyebrow, TextLink } from "@/components/ui";
 import { FrameCorners, FrameGlyph } from "@/components/Logo";
 import { CodeIcon, LaunchIcon, MapIcon, PenIcon, TalkIcon } from "@/components/StepIcons";
-import { tiers } from "@/components/pricing";
+import { webshop } from "@/components/pricing";
 import { faq } from "@/components/faq";
 
 /**
@@ -17,7 +16,7 @@ import { faq } from "@/components/faq";
  * includes (three big cards in the brand colours), the proof (Happy Flops), what it costs and what
  * comes on top, how the project runs (the zigzag steps), and the questions. The footer carries the
  * closing call to action, so there is no lime band. Price and lead time come from the Webshop tier
- * in pricing.ts; the branch page /branches/webshops goes deeper for merken and webwinkels.
+ * in pricing.ts (the Uitgebreid tier, under the name Webshop). It is also the webshops branch page.
  *
  * DRAFT COPY: everything on this page is a first version for Justin to check.
  */
@@ -28,7 +27,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/webshop-laten-maken" },
 };
 
-const shop = tiers.find((t) => t.name === "Webshop")!;
+const shop = webshop;
 
 /* the round check of the /aanpak table and the /diensten cards; colours per ground */
 function Tick({ className = "bg-forest text-lime" }: { className?: string }) {
@@ -68,7 +67,7 @@ const leaks: StackCard[] = [
 ];
 
 /* what a webshop from me includes: three big cards, each with its ticks. Payment methods,
-   carriers and accounting packages are the ones the /branches/webshops page names. */
+   carriers and accounting packages are the ones the webshops branch names in menuData. */
 const parts = [
   {
     label: "Verkopen",
@@ -170,9 +169,9 @@ const jsonLd = {
       offers: {
         "@type": "Offer",
         name: shop.name,
-        price: shop.from.replace(".", ""),
+        price: shop.from!.replace(".", ""),
         priceCurrency: "EUR",
-        priceSpecification: { "@type": "PriceSpecification", minPrice: shop.from.replace(".", ""), priceCurrency: "EUR", valueAddedTaxIncluded: false },
+        priceSpecification: { "@type": "PriceSpecification", minPrice: shop.from!.replace(".", ""), priceCurrency: "EUR", valueAddedTaxIncluded: false },
       },
     },
     {
@@ -215,7 +214,7 @@ export default function Page() {
                   </Button>
                   <TextLink light href="#prijzen">Bekijk wat het kost</TextLink>
                 </div>
-                <ul className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 font-display text-[15px] text-paper/90">
+                <ul className="mt-6 flex flex-col gap-2 font-display text-[15px] text-paper/90 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6">
                   {[`Vanaf € ${shop.from}`, `Live in ${shop.time}`, "Met iDEAL en Apple Pay"].map((t) => (
                     <li key={t} className="flex items-center gap-2">
                       <FrameGlyph className="size-3 text-lime" />
@@ -320,9 +319,10 @@ export default function Page() {
               />
               <div className="flex flex-col p-8 md:p-12 lg:p-14">
                 <p className="text-[15px] font-medium text-cream/80">Webshop op Shopify · ontwerp, bouw en vindbaarheid</p>
+                {/* the numbers step down from left to right, one under the other; side by side where they fit */}
                 <dl className="mt-10 grid gap-8 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-                  {proof.map((s) => (
-                    <div key={s.label}>
+                  {proof.map((s, i) => (
+                    <div key={s.label} className={i === 1 ? "text-center" : i === 2 ? "text-right" : ""}>
                       <dt className="relative inline-block px-5 py-3 font-display text-5xl tracking-[-0.04em]">
                         <FrameCorners className="text-[#fcbbb9]" corners="diagonal" inset="inset-0" size="size-5" />
                         <CountUp value={s.value} decimals={s.decimals} prefix={s.prefix} suffix={s.suffix} />
@@ -336,10 +336,6 @@ export default function Page() {
                     Bekijk de case
                     <ArrowIcon className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </a>
-                  <Link href="/branches/webshops" className="group inline-flex items-center gap-2 border-b border-current/40 pb-0.5 text-[15px] font-semibold transition-colors hover:border-current">
-                    Meer voor merken en webwinkels
-                    <ArrowIcon className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </Link>
                 </div>
               </div>
             </article>

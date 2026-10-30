@@ -5,7 +5,7 @@ import { FaqList, Work } from "@/components/Sections";
 import { ArrowIcon, Button, Container, Eyebrow, TextLink } from "@/components/ui";
 import { FrameGlyph } from "@/components/Logo";
 import BranchIcon, { type IconKey } from "@/components/BranchIcons";
-import { tiers } from "@/components/pricing";
+import { landing, tiers, webshop } from "@/components/pricing";
 import { faq } from "@/components/faq";
 
 /**
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/diensten" },
 };
 
-const tier = (name: string) => tiers.find((t) => t.name === name);
+const tier = (name: string) => [...tiers, landing, webshop].find((t) => t.name === name);
 
 type Service = {
   id: string;
@@ -47,7 +47,7 @@ const list: Service[] = [
     lead: "De complete site voor een bedrijf dat gevonden wil worden en aanvragen wil. Van strategie en structuur tot ontwerp, bouw en lancering.",
     items: ["Strategie en sitestructuur", "Ontwerp op maat, geen template", "Gebouwd op moderne techniek", "Ingericht op Google en AI", "Zelf te beheren"],
     img: "/images/advies-hero-laptop.webp", pos: "75% 50%", alt: "Een laptop op een groene bank met de website van Hypotheekhaven",
-    price: tier("Website") && { from: tier("Website")!.from, time: tier("Website")!.time },
+    price: tier("Website") && { from: tier("Website")!.from!, time: tier("Website")!.time },
     link: { href: "/website-laten-maken", label: "Alles over een website laten maken" },
   },
   {
@@ -55,7 +55,7 @@ const list: Service[] = [
     lead: "Duidelijke productpagina's en een checkout waarin afrekenen makkelijk gaat. Snel op een telefoon, want daar wordt het meest besteld.",
     items: ["Productpagina's en categorieën", "Checkout en betaalmethoden", "Koppeling met voorraad of boekhouding", "Snel op mobiel"],
     img: "/images/happyflops-laptop-hands.webp", pos: "50% 100%", contain: true, alt: "Handen op een laptop met de webshop van Happy Flops",
-    price: tier("Webshop") && { from: tier("Webshop")!.from, time: tier("Webshop")!.time },
+    price: tier("Webshop") && { from: tier("Webshop")!.from!, time: tier("Webshop")!.time },
     link: { href: "/webshop-laten-maken", label: "Alles over een webshop laten maken" },
   },
   {
@@ -63,7 +63,7 @@ const list: Service[] = [
     lead: "Eén pagina, één doel. Voor een campagne, een dienst of een branche, en gericht op die ene stap die je bezoeker moet zetten.",
     items: ["Strategie en tekststructuur", "Ontwerp op maat", "Formulier of afsprakenplanner", "Ingericht op één zoekvraag"],
     img: "/images/advies-hero.webp", pos: "50% 50%", alt: "Een landingspagina van Hypotheekhaven op een telefoon",
-    price: tier("Landingspagina") && { from: tier("Landingspagina")!.from, time: tier("Landingspagina")!.time },
+    price: tier("Landingspagina") && { from: tier("Landingspagina")!.from!, time: tier("Landingspagina")!.time },
     link: { href: "/landingspagina-laten-maken", label: "Alles over een landingspagina laten maken" },
   },
   {
@@ -161,7 +161,7 @@ export default function Page() {
                   </Button>
                   <TextLink light href="#overzicht">Bekijk de diensten</TextLink>
                 </div>
-                <ul className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 font-display text-[15px] text-paper/90">
+                <ul className="mt-6 flex flex-col gap-2 font-display text-[15px] text-paper/90 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6">
                   {["Vaste prijs vooraf", "Ontwerp én bouw", "Eén aanspreekpunt"].map((t) => (
                     <li key={t} className="flex items-center gap-2">
                       <FrameGlyph className="size-3 text-lime" />

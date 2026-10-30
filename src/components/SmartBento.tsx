@@ -48,38 +48,42 @@ export function useStep() {
 
 export const show = (on: boolean) => `transition-all duration-500 ease-out ${on ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"}`;
 
-/* ---------- 1. Rekentools: the glossy glass calculator widget, with what it yields popping up around it ---------- */
+/* ---------- 1. Direct een prijs: the glossy glass calculator widget, with what it yields popping up around it ---------- */
+
+/** what the calculation yields: two results and the step the visitor takes after it */
+type CalcExample = { lines: [string, string][]; done: string };
+const MORTGAGE: CalcExample = { lines: [["Maandlast", "€ 1.229"], ["Rente", "3,9% · 30 jaar"]], done: "Adviesgesprek ingepland" };
 
 /** the widget render floats; one by one the results of a calculation appear beside it */
-export function WidgetCalculator({ step }: { step: number }) {
+export function WidgetCalculator({ step, example = MORTGAGE }: { step: number; example?: CalcExample }) {
   const chip = "absolute flex items-center gap-2 whitespace-nowrap rounded-2xl bg-white/90 px-3.5 py-2.5 text-[13px] font-medium text-forest shadow-[0_18px_40px_-18px_rgba(2,38,30,0.45)] backdrop-blur";
   return (
     <div className="relative aspect-square w-full">
       <img src="/images/widget-rekentool.webp" alt="" className="sb-float absolute inset-0 size-full object-contain" loading="lazy" decoding="async" />
       <span className={`${chip} left-[2%] top-[4%] ${show(step >= 1 && step < 7)}`}>
-        <span className="text-forest/70">Maandlast</span>
-        <span className="font-semibold tabular-nums">€ 1.229</span>
+        <span className="text-forest/70">{example.lines[0][0]}</span>
+        <span className="font-semibold tabular-nums">{example.lines[0][1]}</span>
       </span>
       <span className={`${chip} right-[6%] top-[14%] ${show(step >= 2 && step < 7)}`}>
-        <span className="text-forest/70">Rente</span>
-        <span className="font-semibold tabular-nums">3,9% · 30 jaar</span>
+        <span className="text-forest/70">{example.lines[1][0]}</span>
+        <span className="font-semibold tabular-nums">{example.lines[1][1]}</span>
       </span>
       <span className={`${chip} bottom-[30%] left-[0%] bg-forest/95 text-cream ${show(step >= 4 && step < 7)}`}>
         <span className="grid size-5 place-items-center rounded-full bg-lime text-[10px] text-forest">✓</span>
-        Adviesgesprek ingepland
+        {example.done}
       </span>
     </div>
   );
 }
 
-/* ---------- 2. Koppelingen: the glossy icon with thick pipes to the systems, a pulse running along one ----------
+/* ---------- 2. Offertes en facturen: the glossy icon with thick pipes to the paperwork, a pulse running along one ----------
    The pills sit close to the icon (x 150-540): on a phone the sliced viewBox only shows the middle of the stage. */
 
 const pipes = [
-  { name: "Realworks", d: "M280 175 H150 Q120 175 120 145 V80 Q120 50 90 50 H-40", at: [205, 175] },
-  { name: "Mollie", d: "M420 175 H560 Q590 175 590 205 V255 Q590 285 620 285 H760", at: [495, 175] },
+  { name: "Offerte", d: "M280 175 H150 Q120 175 120 145 V80 Q120 50 90 50 H-40", at: [205, 175] },
+  { name: "Factuur", d: "M420 175 H560 Q590 175 590 205 V255 Q590 285 620 285 H760", at: [495, 175] },
   { name: "Agenda", d: "M350 245 V400", at: [350, 318] },
-  { name: "Shopify", d: "M350 105 V70 Q350 40 380 40 H760", at: [455, 40] },
+  { name: "Boekhouding", d: "M350 105 V70 Q350 40 380 40 H760", at: [455, 40] },
 ];
 
 function Connections({ step, near }: { step: number; near: boolean }) {
@@ -159,16 +163,16 @@ function LaptopChat({ step }: { step: number }) {
           </div>
           <div className="flex flex-1 flex-col gap-[0.7em] px-[1.4em] py-[1.1em]">
             <p className={`max-w-[72%] self-end rounded-[1.1em] rounded-br-[0.3em] bg-lime px-[1em] py-[0.6em] text-forest ${show(true)}`}>
-              Kan ik zaterdag een bezichtiging plannen voor de Lindelaan?
+              Hebben jullie zaterdag nog plek?
             </p>
             <div className="max-w-[78%] self-start rounded-[1.1em] rounded-bl-[0.3em] bg-cream/[0.09] px-[1em] py-[0.6em] text-cream">
-              {step < 2 ? dots : <span className="sb-pop block">Zeker! Zaterdag is om 10:30 en 13:00 nog plek. Welke past jou het best?</span>}
+              {step < 2 ? dots : <span className="sb-pop block">Zeker! Zaterdag om 10:30 en 13:00 is er nog plek. Welke past jou het best?</span>}
             </div>
             <p className={`max-w-[72%] self-end rounded-[1.1em] rounded-br-[0.3em] bg-lime px-[1em] py-[0.6em] text-forest ${show(step >= 3)}`}>13:00 graag</p>
             <div className={`flex w-fit items-center gap-[0.6em] self-start rounded-[1.1em] bg-cream px-[1em] py-[0.7em] text-forest ${show(step >= 4)}`}>
               <span className="grid size-[1.5em] place-items-center rounded-full bg-forest text-[0.8em] text-lime">✓</span>
               <span>
-                <span className="block font-semibold">Bezichtiging ingepland</span>
+                <span className="block font-semibold">Afspraak ingepland</span>
                 <span className="block text-[0.8em] text-forest/70">Za 13:00 · bevestiging is gemaild</span>
               </span>
             </div>
@@ -202,10 +206,10 @@ function PhoneHand({ step }: { step: number }) {
     return () => ro.disconnect();
   }, []);
   const notes = [
-    { at: 1, title: "Nieuwe aanvraag", body: "M. de Vries wil een waardebepaling", tag: "Warme lead" },
+    { at: 1, title: "Nieuwe aanvraag", body: "J. Bakker wil een offerte voor een badkamer", tag: "Warme lead" },
     { at: 3, title: "Bevestiging verstuurd", body: "Persoonlijke mail naar de klant" },
-    { at: 4, title: "Samenvatting voor jou", body: "Verkoopt binnen 3 maanden, Utrecht" },
-    { at: 5, title: "Toegevoegd aan je CRM", body: "Opvolgen: morgen 10:00" },
+    { at: 4, title: "Offerte nog niet getekend", body: "Herinnering gaat morgen om 10:00 uit" },
+    { at: 5, title: "Klus afgerond", body: "Review gevraagd, met link naar Google" },
   ];
   return (
     <div ref={box} className="relative w-full" style={{ aspectRatio: `${PHOTO.w} / ${PHOTO.h}` }}>
@@ -253,38 +257,45 @@ type Card = {
   span: string;
   /** where the film sits: positioned inside the card, mostly running off an edge */
   stage: string;
+  /** the card's height; most are 560px, a short film gets a shorter card on phones */
+  h?: string;
   film: (step: number, near: boolean) => ReactNode;
 };
+
+/* the homepage example: a price worked out for a job, then the quote asked for */
+const QUOTE: CalcExample = { lines: [["Prijsindicatie", "€ 4.250"], ["Zonnepanelen", "10 stuks · 4,1 kWp"]], done: "Offerte aangevraagd" };
 
 /* top row narrow + wide, bottom row wide + narrow, like a bento box */
 const cards: Card[] = [
   {
-    title: "Rekentools",
-    body: "Bezoekers rekenen zelf uit wat ze kunnen lenen of wat iets kost, en laten daarna hun gegevens achter.",
+    title: "Direct een prijs",
+    body: "Een taart op maat, zonnepanelen of een nieuwe badkamer: bezoekers rekenen zelf uit wat het kost en vragen meteen een offerte aan.",
     bg: "sb-bg-paper", text: "text-forest", muted: "text-forest/65", btn: "bg-forest text-cream hover:bg-forest-hover",
     span: "lg:col-span-5",
     stage: "left-[16%] top-[215px] w-[80%]",
-    film: (s) => <WidgetCalculator step={s} />,
+    film: (s) => <WidgetCalculator step={s} example={QUOTE} />,
   },
   {
-    title: "Koppelingen met je systemen",
-    body: "Je site praat met wat je al gebruikt: woningaanbod, webshop, betalingen of agenda. Niets dubbel invoeren, niet overstappen.",
+    title: "Offertes en facturen vanzelf",
+    body: "Een aanvraag wordt een offerte, een akkoord een factuur, en alles staat in je boekhouding en agenda. Geen overtypen, geen stapel papier.",
     bg: "sb-bg-aurora", text: "text-forest", muted: "text-forest/65", btn: "bg-forest text-cream hover:bg-forest-hover",
     span: "lg:col-span-7",
     stage: "inset-x-0 bottom-0 top-[210px]",
     film: (s, near) => <Connections step={s} near={near} />,
   },
   {
-    title: "AI-assistent op je site",
-    body: "Beantwoordt vragen met de kennis van jouw bedrijf, ook buiten kantooruren, en plant meteen een afspraak in. Weet hij het niet, dan krijg jij de vraag.",
+    title: "Vragen beantwoord, ook 's nachts",
+    body: "Een assistent op je site met de kennis van jouw bedrijf. Hij beantwoordt vragen over prijzen en openingstijden en plant meteen een afspraak in. Weet hij het niet, dan krijg jij de vraag.",
     bg: "sb-bg-night", text: "text-cream", muted: "text-cream/65", btn: "bg-cream text-forest hover:bg-lime",
     span: "lg:col-span-7",
     stage: "left-1/2 bottom-[-6%] w-[92%] -translate-x-1/2",
+    // on phones the laptop is small, so the card shrinks to it instead of leaving a black gap above it
+    h: "h-[500px] md:h-[560px]",
     film: (s) => <LaptopChat step={s} />,
   },
   {
-    title: "Slimme opvolging",
-    body: "Elke aanvraag wordt meteen gelezen, gelabeld en opgevolgd. Zo blijft er niets liggen.",
+    title: "Klanten opvolgen zonder eraan te denken",
+    body: "Elke aanvraag krijgt meteen antwoord, een offerte die blijft liggen een herinnering, en na de klus vraagt je site om een review.",
     bg: "sb-bg-studio", text: "text-forest", muted: "text-forest/70", btn: "bg-forest text-cream hover:bg-forest-hover",
     span: "lg:col-span-5",
     stage: "left-1/2 top-[120px] w-[120%] -translate-x-1/2",
@@ -295,9 +306,9 @@ const cards: Card[] = [
 /**
  * Meer dan een website as a bento grid, after the agency grids where the visual is large and runs
  * off the card: four cards with title, a line and a button on top and a film of the tool at work
- * underneath, all on one clock (useStep). The films are markup and CSS; the koppelingen card uses
+ * underneath, all on one clock (useStep). The films are markup and CSS; the offertes card uses
  * the glossy icon render (public/images/icon-koppelingen.webp), the assistant card the laptop render
- * (public/images/laptop-assistent.webp), the calculator card the glass widget render (public/images/widget-rekentool.webp), the follow-up card
+ * (public/images/laptop-assistent.webp), the price card the glass widget render (public/images/widget-rekentool.webp), the follow-up card
  * the phone in hands (public/images/phone-hand.webp).
  */
 export default function SmartBento() {
@@ -307,7 +318,7 @@ export default function SmartBento() {
     <div ref={host}>
       <MoreOnMobile show={2} label="Toon nog 2 voorbeelden" className="grid gap-4 md:gap-5 lg:grid-cols-12">
       {cards.map((c) => (
-        <article key={c.title} className={`relative h-[560px] overflow-hidden rounded-[14px] ${c.bg} ${c.text} ${c.span}`}>
+        <article key={c.title} className={`relative ${c.h ?? "h-[560px]"} overflow-hidden rounded-[14px] ${c.bg} ${c.text} ${c.span}`}>
           <div className="relative z-10 p-7 md:p-9">
             <h3 className="font-display text-[2rem] font-semibold leading-[1.05] tracking-[-0.02em] md:text-[2.25rem]">{c.title}</h3>
             <p className={`mt-3 max-w-md text-[15px] leading-relaxed md:text-base ${c.muted}`}>{c.body}</p>

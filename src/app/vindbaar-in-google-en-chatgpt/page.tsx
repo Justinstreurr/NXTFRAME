@@ -223,7 +223,7 @@ export default function Page() {
                   </Button>
                   <TextLink light href="#zo-werkt-het">Zo pak ik het aan</TextLink>
                 </div>
-                <ul className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 font-display text-[15px] text-paper/90">
+                <ul className="mt-6 flex flex-col gap-2 font-display text-[15px] text-paper/90 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6">
                   {["Google én AI-zoekmachines", "Nieuwe of bestaande site", "Geen beloftes over plek 1"].map((t) => (
                     <li key={t} className="flex items-center gap-2">
                       <FrameGlyph className="size-3 text-lime" />

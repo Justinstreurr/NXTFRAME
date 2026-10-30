@@ -8,7 +8,7 @@ import { CodeIcon, LaunchIcon, MapIcon, PenIcon, TalkIcon } from "./StepIcons";
 import PillarTabs from "./PillarTabs";
 import { DesignDemo, SearchDemo, SpeedDemo } from "./PillarDemos";
 import WorkCursor from "./WorkCursor";
-import { tiers } from "./pricing";
+import { price, tiers } from "./pricing";
 import { faq } from "./faq";
 import ConvertShowcase from "./ConvertShowcase";
 import BranchCarousel, { type Segment } from "./BranchCarousel";
@@ -503,18 +503,19 @@ export function Testimonials({ dark = false }: { dark?: boolean } = {}) {
         <h2 className={`mt-6 t-section md:mt-8 ${dark ? "text-cream" : "text-brown"}`}>
           Wat klanten <span className={`serif-italic ${dark ? "text-[#fcbbb9]" : ""}`}>erover zeggen</span>
         </h2>
-        {/* two quiet cards in the house style: the brand's frame corners in lime, five stars and the
-            client's logo on top, the quote in body type (not a display size), and who said it with the
-            way to their case at the foot */}
-        <div className="mt-10 grid gap-4 md:mt-14 md:grid-cols-2 md:gap-5">
+        {/* two quiet cards in the house style: the brand's frame corners and five stars (pink on the black,
+            forest on cream), the client's logo on top, the quote in body type (not a display size), and
+            who said it with the way to their case at the foot. On phones they sit side by side in a swipe
+            row, the next one peeking in. */}
+        <div tabIndex={0} role="region" aria-label="Reviews" className="-mx-6 mt-10 flex snap-x snap-mandatory scroll-pl-6 gap-3 overflow-x-auto px-6 pb-2 [scrollbar-width:none] md:mx-0 md:mt-14 md:grid md:grid-cols-2 md:gap-5 md:overflow-visible md:px-0 md:pb-0 [&::-webkit-scrollbar]:hidden">
           {reviews.map((r) => (
             <figure
               key={r.name}
-              className={`relative flex flex-col rounded-[14px] p-6 md:p-8 ${dark ? "bg-white/[0.05] ring-1 ring-white/10" : "bg-paper ring-1 ring-forest/10"}`}
+              className={`relative flex w-[84%] shrink-0 snap-start flex-col rounded-[14px] p-5 md:w-auto md:p-8 ${dark ? "bg-white/[0.05] ring-1 ring-white/10" : "bg-paper ring-1 ring-forest/10"}`}
             >
-              <FrameCorners className={dark ? "text-lime" : "text-forest"} corners="diagonal" size="size-4" inset="inset-3" />
+              <FrameCorners className={dark ? "text-[#fcbbb9]" : "text-forest"} corners="diagonal" size="size-4" inset="inset-3" />
               <div className="flex items-center justify-between gap-4">
-                <span className={`flex gap-0.5 ${dark ? "text-lime" : "text-forest"}`} role="img" aria-label="5 van 5 sterren">
+                <span className={`flex gap-0.5 ${dark ? "text-[#fcbbb9]" : "text-forest"}`} role="img" aria-label="5 van 5 sterren">
                   {[0, 1, 2, 3, 4].map((s) => (
                     <svg key={s} viewBox="0 0 20 20" className="size-4" fill="currentColor" aria-hidden="true">
                       <path d="M10 1.8l2.4 5 5.4.7-4 3.8 1 5.4L10 14.1l-4.8 2.6 1-5.4-4-3.8 5.4-.7z" />
@@ -523,7 +524,7 @@ export function Testimonials({ dark = false }: { dark?: boolean } = {}) {
                 </span>
                 <img src={r.logo} alt={r.name} className={`h-4 w-auto brightness-0 md:h-5 ${dark ? "invert opacity-80" : "opacity-70"}`} loading="lazy" />
               </div>
-              <blockquote className={`mt-5 flex-1 text-[17px] leading-relaxed md:text-lg ${dark ? "text-cream/90" : "text-brown/85"}`}>
+              <blockquote className={`mt-4 flex-1 text-[15px] leading-relaxed md:mt-5 md:text-lg ${dark ? "text-cream/90" : "text-brown/85"}`}>
                 &ldquo;{r.quote}&rdquo;
               </blockquote>
               <figcaption className={`mt-6 flex flex-wrap items-end justify-between gap-x-6 gap-y-3 border-t pt-5 ${dark ? "border-white/10" : "border-forest/10"}`}>
@@ -667,12 +668,12 @@ export function Platform({
 
 /* ---------- Voor wie ---------- */
 const segments: Segment[] = [
-  { label: "Makelaars", icon: "house", title: "Lokaal gevonden, meer bezichtigingen", tags: ["woningaanbod", "waardebepaling", "lokale SEO"], img: "/images/segment-makelaars.jpg", href: "/makelaars" },
-  { label: "Webshops", icon: "bag", title: "Snel laden, meer bestellingen", tags: ["productpagina's", "checkout", "AI-vindbaar"], img: "/images/happyflops-hero-3.jpg", href: "/branches/webshops" },
-  { label: "Adviseurs", icon: "chart", title: "Vertrouwen vóór het eerste gesprek", tags: ["hypotheek", "financieel", "juridisch"], img: "/images/advies-hero.webp", href: "/financieel-advies" },
-  { label: "Horeca", icon: "cup", title: "Van zoekopdracht naar reservering", tags: ["reserveren", "menukaart", "Google-profiel"], img: "/images/prijzen-hero.webp", href: "/branches/horeca" },
-  { label: "Coaches en trainers", icon: "chat", title: "Van volger naar klant", tags: ["programma's", "boekingen", "persoonlijk merk"], img: "/images/slim-palette.webp", href: "/branches/coaches-en-adviseurs" },
-  { label: "Bouw en installatie", icon: "wrench", title: "Offerteaanvragen die binnenkomen", tags: ["projecten", "offerte", "regio's"], img: "/images/mascot-build.webp", href: "/branches/bouw-en-installatie" },
+  { label: "Makelaars", icon: "house", title: "Lokaal gevonden, meer bezichtigingen", tags: ["woningaanbod", "waardebepaling", "lokale SEO"], img: "/images/segment-makelaars.jpg", href: "/makelaar-website" },
+  { label: "Webshops", icon: "bag", title: "Snel laden, meer bestellingen", tags: ["productpagina's", "checkout", "AI-vindbaar"], img: "/images/happyflops-hero-3.jpg", href: "/webshop-laten-maken" },
+  { label: "Adviseurs", icon: "chart", title: "Vertrouwen vóór het eerste gesprek", tags: ["hypotheek", "financieel", "juridisch"], img: "/images/advies-hero.webp", href: "/financieel-adviseur-website" },
+  { label: "Horeca", icon: "cup", title: "Van zoekopdracht naar reservering", tags: ["reserveren", "menukaart", "Google-profiel"], img: "/images/prijzen-hero.webp", href: "/horeca-website" },
+  { label: "Coaches en trainers", icon: "chat", title: "Van volger naar klant", tags: ["programma's", "boekingen", "persoonlijk merk"], img: "/images/slim-palette.webp", href: "/coach-website" },
+  { label: "Bouw en installatie", icon: "wrench", title: "Offerteaanvragen die binnenkomen", tags: ["projecten", "offerte", "regio's"], img: "/images/mascot-build.webp", href: "/bouw-en-installatie-website" },
 ];
 
 export function Difference({
@@ -681,7 +682,7 @@ export function Difference({
       Gebouwd rond <span className="serif-italic">jouw branche</span>
     </>
   ),
-  lead = "Een makelaar heeft andere vragen dan een restaurant. Per branche weet ik wat de site moet doen.",
+  lead = "Een makelaar heeft andere vragen dan een restaurant. Per branche zoek ik uit wat de site moet doen.",
   exclude,
 }: {
   title?: React.ReactNode;
@@ -802,7 +803,7 @@ export function SmartExtras() {
             </h2>
           </div>
           <p className="max-w-md text-forest/75 t-lead">
-            Een rekentool, een assistent die vragen beantwoordt of een koppeling met het systeem dat je al gebruikt. Ik bouw het erbij, zodat je site meer doet dan er goed uitzien.
+            Prijzen uitrekenen, offertes versturen, vragen beantwoorden en klanten opvolgen: het werk naast je werk. Ik bouw het erbij, zodat je site meer doet dan er goed uitzien.
           </p>
         </div>
         {/* four tools as a bento grid, each with a small looping film of the tool at work (SmartBento) */}
@@ -858,8 +859,8 @@ export function Prices() {
                   </span>
 
                   <span className="mt-8 block">
-                    <span className={`block text-sm ${c.muted}`}>vanaf</span>
-                    <span className="block font-display text-5xl font-semibold leading-none tracking-[-0.03em] md:text-6xl">€ {t.from}</span>
+                    <span className={`block text-sm ${c.muted}`}>{t.from ? "vanaf" : "prijs"}</span>
+                    <span className="block font-display text-5xl font-semibold leading-none tracking-[-0.03em] md:text-6xl">{price(t)}</span>
                   </span>
                   <span className={`mt-5 block text-base leading-relaxed ${c.muted}`}>{t.body}</span>
                   <span className={`mt-4 inline-flex w-fit items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold ${c.line}`}>

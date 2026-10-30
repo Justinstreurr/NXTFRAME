@@ -18,6 +18,23 @@ const nextConfig: NextConfig = {
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },
+  /* the branch pages moved to the addresses people search for (30 Oct 2026, see branchSeo in
+     menuData.ts); the old ones redirect for good, so links and anything Google already knows keep working */
+  async redirects() {
+    const moved: [string, string][] = [
+      ["/makelaars", "/makelaar-website"],
+      ["/financieel-advies", "/financieel-adviseur-website"],
+      ["/branches/makelaars", "/makelaar-website"],
+      ["/branches/financieel-advies", "/financieel-adviseur-website"],
+      ["/branches/horeca", "/horeca-website"],
+      ["/branches/webshops", "/webshop-laten-maken"],
+      ["/branches/bouw-en-installatie", "/bouw-en-installatie-website"],
+      ["/branches/zorg-en-praktijken", "/praktijk-website"],
+      ["/branches/beauty-en-wellness", "/salon-website"],
+      ["/branches/coaches-en-adviseurs", "/coach-website"],
+    ];
+    return moved.map(([source, destination]) => ({ source, destination, permanent: true }));
+  },
 };
 
 export default nextConfig;

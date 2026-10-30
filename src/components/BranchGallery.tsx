@@ -85,7 +85,7 @@ export default function BranchGallery({ header }: { header: ReactNode }) {
         {/* the ninth tile: not a branch but the way in for everyone else */}
         {filter === "alle" && (
           <li className="col-span-2 lg:col-span-1">
-            <a href="/contact" className="group flex h-full min-h-[240px] flex-col justify-between bg-[#fcbbb9] p-6 sm:min-h-[320px] text-[#440220] md:p-8">
+            <a href="/contact" className="group flex h-full min-h-[240px] flex-col justify-between gap-6 bg-[#fcbbb9] px-6 pb-12 pt-10 text-[#440220] sm:min-h-[320px] md:p-8">
               <span className="w-fit rounded-full bg-[#440220] px-3 py-1 text-xs font-semibold text-[#fcbbb9]">Jouw branche</span>
               <span>
                 <span className="block font-display text-3xl font-medium leading-tight tracking-tight md:text-4xl">

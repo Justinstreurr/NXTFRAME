@@ -18,7 +18,7 @@ export type Branch = {
   concept?: { url: string; img: string };
   /** the closest piece of real work; only set where one exists, the section is skipped otherwise */
   proof?: { name: string; kind: string; body: string; href: string; img: string; pos?: string };
-  /** the packages of pricing.ts: Website (4.500, 6 tot 10 weken) for every branch, Webshop for webshops;
+  /** the Uitgebreid package of pricing.ts (4.500, 8 tot 12 weken) for every branch, as each branch site includes a koppeling;
       PLACEHOLDER until the prices in pricing.ts are confirmed */
   price: { from: string; span: string; note: string };
   /** the questions this branch actually asks, answered. Feeds the page and the FAQPage JSON-LD */
@@ -45,11 +45,11 @@ export const branches: Branch[] = [
       },
     ],
     musts: [
-      { title: "Woningaanbod dat werkt", body: "Je aanbod uit Realworks, Kolibri of je eigen feed, als je pakket dat toelaat, filters die kopers echt gebruiken en een detailpagina die de bezichtiging verkoopt." },
+      { title: "Woningaanbod dat werkt", body: "Je aanbod uit Realworks, Kolibri of je eigen feed, filters die kopers echt gebruiken en een detailpagina die de bezichtiging verkoopt." },
       { title: "Gevonden in je regio", body: "Een eigen pagina per plaats en per dienst, opgebouwd voor Google en ChatGPT, zodat je kans maakt op 'makelaar' plus de plaatsen waar je werkt." },
-      { title: "Leads uit waardebepaling", body: "Een waardebepaling in een paar stappen die verkopers nieuwsgierig maakt, met de uitkomst per mail en de aanvraag bij jou, als je pakket het toelaat ook in je CRM." },
+      { title: "Leads uit waardebepaling", body: "Een waardebepaling in een paar stappen die verkopers nieuwsgierig maakt, met de uitkomst per mail en de aanvraag bij jou, ook in je CRM." },
     ],
-    price: { from: "4.500", span: "6 tot 10 weken", note: "Inclusief de koppeling met je aanbod en een waardebepaling die leads oplevert." },
+    price: { from: "4.500", span: "8 tot 12 weken", note: "Inclusief de koppeling met je aanbod en een waardebepaling die leads oplevert." },
     faq: [
       {
         q: "Wat kost een website voor een makelaar?",
@@ -69,7 +69,7 @@ export const branches: Branch[] = [
       },
       {
         q: "Hoe lang duurt het voordat de site live staat?",
-        a: "Reken op 6 tot 10 weken vanaf het moment dat ik je teksten, foto's en de toegang tot je aanbod heb. De koppeling test ik als eerste, want daar zit de meeste onzekerheid.",
+        a: "Reken op 8 tot 12 weken vanaf het moment dat ik je teksten, foto's en de toegang tot je aanbod heb. De koppeling test ik als eerste, want daar zit de meeste onzekerheid.",
       },
       {
         q: "Wat gebeurt er als ik van CRM wissel?",
@@ -95,7 +95,7 @@ export const branches: Branch[] = [
   },
   {
     slug: "horeca", name: "horeca", label: "Horeca", icon: "cup", img: "/images/prijzen-hero.webp",
-    title: { lead: "Een website die", italic: "tafels vult" },
+    title: { lead: "Een horeca website die", italic: "tafels vult" },
     intro: "Reserveren in drie tikken, een menukaart die goed leest op een telefoon en een Google-profiel dat klopt.",
     pains: [
       {
@@ -116,7 +116,7 @@ export const branches: Branch[] = [
       { title: "Een kaart voor de telefoon", body: "Geen pdf, maar een menukaart die snel laadt, per gerecht vindbaar is, allergenen toont en die je zelf in een minuut aanpast als de daghap verandert." },
       { title: "Google Maps op orde", body: "Openingstijden, feestdagen en foto's die in Google hetzelfde zeggen als op je site, zodat wie in de buurt zoekt niet voor een dichte deur staat." },
     ],
-    price: { from: "4.500", span: "6 tot 10 weken", note: "Inclusief reserveren via je eigen systeem en een menukaart die je zelf bijwerkt." },
+    price: { from: "4.500", span: "8 tot 12 weken", note: "Inclusief reserveren via je eigen systeem en een menukaart die je zelf bijwerkt." },
     faq: [
       {
         q: "Koppelt dit met mijn reserveringssysteem?",
@@ -136,7 +136,7 @@ export const branches: Branch[] = [
       },
       {
         q: "Heb ik professionele foto's nodig?",
-        a: "Het scheelt enorm, want eten verkoopt op beeld. Heb je die niet, dan starten we met wat er is en ontwerp ik de pagina's zo dat ze ook met minder foto's kloppen. Fotografie kan ik regelen.",
+        a: "Het scheelt enorm, want eten verkoopt op beeld. Heb je die niet, dan starten we met wat er is en ontwerp ik de pagina's zo dat ze ook met minder foto's kloppen.",
       },
       {
         q: "Werkt het ook voor afhalen en bezorgen?",
@@ -171,7 +171,7 @@ export const branches: Branch[] = [
       name: "Happy Flops", kind: "Klant", href: "/werk/happy-flops", img: "/images/happyflops-mockup.jpg", pos: "50% 62%",
       body: "Een webshop met een eigen merk, eigen fotografie en productpagina's die op een telefoon net zo goed werken als op een laptop.",
     },
-    price: { from: "7.500", span: "10 tot 14 weken", note: "Inclusief productpagina's, checkout, betaal- en verzendkoppelingen en het overzetten van je bestaande producten." },
+    price: { from: "4.500", span: "8 tot 12 weken", note: "Inclusief productpagina's, checkout, betaal- en verzendkoppelingen en het overzetten van je bestaande producten." },
     faq: [
       {
         q: "Werk je met Shopify, WooCommerce of maatwerk?",
@@ -226,7 +226,7 @@ export const branches: Branch[] = [
       name: "Hypotheekhaven", kind: "Klant", href: "/werk/hypotheekhaven", img: "/images/hypotheekhaven-fauteuil.webp",
       body: "Een adviespraktijk met een site die uitlegt hoe het werkt en de eerste afspraak zo licht mogelijk maakt.",
     },
-    price: { from: "4.500", span: "6 tot 10 weken", note: "Inclusief een afspraakplanner, pagina's per dienst en een vaste plek voor je verplichte informatie." },
+    price: { from: "4.500", span: "8 tot 12 weken", note: "Inclusief een afspraakplanner, pagina's per dienst en een vaste plek voor je verplichte informatie." },
     faq: [
       {
         q: "Moet mijn site aan regels van de AFM voldoen?",
@@ -264,7 +264,7 @@ export const branches: Branch[] = [
   },
   {
     slug: "bouw-en-installatie", name: "bouw- en installatiebedrijven", label: "Bouw en installatie", icon: "wrench", img: "/images/mascot-build.webp",
-    title: { lead: "Een website die", italic: "offertes binnenhaalt" },
+    title: { lead: "Een bouw- en installatiewebsite die", italic: "offertes binnenhaalt" },
     intro: "Voor aannemers, installateurs en vakmensen. Laat je werk zien en maak het aanvragen van een offerte simpel.",
     pains: [
       {
@@ -284,8 +284,9 @@ export const branches: Branch[] = [
       { title: "Je werk als bewijs", body: "Projectpagina's met echte foto's, voor en na, wat de klus inhield en wat de klant ervan vond. Dat overtuigt meer dan elke tekst over vakmanschap." },
       { title: "Offerte in een minuut", body: "Een aanvraagformulier dat met één hand op een telefoon in te vullen is, met foto-upload van de situatie, zodat je kunt inschatten zonder eerst langs te rijden." },
       { title: "Gevonden per dienst en plaats", body: "Van badkamer renoveren tot warmtepomp installeren, elke dienst een eigen pagina per werkgebied, zodat je gevonden kunt worden op de klussen die je het liefst doet." },
+      { title: "Offertes en facturen vanzelf", body: "Een offerte- en factuurtool achter je site: standaardklussen krijgen meteen een offerte met jouw prijzen, een akkoord wordt een factuur, en alles staat klaar voor je boekhouding." },
     ],
-    price: { from: "4.500", span: "6 tot 10 weken", note: "Inclusief projectpagina's, een offerteformulier met foto-upload en een pagina per dienst en werkgebied." },
+    price: { from: "4.500", span: "8 tot 12 weken", note: "Inclusief projectpagina's, een offerteformulier met foto-upload, een offerte- en factuurtool en een pagina per dienst en werkgebied." },
     faq: [
       {
         q: "Ik heb geen goede foto's van mijn werk, wat nu?",
@@ -315,7 +316,7 @@ export const branches: Branch[] = [
   },
   {
     slug: "zorg-en-praktijken", name: "zorgpraktijken", label: "Zorg en praktijken", icon: "heart", img: "/images/slim-choice.webp",
-    title: { lead: "Een website die", italic: "rust geeft en afspraken maakt" },
+    title: { lead: "Een praktijkwebsite die", italic: "rust geeft en afspraken maakt" },
     intro: "Voor tandartsen, fysiotherapeuten, psychologen en andere praktijken. Een site die ook je oudere patiënten zonder hulp kunnen gebruiken.",
     pains: [
       {
@@ -336,7 +337,7 @@ export const branches: Branch[] = [
       { title: "Toegankelijk voor iedereen", body: "Grote knoppen, rustig contrast, heldere taal en werkend met een schermlezer. Gebouwd volgens de toegankelijkheidsrichtlijnen, niet als sluitstuk maar vanaf het ontwerp." },
       { title: "Duidelijk over wachttijd en aanmelden", body: "Of je aanneemt, hoe lang het duurt en wat iemand moet meenemen naar de eerste afspraak. Dat scheelt telefoontjes en geeft rust, aan beide kanten." },
     ],
-    price: { from: "4.500", span: "6 tot 10 weken", note: "Inclusief online afspraken, toegankelijkheid volgens WCAG en een pagina per behandelaar." },
+    price: { from: "4.500", span: "8 tot 12 weken", note: "Inclusief online afspraken, toegankelijkheid volgens WCAG en een pagina per behandelaar." },
     faq: [
       {
         q: "Kan het koppelen met mijn afsprakensysteem?",
@@ -366,7 +367,7 @@ export const branches: Branch[] = [
   },
   {
     slug: "beauty-en-wellness", name: "beauty- en wellnessondernemers", label: "Beauty en wellness", icon: "sparkle", img: "/images/slim-palette.webp",
-    title: { lead: "Een website die", italic: "je agenda vult" },
+    title: { lead: "Een salonwebsite die", italic: "je agenda vult" },
     intro: "Voor salons, studio's en spa's. Een site met de sfeer van je zaak, waar klanten zelf online een plek boeken.",
     pains: [
       {
@@ -387,7 +388,7 @@ export const branches: Branch[] = [
       { title: "Je eigen sfeer", body: "Beeld, kleur en letters die bij jouw studio horen. Klanten kiezen ook op uitstraling, en die moet meteen kloppen, ook op een klein scherm." },
       { title: "Gevonden in de buurt", body: "Een eigen pagina per behandeling in combinatie met je stad of wijk, plus een Google-profiel dat klopt, zodat nieuwe klanten je ook zonder advertenties kunnen vinden." },
     ],
-    price: { from: "4.500", span: "6 tot 10 weken", note: "Inclusief de koppeling met je boekingssysteem en een pagina per behandeling." },
+    price: { from: "4.500", span: "8 tot 12 weken", note: "Inclusief de koppeling met je boekingssysteem en een pagina per behandeling." },
     faq: [
       {
         q: "Koppelt dit met mijn boekingssysteem?",
@@ -407,7 +408,7 @@ export const branches: Branch[] = [
       },
       {
         q: "Heb ik professionele foto's nodig?",
-        a: "In deze branche wel, want je verkoopt sfeer en resultaat. Goede foto's van je ruimte en je werk verdienen zich terug. Heb je ze niet, dan regel ik een fotograaf, of we starten met je beste eigen beeld en vullen later aan.",
+        a: "In deze branche wel, want je verkoopt sfeer en resultaat. Goede foto's van je ruimte en je werk verdienen zich terug. Heb je ze niet, dan starten we met je beste eigen beeld en vullen later aan.",
       },
       {
         q: "Hoe word ik gevonden op mijn behandelingen?",
@@ -417,7 +418,7 @@ export const branches: Branch[] = [
   },
   {
     slug: "coaches-en-adviseurs", name: "coaches en adviseurs", label: "Coaches en adviseurs", icon: "chat", img: "/images/over-mascot.webp",
-    title: { lead: "Een website die", italic: "je aanbod uitlegt en gesprekken oplevert" },
+    title: { lead: "Een coachwebsite die", italic: "je aanbod uitlegt en gesprekken oplevert" },
     intro: "Voor coaches, trainers en consultants. Een site die klinkt zoals jij, met een aanbod dat mensen ook zonder gesprek begrijpen.",
     pains: [
       {
@@ -438,7 +439,7 @@ export const branches: Branch[] = [
       { title: "Aanbod dat helder is", body: "Trajecten, duur, prijs en resultaat in één oogopslag, met een kennismakingsgesprek als logische volgende stap in plaats van als enige optie." },
       { title: "Gevonden op je expertise", body: "Artikelen en pagina's over je specialisme, opgebouwd voor Google en ChatGPT. Elk stuk dat je schrijft, is een extra ingang naar je site." },
     ],
-    price: { from: "4.500", span: "6 tot 10 weken", note: "Inclusief een agendakoppeling, pagina's per traject en een plek om zelf te publiceren." },
+    price: { from: "4.500", span: "8 tot 12 weken", note: "Inclusief een agendakoppeling, pagina's per traject en een plek om zelf te publiceren." },
     faq: [
       {
         q: "Moet ik mijn prijzen op de site zetten?",
@@ -468,9 +469,21 @@ export const branches: Branch[] = [
   },
 ];
 
-/* makelaars and financieel advies have their own page; the other branches use the shared template */
-const ownPages: Record<string, string> = { makelaars: "/makelaars", "financieel-advies": "/financieel-advies" };
-export const branchHref = (b: Branch) => ownPages[b.slug] ?? `/branches/${b.slug}`;
+/* every branch at the address people search for ("horeca website", "makelaar website"), with the
+   page title to match. Makelaars and financieel advies have a page of their own, webshops share the
+   service page /webshop-laten-maken (one page per search, so they don't compete); the rest run on the
+   shared template ([branch]/page.tsx). The old /branches/... addresses redirect (next.config.ts). */
+export const branchSeo: Record<string, { path: string; title: string; template?: true }> = {
+  makelaars: { path: "/makelaar-website", title: "Makelaar website laten maken" },
+  horeca: { path: "/horeca-website", title: "Horeca website laten maken", template: true },
+  webshops: { path: "/webshop-laten-maken", title: "Webshop laten maken" },
+  "financieel-advies": { path: "/financieel-adviseur-website", title: "Website voor financieel adviseurs laten maken" },
+  "bouw-en-installatie": { path: "/bouw-en-installatie-website", title: "Website laten maken voor bouw en installatie", template: true },
+  "zorg-en-praktijken": { path: "/praktijk-website", title: "Website voor je praktijk laten maken", template: true },
+  "beauty-en-wellness": { path: "/salon-website", title: "Website voor je salon laten maken", template: true },
+  "coaches-en-adviseurs": { path: "/coach-website", title: "Website voor coaches laten maken", template: true },
+};
+export const branchHref = (b: Branch) => branchSeo[b.slug]?.path ?? "/branches";
 
 /* the question every branch asks sooner or later, answered the same way everywhere (texts are
    written by NXT Frame and checked by the client); placed third, after the branch's own first two */
@@ -495,9 +508,9 @@ export const menu: MenuItem[] = [
     listLabel: "Per branche",
     cardsLabel: "Uitgelicht",
     cards: [
-      { title: "Makelaars", body: "Woningaanbod, waardebepaling en lokaal gevonden worden.", href: "/makelaars", img: "/images/branches-hero-straat.webp" },
-      { title: "Webshops", body: "Productpagina's die overtuigen en een checkout zonder afhakers.", href: "/branches/webshops", img: "/images/happyflops-hero-2.jpg" },
-      { title: "Horeca", body: "Reserveren in drie tikken en een menukaart die leest op een telefoon.", href: "/branches/horeca", img: "/images/prijzen-hero.webp", pos: "50% 40%" },
+      { title: "Makelaars", body: "Woningaanbod, waardebepaling en lokaal gevonden worden.", href: "/makelaar-website", img: "/images/branches-hero-straat.webp" },
+      { title: "Webshops", body: "Productpagina's die overtuigen en een checkout zonder afhakers.", href: "/webshop-laten-maken", img: "/images/happyflops-hero-2.jpg" },
+      { title: "Horeca", body: "Reserveren in drie tikken en een menukaart die leest op een telefoon.", href: "/horeca-website", img: "/images/prijzen-hero.webp", pos: "50% 40%" },
     ],
     links: branches.map((b) => ({ label: b.label, href: branchHref(b), icon: b.icon })),
   },

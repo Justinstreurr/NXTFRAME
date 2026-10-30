@@ -18,10 +18,10 @@ import { Button, Container, Eyebrow, TextLink } from "@/components/ui";
 const advies = branches.find((b) => b.slug === "financieel-advies")!;
 
 export const metadata: Metadata = {
-  title: "Website laten maken voor hypotheek- en financieel adviseurs | NXT Frame",
+  title: "Website voor hypotheek- en financieel adviseurs laten maken | NXT Frame",
   description:
     "Een adviseurswebsite met een kennismaking die je online plant, rekentools waarmee bezoekers zelf rekenen en een pagina per dienst en levensmoment. Voorbeeld: Hypotheekhaven.",
-  alternates: { canonical: "/financieel-advies" },
+  alternates: { canonical: "/financieel-adviseur-website" },
 };
 
 /* the three pains from menuData, with the key words in serif italic (the photos are no longer shown) */
@@ -131,7 +131,7 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Branches", item: "https://nxtframe.ai/branches" },
-        { "@type": "ListItem", position: 2, name: "Financieel advies", item: "https://nxtframe.ai/financieel-advies" },
+        { "@type": "ListItem", position: 2, name: "Financieel advies", item: "https://nxtframe.ai/financieel-adviseur-website" },
       ],
     },
   ],
@@ -171,7 +171,7 @@ export default function Page() {
                   </Button>
                   <TextLink light href="/werk/hypotheekhaven">Bekijk Hypotheekhaven</TextLink>
                 </div>
-                <ul className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 font-display text-[15px] text-paper/90">
+                <ul className="mt-6 flex flex-col gap-2 font-display text-[15px] text-paper/90 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6">
                   {["Kennismaking als eerste stap", "Rekentools op je eigen site", "Een pagina per levensmoment"].map((t) => (
                     <li key={t} className="flex items-center gap-2">
                       <FrameGlyph className="size-3 text-lime" />

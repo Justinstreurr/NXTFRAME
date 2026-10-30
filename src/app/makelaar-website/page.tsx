@@ -18,10 +18,10 @@ import BranchPricing, { type PriceWay } from "@/components/BranchPricing";
 const makelaars = branches.find((b) => b.slug === "makelaars")!;
 
 export const metadata: Metadata = {
-  title: "Website laten maken voor makelaars | Woningaanbod uit je CRM | NXT Frame",
+  title: "Makelaar website laten maken | Woningaanbod uit je CRM | NXT Frame",
   description:
     "Een makelaarswebsite met je woningaanbod uit je eigen pakket (zoals Realworks, Kolibri of Skarabee), een waardebepaling zonder drempel en een pagina per plaats waar je werkt.",
-  alternates: { canonical: "/makelaars" },
+  alternates: { canonical: "/makelaar-website" },
 };
 
 /* the three pains from menuData, with the key words in serif italic (the photos are no longer shown) */
@@ -37,7 +37,7 @@ const pains = makelaars.pains.map((p, i) => ({ ...p, ...painArt[i] }));
 const features: SiteFeature[] = [
   {
     icon: "value", title: "Online waardebepaling",
-    body: "Een verkoper vult zijn adres en een paar gegevens in, zonder eerst te hoeven bellen. De aanvraag komt direct in je mail, of in je CRM als je pakket dat toelaat.",
+    body: "Een verkoper vult zijn adres en een paar gegevens in, zonder eerst te hoeven bellen. De aanvraag komt direct in je mail of in je CRM.",
     result: "Meer verkoopgesprekken",
   },
   {
@@ -131,7 +131,7 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Branches", item: "https://nxtframe.ai/branches" },
-        { "@type": "ListItem", position: 2, name: "Makelaars", item: "https://nxtframe.ai/makelaars" },
+        { "@type": "ListItem", position: 2, name: "Makelaars", item: "https://nxtframe.ai/makelaar-website" },
       ],
     },
   ],
@@ -169,7 +169,7 @@ export default function Page() {
                   </Button>
                   <TextLink light href="#koppelingen">Zo werkt de koppeling</TextLink>
                 </div>
-                <ul className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 font-display text-[15px] text-paper/90">
+                <ul className="mt-6 flex flex-col gap-2 font-display text-[15px] text-paper/90 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6">
                   {["Aanbod uit je eigen CRM", "Waardebepaling als eerste stap", "Een pagina per plaats"].map((t) => (
                     <li key={t} className="flex items-center gap-2">
                       <FrameGlyph className="size-3 text-lime" />

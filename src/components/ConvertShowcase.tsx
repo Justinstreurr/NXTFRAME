@@ -563,7 +563,7 @@ export default function ConvertShowcase() {
   const live = onScreen;
 
   return (
-    <section ref={host} data-zone="green" className="overflow-x-clip bg-cream pb-16 pt-4 text-forest md:pb-40 md:pt-8">
+    <section ref={host} data-zone="green" className="overflow-x-clip bg-cream pb-16 pt-14 text-forest md:pb-40 md:pt-16">
       <Container>
         {/* the copy on the left, straight on the page; the laptop playing the film on the right */}
         <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12">

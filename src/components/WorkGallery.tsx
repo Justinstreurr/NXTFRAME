@@ -2,16 +2,17 @@
 
 import { useState, type ReactNode } from "react";
 import { FrameCorners } from "./Logo";
+import { ArrowIcon, Container } from "./ui";
+import WaterHover from "./WaterHover";
 import { work, type WorkItem } from "./workData";
 
 /**
- * The Werk page body: a filter row (all, clients, concepts) with a stack/grid switch, the page
- * statement, and the cases. "Stack" is the editorial layout: the blocks alternate wide and
- * narrow, two to a row, each with its own photo height, and the name, a sentence and the tag sit
- * under the photo. "Grid" is the overview: four equal squares to a row with only name and tag.
+ * The Werk page body, built like the Branches page (BranchGallery): the section heading, a filter
+ * row (all, clients, concepts), and then the cases as one edge-to-edge grid of three, flush against
+ * each other with square corners and the name inside the photo. With every case showing, a blush
+ * tile closes the grid for the visitor who wants theirs in it.
  */
 type Filter = "alle" | WorkItem["kind"];
-type Display = "grid" | "stack";
 
 const filters: { key: Filter; label: string }[] = [
   { key: "alle", label: "Alle" },
@@ -19,69 +20,93 @@ const filters: { key: Filter; label: string }[] = [
   { key: "Concept", label: "Concepten" },
 ];
 
-/* wide, narrow / narrow, wide: the rhythm of the rows */
-const slots = [
-  { span: "lg:col-span-7", wide: true },
-  { span: "lg:col-span-5", wide: false },
-  { span: "lg:col-span-5", wide: false },
-  { span: "lg:col-span-7", wide: true },
-];
-
-export default function WorkGallery({ statement }: { statement: ReactNode }) {
+export default function WorkGallery({ header }: { header: ReactNode }) {
   const [filter, setFilter] = useState<Filter>("alle");
-  const [display, setDisplay] = useState<Display>("stack");
   const items = filter === "alle" ? work : work.filter((w) => w.kind === filter);
-  const grid = display === "grid";
+  const clients = work.filter((w) => w.kind === "Klant").length;
+  // on phones (two to a row) an odd number of cases leaves one cell open for the last tile
+  const half = items.length % 2 === 1;
 
   return (
     <>
-      <div className="flex flex-wrap items-center justify-between gap-x-8 gap-y-4 border-t border-forest/15 pt-6">
-        <div className="flex flex-wrap items-center gap-2">
-          <Label>Filter:</Label>
-          {filters.map((f) => (
-            <Pill key={f.key} active={filter === f.key} onClick={() => setFilter(f.key)}>
-              {f.label}
-            </Pill>
-          ))}
+      <Container>
+        {header}
+        <div className="mt-10 flex flex-wrap items-center justify-between gap-x-8 gap-y-4 border-t border-forest/15 pt-6 md:mt-12">
+          <div className="flex flex-wrap items-center gap-2">
+            <Label>Filter:</Label>
+            {filters.map((f) => (
+              <Pill key={f.key} active={filter === f.key} onClick={() => setFilter(f.key)}>
+                {f.label}
+              </Pill>
+            ))}
+          </div>
+          <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-forest/70">
+            {clients} klanten · {work.length - clients} concepten
+          </p>
         </div>
-        <div className="hidden items-center gap-2 lg:flex">
-          <Label>Weergave:</Label>
-          <Pill active={display === "stack"} onClick={() => setDisplay("stack")}>
-            <StackIcon /> Stack
-          </Pill>
-          <Pill active={display === "grid"} onClick={() => setDisplay("grid")}>
-            <GridIcon /> Grid
-          </Pill>
-        </div>
-      </div>
+      </Container>
 
-      {statement}
-
-      {grid ? (
-        <ul className="mt-14 grid grid-cols-2 gap-x-4 gap-y-10 md:mt-20 md:gap-x-6 lg:grid-cols-4">
-          {items.map((w) => (
-            <li key={w.name}>
-              <WorkCard item={w} ratio="aspect-square" compact />
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <ul className="mt-14 grid gap-x-6 gap-y-14 md:mt-20 lg:grid-cols-12">
-          {items.map((w, i) => {
-            const slot = slots[i % slots.length];
-            return (
-              <li key={w.name} className={slot.span}>
-                <WorkCard item={w} ratio={slot.wide ? "aspect-[16/10]" : "aspect-[4/3]"} />
-              </li>
-            );
-          })}
-        </ul>
-      )}
+      {/* three in a row, flush, square corners, from the left edge of the window to the right */}
+      <ul className="mt-8 grid grid-cols-2 md:mt-10 lg:grid-cols-3">
+        {items.map((w) => (
+          <li key={w.name}>
+            <a href={w.href ?? "/contact"} className="group relative block aspect-[3/4] overflow-hidden bg-forest text-paper sm:aspect-[4/5] lg:aspect-square">
+              {/* the photo, under water while the mouse is over the tile (WaterHover), as on the branch tiles */}
+              <WaterHover>
+                <img
+                  src={w.img}
+                  alt=""
+                  style={w.pos ? { objectPosition: w.pos } : undefined}
+                  className="absolute inset-0 size-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                  loading="lazy"
+                />
+              </WaterHover>
+              <FrameCorners className="text-lime opacity-0 transition-opacity duration-300 group-hover:opacity-100" inset="inset-5" corners="anti" />
+              <span
+                className={`absolute left-3 top-3 rounded-full px-2.5 py-1 text-[11px] font-semibold sm:left-5 sm:top-5 sm:px-3 sm:text-xs ${
+                  w.kind === "Klant" ? "bg-lime text-forest" : "bg-black/45 text-paper/90 backdrop-blur-sm"
+                }`}
+              >
+                {w.kind}
+              </span>
+              <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 bg-gradient-to-t from-black/80 via-black/30 to-transparent px-4 pb-4 pt-16 sm:px-6 sm:pb-6 sm:pt-24">
+                <span className="block">
+                  <span className="block font-display text-lg font-medium leading-tight tracking-tight sm:text-2xl md:text-3xl">{w.name}</span>
+                  <span className="mt-1 hidden text-sm text-paper/80 sm:block">{w.tags}</span>
+                </span>
+                <span className="hidden size-10 shrink-0 place-items-center rounded-full bg-paper/15 transition-colors group-hover:bg-lime group-hover:text-forest sm:grid">
+                  <ArrowIcon className="size-4" />
+                </span>
+              </div>
+            </a>
+          </li>
+        ))}
+        {/* the last tile: not a case but the way in for the visitor who wants to be the next one. It fills
+            the rest of the last row: one cell on phones when the cases leave one open, else the full row */}
+        {filter === "alle" && (
+          <li className={`${half ? "col-span-1" : "col-span-2"} ${items.length % 3 === 2 ? "lg:col-span-1" : items.length % 3 === 1 ? "lg:col-span-2" : "lg:col-span-3"}`}>
+            <a href="/contact" className={`group flex h-full flex-col justify-between gap-6 bg-[#fcbbb9] text-[#440220] sm:min-h-[320px] md:p-8 ${half ? "px-4 pb-6 pt-5" : "min-h-[240px] px-6 pb-12 pt-10"}`}>
+              <span className="w-fit rounded-full bg-[#440220] px-3 py-1 text-xs font-semibold text-[#fcbbb9]">Jouw site</span>
+              <span>
+                <span className={`block font-display font-medium leading-tight tracking-tight md:text-4xl ${half ? "text-2xl sm:text-3xl" : "text-3xl"}`}>
+                  Jouw bedrijf <span className="serif-italic">hier?</span>
+                </span>
+                <span className={`mt-4 max-w-sm text-[15px] leading-relaxed text-[#440220]/80 ${half ? "hidden sm:block" : "block"}`}>
+                  Dan zoeken we samen uit wat jouw site moet doen. Dat begint met een gesprek van een half uur.
+                </span>
+                <span className="mt-6 inline-flex items-center gap-2 border-b border-[#440220]/40 pb-0.5 text-[15px] font-semibold transition-colors group-hover:border-[#440220]">
+                  Plan een kennismaking
+                  <ArrowIcon className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </span>
+              </span>
+            </a>
+          </li>
+        )}
+      </ul>
     </>
   );
 }
 
-/* the filter row parts, shared with the Branches page (BranchGallery) */
 export function Label({ children }: { children: ReactNode }) {
   return <span className="mr-1 text-xs font-medium uppercase tracking-[0.14em] text-forest/70">{children}</span>;
 }
@@ -98,60 +123,5 @@ export function Pill({ active, onClick, children }: { active: boolean; onClick: 
     >
       {children}
     </button>
-  );
-}
-
-/* compact: the grid version, only the name and the tag under the photo */
-function WorkCard({ item: w, ratio, compact = false }: { item: WorkItem; ratio: string; compact?: boolean }) {
-  const external = w.href?.startsWith("http") ?? false;
-  const live = w.kind === "Concept" && external;
-  return (
-    <a href={w.href ?? "#"} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined} className="group block">
-      <div className={`relative overflow-hidden rounded-3xl bg-forest ${ratio}`}>
-        <img
-          src={w.img}
-          alt=""
-          className="absolute inset-0 size-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-          style={w.pos ? { objectPosition: w.pos } : undefined}
-          loading="lazy"
-        />
-        <FrameCorners className="text-lime opacity-0 transition-opacity duration-300 group-hover:opacity-100" inset="inset-5" corners="anti" />
-        {live && (
-          <span className="absolute left-5 top-5 rounded-full bg-lime px-3 py-1 text-xs font-semibold text-forest">Concept live</span>
-        )}
-      </div>
-      {compact ? (
-        <h2 className="mt-4 font-display text-xl font-medium tracking-tight text-forest md:text-2xl">{w.name}</h2>
-      ) : (
-        <>
-          <div className="mt-5 flex flex-wrap items-baseline gap-x-4 gap-y-1 text-[15px]">
-            <span className="font-medium text-forest">{w.name}</span>
-            <span className="text-forest/70">{w.tags}</span>
-          </div>
-          <h2 className="mt-2 max-w-2xl font-display text-2xl leading-snug tracking-tight text-forest md:text-[1.75rem]">{w.headline}</h2>
-        </>
-      )}
-      <p className={`${compact ? "mt-1.5" : "mt-3"} text-xs font-medium uppercase tracking-[0.14em] text-forest/70`}># {w.kind}</p>
-    </a>
-  );
-}
-
-function StackIcon() {
-  return (
-    <svg viewBox="0 0 16 16" className="size-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-      <rect x="2" y="2.5" width="12" height="4.5" rx="1" />
-      <rect x="2" y="9" width="12" height="4.5" rx="1" />
-    </svg>
-  );
-}
-
-function GridIcon() {
-  return (
-    <svg viewBox="0 0 16 16" className="size-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-      <rect x="2" y="2" width="5" height="5" rx="1" />
-      <rect x="9" y="2" width="5" height="5" rx="1" />
-      <rect x="2" y="9" width="5" height="5" rx="1" />
-      <rect x="9" y="9" width="5" height="5" rx="1" />
-    </svg>
   );
 }

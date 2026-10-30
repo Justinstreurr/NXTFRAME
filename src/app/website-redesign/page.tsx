@@ -169,7 +169,7 @@ const jsonLd = {
       offers: {
         "@type": "Offer",
         priceCurrency: "EUR",
-        priceSpecification: { "@type": "PriceSpecification", minPrice: website.from.replace(".", ""), priceCurrency: "EUR" },
+        priceSpecification: { "@type": "PriceSpecification", minPrice: website.from!.replace(".", ""), priceCurrency: "EUR" },
       },
     },
     {
@@ -213,7 +213,7 @@ export default function Page() {
                   </Button>
                   <TextLink light href="#vindbaarheid">Zo houd je je vindbaarheid</TextLink>
                 </div>
-                <ul className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 font-display text-[15px] text-paper/90">
+                <ul className="mt-6 flex flex-col gap-2 font-display text-[15px] text-paper/90 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6">
                   {["Oude adressen doorgestuurd", "Vaste prijs vooraf", "Eén aanspreekpunt"].map((t) => (
                     <li key={t} className="flex items-center gap-2">
                       <FrameGlyph className="size-3 text-lime" />

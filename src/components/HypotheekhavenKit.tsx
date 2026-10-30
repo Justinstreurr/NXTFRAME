@@ -1,5 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 import { Pausable } from "./CaseDarkFx";
+import AutoSwipe from "./AutoSwipe";
 
 /* ---------- The Hypotheekhaven building blocks, each one moving on its own tile ----------
    The same layout as HappyFlopsKit, with the real parts of hypotheekhaven.vercel.app (checked 28 Oct
@@ -11,10 +12,13 @@ import { Pausable } from "./CaseDarkFx";
 
 const NAVY = "#081534";
 const WINE = "#8E4F4B";
+/* light tints of the brand for the tile grounds */
+const BLUSH = "#f3e2dd";
+const MIST = "#e6ebf3";
 
 function Tile({ label, children, className = "", bg = "#fff" }: { label: string; children: ReactNode; className?: string; bg?: string }) {
   return (
-    <div className={`relative flex h-[340px] w-[82%] shrink-0 snap-start flex-col items-center justify-center rounded-[14px] px-4 pb-12 pt-8 md:h-auto md:w-auto text-[#081534] ${className}`} style={{ background: bg }}>
+    <div data-card className={`relative flex h-[340px] w-[82%] shrink-0 snap-start flex-col items-center justify-center rounded-[14px] px-4 pb-12 pt-8 md:h-auto md:w-auto text-[#081534] ${className}`} style={{ background: bg }}>
       {/* the moving piece is a picture of the client's site, not controls: out of reach for keys and screen readers */}
       <div className="flex flex-1 items-center justify-center" inert aria-hidden="true">{children}</div>
       <p className="absolute inset-x-0 bottom-5 text-center text-[15px] text-black/60 md:bottom-6 md:text-base">{label}</p>
@@ -31,34 +35,34 @@ export default function HypotheekhavenKit() {
   return (
     <Pausable>
       {/* phones: one swipe row, a tile and a half in view; from md the tall tile left and the grid right */}
-      <div tabIndex={0} role="region" aria-label="Onderdelen van de site" className="-mx-6 flex snap-x snap-mandatory scroll-pl-6 gap-2 overflow-x-auto px-6 pb-1 [scrollbar-width:none] md:mx-0 md:grid md:grid-cols-[1fr_1fr] md:gap-2.5 md:overflow-visible md:px-0 md:pb-0 [&::-webkit-scrollbar]:hidden">
+      <AutoSwipe label="Onderdelen van de site" className="-mx-6 flex snap-x snap-mandatory scroll-pl-6 gap-2 overflow-x-auto overflow-y-hidden px-6 pb-1 [scrollbar-width:none] md:mx-0 md:grid md:grid-cols-[1fr_1fr] md:gap-2.5 md:overflow-visible md:px-0 md:pb-0 [&::-webkit-scrollbar]:hidden">
       {/* the maandlasten tool: the steps light up one by one, then the outcome appears */}
       <Tile label="Rekentool" className="min-h-[320px] sm:min-h-[380px] md:min-h-0" bg="#f5f0ea">
-        <div className="grid w-[min(92%,520px)] gap-3 sm:grid-cols-[1.3fr_1fr]">
-          <div className="flex flex-col gap-2">
+        <div className="grid w-[min(100%,520px)] grid-cols-[1.25fr_1fr] gap-2 sm:w-[min(92%,520px)] sm:grid-cols-[1.3fr_1fr] sm:gap-3">
+          <div className="flex flex-col gap-1.5 sm:gap-2">
             {steps.map((s, i) => (
-              <div key={s} className="flex items-center gap-3 bg-white px-4 py-3.5 text-[15px]" style={loop(`hhk-row-${i}`, "steps(1)")}>
-                <span className="flex size-6 flex-none items-center justify-center rounded-full border text-[11px]" style={loop(`hhk-dot-${i}`, "steps(1)")}>{i + 1}</span>
+              <div key={s} className="flex items-center gap-2 bg-white px-2.5 py-2 text-[12px] sm:gap-3 sm:px-4 sm:py-3.5 sm:text-[15px]" style={loop(`hhk-row-${i}`, "steps(1)")}>
+                <span className="flex size-5 flex-none items-center justify-center rounded-full border text-[10px] sm:size-6 sm:text-[11px]" style={loop(`hhk-dot-${i}`, "steps(1)")}>{i + 1}</span>
                 {s}
               </div>
             ))}
           </div>
-          <div className="flex flex-col bg-white p-4">
-            <p className="font-serif text-lg">Jouw berekening</p>
-            <span className="my-3 h-px bg-[#081534]/10" />
+          <div className="flex flex-col bg-white p-2.5 sm:p-4">
+            <p className="font-serif text-[15px] leading-tight sm:text-lg">Jouw berekening</p>
+            <span className="my-2 h-px bg-[#081534]/10 sm:my-3" />
             <p className="text-[11px] opacity-60">Netto per maand</p>
-            <p className="relative mt-1 h-9 font-serif text-3xl">
+            <p className="relative mt-1 h-7 font-serif text-2xl sm:h-9 sm:text-3xl">
               <span className="absolute" style={loop("hhk-res-0", "steps(1)")}>–</span>
               <span className="absolute" style={loop("hhk-res-1", "ease-out")}>€ 1.142</span>
             </p>
-            <p className="mt-auto pt-4 text-[10px] leading-snug opacity-50">Indicatie, geen advies en geen aanbod.</p>
+            <p className="mt-auto pt-3 text-[9px] leading-snug opacity-50 sm:pt-4 sm:text-[10px]">Indicatie, geen advies en geen aanbod.</p>
           </div>
         </div>
       </Tile>
 
       <div className="contents md:grid md:grid-cols-2 md:gap-2.5">
         {/* the call to action, pressed, its arrow nudging on */}
-        <Tile label="Knoppen" className="min-h-[170px] sm:aspect-square sm:min-h-0">
+        <Tile label="Knoppen" className="min-h-[170px] sm:aspect-square sm:min-h-0" bg={BLUSH}>
           <span className="flex h-[50px] items-center gap-3 whitespace-nowrap px-5 text-[14px] font-medium text-white" style={{ background: WINE, ...loop("hhk-press") }}>
             Plan een gratis kennismaking
             <svg viewBox="0 0 16 16" className="size-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" style={loop("hhk-arrow")} aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5" /></svg>
@@ -66,7 +70,7 @@ export default function HypotheekhavenKit() {
         </Tile>
 
         {/* the term: the chosen button moves along */}
-        <Tile label="Looptijd" className="min-h-[170px] sm:aspect-square sm:min-h-0">
+        <Tile label="Looptijd" className="min-h-[170px] sm:aspect-square sm:min-h-0" bg={MIST}>
           <div className="flex flex-wrap justify-center gap-1.5 text-[13px]">
             {terms.map((t, i) => (
               <span key={t} className="flex h-10 w-[74px] items-center justify-center border" style={loop(`hhk-term-${i}`, "steps(1)")}>{t}</span>
@@ -99,7 +103,7 @@ export default function HypotheekhavenKit() {
         </Tile>
 
         {/* annuïtair or lineair: the dark block slides across */}
-        <Tile label="Aflossing" className="min-h-[150px] sm:min-h-[190px]">
+        <Tile label="Aflossing" className="min-h-[150px] sm:min-h-[190px]" bg="#f5f0ea">
           <div className="relative flex border text-[13px]" style={{ borderColor: NAVY }}>
             <span className="absolute inset-y-0 left-0 w-1/2" style={{ background: NAVY, ...loop("hhk-switch") }} />
             {["Annuïtair", "Lineair"].map((t, i) => (
@@ -109,7 +113,7 @@ export default function HypotheekhavenKit() {
         </Tile>
 
         {/* the scores, Google and Trustoo in turn */}
-        <Tile label="Reviews" className="min-h-[150px] sm:min-h-[190px]">
+        <Tile label="Reviews" className="min-h-[150px] sm:min-h-[190px]" bg={BLUSH}>
           <div className="relative h-14 w-44 text-center">
             {[["5,0", "op Google"], ["9,8", "op Trustoo"]].map(([score, where], i) => (
               <div key={where} className="absolute inset-0 flex flex-col items-center justify-center" style={loop(`hhk-rev-${i}`, "ease-in-out")}>
@@ -120,7 +124,7 @@ export default function HypotheekhavenKit() {
           </div>
         </Tile>
       </div>
-      </div>
+      </AutoSwipe>
     </Pausable>
   );
 }

@@ -2,11 +2,11 @@
 export const faq = [
   {
     q: "Wat kost een website laten maken?",
-    a: "Een landingspagina begint rond € 1.950, een complete website rond € 4.500 en een webshop rond € 7.500. De uiteindelijke prijs hangt af van het aantal pagina's, koppelingen en of we de content samen maken. Na de kennismaking krijg je een vaste prijs, geen uurtje-factuurtje.",
+    a: "Een complete website begint rond € 2.500. Een grote site of een webshop begint rond € 4.500, en echt maatwerk, zoals een platform of een eigen tool, gaat op offerte. De uiteindelijke prijs hangt af van het aantal pagina's, koppelingen en of we de content samen maken. Na de kennismaking krijg je een vaste prijs, geen uurtje-factuurtje.",
   },
   {
     q: "Hoe lang duurt het om een website te laten maken?",
-    a: "Een landingspagina staat in 3 tot 4 weken live, een website in 6 tot 10 weken en een webshop in 10 tot 14 weken, gerekend vanaf het moment dat teksten, foto's en toegang binnen zijn. Hoe snel feedback binnenkomt, bepaalt de rest.",
+    a: "Een website staat in 4 tot 6 weken live, een grote site of webshop in 8 tot 12 weken, gerekend vanaf het moment dat teksten, foto's en toegang binnen zijn. Hoe snel feedback binnenkomt, bepaalt de rest.",
   },
   {
     q: "Waarom geen WordPress, Wix of een AI-sitebuilder?",

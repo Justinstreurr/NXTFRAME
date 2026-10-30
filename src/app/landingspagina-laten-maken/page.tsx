@@ -7,7 +7,7 @@ import StackCards, { type StackCard } from "@/components/StackCards";
 import { ArrowIcon, Button, Container, Eyebrow, TextLink } from "@/components/ui";
 import { FrameGlyph } from "@/components/Logo";
 import { CodeIcon, LaunchIcon, MapIcon, PenIcon, TalkIcon } from "@/components/StepIcons";
-import { tiers } from "@/components/pricing";
+import { landing } from "@/components/pricing";
 import { faq } from "@/components/faq";
 
 /**
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/landingspagina-laten-maken" },
 };
 
-const page = tiers.find((t) => t.name === "Landingspagina")!;
+const page = landing;
 
 /* the round check of the /aanpak table and the /diensten cards; colours per ground */
 function Tick({ className = "bg-forest text-lime" }: { className?: string }) {
@@ -156,9 +156,9 @@ const jsonLd = {
       offers: {
         "@type": "Offer",
         name: page.name,
-        price: page.from.replace(".", ""),
+        price: page.from!.replace(".", ""),
         priceCurrency: "EUR",
-        priceSpecification: { "@type": "PriceSpecification", minPrice: page.from.replace(".", ""), priceCurrency: "EUR", valueAddedTaxIncluded: false },
+        priceSpecification: { "@type": "PriceSpecification", minPrice: page.from!.replace(".", ""), priceCurrency: "EUR", valueAddedTaxIncluded: false },
       },
     },
     {
@@ -200,7 +200,7 @@ export default function Page() {
                   </Button>
                   <TextLink light href="#prijzen">Bekijk wat het kost</TextLink>
                 </div>
-                <ul className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 font-display text-[15px] text-paper/90">
+                <ul className="mt-6 flex flex-col gap-2 font-display text-[15px] text-paper/90 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6">
                   {[`Vanaf € ${page.from}`, `Live in ${page.time}`, "Teksten inbegrepen"].map((t) => (
                     <li key={t} className="flex items-center gap-2">
                       <FrameGlyph className="size-3 text-lime" />

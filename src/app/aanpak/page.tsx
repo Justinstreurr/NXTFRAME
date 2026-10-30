@@ -127,8 +127,8 @@ export default function Page() {
                   <span className="hidden md:inline"><TextLink light href="#stappen">Bekijk de stappen</TextLink></span>
                   <span className="md:hidden"><TextLink light href="#per-stap">Bekijk de stappen</TextLink></span>
                 </div>
-                <ul className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 font-display text-[15px] text-paper/90">
-                  {["Vaste prijs vooraf", "Eén aanspreekpunt", "Live in 3 tot 14 weken"].map((t) => (
+                <ul className="mt-6 flex flex-col gap-2 font-display text-[15px] text-paper/90 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6">
+                  {["Vaste prijs vooraf", "Eén aanspreekpunt", "Een site live in 4 tot 6 weken"].map((t) => (
                     <li key={t} className="flex items-center gap-2">
                       <FrameGlyph className="size-3 text-lime" />
                       {t}
@@ -166,17 +166,17 @@ export default function Page() {
           />
         </div>
 
-        {/* per step: what you do, what you get, on the forest ground: a blush column for what you do and a paper one for what you get */}
-        <section id="per-stap" data-zone="green" className="scroll-mt-20 bg-forest py-12 text-paper md:py-32">
+        {/* per step: what you do, what you get, on a white ground: a blush column for what you do and a cream one for what you get */}
+        <section id="per-stap" data-zone="cherry" className="scroll-mt-20 bg-white py-12 text-forest md:py-32">
           <Container>
             <div className="grid gap-10 lg:grid-cols-2 lg:items-end lg:gap-20">
               <div>
-                <Eyebrow tone="light" className="max-w-xl">Per stap</Eyebrow>
+                <Eyebrow className="max-w-xl">Per stap</Eyebrow>
                 <h2 className="mt-6 t-section md:mt-8">
-                  Wat ik van je nodig heb, <span className="serif-italic text-lime">en wat je krijgt</span>
+                  Wat ik van je nodig heb, <span className="serif-italic">en wat je krijgt</span>
                 </h2>
               </div>
-              <p className="max-w-md text-lg leading-snug text-paper/75 md:text-xl">
+              <p className="max-w-md text-lg leading-snug text-forest/75 md:text-xl">
                 Je hoeft niets klaar te hebben om te beginnen. Per stap weet je wat er van je verwacht wordt, en wat er aan het eind op tafel ligt.
               </p>
             </div>
@@ -192,7 +192,7 @@ export default function Page() {
                       {d.you}
                     </p>
                   </div>
-                  <ul className="space-y-3 bg-paper p-6 text-forest">
+                  <ul className="space-y-3 bg-cream p-6 text-forest">
                     {d.get.map((g) => (
                       <li key={g} className="flex items-start gap-3 text-[15px]">
                         <Tick />
@@ -211,7 +211,7 @@ export default function Page() {
                   <tr>
                     <td className="w-[26%] pb-4" />
                     <th className="w-[34%] rounded-t-3xl bg-[#fcbbb9] px-8 pb-4 pt-8 align-top font-display text-xl font-semibold tracking-tight text-[#440220]">Wat jij doet</th>
-                    <th className="rounded-t-3xl bg-paper px-8 pb-4 pt-8 align-top font-display text-xl font-semibold tracking-tight text-forest">Wat je krijgt</th>
+                    <th className="rounded-t-3xl bg-cream px-8 pb-4 pt-8 align-top font-display text-xl font-semibold tracking-tight text-forest">Wat je krijgt</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -219,14 +219,14 @@ export default function Page() {
                     const last = i === details.length - 1;
                     return (
                       <tr key={d.title}>
-                        <th scope="row" className={`py-6 pr-4 align-top ${last ? "" : "border-b border-paper/15"}`}>
-                          <span className="text-sm font-medium text-lime">0{i + 1}</span>
+                        <th scope="row" className={`py-6 pr-4 align-top ${last ? "" : "border-b border-forest/10"}`}>
+                          <span className="text-sm font-medium text-forest/70">0{i + 1}</span>
                           <span className="mt-1 block font-display text-xl font-semibold tracking-tight lg:text-2xl">{d.title}</span>
                         </th>
                         <td className={`bg-[#fcbbb9] px-8 py-6 align-top text-[15px] leading-relaxed text-[#440220]/85 ${last ? "rounded-b-3xl pb-8" : ""}`}>
                           <span className={`block ${last ? "" : "border-b border-[#440220]/15 pb-6"}`}>{d.you}</span>
                         </td>
-                        <td className={`bg-paper px-8 py-6 align-top text-forest ${last ? "rounded-b-3xl pb-8" : ""}`}>
+                        <td className={`bg-cream px-8 py-6 align-top text-forest ${last ? "rounded-b-3xl pb-8" : ""}`}>
                           <ul className={`space-y-3 ${last ? "" : "border-b border-forest/10 pb-6"}`}>
                             {d.get.map((g, j) => (
                               <li key={g} className="flex items-start gap-3 text-[15px] leading-snug">
@@ -244,7 +244,7 @@ export default function Page() {
             </Reveal>
 
             {/* how long it takes, per kind of site: the numbers framed like the proof on the hub */}
-            <div className="mt-14 border-t border-paper/15 pt-16 md:mt-24 md:pt-20">
+            <div className="mt-14 border-t border-forest/10 pt-16 md:mt-24 md:pt-20">
               <h3 className="text-center t-sub">
                 Hoe lang <span className="serif-italic">het duurt</span>
               </h3>
@@ -254,19 +254,19 @@ export default function Page() {
                   const [from, to] = t.time.replace(" weken", "").split(" tot ");
                   return (
                     <div key={t.name}>
-                      <dt className="relative inline-block px-6 py-4 font-serif text-7xl leading-none tracking-[-0.02em] text-paper md:text-8xl">
-                        <FrameCorners className="text-lime" corners="diagonal" inset="inset-0" size="size-5" />
+                      <dt className="relative inline-block px-6 py-4 font-serif text-7xl leading-none tracking-[-0.02em] text-forest md:text-8xl">
+                        <FrameCorners className="text-forest" corners="diagonal" inset="inset-0" size="size-5" />
                         {from}
-                        <span className="mx-2 align-middle text-2xl italic tracking-normal text-paper/60 md:text-3xl">tot</span>
+                        <span className="mx-2 align-middle text-2xl italic tracking-normal text-forest/70 md:text-3xl">tot</span>
                         {to}
-                        <span className="ml-2 text-2xl tracking-normal text-paper/60 md:text-3xl">weken</span>
+                        <span className="ml-2 text-2xl tracking-normal text-forest/70 md:text-3xl">weken</span>
                       </dt>
-                      <dd className="mt-3 text-base text-paper/60">{t.name}</dd>
+                      <dd className="mt-3 text-base text-forest/70">{t.name}</dd>
                     </div>
                   );
                 })}
               </dl>
-              <p className="mx-auto mt-12 max-w-2xl text-center text-[15px] leading-relaxed text-paper/70">
+              <p className="mx-auto mt-12 max-w-2xl text-center text-[15px] leading-relaxed text-forest/70">
                 De doorlooptijd hangt vooral af van hoe snel teksten en feedback binnenkomen. Bij de start spreken we een planning af met een beoogde lanceerdatum.
               </p>
             </div>

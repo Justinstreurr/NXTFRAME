@@ -36,7 +36,7 @@ export default function PhoneFrame({
         {/* the bezel */}
         <div className="rounded-[17cqw] bg-black p-[3.1cqw]">
           {/* the screen */}
-          <div className="relative aspect-[393/852] overflow-hidden rounded-[13.8cqw]" style={{ backgroundColor: bar.bg }}>
+          <div className="keep-round relative aspect-[393/852] overflow-hidden rounded-[13.8cqw]" style={{ backgroundColor: bar.bg }}>
             <div className="flex h-[13.5cqw] items-center justify-between px-[8cqw] pt-[1cqw]" style={{ color: ink }} aria-hidden="true">
               <span className="w-[22cqw] text-center text-[4.1cqw] font-semibold tracking-[-0.01em]">9:41</span>
               <span className="flex w-[22cqw] items-center justify-center gap-[1.4cqw]">

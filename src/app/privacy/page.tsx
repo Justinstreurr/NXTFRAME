@@ -182,7 +182,7 @@ const sections: LegalSection[] = [
         <p>Wel werk ik met een paar leveranciers die gegevens voor mij verwerken. Zij mogen daar zelf niets anders mee doen:</p>
         <ul>
           <li>
-            <strong>Hosting van deze site:</strong> [INVULLEN: hostingpartij en locatie van de servers]
+            <strong>Hosting van deze site:</strong> Vercel Inc. (Verenigde Staten). De site draait op hun servers in Frankfurt (Duitsland) en wordt geleverd via hun wereldwijde netwerk. Voor gegevens die buiten de EU komen, gebruikt Vercel de standaardcontractbepalingen van de Europese Commissie. Vercel meet ook de laadsnelheid (Speed Insights)
           </li>
           <li>
             <strong>Contactformulier:</strong> Resend verstuurt je aanvraag naar mijn mailbox (servers in Ierland)
@@ -191,7 +191,7 @@ const sections: LegalSection[] = [
             <strong>Opslag van aanvragen, projectgegevens en bezoekstatistieken:</strong> Supabase [INVULLEN: regio van het Supabase-project]
           </li>
           <li>
-            <strong>E-mail:</strong> [INVULLEN: e-mailprovider]
+            <strong>E-mail:</strong> Google Workspace (Google Ireland Limited)
           </li>
           <li>
             <strong>Facturen en boekhouding:</strong> [INVULLEN: boekhoudprogramma of boekhouder]

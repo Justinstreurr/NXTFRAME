@@ -8,7 +8,7 @@ import { Button, Container, Eyebrow, TextLink } from "./ui";
 import { branchPages, stepsFor } from "./branchPages";
 import { branchSections } from "./branchSectionContent";
 import { BranchFind, BranchLinks, BranchPains } from "./BranchSections";
-import { faqFor, type Branch } from "./menuData";
+import { branchHref, faqFor, type Branch } from "./menuData";
 
 /**
  * One template for every branch page without a page of its own, in the shape of /makelaars and
@@ -46,7 +46,7 @@ export default function BranchPage({ branch }: { branch: Branch }) {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Branches", item: "https://nxtframe.ai/branches" },
-          { "@type": "ListItem", position: 2, name: branch.label, item: `https://nxtframe.ai/branches/${branch.slug}` },
+          { "@type": "ListItem", position: 2, name: branch.label, item: `https://nxtframe.ai${branchHref(branch)}` },
         ],
       },
     ],
@@ -80,7 +80,7 @@ export default function BranchPage({ branch }: { branch: Branch }) {
                   {proof && <TextLink light href={proof.href}>Bekijk {proof.name}</TextLink>}
                   {!proof && concept && <TextLink light href={`https://${concept.url}/`}>Bekijk het concept live</TextLink>}
                 </div>
-                <ul className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 font-display text-[15px] text-paper/90">
+                <ul className="mt-6 flex flex-col gap-2 font-display text-[15px] text-paper/90 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6">
                   {branch.musts.map((m) => (
                     <li key={m.title} className="flex items-center gap-2">
                       <FrameGlyph className="size-3 text-lime" />
@@ -114,7 +114,7 @@ export default function BranchPage({ branch }: { branch: Branch }) {
               Waar het nu <span className="serif-italic">misgaat</span>
             </>
           }
-          lead="Drie dingen die ik bij bijna elke site in deze branche tegenkom. Herken je er één, dan loop je waarschijnlijk klanten mis."
+          lead="Drie dingen waar veel ondernemers in deze branche tegenaan lopen. Herken je er één, dan loop je waarschijnlijk klanten mis."
           pains={pains}
         />
 

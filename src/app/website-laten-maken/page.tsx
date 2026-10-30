@@ -8,7 +8,7 @@ import StackCards, { type StackCard } from "@/components/StackCards";
 import Reveal from "@/components/Reveal";
 import { Button, Container, Eyebrow, TextLink } from "@/components/ui";
 import { FrameCorners, FrameGlyph } from "@/components/Logo";
-import { tiers } from "@/components/pricing";
+import { offers, price, tiers } from "@/components/pricing";
 import { faq } from "@/components/faq";
 
 /**
@@ -27,7 +27,7 @@ import { faq } from "@/components/faq";
 export const metadata: Metadata = {
   title: "Website laten maken | Snel, vindbaar in Google en AI | NXT Frame",
   description:
-    "Een website laten maken die gevonden wordt en verkoopt. Op maat ontworpen en zo gebouwd dat Google en ChatGPT je kunnen vinden. Vanaf € 4.500, in 6 tot 10 weken.",
+    "Een website laten maken die gevonden wordt en verkoopt. Op maat ontworpen en zo gebouwd dat Google en ChatGPT je kunnen vinden. Vanaf € 2.500, in 4 tot 6 weken.",
   alternates: { canonical: "/website-laten-maken" },
 };
 
@@ -165,13 +165,7 @@ const jsonLd = {
       areaServed: { "@type": "Country", name: "Nederland" },
       url: "https://nxtframe.ai/website-laten-maken",
       description: metadata.description,
-      offers: tiers.map((t) => ({
-        "@type": "Offer",
-        name: t.name,
-        price: t.from.replace(".", ""),
-        priceCurrency: "EUR",
-        priceSpecification: { "@type": "PriceSpecification", minPrice: t.from.replace(".", ""), priceCurrency: "EUR", valueAddedTaxIncluded: false },
-      })),
+      offers: offers(tiers),
     },
     {
       "@type": "FAQPage",
@@ -214,7 +208,7 @@ export default function Page() {
                   </Button>
                   <TextLink light href="#prijzen">Bekijk wat het kost</TextLink>
                 </div>
-                <ul className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 font-display text-[15px] text-paper/90">
+                <ul className="mt-6 flex flex-col gap-2 font-display text-[15px] text-paper/90 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6">
                   {[`Vanaf € ${site.from}`, `Live in ${site.time}`, "De site is van jou"].map((t) => (
                     <li key={t} className="flex items-center gap-2">
                       <FrameGlyph className="size-3 text-lime" />
@@ -244,10 +238,11 @@ export default function Page() {
             stacking cards of the homepage and the webshop page */}
         <section data-zone="cherry" className="bg-cream py-12 text-forest md:py-32">
           <Container>
-            {/* three numbers on the container grid: the first on the left edge, the last on the right */}
+            {/* three numbers on the container grid: the first on the left edge, the last on the right; on
+                phones they step down from left to right, one under the other */}
             <dl className="grid gap-8 sm:grid-cols-3">
               {proof.map((s, i) => (
-                <div key={s.label} className={i === 1 ? "sm:text-center" : i === 2 ? "sm:text-right" : ""}>
+                <div key={s.label} className={i === 1 ? "text-center" : i === 2 ? "text-right" : ""}>
                   <dt className="relative inline-block px-5 py-3 font-display text-5xl tracking-[-0.04em] text-forest md:text-6xl">
                     <FrameCorners className="text-lime" corners="diagonal" inset="inset-0" size="size-5" />
                     <CountUp value={s.value} decimals={s.decimals} prefix={s.prefix} suffix={s.suffix} />
@@ -331,7 +326,7 @@ export default function Page() {
                     {t.highlight && <span className="rounded-full bg-lime px-3 py-1 text-xs font-semibold text-forest">Meest gekozen</span>}
                   </div>
                   <p className={`mt-6 font-display text-5xl tracking-[-0.04em] ${t.highlight ? "text-lime" : "text-forest"}`}>
-                    <span className="align-top text-2xl font-normal tracking-normal opacity-60">vanaf </span>€ {t.from}
+                    {t.from && <span className="align-top text-2xl font-normal tracking-normal opacity-60">vanaf </span>}{price(t)}
                   </p>
                   <p className={`mt-2 text-sm ${t.highlight ? "text-paper/60" : "text-forest/70"}`}>exclusief btw · live in {t.time}</p>
                   <p className={`mt-6 text-base leading-relaxed ${t.highlight ? "text-paper/80" : "text-forest/70"}`}>{t.body}</p>

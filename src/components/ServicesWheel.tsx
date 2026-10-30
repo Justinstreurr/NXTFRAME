@@ -6,7 +6,7 @@ import { services } from "./services";
 import BranchIcon from "./BranchIcons";
 
 const ROW = 62; // px between two names on the wheel: clear air above and below the pill
-const STEP_MS = 4200; // how long each service stays up: long enough to read its pitch
+const STEP_MS = 2800; // how long each service stays up: enough to catch its name and the start of its pitch
 const HOLD_MS = 8000; // how long the wheel waits after the visitor picks a service
 
 /* where the four photos sit. Wide screens (xl): a loose collage around the centre column, two
@@ -20,8 +20,8 @@ const slots = [
 ];
 
 /**
- * Diensten on the homepage as a rolling wheel. The six services turn upwards through a glass pill
- * in the middle of a forest stage, one at a time, each with its icon; the one in the pill has a lime arrow to its page
+ * Diensten on the homepage as a rolling wheel. The six services turn upwards through a forest pill
+ * in the middle of a white stage, one at a time, each with its icon; the one in the pill has a lime arrow to its page
  * and its pitch right under the wheel, and four photos around it change with it.
  *
  * It turns by itself every few seconds while on screen. When the visitor picks a service (tap or
@@ -51,8 +51,7 @@ export default function ServicesWheel({ overlap = false }: { overlap?: boolean }
   // turn only while the stage is on screen (and the visitor allows motion)
   useEffect(() => {
     const el = host.current;
-    // phones: no turning by itself, the visitor taps through; one moving thing per screen is enough
-    if (!el || window.matchMedia("(prefers-reduced-motion: reduce), (max-width: 767px)").matches) return;
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const io = new IntersectionObserver(([e]) => setOnScreen(e.isIntersecting), { threshold: 0.15 });
     io.observe(el);
     return () => io.disconnect();
@@ -103,12 +102,12 @@ export default function ServicesWheel({ overlap = false }: { overlap?: boolean }
     <section
       ref={host}
       data-zone="green"
-      className={`bg-forest py-12 text-cream md:py-32 ${overlap ? "relative z-20 rounded-t-[36px] md:rounded-t-[48px]" : ""}`}
+      className={`bg-white py-12 text-forest md:py-32 ${overlap ? "relative z-20 rounded-t-[36px] md:rounded-t-[48px]" : ""}`}
     >
       <Container className="text-center">
-        <Eyebrow tone="light" className="mx-auto">Diensten</Eyebrow>
+        <Eyebrow className="mx-auto">Diensten</Eyebrow>
         <h2 className="mx-auto mt-6 max-w-4xl t-section md:mt-8">
-          Van eerste schets tot <span className="serif-italic text-lime">site die verkoopt</span>
+          Van eerste schets tot <span className="serif-italic">site die verkoopt</span>
         </h2>
       </Container>
 
@@ -120,7 +119,7 @@ export default function ServicesWheel({ overlap = false }: { overlap?: boolean }
             {slots.map((cls, slot) => (
               <div
                 key={slot}
-                className={`relative aspect-[3/4] w-[46%] max-w-[200px] overflow-hidden rounded-xl bg-cream/5 md:w-[23%] xl:w-[14%] xl:max-w-none ${cls}`}
+                className={`relative aspect-[3/4] w-[46%] max-w-[200px] overflow-hidden rounded-xl bg-forest/5 md:w-[23%] xl:w-[14%] xl:max-w-none ${cls}`}
               >
                 {photo(slot)}
               </div>
@@ -131,7 +130,7 @@ export default function ServicesWheel({ overlap = false }: { overlap?: boolean }
           <div className="relative mx-auto mt-10 w-full max-w-[420px] xl:absolute xl:inset-x-0 xl:top-1/2 xl:mt-0 xl:w-[32%] xl:-translate-y-1/2">
             <div className="relative h-[250px] md:h-[310px]">
               {/* the glass pill the middle name sits in, with the arrow to that service */}
-              <div className="absolute inset-x-0 top-1/2 h-14 -translate-y-1/2 rounded-full bg-cream/10 ring-1 ring-cream/15" aria-hidden="true" />
+              <div className="absolute inset-x-0 top-1/2 h-14 -translate-y-1/2 rounded-full bg-forest" aria-hidden="true" />
               <a
                 href={current.href ?? "/diensten"}
                 className="absolute right-2 top-1/2 z-10 grid size-10 -translate-y-1/2 place-items-center rounded-full bg-lime text-forest transition-colors hover:bg-lime-hover"
@@ -157,7 +156,7 @@ export default function ServicesWheel({ overlap = false }: { overlap?: boolean }
                       className={`absolute inset-x-0 top-1/2 flex justify-center pl-3 pr-12 md:px-12 xl:pl-3 xl:pr-12 ${wrapped ? "" : "transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"}`}
                       style={{
                         transform: `translateY(calc(-50% + ${o * ROW}px))`,
-                        opacity: dist === 0 ? 1 : dist === 1 ? 0.5 : dist === 2 ? 0.25 : 0,
+                        opacity: dist === 0 ? 1 : dist === 1 ? 0.7 : dist === 2 ? 0.25 : 0,
                       }}
                     >
                       <button
@@ -173,11 +172,11 @@ export default function ServicesWheel({ overlap = false }: { overlap?: boolean }
                           pick(i);
                         }}
                         aria-current={dist === 0 ? "true" : undefined}
-                        className={`group/svc flex max-w-full items-center gap-3 py-1.5 text-[15px] transition-colors md:text-[17px] ${dist === 0 ? "font-semibold text-cream" : "font-medium text-cream hover:text-lime"}`}
+                        className={`group/svc flex max-w-full items-center gap-3 py-1.5 text-[15px] transition-colors md:text-[17px] ${dist === 0 ? "font-semibold text-cream" : "font-medium text-forest hover:text-forest/70"}`}
                       >
                         {/* the service's icon, as on the old grid: lime in the pill, quiet on the others */}
                         <span
-                          className={`grid size-8 shrink-0 place-items-center rounded-lg transition-colors duration-500 ${dist === 0 ? "bg-lime text-forest" : "bg-cream/10 text-cream group-hover/svc:text-lime"}`}
+                          className={`grid size-8 shrink-0 place-items-center rounded-lg transition-colors duration-500 ${dist === 0 ? "bg-lime text-forest" : "bg-forest/[0.06] text-forest"}`}
                           aria-hidden="true"
                         >
                           <BranchIcon name={s.icon ?? "grid"} className="size-4" />
@@ -194,7 +193,7 @@ export default function ServicesWheel({ overlap = false }: { overlap?: boolean }
                 not every few seconds while it turns by itself */}
             <p
               key={active}
-              className="svc-pitch mx-auto mt-4 min-h-[6.5em] max-w-md text-center text-base leading-relaxed text-cream/80"
+              className="svc-pitch mx-auto mt-4 min-h-[6.5em] max-w-md text-center text-base leading-relaxed text-forest/75"
               aria-live="off"
             >
               {current.body}
@@ -203,7 +202,7 @@ export default function ServicesWheel({ overlap = false }: { overlap?: boolean }
         </div>
 
         <div className="mt-8 text-center xl:mt-4">
-          <TextLink light href="/diensten">Alle diensten</TextLink>
+          <TextLink href="/diensten">Alle diensten</TextLink>
         </div>
       </Container>
     </section>

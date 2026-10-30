@@ -97,8 +97,8 @@ export default function BranchCarousel({
             const t = tones[i % tones.length];
             return (
               <li key={sg.label} className="w-[300px] shrink-0 snap-start md:w-[420px]">
-                <a href={sg.href} className={`group flex h-[480px] flex-col overflow-hidden rounded-t-3xl md:h-[540px] ${t.card}`}>
-                  <span className="block p-6 md:p-8">
+                <a href={sg.href} className={`group flex h-[500px] flex-col overflow-hidden rounded-t-3xl md:h-[560px] ${t.card}`}>
+                  <span className="block flex-1 p-6 md:p-8">
                     <span className={`block text-[13px] font-semibold tabular-nums ${t.count}`}>
                       {i + 1}/{items.length}
                     </span>
@@ -116,8 +116,9 @@ export default function BranchCarousel({
                     </span>
                   </span>
                   {/* the photo fills the foot of the card, edge to edge, square: only the colour block on top
-                      is rounded (the card rounds its top) */}
-                  <span className="relative block min-h-0 flex-1 overflow-hidden">
+                      is rounded (the card rounds its top). Its height is fixed, so every card shows the same
+                      photo band whatever the length of its title; the copy above takes the rest. */}
+                  <span className="relative block h-[210px] shrink-0 overflow-hidden md:h-[250px]">
                     <img
                       src={sg.img}
                       alt=""

@@ -5,7 +5,7 @@ import MoreOnMobile from "@/components/MoreOnMobile";
 import { Comparison, FaqList } from "@/components/Sections";
 import { Button, Container, Eyebrow, Reassure, TextLink } from "@/components/ui";
 import { FrameGlyph } from "@/components/Logo";
-import { tiers } from "@/components/pricing";
+import { landing, offers, price, tiers } from "@/components/pricing";
 import { faq } from "@/components/faq";
 
 /**
@@ -32,11 +32,11 @@ import { faq } from "@/components/faq";
  *  - "Exclusief btw" follows /voorwaarden and the hub.
  */
 
-const [landing, site, shop] = tiers;
+const [site, big] = tiers;
 
 export const metadata: Metadata = {
   title: "Wat kost een website laten maken? Prijzen | NXT Frame",
-  description: `Wat kost een website laten maken? Een landingspagina vanaf € ${landing.from}, een website vanaf € ${site.from} en een webshop vanaf € ${shop.from}. Na de kennismaking krijg je één vaste prijs.`,
+  description: `Wat kost een website laten maken? Een website vanaf € ${site.from}, een grote site of webshop vanaf € ${big.from} en maatwerk op offerte. Een losse landingspagina vanaf € ${landing.from}. Na de kennismaking krijg je één vaste prijs.`,
   alternates: { canonical: "/prijzen" },
 };
 
@@ -110,7 +110,6 @@ const questions = [
 ];
 
 /* Service (with the three offers) + FAQPage structured data, built like the hub's */
-const amount = (from: string) => from.replace(".", "");
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -121,14 +120,7 @@ const jsonLd = {
       provider: { "@type": "Organization", name: "NXT Frame", url: "https://nxtframe.ai" },
       areaServed: { "@type": "Country", name: "Nederland" },
       description: metadata.description,
-      offers: tiers.map((t) => ({
-        "@type": "Offer",
-        name: t.name,
-        description: t.body,
-        price: amount(t.from),
-        priceCurrency: "EUR",
-        priceSpecification: { "@type": "PriceSpecification", minPrice: amount(t.from), priceCurrency: "EUR", valueAddedTaxIncluded: false },
-      })),
+      offers: offers([...tiers, landing]),
     },
     {
       "@type": "FAQPage",
@@ -194,7 +186,7 @@ export default function Page() {
                   </Button>
                   <TextLink light href="#pakketten">Bekijk wat erin zit</TextLink>
                 </div>
-                <ul className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 font-display text-[15px] text-paper/90">
+                <ul className="mt-6 flex flex-col gap-2 font-display text-[15px] text-paper/90 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6">
                   {["Gratis", "30 minuten", "Vrijblijvend"].map((t) => (
                     <li key={t} className="flex items-center gap-2">
                       <FrameGlyph className="size-3 text-lime" />
@@ -248,8 +240,8 @@ export default function Page() {
                       </div>
 
                       <p className="mt-8">
-                        <span className={`block text-sm ${c.muted}`}>vanaf</span>
-                        <span className="block font-display text-5xl font-semibold leading-none tracking-[-0.03em] md:text-6xl">€ {t.from}</span>
+                        <span className={`block text-sm ${c.muted}`}>{t.from ? "vanaf" : "prijs"}</span>
+                        <span className="block font-display text-5xl font-semibold leading-none tracking-[-0.03em] md:text-6xl">{price(t)}</span>
                         <span className={`mt-2 block text-sm ${c.muted}`}>exclusief btw</span>
                       </p>
                       <p className={`mt-5 text-base leading-relaxed ${c.muted}`}>{t.body}</p>

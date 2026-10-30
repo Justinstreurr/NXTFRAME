@@ -6,7 +6,7 @@ import LogoTicker, { type TickerLogo } from "./LogoTicker";
 /* phones in portrait get their own crop of the photo, just the chair and the sky around it (a
    third of the bytes); every other screen gets the full picture */
 const PHONE = "(max-width: 639px) and (max-aspect-ratio: 5/8)";
-const HERO_M = "/images/hero-hill-m.webp";
+const HERO_M = "/images/hero-hill-m.webp?v=2";
 const HERO = "/images/hero-hill.webp?v=3";
 
 /* the brands under the hero copy, in cream on the dark photo */

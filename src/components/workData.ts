@@ -41,19 +41,19 @@ export const work: WorkItem[] = [
   {
     name: "Horeca", kind: "Concept", tags: "Reserveren, menukaart, Google-profiel", short: "Van zoeken naar reserveren",
     headline: "Reserveren, de menukaart en het Google-profiel, klaar om te testen.",
-    img: "/images/prijzen-hero.webp", pos: "40% 55%", href: "/branches/horeca",
+    img: "/images/prijzen-hero.webp", pos: "40% 55%", href: "/horeca-website",
     result: "Reserveren in 3 tikken",
   },
   {
     name: "Bouw en installatie", kind: "Concept", tags: "Projecten, offerte, regio's", short: "Offertes die binnenkomen",
     headline: "Een site die offerteaanvragen binnenhaalt, met foto-upload vanaf de bouwplaats.",
-    img: "/images/mascot-build.webp", href: "/branches/bouw-en-installatie",
+    img: "/images/mascot-build.webp", href: "/bouw-en-installatie-website",
     result: "Offerte in 1 minuut",
   },
   {
     name: "Zorg en praktijken", kind: "Concept", tags: "Afspraken, toegankelijkheid", short: "Rust vanaf de eerste blik",
     headline: "Een rustige site waar patiënten zelf online een afspraak maken.",
-    img: "/images/slim-choice.webp", href: "/branches/zorg-en-praktijken",
+    img: "/images/slim-choice.webp", href: "/praktijk-website",
     result: "Afspraak in 3 tikken",
   },
 ];
