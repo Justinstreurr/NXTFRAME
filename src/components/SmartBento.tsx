@@ -13,6 +13,19 @@ const TICK = 1300;
 export function useStep() {
   const host = useRef<HTMLDivElement>(null);
   const [step, setStep] = useState(STEPS - 1);
+  // true once the grid is within a screen or so; heavy pictures wait for it, so they don't compete with the first screen
+  const [near, setNear] = useState(false);
+  useEffect(() => {
+    const el = host.current;
+    if (!el) return;
+    const ahead = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return;
+      setNear(true);
+      ahead.disconnect();
+    }, { rootMargin: "800px 0px" });
+    ahead.observe(el);
+    return () => ahead.disconnect();
+  }, []);
   useEffect(() => {
     const el = host.current;
     if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -30,7 +43,7 @@ export function useStep() {
       window.clearInterval(timer);
     };
   }, []);
-  return { host, step };
+  return { host, step, near };
 }
 
 export const show = (on: boolean) => `transition-all duration-500 ease-out ${on ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"}`;
@@ -69,7 +82,7 @@ const pipes = [
   { name: "Shopify", d: "M350 105 V70 Q350 40 380 40 H760", at: [455, 40] },
 ];
 
-function Connections({ step }: { step: number }) {
+function Connections({ step, near }: { step: number; near: boolean }) {
   const active = step % pipes.length;
   return (
     <svg viewBox="0 0 700 350" preserveAspectRatio="xMidYMax slice" className="size-full" aria-hidden="true">
@@ -107,7 +120,8 @@ function Connections({ step }: { step: number }) {
       {/* the site: the glossy icon, floating gently */}
       <g className="sb-float">
         <ellipse cx="350" cy="262" rx="62" ry="10" fill="rgba(2,38,30,0.18)" filter="url(#sb-glow)" />
-        <image href="/images/icon-koppelingen.webp" x="265" y="90" width="170" height="170" />
+        {/* an SVG image can't load lazily, so it waits for the grid to come near */}
+        {near && <image href="/images/icon-koppelingen.webp" x="265" y="90" width="170" height="170" />}
       </g>
     </svg>
   );
@@ -239,7 +253,7 @@ type Card = {
   span: string;
   /** where the film sits: positioned inside the card, mostly running off an edge */
   stage: string;
-  film: (step: number) => ReactNode;
+  film: (step: number, near: boolean) => ReactNode;
 };
 
 /* top row narrow + wide, bottom row wide + narrow, like a bento box */
@@ -258,7 +272,7 @@ const cards: Card[] = [
     bg: "sb-bg-aurora", text: "text-forest", muted: "text-forest/65", btn: "bg-forest text-cream hover:bg-forest-hover",
     span: "lg:col-span-7",
     stage: "inset-x-0 bottom-0 top-[210px]",
-    film: (s) => <Connections step={s} />,
+    film: (s, near) => <Connections step={s} near={near} />,
   },
   {
     title: "AI-assistent op je site",
@@ -287,7 +301,7 @@ const cards: Card[] = [
  * the phone in hands (public/images/phone-hand.webp).
  */
 export default function SmartBento() {
-  const { host, step } = useStep();
+  const { host, step, near } = useStep();
   return (
     // on phones the first two cards, the other two behind a button
     <div ref={host}>
@@ -302,7 +316,7 @@ export default function SmartBento() {
             </a>
           </div>
           <div className={`absolute ${c.stage}`} aria-hidden="true">
-            {c.film(step)}
+            {c.film(step, near)}
           </div>
         </article>
       ))}

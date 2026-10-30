@@ -630,7 +630,8 @@ export default function ConvertShowcase() {
             <video
               ref={video}
               src={near ? VIDEO.src : undefined}
-              poster={VIDEO.poster}
+              // the poster waits too: it is far below the first screen
+              poster={near ? VIDEO.poster : undefined}
               width={VIDEO.w}
               height={VIDEO.h}
               muted
