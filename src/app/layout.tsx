@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Inter_Tight, Instrument_Serif } from "next/font/google";
 import BrandCursor from "@/components/BrandCursor";
 import Tracker from "@/components/Tracker";
+import Script from "next/script";
+import Consent, { consentDefault, cookiebotId } from "@/components/Consent";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
@@ -49,6 +51,15 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     // data-scroll-behavior: Next 16 only turns the smooth scrolling off during a page change with this, so a new page opens at the top
     <html lang="nl" data-scroll-behavior="smooth" className={`${inter.variable} ${interTight.variable} ${instrument.variable} ${instrumentItalic.variable}`}>
       <body>
+        {/* cookie banner first: Consent Mode starts at "denied", then Cookiebot; Consent renders the tools
+            that wait for its answer (see Consent.tsx) */}
+        {cookiebotId && (
+          <>
+            <Script id="consent-default" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: consentDefault }} />
+            <Script id="Cookiebot" strategy="beforeInteractive" src="https://consent.cookiebot.com/uc.js" data-cbid={cookiebotId} />
+          </>
+        )}
+        <Consent />
         {/* the first stop for keyboard users: straight past the menu to the content */}
         <a href="#main" className="skip-link">Naar de inhoud</a>
         {children}

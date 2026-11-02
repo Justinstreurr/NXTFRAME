@@ -4,6 +4,7 @@ import FooterWordmark from "./FooterWordmark";
 import { ArrowIcon, Button, Reassure } from "./ui";
 import MascotHero from "./MascotHero";
 import FooterPanel from "./FooterPanel";
+import CookieSettingsLink from "./CookieSettingsLink";
 
 const diensten = ["Nieuwe website", "Redesign", "Landingspagina's", "Vindbaar in Google en AI", "Doorontwikkeling en onderhoud", "Teksten en content"];
 const navigatie = ["Werk", "Diensten", "Prijzen", "Aanpak", "Voor makelaars", "Over", "Contact"];
@@ -98,6 +99,11 @@ export default function Footer({ cta = true, flat = false }: { cta?: boolean; fl
                 <a href={`/${l.toLowerCase()}`} className="underline underline-offset-4 decoration-paper/30 hover:text-paper">{l}</a>
               </li>
             ))}
+            {process.env.PUBLIC_COOKIEBOT_ID && (
+              <li>
+                <CookieSettingsLink className="underline underline-offset-4 decoration-paper/30 hover:text-paper" />
+              </li>
+            )}
           </ul>
           <div className="flex items-center gap-3">
             {socials.map((s) => (

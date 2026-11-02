@@ -29,16 +29,17 @@ import LegalPage, { type LegalSection } from "@/components/LegalPage";
  *    website, onderwerp, bericht); adjust the table if the form changes
  *  - the form mails through the service set up in src/app/contact/actions.ts (Resend, once its key
  *    is configured): name that service under "Contactformulier" below when it is live
- *  - "no cookies, own cookieless analytics (components/Tracker.tsx) plus Vercel Speed Insights (layout.tsx), no third-party trackers" is true for the code as of 30 October 2026; rewrite the
- *    section "cookies" (and add a consent banner where needed) the moment analytics, a pixel, an
- *    embedded scheduler or any other third-party script is added
+ *  - section "cookies" matches the code as of 2 November 2026: Cookiebot banner, Clarity after
+ *    statistics consent (components/Consent.tsx), own cookieless Tracker, Speed Insights. Once
+ *    PUBLIC_GTM_ID is set, add Google Analytics to that section; rewrite it for any other
+ *    third-party script, pixel or embedded scheduler
  *  - `updated` below
  */
 
 export const metadata: Metadata = {
   title: "Privacyverklaring | NXT Frame",
   description:
-    "Welke gegevens NXT Frame van je verwerkt, waarvoor en hoe lang. Geen cookies, geen verkoop van gegevens, en je kunt altijd vragen om inzage of verwijdering.",
+    "Welke gegevens NXT Frame van je verwerkt, waarvoor en hoe lang. Cookies alleen met je toestemming, geen verkoop van gegevens, en je kunt altijd vragen om inzage of verwijdering.",
   alternates: { canonical: "/privacy" },
 };
 
@@ -146,25 +147,33 @@ const sections: LegalSection[] = [
     title: "Cookies en statistieken",
     body: (
       <>
-        <p>Deze site plaatst geen cookies en slaat niets op in je browser. Daarom zie je ook geen cookiemelding.</p>
+        <p>
+          Bij je eerste bezoek vraag ik met een cookiemelding (van Cookiebot) of je cookies voor statistieken goedvindt. Zeg je nee, dan plaatst de site
+          alleen de cookie die je keuze onthoudt. Je kunt je keuze altijd aanpassen of intrekken via <em>Cookie-instellingen</em> onderaan elke pagina.
+        </p>
         <ul>
           <li>
-            Ik meet wel hoe de site gebruikt wordt, met een eigen meting zonder cookies: welke pagina&apos;s bekeken worden, hoe lang, en waarop geklikt wordt.
+            Ik meet hoe de site gebruikt wordt, met een eigen meting zonder cookies: welke pagina&apos;s bekeken worden, hoe lang, en waarop geklikt wordt.
             Je IP-adres wordt daarvoor niet opgeslagen. Er wordt alleen een code van gemaakt die elke dag verandert, zodat ik bezoekers niet van dag tot dag
-            kan volgen en niet kan zien wie je bent. Er gaat niets naar Google of andere partijen.
+            kan volgen en niet kan zien wie je bent. Deze meting gaat niet naar andere partijen.
           </li>
           <li>
-            Ook meet ik hoe snel de pagina&apos;s bij bezoekers laden, met Speed Insights van Vercel, de partij die de site host. Ook zonder cookies: het
+            Alleen als je statistieken toestaat: Microsoft Clarity. Dat laat me zien hoe bezoekers door een pagina bewegen (klikken, scrollen) zodat ik de site
+            kan verbeteren. Teksten die je in formulieren typt worden daarbij afgeschermd. Clarity plaatst daarvoor cookies en Microsoft verwerkt de gegevens,
+            ook buiten de EER.
+          </li>
+          <li>
+            Ook meet ik hoe snel de pagina&apos;s bij bezoekers laden, met Speed Insights van Vercel, de partij die de site host. Zonder cookies: het
             gaat om laadtijden per pagina, apparaatsoort en land, niet om wie je bent.
           </li>
-          <li>Staat <em>Do Not Track</em> of <em>Global Privacy Control</em> aan in je browser? Dan meet ik je bezoek helemaal niet.</li>
+          <li>Staat <em>Do Not Track</em> of <em>Global Privacy Control</em> aan in je browser? Dan telt mijn eigen meting je bezoek helemaal niet.</li>
           <li>Geen advertentiepixels of trackers van sociale media.</li>
           <li>Geen ingesloten video&apos;s of kaarten van andere partijen. Beeld en video komen van de site zelf.</li>
           <li>De lettertypen staan op de eigen server. Je browser haalt dus niets op bij Google.</li>
         </ul>
         <p>
-          Verandert dit, bijvoorbeeld omdat ik een afsprakenplanner van een andere partij inbouw? Dan pas ik deze pagina eerst aan. Waar
-          de wet om toestemming vraagt, vraag ik die vooraf.
+          Komt er een andere partij bij, bijvoorbeeld Google Analytics of een afsprakenplanner? Dan pas ik deze pagina eerst aan en vraag ik
+          vooraf toestemming via de cookiemelding.
         </p>
         <p>
           Op de site staan links naar sites van klanten en naar concepten die ik heb gebouwd. Klik je daarop, dan gelden de regels van die site, niet deze
@@ -313,7 +322,7 @@ export default function Page() {
         </>
       }
       intro="Ik verzamel zo weinig mogelijk en gebruik het alleen om je te antwoorden en mijn werk te doen. Hier lees je precies wat, waarom en hoe lang."
-      updated="29 oktober 2026"
+      updated="2 november 2026"
       sections={sections}
     />
   );
