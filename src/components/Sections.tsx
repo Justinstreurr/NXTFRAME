@@ -10,14 +10,14 @@ import PillarTabs from "./PillarTabs";
 import { DesignDemo, SearchDemo, SpeedDemo } from "./PillarDemos";
 import { price, tiers } from "./pricing";
 import { faq } from "./faq";
-import ConvertShowcase from "./ConvertShowcase";
+import ConversionNumbers from "./ConversionNumbers";
 import BranchCarousel, { type Segment } from "./BranchCarousel";
 import StackCards, { type StackCard } from "./StackCards";
 import BgOnCenter from "./BgOnCenter";
 import LetterFill from "./LetterFill";
 import BranchIcon from "./BranchIcons";
 import WorkCases from "./WorkCases";
-import ReviewStack from "./ReviewStack";
+import ReviewCards, { Brand, type Review } from "./ReviewCards";
 import { FrameGlyph } from "./Logo";
 import { work } from "./workData";
 import { services, type ServiceCard } from "./services";
@@ -102,8 +102,8 @@ export function AiFirst() {
 
 /* ---------- Your creative advantage ---------- */
 export function CreativePartner() {
-  // one calm card with a turning product mockup, no pinned scroll scene (ConvertShowcase)
-  return <ConvertShowcase />;
+  // the results as numbers, after Superside (ConversionNumbers); the laptop film (ConvertShowcase) is off the page
+  return <ConversionNumbers />;
 }
 
 /* ---------- Easy & hassle-free: pillars ---------- */
@@ -471,9 +471,14 @@ export function Comparison() {
 /* ---------- Reviews ---------- */
 /* DRAFT QUOTES written for the clients to approve: have Happy Flops and Sabrina confirm (or rewrite)
    them, and fill in the Happy Flops name, before going live */
-const reviews = [
+/* CONCEPT quotes, to be approved by the clients (see OVERDRACHT.md); the headline lead is taken word for word from the quote */
+const reviews: Review[] = [
   {
     name: "Happy Flops",
+    brand: "Happy Flops",
+    lead: "Justin dacht mee als ondernemer",
+    story: <>: hoe <Brand>Happy Flops</Brand> een webshop kreeg die verkoopt</>,
+    img: "/images/stories/happy-flops.webp", imgPortrait: "/images/happyflops-hero-2.jpg",
     role: "Eigenaar, Happy Flops",
     logo: "/images/happy-flops-logo.png",
     href: "/werk/happy-flops",
@@ -481,6 +486,10 @@ const reviews = [
   },
   {
     name: "Sabrina",
+    brand: "Hypotheekhaven",
+    lead: "Klanten weten na het lezen al wie ik ben",
+    story: <>: hoe <Brand>Hypotheekhaven</Brand> makkelijker gesprekken plant</>,
+    img: "/images/stories/hypotheekhaven.webp",
     role: "Hypotheekadviseur, Hypotheekhaven",
     logo: "/images/hypotheekhaven-logo.svg",
     href: "/werk/hypotheekhaven",
@@ -489,19 +498,19 @@ const reviews = [
 ];
 
 /**
- * Reviews one at a time, changing by themselves (ReviewStack): a small label over a hairline, then
- * the counter and bars left and the quote with the client's logo large on the right. `dark` is kept for the pages that pass it.
+ * Reviews as client stories (ReviewCards): a small label over a hairline, then two large photo
+ * cards, each with a headline in the client's own words and their logo. `dark` is kept for the pages that pass it.
  */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function Testimonials({ dark = false }: { dark?: boolean } = {}) {
   return (
     <section data-zone="cherry" className="bg-cream pb-16 pt-10 text-forest md:pb-32 md:pt-16">
       <Container>
-        <div className="border-t border-forest/15 pt-5">
-          <h2 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-forest/70">Wat klanten zeggen</h2>
+        <div className="border-t border-forest/15 pt-6">
+          <Eyebrow className="max-w-xl">Wat klanten zeggen</Eyebrow>
         </div>
         <div className="mt-10 md:mt-14">
-          <ReviewStack reviews={reviews} />
+          <ReviewCards reviews={reviews} />
         </div>
       </Container>
     </section>

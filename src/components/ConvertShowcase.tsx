@@ -1,12 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState, type CSSProperties } from "react";
-import { Button, Container, Eyebrow, Reassure, TextLink } from "./ui";
+import { useEffect, useRef, useState } from "react";
+import { Button, Container, Eyebrow, TextLink } from "./ui";
 
 /* the scene is drawn at this size and scaled to fit, so every position on its timeline holds */
 const W = 460;
 const H = 330;
-const LOOP_S = 18;
 
 /* the laptop film (public/videos/conversie-macbook-v3.mp4, 1600 x 766, 18 s, the full width of the Raylight frame): made in Raylight from a
    recording of the Film below, on exactly the section's cream so it melts into the page. Its timeline
@@ -20,6 +19,14 @@ const chapters = [
   { at: 37, label: "Afrekenen" },
   { at: 62, label: "iDEAL" },
   { at: 82, label: "Resultaat" },
+];
+
+/* the proof under the statement. PLACEHOLDER: 0,9 s and +40% are not confirmed yet (see OVERDRACHT.md);
+   replace them with measured figures before they are relied on. The three steps are what the checkout is. */
+const proof = [
+  { value: "0,9 s", label: "laadtijd op een telefoon", source: "Happy Flops", body: "Een webshop die meteen staat, ook op 4G, zodat niemand afhaakt voordat hij iets gezien heeft." },
+  { value: "+40%", label: "meer bestellingen", source: "Happy Flops", body: "Na de nieuwe webshop: een duidelijke productpagina, een rustige winkelwagen en snel afrekenen." },
+  { value: "3", label: "stappen tot betaald", source: "Afrekenen met iDEAL", body: "Product, winkelwagen, betalen. Zo kort mogelijk, zodat een koper onderweg niet afhaakt." },
 ];
 
 /* Happy Flops' own colours, as on happyflops.nl and its checkout */
@@ -513,10 +520,14 @@ export function Film() {
 export default function ConvertShowcase() {
   const host = useRef<HTMLElement>(null);
   const video = useRef<HTMLVideoElement>(null);
-  const progress = useRef<HTMLSpanElement>(null);
+  const bars = useRef<(HTMLSpanElement | null)[]>([]);
   const [onScreen, setOnScreen] = useState(false);
   // the film (1.1 MB) is only fetched once the section comes within a screen or so; until then the poster shows
   const [near, setNear] = useState(false);
+  // the visitor can pause the film (it loops, so it needs a pause button). null: not chosen yet, which
+  // means playing, or paused for visitors who prefer less motion
+  const [choice, setChoice] = useState<boolean | null>(null);
+  const reduced = () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   useEffect(() => {
     const el = host.current;
@@ -535,102 +546,69 @@ export default function ConvertShowcase() {
     };
   }, []);
 
-  // the video starts when the section scrolls into view (from the top the first time, so the laptop
-  // arrives), pauses when it leaves; the progress bar follows the video's own clock. Visitors who
-  // prefer less motion get the poster: the laptop open on the checkout.
-  const started = useRef(false);
+  // plays while on screen and not paused; the chapter bars fill from the video's own clock. Only
+  // transforms are touched each frame, so the bars never cost a repaint.
   useEffect(() => {
     const v = video.current;
-    if (!v || !near || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    if (!onScreen) {
+    if (!v || !near) return;
+    const paused = choice ?? reduced();
+    if (!onScreen || paused) {
       v.pause();
       return;
-    }
-    if (!started.current) {
-      v.currentTime = 0;
-      started.current = true;
     }
     v.play().catch(() => {});
     let raf = 0;
     const tick = () => {
-      if (progress.current && v.duration) progress.current.style.transform = `scaleX(${v.currentTime / v.duration})`;
+      if (v.duration) {
+        const pct = (v.currentTime / v.duration) * 100;
+        chapters.forEach((c, i) => {
+          const end = chapters[i + 1]?.at ?? 100;
+          const f = Math.min(1, Math.max(0, (pct - c.at) / (end - c.at)));
+          const bar = bars.current[i];
+          if (bar) bar.style.transform = `scaleX(${f})`;
+        });
+      }
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [onScreen, near]);
+  }, [onScreen, near, choice]);
 
-  const live = onScreen;
+  const paused = choice ?? false;
 
   return (
-    <section ref={host} data-zone="green" className="overflow-x-clip bg-cream pb-16 pt-14 text-forest md:pb-40 md:pt-16">
+    // after the "featured engagements" block of the agency Basic/Dept: a label over a hairline, the
+    // statement large, then the proof as three big figures side by side, each over a short rule with
+    // where it comes from and one line. The film plays small in a card beside the statement.
+    <section ref={host} data-zone="green" className="bg-cream pb-16 pt-10 text-forest md:pb-28 md:pt-16">
       <Container>
-        {/* the copy on the left, straight on the page; the laptop playing the film on the right */}
-        <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12">
-          {/* left on desktop: tag, statement and copy at the top, the proof and the buttons at the foot. On
-              phones this wrapper dissolves (contents) so the order becomes: copy, the film, then the proof. */}
-          <div className="contents lg:flex lg:flex-col lg:justify-between lg:gap-12 lg:py-8">
-            <div className="order-1 lg:order-none">
-              <Eyebrow>Conversie</Eyebrow>
-              <h2 className="mt-6 t-section text-forest md:mt-8">
-                Niet alleen mooi, <span className="serif-italic text-forest">ook converterend</span>
-              </h2>
-              <p className="mt-6 max-w-md text-forest/75 t-lead">
-                Een website moet kloppen bij jouw merk én bezoekers omzetten in klanten. Zo wordt design geen kostenpost,
-                maar je beste verkoper.
-              </p>
-            </div>
+        <div className="border-t border-forest/15 pt-6">
+          <Eyebrow>Conversie</Eyebrow>
+        </div>
 
-            <div className="order-3 lg:order-none">
-              {/* proof: the clients' marks, and one result */}
-              <span className="inline-flex items-center">
-                <span className="grid h-10 place-items-center rounded-xl bg-paper px-3 shadow-sm">
-                  <img src="/images/happy-flops-logo.png" alt="Happy Flops" className="h-4 w-auto" loading="lazy" />
-                </span>
-                <span className="-ml-1.5 grid h-10 place-items-center rounded-xl bg-paper px-3 shadow-sm">
-                  <img src="/images/hypotheekhaven-logo.svg" alt="Hypotheekhaven" className="h-3.5 w-auto" loading="lazy" />
-                </span>
-              </span>
-              <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-forest/75">
-                <span className="font-semibold text-forest">Happy Flops</span> kreeg 40% meer bestellingen met een webshop die
-                gebouwd is om te verkopen.
-              </p>
-              <div className="mt-7 flex flex-wrap items-start gap-x-8 gap-y-4">
-                <span className="flex flex-col gap-2">
-                  <Button variant="dark" href="/contact">
-                    Plan een kennismaking
-                  </Button>
-                  <Reassure />
-                </span>
-                <TextLink href="/aanpak" className="mt-3">Zo werk ik</TextLink>
-              </div>
+        <div className="mt-10 grid items-end gap-10 md:mt-14 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:gap-16">
+          <div>
+            <h2 className="t-section text-forest">
+              Niet alleen mooi, <span className="serif-italic">ook converterend</span>
+            </h2>
+            <p className="mt-6 max-w-lg text-forest/75 t-lead">
+              Een site die klopt bij je merk en bezoekers omzet in klanten. Snel op een telefoon, met minder stappen tot een aanvraag of
+              een betaling.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+              <Button variant="dark" href="/contact">
+                Plan een kennismaking
+              </Button>
+              <TextLink href="/werk/happy-flops">Bekijk de case</TextLink>
             </div>
           </div>
 
-          {/* right: the laptop playing the film, straight on the page */}
-          <div
-            className={`cs2 relative order-2 grid lg:order-none place-items-center pb-16 md:pb-20 pt-6 sm:pt-10 lg:min-h-[560px] ${live ? "" : "cs2-paused"}`}
-            style={{ "--T": `${LOOP_S}s` } as CSSProperties}
-          >
-            {/* a soft floor of shade under the laptop */}
-            <span className="pointer-events-none absolute inset-x-[10%] bottom-[16%] h-24 rounded-[50%] bg-[radial-gradient(closest-side,rgba(2,38,30,0.12),transparent)]" aria-hidden="true" />
-
-            {/* a card floating just over the window's edge, for depth (wide screens only) */}
-            <span className="cs-float cs-float-late pointer-events-none absolute bottom-[20%] right-[3%] z-10 hidden items-center gap-2 rounded-xl bg-forest px-3 py-2 text-xs text-paper shadow-[0_18px_40px_-16px_rgba(2,38,30,0.6)] lg:inline-flex" aria-hidden="true">
-              <span className="grid size-6 place-items-center rounded-full bg-lime text-[11px] font-bold text-forest">3</span>
-              <span>
-                <span className="block font-semibold">Afrekenen in 3 stappen</span>
-                <span className="block text-[11px] text-paper/60">product, winkelwagen, iDEAL</span>
-              </span>
-            </span>
-
-            {/* the laptop film: the full width of the Raylight frame, wider than its column so the laptop reads
-                large; its cream drops out against the page (.cs-video, darken), so it never reads as a box
-                over the copy, and it never catches clicks */}
+          {/* the film, small, in a card of exactly its own shape, so the video fills it edge to edge and no seam shows */}
+          <div>
+          <div className="relative aspect-[1600/766] overflow-hidden bg-[#f7f2e8] ring-1 ring-forest/10">
             <video
               ref={video}
               src={near ? VIDEO.src : undefined}
-              // the poster waits too: it is far below the first screen
               poster={near ? VIDEO.poster : undefined}
               width={VIDEO.w}
               height={VIDEO.h}
@@ -638,25 +616,53 @@ export default function ConvertShowcase() {
               loop
               playsInline
               preload={near ? "auto" : "none"}
-              aria-hidden="true"
-              className="cs-video pointer-events-none relative w-[154%] max-w-none lg:-ml-[30%] lg:w-[167%] lg:justify-self-start xl:-ml-[32%] xl:w-[178%]"
+              aria-label="Film: een bestelling in de Happy Flops-webshop, van product tot betaling met iDEAL"
+              className="pointer-events-none absolute inset-0 size-full"
             />
-
-            {/* one progress bar for the whole loop, with its chapters */}
-            <div className="absolute inset-x-5 bottom-5 flex items-center gap-3 sm:inset-x-8">
-              <div className="relative flex-1 pb-4" aria-hidden="true">
-                <span className="block h-1 overflow-hidden rounded-full bg-forest/15">
-                  <span ref={progress} className="block h-full origin-left rounded-full bg-forest" style={{ transform: "scaleX(0)" }} />
+          </div>
+          {/* under the card: pause and play, and the chapters as thin bars */}
+          <div className="mt-3 flex items-center gap-4">
+            <button
+              type="button"
+              onClick={() => setChoice(!(choice ?? reduced()))}
+              aria-label={paused ? "Film afspelen" : "Film pauzeren"}
+              className="grid size-8 shrink-0 place-items-center rounded-full bg-forest text-lime transition-transform hover:scale-105"
+            >
+              {paused ? (
+                <svg viewBox="0 0 16 16" className="size-3" fill="currentColor" aria-hidden="true"><path d="M5 3.5v9l7-4.5z" /></svg>
+              ) : (
+                <svg viewBox="0 0 16 16" className="size-3" fill="currentColor" aria-hidden="true"><path d="M4.5 3h2.5v10H4.5zM9 3h2.5v10H9z" /></svg>
+              )}
+            </button>
+            <div className="flex flex-1 gap-1" aria-hidden="true">
+              {chapters.map((c, i) => (
+                <span key={c.label} className="relative h-[3px] flex-1 overflow-hidden bg-forest/15" title={c.label}>
+                  <span
+                    ref={(el) => {
+                      bars.current[i] = el;
+                    }}
+                    className="absolute inset-0 origin-left bg-forest"
+                    style={{ transform: "scaleX(0)" }}
+                  />
                 </span>
-                {chapters.map((c) => (
-                  <span key={c.label} className="absolute top-0 h-1 w-px bg-cream" style={{ left: `${c.at}%` }}>
-                    <span className={`absolute top-2.5 hidden whitespace-nowrap text-[10px] text-forest/70 sm:block ${c.at === 0 ? "left-0" : "-translate-x-1/2"}`}>{c.label}</span>
-                  </span>
-                ))}
-              </div>
+              ))}
             </div>
           </div>
+          </div>
         </div>
+
+        {/* the proof: three figures, each over a rule, with its source and one line */}
+        <ul className="mt-14 grid gap-10 sm:grid-cols-3 sm:gap-8 md:mt-20">
+          {proof.map((f) => (
+            <li key={f.label}>
+              <p className="serif-italic text-[clamp(3.5rem,7vw,6.5rem)] leading-none">{f.value}</p>
+              <p className="mt-2 text-[15px] font-medium">{f.label}</p>
+              <span className="mt-6 block h-px w-8 bg-forest" aria-hidden="true" />
+              <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.18em]">{f.source}</p>
+              <p className="mt-2 max-w-xs text-[15px] leading-relaxed text-forest/75">{f.body}</p>
+            </li>
+          ))}
+        </ul>
       </Container>
     </section>
   );

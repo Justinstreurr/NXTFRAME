@@ -1,16 +1,8 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import BranchIcon, { type IconKey } from "./BranchIcons";
 import { FrameGlyph } from "./Logo";
 import type { WorkItem } from "./workData";
-
-const initials = (s: string) =>
-  s
-    .split(/\s+/)
-    .filter((w) => w.length > 2 || /^[A-Z]/.test(w))
-    .map((w) => w[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
 
 /* the client's own mark, white in the middle of the photo; concepts get their name set large instead */
 const logos: Record<string, { src: string; className: string }> = {
@@ -18,11 +10,21 @@ const logos: Record<string, { src: string; className: string }> = {
   Hypotheekhaven: { src: "/images/hypotheekhaven-logo.svg", className: "h-8 md:h-10" },
 };
 
-/** the small square mark in the caption, like an app icon: the client's initials, or the frame glyph for a concept */
+/* the icon in each caption: what kind of site it is, as in the branch menu */
+const icons: Record<string, IconKey> = {
+  "Happy Flops": "bag",
+  Hypotheekhaven: "chart",
+  Horeca: "cup",
+  "Bouw en installatie": "wrench",
+  "Zorg en praktijken": "heart",
+};
+
+/** the small square in the caption, like an app icon: dark glass-like (a tint and a fine light edge,
+ *  no blur, so it costs nothing while scrolling) with the branch icon in lime */
 function Mark({ w }: { w: WorkItem }) {
   return (
-    <span className="grid size-8 shrink-0 place-items-center rounded-md bg-cream text-[11px] font-bold tracking-tight text-forest" aria-hidden="true">
-      {w.kind === "Klant" ? initials(w.name) : <FrameGlyph className="size-4" />}
+    <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-black/45 text-lime ring-1 ring-inset ring-white/25 shadow-[0_4px_14px_-4px_rgb(0_0_0/0.5)]" aria-hidden="true">
+      <BranchIcon name={icons[w.name] ?? "sparkle"} className="size-[18px]" />
     </span>
   );
 }
