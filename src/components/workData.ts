@@ -9,7 +9,8 @@ export type WorkItem = {
   /** one sentence on what the site achieves, shown under the photo on the Werk page */
   headline: string;
   img: string;
-  /** a different photo for the Ons werk cards (WorkCases) only; the menus and the Werk page keep `img` */
+  /** the photo for the Ons werk tiles (WorkCases) only: a 4:5 crop at tile size (public/images/tiles), so the grid
+   *  never decodes a 2000px photo for a 400px tile; the menus and the Werk page keep `img` */
   card?: { src: string; pos?: string };
   /** a silent loop shown instead of the photo on the homepage cards (the photo stays for the Werk page) */
   video?: string;
@@ -30,7 +31,7 @@ export const work: WorkItem[] = [
     name: "Happy Flops", kind: "Klant", tags: "Webshop, branding, vindbaarheid", short: "Een webshop die verkoopt",
     headline: "Een webshop met een eigen gezicht, gebouwd om gevonden te worden.",
     img: "/images/happyflops-fold.webp", pos: "50% 45%", href: "/werk/happy-flops",
-    card: { src: "/images/happyflops-card.webp", pos: "50% 50%" },
+    card: { src: "/images/tiles/happy-flops.webp" },
     cover: { src: "/images/happyflops-hero-2.jpg", pos: "50% 55%" },
     result: "+40% bestellingen",
   },
@@ -38,6 +39,7 @@ export const work: WorkItem[] = [
     name: "Hypotheekhaven", kind: "Klant", tags: "Website, leadgeneratie", short: "Van advies naar afspraak",
     headline: "Van hypotheekadvies naar een site die afspraken oplevert.",
     img: "/images/hypotheekhaven-fauteuil.webp", pos: "70% 55%", href: "/werk/hypotheekhaven",
+    card: { src: "/images/tiles/hypotheekhaven.webp" },
     cover: { src: "/images/hypotheekhaven-fauteuil.webp", pos: "60% 50%" },
     result: "2x meer afspraken",
   },
@@ -45,18 +47,21 @@ export const work: WorkItem[] = [
     name: "Horeca", kind: "Concept", tags: "Reserveren, menukaart, Google-profiel", short: "Van zoeken naar reserveren",
     headline: "Reserveren, de menukaart en het Google-profiel, klaar om te testen.",
     img: "/images/horeca-booth.webp", pos: "40% 55%", href: "/horeca-website",
+    card: { src: "/images/tiles/horeca.webp" },
     result: "Reserveren in 3 tikken",
   },
   {
     name: "Bouw en installatie", kind: "Concept", tags: "Projecten, offerte, regio's", short: "Offertes die binnenkomen",
     headline: "Een site die offerteaanvragen binnenhaalt, met foto-upload vanaf de bouwplaats.",
     img: "/images/bouw-mascotte.webp", pos: "45% 55%", href: "/bouw-en-installatie-website",
+    card: { src: "/images/tiles/bouw.webp" },
     result: "Offerte in 1 minuut",
   },
   {
     name: "Zorg en praktijken", kind: "Concept", tags: "Afspraken, toegankelijkheid", short: "Rust vanaf de eerste blik",
     headline: "Een rustige site waar patiënten zelf online een afspraak maken.",
     img: "/images/slim-choice.webp", href: "/praktijk-website",
+    card: { src: "/images/tiles/zorg.webp" },
     result: "Afspraak in 3 tikken",
   },
 ];

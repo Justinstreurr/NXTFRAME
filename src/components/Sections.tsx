@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Fragment } from "react";
 import MoreOnMobile from "./MoreOnMobile";
 import { ArrowIcon, Button, Container, Eyebrow, Reassure, TextLink } from "./ui";
@@ -16,8 +17,8 @@ import BgOnCenter from "./BgOnCenter";
 import LetterFill from "./LetterFill";
 import BranchIcon from "./BranchIcons";
 import WorkCases from "./WorkCases";
-import DarkOnArrive from "./DarkOnArrive";
-import { FrameCorners, FrameGlyph } from "./Logo";
+import ReviewStack from "./ReviewStack";
+import { FrameGlyph } from "./Logo";
 import { work } from "./workData";
 import { services, type ServiceCard } from "./services";
 import SmartBento from "./SmartBento";
@@ -340,32 +341,31 @@ export function Services({
 
 /* ---------- Ons werk ---------- */
 
-export function Work({ turnDark = true }: { /** false keeps the section cream all the way (the aanpak page) */ turnDark?: boolean } = {}) {
+/**
+ * Ons werk as a studio work grid (after Haptic): a quiet header line, the section name left and the
+ * way to all work right, then the tiles (WorkCases). Light and still: no colour change while
+ * scrolling and no scroll animation, which is what made the old version stutter.
+ * `turnDark` is kept for the pages that pass it; the section is light everywhere now.
+ */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function Work({ turnDark = true }: { turnDark?: boolean } = {}) {
   return (
-    // starts in the cream of Wat je krijgt and turns black once its own halfway point reaches the middle of the window
-    // (DarkOnArrive sets is-dark; the colours and their fade are .work-section in globals.css)
-    <section data-zone="green" id="ons-werk" className="work-section relative pb-12 pt-12 md:pb-32 md:pt-20">
-      {turnDark && <DarkOnArrive />}
-      {/* heading and photos keep to the same width as the rest of the site (Container): title left,
-          the way to all work right, a hairline under both */}
-      <Container className="work-rows relative">
-        <div className="work-line flex flex-wrap items-end justify-between gap-x-10 gap-y-6 border-b pb-8 md:pb-10">
-          <div>
-            <Eyebrow className="work-when-light max-w-xl">Mijn werk</Eyebrow>
-            <Eyebrow tone="wine" className="work-when-dark max-w-xl">Mijn werk</Eyebrow>
-            <h2 className="mt-6 max-w-3xl t-section md:mt-8">
-              Echte klanten en <span className="work-accent serif-italic">concepten per branche</span>
-            </h2>
-          </div>
-          <TextLink href="/werk" className="work-when-light mb-2">Bekijk al het werk</TextLink>
-          <TextLink light href="/werk" className="work-when-dark mb-2">Bekijk al het werk</TextLink>
+    <section data-zone="green" id="ons-werk" className="bg-cream pb-10 pt-12 text-forest md:pb-16 md:pt-24">
+      <Container>
+        <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2">
+          <h2 className="font-display text-2xl font-medium tracking-tight md:text-[28px]">Ons werk</h2>
+          <p className="text-[14px] text-forest/70">
+            Meer zien?{" "}
+            <Link href="/werk" className="font-medium text-forest underline decoration-forest/30 underline-offset-4 hover:decoration-forest">
+              Bekijk al het werk
+            </Link>
+          </p>
         </div>
         <WorkCases items={work} />
       </Container>
     </section>
   );
 }
-
 
 /* ---------- NXT Frame vs. alternatieven ---------- */
 const criteria = ["Snelheid en laadtijd", "Vindbaar in Google en AI", "Design op maat", "Gericht op aanvragen", "Eén aanspreekpunt", "Prijs en doorlooptijd"];
@@ -488,52 +488,21 @@ const reviews = [
   },
 ];
 
-/** `dark` puts the reviews on the black of the work above them (the over page), so the two read as one block */
+/**
+ * Reviews as one narrow stack in the middle of the page (after Haptic): a small label, then the
+ * clients as slim rows, one open with its quote (ReviewStack). Same light ground as Ons werk above
+ * it, so the two read as one calm block. `dark` is kept for the pages that pass it.
+ */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function Testimonials({ dark = false }: { dark?: boolean } = {}) {
   return (
-    <section
-      data-zone={dark ? "green" : "cherry"}
-      {...(dark && { "data-follow-dark": "" })}
-      className={`py-12 md:py-32 ${dark ? "follow-dark -mt-px text-cream" : "bg-cream text-brown"}`}
-    >
+    <section data-zone="cherry" className="bg-cream pb-16 pt-14 text-forest md:pb-32 md:pt-24">
       <Container>
-        <Eyebrow tone={dark ? "wine" : undefined} className="max-w-xl">Reviews</Eyebrow>
-        <h2 className={`mt-6 t-section md:mt-8 ${dark ? "text-cream" : "text-brown"}`}>
-          Wat klanten <span className={`serif-italic ${dark ? "text-[#fcbbb9]" : ""}`}>erover zeggen</span>
-        </h2>
-        {/* two quiet cards in the house style: the brand's frame corners and five stars (pink on the black,
-            forest on cream), the client's logo on top, the quote in body type (not a display size), and
-            who said it with the way to their case at the foot. On phones they sit side by side in a swipe
-            row, the next one peeking in. */}
-        <div tabIndex={0} role="region" aria-label="Reviews" className="-mx-6 mt-10 flex snap-x snap-mandatory scroll-pl-6 gap-3 overflow-x-auto px-6 pb-2 [scrollbar-width:none] md:mx-0 md:mt-14 md:grid md:grid-cols-2 md:gap-5 md:overflow-visible md:px-0 md:pb-0 [&::-webkit-scrollbar]:hidden">
-          {reviews.map((r) => (
-            <figure
-              key={r.name}
-              className={`relative flex w-[84%] shrink-0 snap-start flex-col rounded-[14px] p-5 md:w-auto md:p-8 ${dark ? "bg-white/[0.05] ring-1 ring-white/10" : "bg-paper ring-1 ring-forest/10"}`}
-            >
-              <FrameCorners className={dark ? "text-[#fcbbb9]" : "text-forest"} corners="diagonal" size="size-4" inset="inset-3" />
-              <div className="flex items-center justify-between gap-4">
-                <span className={`flex gap-0.5 ${dark ? "text-[#fcbbb9]" : "text-forest"}`} role="img" aria-label="5 van 5 sterren">
-                  {[0, 1, 2, 3, 4].map((s) => (
-                    <svg key={s} viewBox="0 0 20 20" className="size-4" fill="currentColor" aria-hidden="true">
-                      <path d="M10 1.8l2.4 5 5.4.7-4 3.8 1 5.4L10 14.1l-4.8 2.6 1-5.4-4-3.8 5.4-.7z" />
-                    </svg>
-                  ))}
-                </span>
-                <img src={r.logo} alt={r.name} className={`h-4 w-auto brightness-0 md:h-5 ${dark ? "invert opacity-80" : "opacity-70"}`} loading="lazy" />
-              </div>
-              <blockquote className={`mt-4 flex-1 text-[15px] leading-relaxed md:mt-5 md:text-lg ${dark ? "text-cream/90" : "text-brown/85"}`}>
-                &ldquo;{r.quote}&rdquo;
-              </blockquote>
-              <figcaption className={`mt-6 flex flex-wrap items-end justify-between gap-x-6 gap-y-3 border-t pt-5 ${dark ? "border-white/10" : "border-forest/10"}`}>
-                <span>
-                  <span className={`block font-semibold ${dark ? "text-cream" : "text-brown"}`}>{r.name}</span>
-                  <span className={`block text-sm ${dark ? "text-cream/60" : "text-brown/60"}`}>{r.role}</span>
-                </span>
-                <TextLink light={dark} href={r.href}>Bekijk de case</TextLink>
-              </figcaption>
-            </figure>
-          ))}
+        <div className="mx-auto max-w-[520px]">
+          <h2 className="text-[14px] font-medium text-forest/70">Wat klanten erover zeggen</h2>
+          <div className="mt-3">
+            <ReviewStack reviews={reviews} />
+          </div>
         </div>
       </Container>
     </section>
