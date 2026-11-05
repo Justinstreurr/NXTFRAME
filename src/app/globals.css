@@ -2008,3 +2008,9 @@ html[data-statement-sand] .slim-bg { background-color: var(--color-sand); }
    A device screen (.keep-round, the phone mockups) is not a photo: it keeps the rounded corners of its frame */
 :is(img.object-cover, picture > img, video):not([class*="rounded-full"]) { border-radius: 0 !important; }
 [class*="rounded"]:not([class*="rounded-b-"], [class*="rounded-t-"], [class*="rounded-full"], .keep-round):has(> img.object-cover, > picture, > video, > span > img.object-cover, > div > img.object-cover:only-child) { border-radius: 0 !important; }
+
+/* Reviews (ReviewStack): the bar of the open review fills over the countdown; its end moves to the
+   next review. Less motion: the bar stands full and the reviews only change on a click. */
+.review-fill { animation: review-fill linear both; }
+@keyframes review-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) { .review-fill { animation: none; transform: scaleX(1); } }

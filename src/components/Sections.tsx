@@ -489,20 +489,19 @@ const reviews = [
 ];
 
 /**
- * Reviews as one narrow stack in the middle of the page (after Haptic): a small label, then the
- * clients as slim rows, one open with its quote (ReviewStack). Same light ground as Ons werk above
- * it, so the two read as one calm block. `dark` is kept for the pages that pass it.
+ * Reviews one at a time, changing by themselves (ReviewStack): a small label over a hairline, then
+ * the counter and bars left and the quote with the client's logo large on the right. `dark` is kept for the pages that pass it.
  */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function Testimonials({ dark = false }: { dark?: boolean } = {}) {
   return (
-    <section data-zone="cherry" className="bg-cream pb-16 pt-14 text-forest md:pb-32 md:pt-24">
+    <section data-zone="cherry" className="bg-cream pb-16 pt-10 text-forest md:pb-32 md:pt-16">
       <Container>
-        <div className="mx-auto max-w-[520px]">
-          <h2 className="text-[14px] font-medium text-forest/70">Wat klanten erover zeggen</h2>
-          <div className="mt-3">
-            <ReviewStack reviews={reviews} />
-          </div>
+        <div className="border-t border-forest/15 pt-5">
+          <h2 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-forest/70">Wat klanten zeggen</h2>
+        </div>
+        <div className="mt-10 md:mt-14">
+          <ReviewStack reviews={reviews} />
         </div>
       </Container>
     </section>

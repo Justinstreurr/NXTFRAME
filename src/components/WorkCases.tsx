@@ -12,6 +12,12 @@ const initials = (s: string) =>
     .slice(0, 2)
     .toUpperCase();
 
+/* the client's own mark, white in the middle of the photo; concepts get their name set large instead */
+const logos: Record<string, { src: string; className: string }> = {
+  "Happy Flops": { src: "/images/happy-flops-logo.png", className: "h-10 md:h-12" },
+  Hypotheekhaven: { src: "/images/hypotheekhaven-logo.svg", className: "h-8 md:h-10" },
+};
+
 /** the small square mark in the caption, like an app icon: the client's initials, or the frame glyph for a concept */
 function Mark({ w }: { w: WorkItem }) {
   return (
@@ -25,7 +31,9 @@ function Mark({ w }: { w: WorkItem }) {
  * One case as a tall photo tile, after the work grid of design studios like Haptic: the photo fills
  * the tile, a small tag sits top right on the concepts, and the caption sits bottom left as a small
  * app-like mark with the name and one line under it. Deliberately still: no scroll animation, no
- * filters, only the photo easing in a little under the pointer (a transform, handled by the GPU).
+ * filters while scrolling. The brand sits in the middle of the photo. Under the pointer the photo
+ * softens (a blur, on that one tile only) so the brand stands out, and the caption is underlined:
+ * it is clear the tile can be clicked.
  */
 function Tile({ w }: { w: WorkItem }) {
   const external = w.href?.startsWith("http");
@@ -34,19 +42,28 @@ function Tile({ w }: { w: WorkItem }) {
       href={w.href ?? "#"}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
-      className="group relative block aspect-[4/5] overflow-hidden rounded-lg bg-forest text-cream"
+      className="group relative block aspect-[4/5] overflow-hidden bg-forest text-cream"
     >
       <img
         src={w.card?.src ?? w.img}
         alt=""
         width={800}
         height={1000}
-        className="absolute inset-0 size-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+        className="absolute inset-0 size-full object-cover transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.04] group-hover:blur-[6px] group-focus-visible:scale-[1.04] group-focus-visible:blur-[6px]"
         style={{ objectPosition: w.card?.pos ?? w.pos }}
         loading="lazy"
         decoding="async"
       />
-      <span className="absolute inset-x-0 bottom-0 h-1/3 bg-[linear-gradient(to_top,rgb(0_0_0/0.6),transparent)]" aria-hidden="true" />
+      {/* a light shade over the whole photo, a little deeper under the pointer, so the brand in the middle reads */}
+      <span className="absolute inset-0 bg-black/20 transition-colors duration-500 group-hover:bg-black/35" aria-hidden="true" />
+      <span className="absolute inset-x-0 bottom-0 h-1/3 bg-[linear-gradient(to_top,rgb(0_0_0/0.55),transparent)]" aria-hidden="true" />
+      <span className="absolute inset-0 grid place-items-center px-6 text-center" aria-hidden="true">
+        {logos[w.name] ? (
+          <img src={logos[w.name].src} alt="" className={`w-auto max-w-[80%] brightness-0 invert ${logos[w.name].className}`} loading="lazy" decoding="async" />
+        ) : (
+          <span className="font-display text-[clamp(1.75rem,2.6vw,2.4rem)] font-semibold leading-[1.05] tracking-[-0.03em]">{w.name}</span>
+        )}
+      </span>
       {w.kind === "Concept" && (
         <span className="absolute right-3 top-3 rounded bg-black/55 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-cream">
           Concept
@@ -55,7 +72,7 @@ function Tile({ w }: { w: WorkItem }) {
       <span className="absolute inset-x-3 bottom-3 flex items-center gap-2.5">
         <Mark w={w} />
         <span className="min-w-0">
-          <span className="block truncate text-[14px] font-semibold leading-tight">{w.name}</span>
+          <span className="block truncate text-[14px] font-semibold leading-tight decoration-cream/80 underline-offset-[3px] group-hover:underline group-focus-visible:underline">{w.name}</span>
           <span className="block truncate text-[13px] leading-tight text-cream/75">{w.tags}</span>
         </span>
       </span>
@@ -63,20 +80,31 @@ function Tile({ w }: { w: WorkItem }) {
   );
 }
 
-/** the last tile when there is room: black, the frame mark large in the middle, and the way to a first talk */
+/**
+ * The last tile, to round the grid off: an invitation instead of a case. Forest green, a small label
+ * with the frame mark beside it, the question, two lines on what a first talk
+ * gives you, and a lime button. The whole tile is the link; under the pointer the mark grows a
+ * little and the button turns its arrow, like the photo tiles react.
+ */
 function YoursTile() {
   return (
-    <Link href="/contact" className="group relative block aspect-[4/5] overflow-hidden rounded-lg bg-black text-cream">
-      <span className="absolute inset-0 grid place-items-center">
-        <FrameGlyph className="size-24 text-cream transition-transform duration-700 ease-out group-hover:scale-110 md:size-28" />
+    <Link href="/contact" className="group relative flex aspect-[4/5] flex-col justify-between overflow-hidden bg-forest p-6 text-cream md:p-7">
+            <span className="relative flex items-start justify-between gap-4">
+        <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-lime">Jouw bedrijf hier?</span>
+        <FrameGlyph className="size-9 text-lime transition-transform duration-500 ease-out group-hover:scale-110" />
       </span>
-      <span className="absolute inset-x-3 bottom-3 flex items-center gap-2.5">
-        <span className="grid size-8 shrink-0 place-items-center rounded-md bg-lime text-forest" aria-hidden="true">
-          <FrameGlyph className="size-4" />
+      <span className="relative">
+        <span className="block font-display text-[clamp(1.6rem,2.3vw,2.2rem)] font-medium leading-[1.08] tracking-[-0.025em]">
+          Wil jij ook een site die <span className="serif-italic text-lime">klanten oplevert?</span>
         </span>
-        <span className="min-w-0">
-          <span className="block text-[14px] font-semibold leading-tight">Jouw bedrijf</span>
-          <span className="block text-[13px] leading-tight text-cream/75">Plan een kennismaking</span>
+        <span className="mt-4 block max-w-[30ch] text-[15px] leading-relaxed text-cream/80">
+          Vertel in een half uur wat je doet en wie je wilt bereiken. Je krijgt eerlijk advies en één vaste prijs, zonder verplichting.
+        </span>
+        <span className="mt-6 inline-flex items-center gap-3 rounded-full bg-lime py-1.5 pl-5 pr-1.5 text-[14px] font-semibold text-forest">
+          <span className="underline-offset-[3px] group-hover:underline group-focus-visible:underline">Plan een kennismaking</span>
+          <span className="grid size-7 place-items-center rounded-full bg-forest text-lime transition-transform duration-300 group-hover:rotate-45" aria-hidden="true">
+            <svg viewBox="0 0 16 16" className="size-3" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M5 11 11 5M6 5h5v5" /></svg>
+          </span>
         </span>
       </span>
     </Link>
@@ -85,7 +113,7 @@ function YoursTile() {
 
 /**
  * Ons werk as a studio work grid: three tall tiles a row on desktop with tight gutters, the cases
- * first and a black "Jouw bedrijf" tile to round the grid off; on phones a row you swipe. `header`
+ * first and a green "Jouw bedrijf" tile to round the grid off; on phones a row you swipe. `header`
  * replaces the heading line (the case pages bring their own).
  */
 export default function WorkCases({ items, header, yours = true }: { items: WorkItem[]; header?: ReactNode; yours?: boolean }) {
