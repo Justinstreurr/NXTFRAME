@@ -2,7 +2,6 @@ import type { CSSProperties, ReactNode } from "react";
 import Link from "next/link";
 import { Container, Eyebrow, TextLink } from "./ui";
 import WorkCases from "./WorkCases";
-import WorkCursor from "./WorkCursor";
 import { CasePhone } from "./CaseStudy";
 import PhoneFrame from "./PhoneFrame";
 import { work } from "./workData";
@@ -196,7 +195,6 @@ export function CaseDarkOthers({ current }: { current: string }) {
         <TextLink inherit href="/werk" className="mb-2">Bekijk al het werk</TextLink>
       </div>
       <WorkCases items={others} />
-      <WorkCursor />
     </Container>
   );
 }

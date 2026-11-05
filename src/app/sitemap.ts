@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { branches, branchHref } from "@/components/menuData";
+import { posts, postHref } from "@/components/blogPosts";
 
 const SITE = "https://nxtframe.ai";
 
@@ -23,6 +24,7 @@ const pages: { path: string; priority: number }[] = [
   { path: "/aanpak", priority: 0.6 },
   { path: "/over", priority: 0.6 },
   { path: "/contact", priority: 0.7 },
+  { path: "/blog", priority: 0.6 },
   { path: "/privacy", priority: 0.2 },
   { path: "/voorwaarden", priority: 0.2 },
 ];
@@ -30,5 +32,7 @@ const pages: { path: string; priority: number }[] = [
 export default function sitemap(): MetadataRoute.Sitemap {
   const branchPages = branches.map((b) => ({ path: branchHref(b), priority: 0.7 }));
   const all = [...pages, ...branchPages.filter((b) => !pages.some((p) => p.path === b.path))];
-  return all.map((p) => ({ url: `${SITE}${p.path}`, lastModified: new Date(), changeFrequency: "monthly", priority: p.priority }));
+  // articles carry their own last change, so Google sees when one was really updated
+  const articles = posts.map((p) => ({ url: `${SITE}${postHref(p)}`, lastModified: new Date(p.updated), changeFrequency: "monthly" as const, priority: 0.6 }));
+  return [...all.map((p) => ({ url: `${SITE}${p.path}`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: p.priority })), ...articles];
 }

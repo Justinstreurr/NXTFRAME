@@ -36,7 +36,7 @@ export const tools: SmartTool[] = [
   {
     title: "Automatiseringen",
     body: "Terugkerend werk dat nu met de hand gaat: offertes opstellen, gegevens overzetten tussen systemen, mails sorteren. Eerst kijken we samen waar de uren zitten, dan bouw ik wat de meeste tijd scheelt.",
-    examples: ["Offertes en documenten opstellen", "Gegevens tussen systemen overzetten", "Mails en formulieren verwerken"],
+    examples: ["Offertes en facturen klaarzetten om na te kijken", "Gegevens tussen systemen overzetten", "Mails en formulieren verwerken"],
     icon: "wrench",
   },
   {

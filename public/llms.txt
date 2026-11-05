@@ -32,6 +32,12 @@ Prijzen zijn vanaf-prijzen exclusief btw; na een gratis kennismaking van een hal
 - [Hypotheekhaven](https://nxtframe.ai/werk/hypotheekhaven): website met rekentools voor een hypotheekadviseur
 - [Al het werk](https://nxtframe.ai/werk)
 
+## Blog
+
+- [Blog](https://nxtframe.ai/blog): antwoorden op vragen van ondernemers over websites en automatiseren
+- [Wat kost een website laten maken in 2026?](https://nxtframe.ai/blog/wat-kost-een-website-laten-maken)
+- [Offertes en facturen automatiseren als installateur of aannemer](https://nxtframe.ai/blog/offertes-en-facturen-automatiseren-bouw-en-installatie)
+
 ## Over en contact
 
 - [Over NXT Frame](https://nxtframe.ai/over)

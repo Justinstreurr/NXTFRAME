@@ -9,6 +9,11 @@ import { useEffect, useId, useRef, type ReactNode } from "react";
  * filter is only switched on while the effect plays, so a still card costs nothing; touch screens
  * and visitors who prefer less motion get the plain photo. Listens on the card frame (the parent),
  * since the labels and the shade lie over the photo.
+ *
+ * The filter sits on the photo itself, not on a wrapper around it: the photo drifts with the scroll
+ * (.case-photo), and a filter on its parent had to be recomputed for the whole card on every scroll
+ * frame. On the photo, the filtered result moves as one layer. The water also moves at 30 frames a
+ * second and holds still while the page scrolls; both halve the work and nobody sees the difference.
  */
 export default function WaterHover({ children }: { children: ReactNode }) {
   const id = `water-${useId().replace(/:/g, "")}`;
@@ -30,24 +35,37 @@ export default function WaterHover({ children }: { children: ReactNode }) {
     let t = 0;
     let last = 0;
     let lastRing = 0;
+    let lastDraw = 0;
+    let scrolling = 0; // timer: the page is scrolling, so the water holds still
+    // the photo (or video) gets the filter; fall back to the layer if there is none
+    const target = (el.querySelector("img, video") as HTMLElement | null) ?? el;
 
     const tick = (now: number) => {
       const dt = last ? Math.min(0.05, (now - last) / 1000) : 0.016;
       last = now;
       t += dt;
       strength += ((on ? 26 : 0) - strength) * (1 - Math.pow(0.02, dt));
-      // the water keeps moving: the noise frequency breathes slowly
-      const fx = 0.011 + Math.sin(t * 0.9) * 0.0025;
-      const fy = 0.017 + Math.cos(t * 0.7) * 0.003;
-      turb.current?.setAttribute("baseFrequency", `${fx.toFixed(4)} ${fy.toFixed(4)}`);
-      disp.current?.setAttribute("scale", strength.toFixed(2));
       if (!on && strength < 0.3) {
-        el.style.filter = "";
+        target.style.filter = "";
+        target.style.removeProperty("will-change");
         raf = 0;
         last = 0;
         return;
       }
+      // redraw at most 30 times a second, and not while the page scrolls
+      if (!scrolling && now - lastDraw >= 33) {
+        lastDraw = now;
+        // the water keeps moving: the noise frequency breathes slowly
+        const fx = 0.011 + Math.sin(t * 0.9) * 0.0025;
+        const fy = 0.017 + Math.cos(t * 0.7) * 0.003;
+        turb.current?.setAttribute("baseFrequency", `${fx.toFixed(4)} ${fy.toFixed(4)}`);
+        disp.current?.setAttribute("scale", strength.toFixed(2));
+      }
       raf = requestAnimationFrame(tick);
+    };
+    const onScroll = () => {
+      window.clearTimeout(scrolling);
+      scrolling = window.setTimeout(() => (scrolling = 0), 140);
     };
 
     const ring = (x: number, y: number) => {
@@ -76,7 +94,8 @@ export default function WaterHover({ children }: { children: ReactNode }) {
       if (e.pointerType !== "mouse") return;
       on = true;
       frame.classList.add("is-water");
-      el.style.filter = `url(#${id})`;
+      target.style.willChange = "transform";
+      target.style.filter = `url(#${id})`;
       point(e);
       if (!raf) raf = requestAnimationFrame(tick);
     };
@@ -86,6 +105,7 @@ export default function WaterHover({ children }: { children: ReactNode }) {
       if (!raf) raf = requestAnimationFrame(tick);
     };
 
+    window.addEventListener("scroll", onScroll, { passive: true });
     frame.addEventListener("pointerenter", enter);
     frame.addEventListener("pointermove", point);
     frame.addEventListener("pointerleave", leave);
@@ -93,6 +113,8 @@ export default function WaterHover({ children }: { children: ReactNode }) {
       frame.removeEventListener("pointerenter", enter);
       frame.removeEventListener("pointermove", point);
       frame.removeEventListener("pointerleave", leave);
+      window.removeEventListener("scroll", onScroll);
+      window.clearTimeout(scrolling);
       if (raf) cancelAnimationFrame(raf);
     };
   }, [id]);
@@ -101,7 +123,7 @@ export default function WaterHover({ children }: { children: ReactNode }) {
     <>
       <svg className="pointer-events-none absolute size-0" aria-hidden="true" focusable="false">
         <filter id={id} x="-5%" y="-5%" width="110%" height="110%">
-          <feTurbulence ref={turb} type="fractalNoise" baseFrequency="0.011 0.017" numOctaves="2" seed="7" result="noise" />
+          <feTurbulence ref={turb} type="fractalNoise" baseFrequency="0.011 0.017" numOctaves="1" seed="7" result="noise" />
           <feDisplacementMap ref={disp} in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G" />
         </filter>
       </svg>

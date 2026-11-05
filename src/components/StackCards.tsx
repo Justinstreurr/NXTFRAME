@@ -1,7 +1,11 @@
 import type { CSSProperties, ReactNode } from "react";
 import { ArrowIcon } from "./ui";
 
-export type StackCard = { label: string; img: string; pos: string; title: ReactNode; body: string; cta: string; href: string };
+export type StackCard = {
+  label: string; img: string; pos: string; title: ReactNode; body: string; cta: string; href: string;
+  /** a figure on a transparent ground (the mascot): shown whole, not cropped into the round photo frame */
+  cutout?: boolean;
+};
 
 export type StackTone = { card: string; body: string };
 
@@ -60,7 +64,7 @@ export default function StackCards({ items, tones = defaultTones }: { items: Sta
                 <img
                   src={it.img}
                   alt=""
-                  className="aspect-square w-full max-w-[130px] rounded-full object-cover sm:max-w-[300px] md:max-w-[340px]"
+                  className={`aspect-square w-full max-w-[130px] sm:max-w-[300px] md:max-w-[340px] ${it.cutout ? "object-contain drop-shadow-[0_24px_30px_rgba(0,0,0,0.25)]" : "rounded-full object-cover"}`}
                   style={{ objectPosition: it.pos }}
                   loading="lazy"
                   decoding="async"

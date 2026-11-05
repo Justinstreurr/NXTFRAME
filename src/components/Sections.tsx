@@ -7,7 +7,6 @@ import PathWalker from "./PathWalker";
 import { CodeIcon, LaunchIcon, MapIcon, PenIcon, TalkIcon } from "./StepIcons";
 import PillarTabs from "./PillarTabs";
 import { DesignDemo, SearchDemo, SpeedDemo } from "./PillarDemos";
-import WorkCursor from "./WorkCursor";
 import { price, tiers } from "./pricing";
 import { faq } from "./faq";
 import ConvertShowcase from "./ConvertShowcase";
@@ -362,7 +361,6 @@ export function Work({ turnDark = true }: { /** false keeps the section cream al
           <TextLink light href="/werk" className="work-when-dark mb-2">Bekijk al het werk</TextLink>
         </div>
         <WorkCases items={work} />
-        <WorkCursor />
       </Container>
     </section>
   );

@@ -35,7 +35,7 @@ const principles: StackCard[] = [
     cta: "Plan een kennismaking", href: "/contact",
   },
   {
-    label: "Vast", img: "/images/mascot-build.webp", pos: "50% 25%",
+    label: "Vast", img: "/images/mascot-build.webp", pos: "50% 50%", cutout: true,
     title: <>Eén vaste prijs <span className="serif-italic">vooraf</span></>,
     body: "Na de kennismaking weet je wat het kost en wat je ervoor krijgt. Geen uren achteraf, geen meerwerk dat je pas op de factuur ziet.",
     cta: "Bekijk de prijzen", href: "/prijzen",

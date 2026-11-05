@@ -284,7 +284,7 @@ export const branches: Branch[] = [
       { title: "Je werk als bewijs", body: "Projectpagina's met echte foto's, voor en na, wat de klus inhield en wat de klant ervan vond. Dat overtuigt meer dan elke tekst over vakmanschap." },
       { title: "Offerte in een minuut", body: "Een aanvraagformulier dat met één hand op een telefoon in te vullen is, met foto-upload van de situatie, zodat je kunt inschatten zonder eerst langs te rijden." },
       { title: "Gevonden per dienst en plaats", body: "Van badkamer renoveren tot warmtepomp installeren, elke dienst een eigen pagina per werkgebied, zodat je gevonden kunt worden op de klussen die je het liefst doet." },
-      { title: "Offertes en facturen vanzelf", body: "Een offerte- en factuurtool achter je site: standaardklussen krijgen meteen een offerte met jouw prijzen, een akkoord wordt een factuur, en alles staat klaar voor je boekhouding." },
+      { title: "Offertes en facturen klaargezet", body: "Een hulpmiddel achter je site dat het uitzoekwerk doet: het haalt je prijzen, materialen en de gegevens en foto's uit de aanvraag erbij en zet een offerte klaar. Na akkoord maakt het de factuur. Jij kijkt alles na voordat het de deur uitgaat." },
     ],
     price: { from: "4.500", span: "8 tot 12 weken", note: "Inclusief projectpagina's, een offerteformulier met foto-upload, een offerte- en factuurtool en een pagina per dienst en werkgebied." },
     faq: [
@@ -311,6 +311,10 @@ export const branches: Branch[] = [
       {
         q: "Ik werk vooral voor aannemers, niet voor particulieren. Heeft een site dan zin?",
         a: "Ja, maar dan een andere. Zakelijke opdrachtgevers checken je site voordat ze je uitnodigen, en kijken naar capaciteit, referenties en certificering in plaats van naar prijzen. Dezelfde site, andere inhoud.",
+      },
+      {
+        q: "Gaan offertes en facturen dan vanzelf de deur uit?",
+        a: "Nee, en dat is bewust. De tool doet het zoek- en rekenwerk: je prijzen en materialen, de gegevens van de klant en de foto's uit de aanvraag. Daarmee zet hij de offerte klaar, en na akkoord de factuur. Jij kijkt het na, past aan wat afwijkt en verstuurt het zelf. Werk je met een boekhoudpakket, dan koppel ik het eraan.",
       },
     ],
   },
