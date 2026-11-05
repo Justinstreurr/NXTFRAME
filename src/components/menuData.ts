@@ -549,9 +549,9 @@ export const menu: MenuItem[] = [
       { label: "Landingspagina", href: "/landingspagina-laten-maken", icon: "grid" },
       { label: "Onderhoud en doorontwikkeling", href: "/website-onderhoud", icon: "refresh" },
       { label: "Teksten en content", href: "/website-teksten", icon: "pen" },
-      { label: "Prijzen", href: "/prijzen", icon: "chart" },
     ],
   },
+  { label: "Prijzen", href: "/prijzen" },
   { label: "Aanpak", href: "/aanpak" },
   { label: "Over", href: "/over" },
 ];
