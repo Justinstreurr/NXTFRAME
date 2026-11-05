@@ -3,7 +3,7 @@ import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import { AiFirst, CreativePartner, Difference, Platform, Testimonials, Work, HomeFaq, Prices, SmartExtras } from "@/components/Sections";
 import Burnout from "@/components/Burnout";
-import ServicesWheel from "@/components/ServicesWheel";
+import ServicesFlow from "@/components/ServicesFlow";
 import Footer from "@/components/Footer";
 
 // title and description come from the layout
@@ -30,7 +30,7 @@ export default function Home() {
         <Testimonials dark />
         {/* how a site converts, then the services and the steps */}
         <CreativePartner />
-        <ServicesWheel overlap />
+        <ServicesFlow />
         <Platform person />
         {/* more than a website: tools and integrations, kept short (a full page follows later) */}
         <SmartExtras />

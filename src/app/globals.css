@@ -2009,3 +2009,67 @@ html[data-statement-sand] .slim-bg { background-color: var(--color-sand); }
 :is(img.object-cover, picture > img, video):not([class*="rounded-full"]) { border-radius: 0 !important; }
 [class*="rounded"]:not([class*="rounded-b-"], [class*="rounded-t-"], [class*="rounded-full"], .keep-round):has(> img.object-cover, > picture, > video, > span > img.object-cover, > div > img.object-cover:only-child) { border-radius: 0 !important; }
 
+
+/* Diensten (ServicesMap): plays once when the stage comes into view. Before that (data-state=ready)
+   the pieces wait hidden and the mark waits large; then the mark settles, the chips come in one by
+   one, the lines fade in and the branches pop up, each at its own --d. Opacity and transform only.
+   Without script or with less motion data-state stays idle and everything simply stands. */
+.sm-stage[data-state="ready"] :is(.sm-chip, .sm-person, .sm-lines) { opacity: 0; }
+.sm-stage[data-state="ready"] .sm-hub { transform: scale(1.7); }
+.sm-stage[data-state="in"] .sm-hub { animation: sm-hub 900ms cubic-bezier(0.2, 0.9, 0.3, 1) both; }
+.sm-stage[data-state="in"] .sm-chip { animation: sm-chip 500ms cubic-bezier(0.2, 0.9, 0.3, 1) var(--d) both; }
+.sm-stage[data-state="in"] .sm-lines { animation: sm-fade 700ms ease 1200ms both; }
+.sm-stage[data-state="in"] .sm-person { animation: sm-pop 520ms cubic-bezier(0.2, 1.2, 0.4, 1) var(--d) both; }
+@keyframes sm-hub { from { transform: scale(1.7); } to { transform: none; } }
+@keyframes sm-chip { from { opacity: 0; transform: translateX(-14px); } to { opacity: 1; transform: none; } }
+@keyframes sm-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes sm-pop { from { opacity: 0; transform: scale(0.6); } to { opacity: 1; transform: none; } }
+
+/* Diensten (ServicesFlow): plays once when the stage comes into view. Before that (data-state=ready)
+   the pieces wait hidden; then the services come in, the site builds itself (bars grow from the
+   left, blocks pop), the dotted rules appear and the messages arrive, each at its own --d.
+   Opacity and transform only. Idle (no script, less motion): everything simply stands. */
+.sf-stage[data-state="ready"] :is(.sf-in, .sf-grow, .sf-pop, .sf-rule, .sf-note) { opacity: 0; }
+.sf-stage[data-state="in"] .sf-in { animation: sf-in 480ms cubic-bezier(0.2, 0.9, 0.3, 1) var(--d) both; }
+.sf-stage[data-state="in"] .sf-grow { transform-origin: left; animation: sf-grow 520ms cubic-bezier(0.2, 0.9, 0.3, 1) var(--d) both; }
+.sf-stage[data-state="in"] .sf-pop { animation: sf-pop 460ms cubic-bezier(0.2, 1.15, 0.4, 1) var(--d) both; }
+.sf-stage[data-state="in"] .sf-rule { transform-origin: left; animation: sf-grow 500ms ease var(--d) both; }
+.sf-stage[data-state="in"] .sf-note { animation: sf-note 520ms cubic-bezier(0.2, 1.1, 0.4, 1) var(--d) both; }
+@keyframes sf-in { from { opacity: 0; transform: translateX(-12px); } to { opacity: 1; transform: none; } }
+@keyframes sf-grow { from { opacity: 0; transform: scaleX(0); } to { opacity: 1; transform: none; } }
+@keyframes sf-pop { from { opacity: 0; transform: scale(0.85); } to { opacity: 1; transform: none; } }
+@keyframes sf-note { from { opacity: 0; transform: translateY(14px) scale(0.97); } to { opacity: 1; transform: none; } }
+
+/* Diensten wheel (ServicesFlow), in 2D: each card (.orb, at its own phase --p) runs along an ellipse,
+   made of two plain moves a quarter turn apart: sideways (.orb-x) and up-down (.orb-y). Going down
+   means coming to the front, so .orb-y also grows the card and lifts its opacity, and .orb raises its
+   z-index on the same clock. The whole ring is turned a little so it reads as a slanted wheel.
+   Transform and opacity run on the compositor; no 3D (preserve-3d measured too heavy).
+   Paused off screen (.wheel-paused) and still for visitors who prefer less motion. */
+.wheel { --T: 34s; --rx: 125px; --ry: 50px; --w: 104px; --h: 130px; }
+@media (min-width: 768px) { .wheel { --rx: 245px; --ry: 88px; --w: 156px; --h: 195px; } }
+@media (min-width: 1024px) { .wheel { --rx: 180px; --ry: 70px; --w: 128px; --h: 160px; } }
+@media (min-width: 1280px) { .wheel { --rx: 255px; --ry: 96px; --w: 176px; --h: 220px; } }
+.wheel-tilt { transform: rotate(-12deg); }
+.orb {
+  position: absolute; left: 50%; top: 50%; width: var(--w); height: var(--h);
+  margin: calc(var(--h) / -2) 0 0 calc(var(--w) / -2);
+  animation: orb-z calc(var(--T) / 2) linear infinite alternate;
+  animation-delay: calc(var(--p) * var(--T) * -1 - var(--T) / 4);
+}
+.orb-x {
+  animation: orb-x calc(var(--T) / 2) cubic-bezier(0.37, 0, 0.63, 1) infinite alternate;
+  animation-delay: calc(var(--p) * var(--T) * -1);
+}
+.orb-y {
+  animation: orb-y calc(var(--T) / 2) cubic-bezier(0.37, 0, 0.63, 1) infinite alternate;
+  animation-delay: calc(var(--p) * var(--T) * -1 - var(--T) / 4);
+}
+@keyframes orb-x { from { transform: translateX(calc(var(--rx) * -1)); } to { transform: translateX(var(--rx)); } }
+@keyframes orb-y {
+  from { transform: translateY(calc(var(--ry) * -1)) scale(0.7); opacity: 0.7; }
+  to { transform: translateY(var(--ry)) scale(1.05); opacity: 1; }
+}
+@keyframes orb-z { from { z-index: 1; } to { z-index: 20; } }
+.wheel-paused :is(.orb, .orb-x, .orb-y) { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { :is(.orb, .orb-x, .orb-y) { animation-play-state: paused; } }

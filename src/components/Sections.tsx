@@ -350,7 +350,7 @@ export function Services({
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function Work({ turnDark = true }: { turnDark?: boolean } = {}) {
   return (
-    <section data-zone="green" id="ons-werk" className="bg-cream pb-10 pt-12 text-forest md:pb-16 md:pt-24">
+    <section data-zone="green" id="ons-werk" className="bg-cream pb-16 pt-12 text-forest md:pb-32 md:pt-24">
       <Container>
         <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2">
           <h2 className="font-display text-2xl font-medium tracking-tight md:text-[28px]">Ons werk</h2>
@@ -504,7 +504,7 @@ const reviews: Review[] = [
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function Testimonials({ dark = false }: { dark?: boolean } = {}) {
   return (
-    <section data-zone="cherry" className="bg-cream pb-16 pt-10 text-forest md:pb-32 md:pt-16">
+    <section data-zone="cherry" className="bg-cream pb-16 pt-6 text-forest md:pb-32 md:pt-8">
       <Container>
         <div className="border-t border-forest/15 pt-6">
           <Eyebrow className="max-w-xl">Wat klanten zeggen</Eyebrow>

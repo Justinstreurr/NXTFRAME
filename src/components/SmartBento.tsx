@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { FrameGlyph } from "./Logo";
 import MoreOnMobile from "./MoreOnMobile";
@@ -56,19 +57,19 @@ const MORTGAGE: CalcExample = { lines: [["Maandlast", "€ 1.229"], ["Rente", "3
 
 /** the widget render floats; one by one the results of a calculation appear beside it */
 export function WidgetCalculator({ step, example = MORTGAGE }: { step: number; example?: CalcExample }) {
-  const chip = "absolute flex items-center gap-2 whitespace-nowrap rounded-2xl bg-white/90 px-3.5 py-2.5 text-[13px] font-medium text-forest shadow-[0_18px_40px_-18px_rgba(2,38,30,0.45)] backdrop-blur";
+  const chip = "absolute flex items-center gap-2 whitespace-nowrap rounded-2xl bg-white px-3.5 py-2.5 text-[13px] font-medium text-forest shadow-[0_18px_40px_-18px_rgba(2,38,30,0.45)]";
   return (
     <div className="relative aspect-square w-full">
       <img src="/images/widget-rekentool.webp" alt="" className="sb-float absolute inset-0 size-full object-contain" loading="lazy" decoding="async" />
-      <span className={`${chip} left-[2%] top-[4%] ${show(step >= 1 && step < 7)}`}>
+      <span className={`${chip} right-[4%] top-[2%] ${show(step >= 1 && step < 7)}`}>
         <span className="text-forest/70">{example.lines[0][0]}</span>
         <span className="font-semibold tabular-nums">{example.lines[0][1]}</span>
       </span>
-      <span className={`${chip} right-[6%] top-[14%] ${show(step >= 2 && step < 7)}`}>
+      <span className={`${chip} right-[0%] top-[15%] ${show(step >= 2 && step < 7)}`}>
         <span className="text-forest/70">{example.lines[1][0]}</span>
         <span className="font-semibold tabular-nums">{example.lines[1][1]}</span>
       </span>
-      <span className={`${chip} bottom-[30%] left-[0%] bg-forest/95 text-cream ${show(step >= 4 && step < 7)}`}>
+      <span className={`${chip} bottom-[24%] left-[0%] bg-forest/95 text-cream ${show(step >= 4 && step < 7)}`}>
         <span className="grid size-5 place-items-center rounded-full bg-lime text-[10px] text-forest">✓</span>
         {example.done}
       </span>
@@ -80,8 +81,8 @@ export function WidgetCalculator({ step, example = MORTGAGE }: { step: number; e
    The pills sit close to the icon (x 150-540): on a phone the sliced viewBox only shows the middle of the stage. */
 
 const pipes = [
-  { name: "Offerte", d: "M280 175 H150 Q120 175 120 145 V80 Q120 50 90 50 H-40", at: [205, 175] },
-  { name: "Factuur", d: "M420 175 H560 Q590 175 590 205 V255 Q590 285 620 285 H760", at: [495, 175] },
+  { name: "Offerte", d: "M280 175 H150 Q120 175 120 145 V80 Q120 50 90 50 H-40", at: [226, 175] },
+  { name: "Factuur", d: "M420 175 H560 Q590 175 590 205 V255 Q590 285 620 285 H760", at: [474, 175] },
   { name: "Agenda", d: "M350 245 V400", at: [350, 318] },
   { name: "Boekhouding", d: "M350 105 V70 Q350 40 380 40 H760", at: [455, 40] },
 ];
@@ -91,9 +92,10 @@ function Connections({ step, near }: { step: number; near: boolean }) {
   return (
     <svg viewBox="0 0 700 350" preserveAspectRatio="xMidYMax slice" className="size-full" aria-hidden="true">
       <defs>
-        <filter id="sb-glow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="4" />
-        </filter>
+        <radialGradient id="sb-shadow">
+          <stop offset="0" stopColor="#02261e" stopOpacity="0.22" />
+          <stop offset="1" stopColor="#02261e" stopOpacity="0" />
+        </radialGradient>
       </defs>
       {/* the pipes: thick, soft white, like tubes on the surface */}
       {pipes.map((p) => (
@@ -103,7 +105,7 @@ function Connections({ step, near }: { step: number; near: boolean }) {
       {pipes.map((p, n) =>
         n === active ? (
           <g key={`${p.name}-${step}`}>
-            <path d={p.d} fill="none" stroke="#9be15d" strokeWidth="8" strokeLinecap="round" pathLength={100} className="sb-current" filter="url(#sb-glow)" />
+            <path d={p.d} fill="none" stroke="#9be15d" strokeOpacity="0.6" strokeWidth="12" strokeLinecap="round" pathLength={100} className="sb-current" />
             <path d={p.d} fill="none" stroke="#02261e" strokeWidth="4" strokeLinecap="round" pathLength={100} className="sb-current" />
           </g>
         ) : null,
@@ -115,7 +117,7 @@ function Connections({ step, near }: { step: number; near: boolean }) {
         return (
           <g key={`${p.name}-pill`} transform={`translate(${p.at[0] - w / 2} ${p.at[1] - 17})`} className="transition-opacity">
             <rect width={w} height="34" rx="17" fill={on ? "#02261e" : "#ffffff"} className="transition-colors duration-500" style={{ filter: "drop-shadow(0 6px 10px rgba(2,38,30,0.12))" }} />
-            <text x={w / 2} y="22" textAnchor="middle" fontSize="14" fontWeight="600" fill={on ? "#dafc92" : "#02261e"} className="font-sans">
+            <text x={w / 2} y="22" textAnchor="middle" fontSize="14" fontWeight="600" fill={on ? "#dafc92" : "#02261e"} className="font-sans transition-colors duration-500">
               {p.name}
             </text>
           </g>
@@ -123,7 +125,7 @@ function Connections({ step, near }: { step: number; near: boolean }) {
       })}
       {/* the site: the glossy icon, floating gently */}
       <g className="sb-float">
-        <ellipse cx="350" cy="262" rx="62" ry="10" fill="rgba(2,38,30,0.18)" filter="url(#sb-glow)" />
+        <ellipse cx="350" cy="262" rx="72" ry="13" fill="url(#sb-shadow)" />
         {/* an SVG image can't load lazily, so it waits for the grid to come near */}
         {near && <image href="/images/icon-koppelingen.webp" x="265" y="90" width="170" height="170" />}
       </g>
@@ -262,18 +264,15 @@ type Card = {
   film: (step: number, near: boolean) => ReactNode;
 };
 
-/* the homepage example: a price worked out for a job, then the quote asked for */
-const QUOTE: CalcExample = { lines: [["Prijsindicatie", "€ 4.250"], ["Zonnepanelen", "10 stuks · 4,1 kWp"]], done: "Offerte aangevraagd" };
-
 /* top row narrow + wide, bottom row wide + narrow, like a bento box */
 const cards: Card[] = [
   {
     title: "Direct een prijs",
-    body: "Een taart op maat, zonnepanelen of een nieuwe badkamer: bezoekers rekenen zelf uit wat het kost en vragen meteen een offerte aan.",
+    body: "Een hypotheek, zonnepanelen of een nieuwe badkamer: bezoekers rekenen zelf uit wat het kost en vragen meteen een offerte aan.",
     bg: "sb-bg-paper", text: "text-forest", muted: "text-forest/65", btn: "bg-forest text-cream hover:bg-forest-hover",
     span: "lg:col-span-5",
     stage: "left-[16%] top-[215px] w-[80%]",
-    film: (s) => <WidgetCalculator step={s} example={QUOTE} />,
+    film: (s) => <WidgetCalculator step={s} />,
   },
   {
     title: "Offertes en facturen vanzelf",
@@ -322,9 +321,9 @@ export default function SmartBento() {
           <div className="relative z-10 p-7 md:p-9">
             <h3 className="font-display text-[2rem] font-semibold leading-[1.05] tracking-[-0.02em] md:text-[2.25rem]">{c.title}</h3>
             <p className={`mt-3 max-w-md text-[15px] leading-relaxed md:text-base ${c.muted}`}>{c.body}</p>
-            <a href="/contact" className={`mt-6 inline-flex w-fit items-center rounded-xl px-5 py-3 text-[15px] font-semibold transition-colors ${c.btn}`}>
+            <Link href="/contact" className={`mt-6 inline-flex w-fit items-center rounded-xl px-5 py-3 text-[15px] font-semibold transition-colors ${c.btn}`}>
               Vraag ernaar
-            </a>
+            </Link>
           </div>
           <div className={`absolute ${c.stage}`} aria-hidden="true">
             {c.film(step, near)}
