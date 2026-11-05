@@ -1710,11 +1710,14 @@ html[data-statement-sand] .slim-bg { background-color: var(--color-sand); }
       animation: case-drift linear both;
       animation-timeline: view();
       animation-range: entry 0% exit 100%;
+      /* its own layer, so the drift runs on the compositor instead of repainting the card every frame */
+      will-change: transform;
     }
     .case-item {
       animation: case-rise linear both;
       animation-timeline: view();
       animation-range: entry 0% entry 35%;
+      will-change: transform, opacity;
     }
   }
 }

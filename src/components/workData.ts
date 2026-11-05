@@ -9,6 +9,8 @@ export type WorkItem = {
   /** one sentence on what the site achieves, shown under the photo on the Werk page */
   headline: string;
   img: string;
+  /** a different photo for the Ons werk cards (WorkCases) only; the menus and the Werk page keep `img` */
+  card?: { src: string; pos?: string };
   /** a silent loop shown instead of the photo on the homepage cards (the photo stays for the Werk page) */
   video?: string;
   /** CSS object-position, to choose which part of the photo survives the crop */
@@ -28,6 +30,7 @@ export const work: WorkItem[] = [
     name: "Happy Flops", kind: "Klant", tags: "Webshop, branding, vindbaarheid", short: "Een webshop die verkoopt",
     headline: "Een webshop met een eigen gezicht, gebouwd om gevonden te worden.",
     img: "/images/happyflops-fold.webp", pos: "50% 45%", href: "/werk/happy-flops",
+    card: { src: "/images/happyflops-card.webp", pos: "50% 50%" },
     cover: { src: "/images/happyflops-hero-2.jpg", pos: "50% 55%" },
     result: "+40% bestellingen",
   },
@@ -41,7 +44,7 @@ export const work: WorkItem[] = [
   {
     name: "Horeca", kind: "Concept", tags: "Reserveren, menukaart, Google-profiel", short: "Van zoeken naar reserveren",
     headline: "Reserveren, de menukaart en het Google-profiel, klaar om te testen.",
-    img: "/images/prijzen-hero.webp", pos: "40% 55%", href: "/horeca-website",
+    img: "/images/horeca-booth.webp", pos: "40% 55%", href: "/horeca-website",
     result: "Reserveren in 3 tikken",
   },
   {

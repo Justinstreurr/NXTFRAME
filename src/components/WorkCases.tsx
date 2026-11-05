@@ -23,7 +23,7 @@ function Media({ w }: { w: WorkItem }) {
   return w.video ? (
     <CardVideo src={w.video} className={cls} />
   ) : (
-    <img src={w.img} alt="" className={cls} style={w.pos ? { objectPosition: w.pos } : undefined} loading="lazy" decoding="async" />
+    <img src={w.card?.src ?? w.img} alt="" className={cls} style={{ objectPosition: w.card?.pos ?? w.pos }} loading="lazy" decoding="async" />
   );
 }
 
@@ -68,7 +68,7 @@ function CaseCard({ w, n, frame = "aspect-[4/3]", className = "" }: { w: WorkIte
           <span className="flex flex-wrap gap-2">
             {w.result && <span className="rounded-full bg-lime px-3 py-1.5 text-xs font-semibold text-forest">{w.result}</span>}
             {pills.map((p) => (
-              <span key={p} className="hidden rounded-full border border-cream/35 bg-black/15 px-3 py-1.5 text-xs font-medium backdrop-blur-sm sm:inline-block">
+              <span key={p} className="hidden rounded-full border border-cream/35 bg-black/30 px-3 py-1.5 text-xs font-medium sm:inline-block">
                 {p}
               </span>
             ))}
