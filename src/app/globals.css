@@ -158,11 +158,12 @@ body {
 
 /* Mega menu (MegaMenu): one cream sheet that starts at the top of the window, runs behind the bar
    and unrolls downward, so bar and menu are a single surface with nothing to line up. Its contents
-   rise in a beat later, again each time the visitor moves to another menu; the page blur fades in. */
-.mega-sheet { animation: mega-in 420ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+   rise in a beat later, again each time the visitor moves to another menu; the page behind dims. */
+/* transform and opacity only: an animated clip-path repainted the whole sheet, photos included, every frame */
+.mega-sheet { animation: mega-in 380ms cubic-bezier(0.22, 1, 0.36, 1) both; transform-origin: top; }
 @keyframes mega-in {
-  from { opacity: 0; clip-path: inset(0 0 22% 0 round 0 0 48px 48px); }
-  to { opacity: 1; clip-path: inset(0 0 0 0 round 0 0 48px 48px); }
+  from { opacity: 0; transform: translateY(-24px); }
+  to { opacity: 1; transform: none; }
 }
 .mega-rise { animation: mega-rise 480ms cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: calc(var(--i, 0) * 50ms + 60ms); }
 @keyframes mega-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
@@ -1756,15 +1757,32 @@ html[data-statement-sand] .slim-bg { background-color: var(--color-sand); }
 /* Ons werk: cream like Wat je krijgt above it, fading to black once its halfway point reaches the middle of the
    window (DarkOnArrive toggles is-dark). Text follows the colour; label and link swap versions. */
 .work-section {
+  isolation: isolate;
   background-color: var(--color-cream);
   color: var(--color-forest);
-  transition: background-color 700ms ease, color 700ms ease;
+  transition: color 700ms ease;
 }
-.work-section.is-dark { background-color: #000; color: var(--color-cream); }
+.work-section.is-dark { color: var(--color-cream); }
+/* the black is a layer under the content that fades in by opacity: fading background-color repainted
+   the whole section (photos included) on every frame for 700ms, which was the stutter */
+.work-section::before,
+.follow-dark.has-leader::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 700ms ease;
+  will-change: opacity;
+}
+.work-section.is-dark::before,
+.follow-dark.has-leader.is-dark::before { opacity: 1; }
 /* the black reviews right after it (Testimonials dark) turn with it, on the same clock (DarkOnArrive);
    on their own, or before the script runs, they are simply black */
-.follow-dark { background-color: #000; transition: background-color 700ms ease; }
-.follow-dark.has-leader:not(.is-dark) { background-color: var(--color-cream); }
+.follow-dark { background-color: #000; }
+.follow-dark.has-leader { position: relative; isolation: isolate; background-color: var(--color-cream); }
 /* while cream (only ever out of view) the text is forest, so it never sits cream-on-cream; it turns
    with the background once the section comes in */
 .follow-dark.has-leader:not(.is-dark) * { color: var(--color-forest); }
@@ -1777,7 +1795,7 @@ html[data-statement-sand] .slim-bg { background-color: var(--color-sand); }
 .work-section:not(.is-dark) .work-when-dark,
 .work-section.is-dark .work-when-light { display: none !important; }
 @media (prefers-reduced-motion: reduce) {
-  .work-section, .work-section .work-line, .work-section .work-accent, .follow-dark { transition: none; }
+  .work-section, .work-section .work-line, .work-section .work-accent, .work-section::before, .follow-dark.has-leader::before { transition: none; }
 }
 
 /* Meer dan een website (SmartBento): a new value pops in, the typing dots bounce, and the lit

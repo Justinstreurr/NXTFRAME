@@ -10,7 +10,7 @@ import type { MenuItem } from "./menuData";
  * top of the window and runs behind the bar, so the bar and the menu are a single surface: a
  * hairline under the bar, then a plain list of links on the left and three photo cards with a title
  * and one line on the right, and a quiet foot with the way to everything and to a kennismaking.
- * The sheet is portalled into the <header> (behind its contents) and the page behind blurs (overlay
+ * The sheet is portalled into the <header> (behind its contents) and the page behind dims (overlay
  * portalled to <body>, under the header). Closes on mouse-out, Escape, or when focus leaves. The
  * photos play the same slat reveal as the Ons werk photos each time a menu opens.
  */
@@ -55,6 +55,24 @@ export default function MegaMenu({
     window.clearTimeout(timer.current);
     timer.current = window.setTimeout(() => setOpen(null), 220);
   };
+
+  // fetch and decode the menu photos while the browser is idle, so opening a menu doesn't stall on them
+  useEffect(() => {
+    const load = () => {
+      for (const i of items) for (const c of i.cards ?? []) {
+        const img = new Image();
+        img.src = c.img;
+        img.decode?.().catch(() => {});
+      }
+    };
+    const w = window as Window & { requestIdleCallback?: (cb: () => void) => number; cancelIdleCallback?: (id: number) => void };
+    if (w.requestIdleCallback) {
+      const id = w.requestIdleCallback(load);
+      return () => w.cancelIdleCallback?.(id);
+    }
+    const t = window.setTimeout(load, 2000);
+    return () => window.clearTimeout(t);
+  }, [items]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(null);
@@ -190,7 +208,7 @@ export default function MegaMenu({
 
       {active &&
         createPortal(
-          <div className="mega-backdrop fixed inset-0 z-40 hidden bg-forest/30 backdrop-blur-md lg:block" onMouseEnter={hide} aria-hidden="true" />,
+          <div className="mega-backdrop fixed inset-0 z-40 hidden bg-forest/45 lg:block" onMouseEnter={hide} aria-hidden="true" />,
           document.body,
         )}
     </>

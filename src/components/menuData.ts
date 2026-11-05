@@ -94,7 +94,7 @@ export const branches: Branch[] = [
     ],
   },
   {
-    slug: "horeca", name: "horeca", label: "Horeca", icon: "cup", img: "/images/prijzen-hero.webp",
+    slug: "horeca", name: "horeca", label: "Horeca", icon: "cup", img: "/images/horeca-booth.webp",
     title: { lead: "Een horeca website die", italic: "tafels vult" },
     intro: "Reserveren in drie tikken, een menukaart die goed leest op een telefoon en een Google-profiel dat klopt.",
     pains: [

@@ -45,7 +45,7 @@ export const stepsFor = (intake: string): PathStep[] => [
 
 export const branchPages: Record<string, BranchPageData> = {
   horeca: {
-    hero: { src: "/images/prijzen-hero.webp", alt: "De NXT Frame-mascotte aan een laptop in een café", pos: "50% 40%" },
+    hero: { src: "/images/horeca-booth.webp", alt: "Een gedekte tafel met wijn en gerechten bij een bank in een restaurant", pos: "40% 55%" },
     painArt: [
       { label: "Menukaart", title: <>Je menukaart is {i("een pdf")}</>, src: "/images/slim-search.webp" },
       { label: "Reserveren", title: <>Reserveringen komen {i("binnen via DM")}</>, src: "/images/pain-mobiel.webp", pos: "50% 40%" },

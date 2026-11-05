@@ -603,7 +603,8 @@ export function Platform({
       // nodes, the line, the numbers, the label and the links all follow without a second set of
       // classes. These keep the full top padding, since the ground differs from the section above.
       style={platformTones[tone] as React.CSSProperties | undefined}
-      className={`bg-forest text-paper ${tone === "forest" ? "pb-12 pt-4 md:pb-32 md:pt-8" : "py-12 md:py-32"}`}
+      // the homepage version follows the light Diensten section, so it gets the full top padding too
+      className={`bg-forest text-paper ${tone === "forest" && !person ? "pb-12 pt-4 md:pb-32 md:pt-8" : "py-12 md:py-32"}`}
     >
       <Container>
         <div className="grid gap-16 lg:grid-cols-[1fr_1.35fr] lg:gap-20">
