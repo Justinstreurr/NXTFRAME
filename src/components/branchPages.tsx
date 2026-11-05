@@ -103,7 +103,7 @@ export const branchPages: Record<string, BranchPageData> = {
   },
 
   "bouw-en-installatie": {
-    hero: { src: "/images/mascot-build.webp", alt: "De NXT Frame-mascotte bouwt een website van blokken", pos: "50% 35%" },
+    hero: { src: "/images/bouw-mascotte.webp", alt: "De NXT Frame-mascotte met een tablet op een bouwplaats, tussen getekende vakmensen aan het werk", pos: "45% 55%" },
     painArt: [
       { label: "Je werk", title: <>Je beste werk staat {i("op je telefoon")}</>, src: "/images/pain-mobiel.webp", pos: "50% 40%" },
       { label: "Offertes", title: <>Offertes lopen via de telefoon {i("tijdens het werk")}</>, src: "/images/traag-mobiel.webp", pos: "58% 50%" },

@@ -50,7 +50,7 @@ export const work: WorkItem[] = [
   {
     name: "Bouw en installatie", kind: "Concept", tags: "Projecten, offerte, regio's", short: "Offertes die binnenkomen",
     headline: "Een site die offerteaanvragen binnenhaalt, met foto-upload vanaf de bouwplaats.",
-    img: "/images/mascot-build.webp", href: "/bouw-en-installatie-website",
+    img: "/images/bouw-mascotte.webp", pos: "45% 55%", href: "/bouw-en-installatie-website",
     result: "Offerte in 1 minuut",
   },
   {

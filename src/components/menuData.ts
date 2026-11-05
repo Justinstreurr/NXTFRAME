@@ -263,7 +263,7 @@ export const branches: Branch[] = [
     ],
   },
   {
-    slug: "bouw-en-installatie", name: "bouw- en installatiebedrijven", label: "Bouw en installatie", icon: "wrench", img: "/images/mascot-build.webp",
+    slug: "bouw-en-installatie", name: "bouw- en installatiebedrijven", label: "Bouw en installatie", icon: "wrench", img: "/images/bouw-mascotte.webp",
     title: { lead: "Een bouw- en installatiewebsite die", italic: "offertes binnenhaalt" },
     intro: "Voor aannemers, installateurs en vakmensen. Laat je werk zien en maak het aanvragen van een offerte simpel.",
     pains: [

@@ -674,7 +674,7 @@ const segments: Segment[] = [
   { label: "Adviseurs", icon: "chart", title: "Vertrouwen vóór het eerste gesprek", tags: ["hypotheek", "financieel", "juridisch"], img: "/images/advies-hero.webp", href: "/financieel-adviseur-website" },
   { label: "Horeca", icon: "cup", title: "Van zoekopdracht naar reservering", tags: ["reserveren", "menukaart", "Google-profiel"], img: "/images/prijzen-hero.webp", href: "/horeca-website" },
   { label: "Coaches en trainers", icon: "chat", title: "Van volger naar klant", tags: ["programma's", "boekingen", "persoonlijk merk"], img: "/images/slim-palette.webp", href: "/coach-website" },
-  { label: "Bouw en installatie", icon: "wrench", title: "Offerteaanvragen die binnenkomen", tags: ["projecten", "offerte", "regio's"], img: "/images/mascot-build.webp", href: "/bouw-en-installatie-website" },
+  { label: "Bouw en installatie", icon: "wrench", title: "Offerteaanvragen die binnenkomen", tags: ["projecten", "offerte", "regio's"], img: "/images/bouw-mascotte.webp", href: "/bouw-en-installatie-website" },
 ];
 
 export function Difference({
