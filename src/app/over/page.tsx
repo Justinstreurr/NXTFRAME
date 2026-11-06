@@ -10,7 +10,7 @@ import { faq } from "@/components/faq";
 
 /**
  * Over: the page people open to answer "who is behind this, and can I trust them?". Order follows
- * that question: who you work with (hero), why NXT Frame exists (a signed letter), what I stand for,
+ * that question: who you work with (hero), why NxtFrame exists (a signed letter), what I stand for,
  * the proof (work and reviews), how one maker compares to the alternatives, the plain facts a
  * visitor checks before getting in touch and a few questions. The footer carries the closing call
  * to action, as on the werk page, so there is no lime band.
@@ -19,9 +19,9 @@ import { faq } from "@/components/faq";
  * words (search for "[INVULLEN").
  */
 export const metadata: Metadata = {
-  title: "Over NXT Frame | Eén maker, geen bureau",
+  title: "Over NxtFrame | Eén maker, geen bureau",
   description:
-    "Achter NXT Frame zit één persoon: Justin Streur. Ik ontwerp én bouw websites die gevonden worden en verkopen, en ben van de kennismaking tot na de lancering je aanspreekpunt.",
+    "Achter NxtFrame zit één persoon: Justin Streur. Ik ontwerp én bouw websites die gevonden worden en verkopen, en ben van de kennismaking tot na de lancering je aanspreekpunt.",
   alternates: { canonical: "/over" },
 };
 
@@ -92,7 +92,7 @@ const jsonLd = {
       "@id": "https://nxtframe.ai/#justin",
       name: "Justin Streur",
       jobTitle: "Webdesigner en developer",
-      worksFor: { "@type": "Organization", name: "NXT Frame", url: "https://nxtframe.ai" },
+      worksFor: { "@type": "Organization", name: "NxtFrame", url: "https://nxtframe.ai" },
       email: "hallo@nxtframe.ai",
     },
     {
@@ -119,7 +119,7 @@ export default function Page() {
           />
           <Container className="relative z-10 flex flex-col justify-center pb-12 pt-28 sm:pt-36 lg:min-h-[720px] lg:pb-28 lg:pt-32">
             <div className="max-w-2xl lg:max-w-[48%]">
-              <Eyebrow tone="light" className="max-w-xl">Over NXT Frame</Eyebrow>
+              <Eyebrow tone="light" className="max-w-xl">Over NxtFrame</Eyebrow>
               <h1 className="mt-6 t-hero text-paper md:mt-8">
                 Eén maker,
                 <br />
@@ -161,12 +161,12 @@ export default function Page() {
           </picture>
         </section>
 
-        {/* why NXT Frame exists: a short letter, signed, in the first person, stacked on the left; the
+        {/* why NxtFrame exists: a short letter, signed, in the first person, stacked on the left; the
             photo on the right sticks while the letter scrolls past. On phones the photo follows the letter. */}
         <section id="verhaal" className="scroll-mt-20 bg-paper py-12 text-forest md:py-32">
           <Container className="grid gap-12 lg:grid-cols-2 lg:gap-20">
             <div className="max-w-2xl">
-              <Eyebrow className="max-w-xl">Waarom NXT Frame</Eyebrow>
+              <Eyebrow className="max-w-xl">Waarom NxtFrame</Eyebrow>
               <h2 className="mt-6 t-section md:mt-8">
                 Veel sites <span className="serif-italic">leveren niets op</span>
               </h2>
@@ -188,7 +188,7 @@ export default function Page() {
                 </span>
                 <span>
                   <span className="serif-italic block text-2xl leading-none">Justin Streur</span>
-                  <span className="mt-1 block text-sm text-forest/70">Eigenaar en maker, NXT Frame</span>
+                  <span className="mt-1 block text-sm text-forest/70">Eigenaar en maker, NxtFrame</span>
                 </span>
               </div>
             </div>
@@ -196,7 +196,7 @@ export default function Page() {
               <source srcSet="/images/laptop-logo-bank.webp" type="image/webp" />
               <img
                 src="/images/laptop-logo-bank.jpg"
-                alt="Een laptop met het logo van NXT Frame op een groene fluwelen bank in de zon"
+                alt="Een laptop met het logo van NxtFrame op een groene fluwelen bank in de zon"
                 width={1024}
                 height={1536}
                 className="aspect-[4/5] w-full object-cover object-[50%_35%]"

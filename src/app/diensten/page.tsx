@@ -9,14 +9,14 @@ import { tiers, webshop } from "@/components/pricing";
 import { faq } from "@/components/faq";
 
 /**
- * Diensten: the overview of everything NXT Frame does. A row of pills jumps to each service; every
+ * Diensten: the overview of everything NxtFrame does. A row of pills jumps to each service; every
  * service is a block with a photo, what it is, what you get and (where there is one) the starting
  * price and lead time. The anchors (#webshop, #redesign, #vindbaarheid, ...) are the ones the
  * homepage wheel and the menu link to, until a service gets a page of its own; then its block
  * links there. The footer carries the closing call to action.
  */
 export const metadata: Metadata = {
-  title: "Diensten | Website, webshop, redesign en vindbaarheid | NXT Frame",
+  title: "Diensten | Website, webshop, redesign en vindbaarheid | NxtFrame",
   description:
     "Een nieuwe website of webshop, een redesign, vindbaar worden in Google en ChatGPT, onderhoud en teksten. Alles van één maker, met vaste prijzen vooraf.",
   alternates: { canonical: "/diensten" },
@@ -62,7 +62,7 @@ const list: Service[] = [
     id: "redesign", icon: "sparkle", title: "Redesign",
     lead: "Je huidige site opnieuw ontworpen en gebouwd op moderne techniek. Met oude adressen netjes doorgestuurd, zodat je zo min mogelijk van je opgebouwde vindbaarheid verliest.",
     items: ["Analyse van je huidige site", "Nieuw ontwerp en nieuwe techniek", "Oude adressen netjes doorgestuurd", "Teksten en structuur verbeterd"],
-    img: "/images/andere-tijd.webp", pos: "50% 40%", alt: "De NXT Frame-mascotte krabt zich achter het hoofd voor een ouderwetse website op een oude computer",
+    img: "/images/andere-tijd.webp", pos: "50% 40%", alt: "De NxtFrame-mascotte krabt zich achter het hoofd voor een ouderwetse website op een oude computer",
     link: { href: "/website-redesign", label: "Alles over een redesign" },
   },
   {
@@ -108,7 +108,7 @@ const jsonLd = {
       "@type": "Service",
       name: s.title,
       description: s.lead,
-      provider: { "@type": "Organization", name: "NXT Frame", url: "https://nxtframe.ai" },
+      provider: { "@type": "Organization", name: "NxtFrame", url: "https://nxtframe.ai" },
       areaServed: { "@type": "Country", name: "Nederland" },
       url: `https://nxtframe.ai/diensten#${s.id}`,
       ...(s.price && { offers: { "@type": "Offer", price: s.price.from.replace(".", ""), priceCurrency: "EUR" } }),

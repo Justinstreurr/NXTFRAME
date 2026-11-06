@@ -1,7 +1,7 @@
 import type { IconKey } from "./BranchIcons";
 
 /* ---------- Diensten: the six services, shared by the homepage wheel and the services grid ----------
-   The wheel photos are NXT Frame's own: the mascot and mockups of real client work, no stock. */
+   The wheel photos are NxtFrame's own: the mascot and mockups of real client work, no stock. */
 export type ServiceCard = { title: string; body: string; href?: string; icon?: IconKey; /** four photos for the homepage wheel */ imgs?: string[] };
 
 export const services: ServiceCard[] = [

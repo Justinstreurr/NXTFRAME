@@ -58,7 +58,7 @@ export default function FooterWordmark() {
       <Image
         ref={mark}
         src="/images/footer-wordmark.png"
-        alt="NXT Frame"
+        alt="NxtFrame"
         width={2804}
         height={561}
         sizes="100vw"

@@ -18,7 +18,7 @@ import { Button, Container, Eyebrow, TextLink } from "@/components/ui";
 const advies = branches.find((b) => b.slug === "financieel-advies")!;
 
 export const metadata: Metadata = {
-  title: "Website voor hypotheek- en financieel adviseurs laten maken | NXT Frame",
+  title: "Website voor hypotheek- en financieel adviseurs laten maken | NxtFrame",
   description:
     "Een adviseurswebsite met een kennismaking die je online plant, rekentools waarmee bezoekers zelf rekenen en een pagina per dienst en levensmoment. Voorbeeld: Hypotheekhaven.",
   alternates: { canonical: "/financieel-adviseur-website" },
@@ -118,7 +118,7 @@ const jsonLd = {
       "@type": "Service",
       name: "Website laten maken voor financieel adviseurs",
       serviceType: "Webdesign en webdevelopment voor hypotheek- en financieel adviseurs",
-      provider: { "@type": "Organization", name: "NXT Frame", url: "https://nxtframe.ai" },
+      provider: { "@type": "Organization", name: "NxtFrame", url: "https://nxtframe.ai" },
       areaServed: { "@type": "Country", name: "Nederland" },
       description: metadata.description,
       offers: { "@type": "Offer", priceCurrency: "EUR", price: advies.price.from.replace(".", ""), description: `Vanaf € ${advies.price.from}` },

@@ -1,7 +1,7 @@
 /* The three price cards, shared by the homepage, /prijzen, the website-laten-maken hub and the
    other service pages: a website for most businesses, a bigger site or a webshop, and custom
    work that only gets a price after a first look. `from: null` is "op offerte". */
-/* PLACEHOLDER: the times are indications, to be confirmed by NXT Frame */
+/* PLACEHOLDER: the times are indications, to be confirmed by NxtFrame */
 export type Tier = {
   name: string;
   /** the starting price in euros as shown ("2.500"), or null for a quote */

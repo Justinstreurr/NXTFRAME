@@ -17,8 +17,8 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Params }) {
   const branch = find((await params).branch);
-  if (!branch) return { title: "Branches | NXT Frame" };
-  return { title: `${branchSeo[branch.slug].title} | NXT Frame`, description: branch.intro, alternates: { canonical: branchHref(branch) } };
+  if (!branch) return { title: "Branches | NxtFrame" };
+  return { title: `${branchSeo[branch.slug].title} | NxtFrame`, description: branch.intro, alternates: { canonical: branchHref(branch) } };
 }
 
 export default async function Page({ params }: { params: Params }) {

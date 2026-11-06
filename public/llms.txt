@@ -1,6 +1,6 @@
-# NXT Frame
+# NxtFrame
 
-> NXT Frame ontwerpt en bouwt websites, webshops en AI-oplossingen voor ondernemers in Nederland. Eén maker, Justin Streur, doet strategie, teksten, ontwerp en bouw zelf, met één vaste prijs vooraf. De sites zijn snel op een telefoon, zelf te beheren en gebouwd om gevonden te worden in Google en in AI-zoekmachines zoals ChatGPT.
+> NxtFrame ontwerpt en bouwt websites, webshops en AI-oplossingen voor ondernemers in Nederland. Eén maker, Justin Streur, doet strategie, teksten, ontwerp en bouw zelf, met één vaste prijs vooraf. De sites zijn snel op een telefoon, zelf te beheren en gebouwd om gevonden te worden in Google en in AI-zoekmachines zoals ChatGPT.
 
 Prijzen zijn vanaf-prijzen exclusief btw; na een gratis kennismaking van een half uur volgt één vaste prijs. Doorlooptijden gelden vanaf het moment dat teksten, foto's en toegang binnen zijn. Er wordt geen plek in Google of ChatGPT gegarandeerd.
 
@@ -46,6 +46,6 @@ Prijzen zijn vanaf-prijzen exclusief btw; na een gratis kennismaking van een hal
 
 ## Over en contact
 
-- [Over NXT Frame](https://nxtframe.ai/over)
+- [Over NxtFrame](https://nxtframe.ai/over)
 - [Aanpak](https://nxtframe.ai/aanpak): van kennismaking tot lancering in vijf stappen
 - [Contact en kennismaking plannen](https://nxtframe.ai/contact), of mail naar hallo@nxtframe.ai

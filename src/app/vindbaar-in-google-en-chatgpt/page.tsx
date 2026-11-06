@@ -22,7 +22,7 @@ import { faq } from "@/components/faq";
  * links to /prijzen and /contact.
  */
 export const metadata: Metadata = {
-  title: "Vindbaar in Google en ChatGPT | SEO en AI-zoekmachines | NXT Frame",
+  title: "Vindbaar in Google en ChatGPT | SEO en AI-zoekmachines | NxtFrame",
   description:
     "Beter gevonden worden op de vragen van je klant, in Google en in AI-zoekmachines zoals ChatGPT en Perplexity. Met een kloppende opbouw, heldere teksten en goede techniek, zonder beloftes over plek 1.",
   alternates: { canonical: "/vindbaar-in-google-en-chatgpt" },
@@ -174,7 +174,7 @@ const jsonLd = {
       name: "Vindbaar in Google en ChatGPT",
       serviceType: "Zoekmachineoptimalisatie en vindbaarheid in AI-zoekmachines",
       description: metadata.description,
-      provider: { "@type": "Organization", name: "NXT Frame", url: "https://nxtframe.ai" },
+      provider: { "@type": "Organization", name: "NxtFrame", url: "https://nxtframe.ai" },
       areaServed: { "@type": "Country", name: "Nederland" },
       url: "https://nxtframe.ai/vindbaar-in-google-en-chatgpt",
       hasOfferCatalog: {
@@ -240,7 +240,7 @@ export default function Page() {
             <source srcSet="/images/hero-hill-v1.webp" type="image/webp" />
             <img
               src="/images/hero-hill-v1.jpg"
-              alt="De NXT Frame-mascotte zit met een laptop op een stoel boven op een zonnige heuvel vol bloemen"
+              alt="De NxtFrame-mascotte zit met een laptop op een stoel boven op een zonnige heuvel vol bloemen"
               className="size-full object-cover object-[68%_50%] lg:object-[70%_50%]"
               loading="eager"
               decoding="async"

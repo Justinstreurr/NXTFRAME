@@ -6,7 +6,7 @@ import BranchIcon, { type IconKey } from "./BranchIcons";
 import { tiers } from "./pricing";
 import { Container, Eyebrow } from "./ui";
 
-/* left: what NXT Frame builds */
+/* left: what NxtFrame builds */
 const build: { label: string; short: string; href: string; icon: IconKey; img: string }[] = [
   { label: "Nieuwe website", short: "Website", href: "/website-laten-maken", icon: "layout", img: "/images/services/nieuwe-website.webp" },
   { label: "Webshop", short: "Webshop", href: "/webshop-laten-maken", icon: "bag", img: "/images/tiles/happy-flops.webp" },

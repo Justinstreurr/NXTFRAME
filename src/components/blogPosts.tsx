@@ -49,7 +49,7 @@ const firstPosts: BlogPost[] = [
     updated: "2026-11-05",
     readMinutes: 8,
     img: "/images/prijzen-hero.webp",
-    imgAlt: "De NXT Frame-mascotte aan een laptop in een café",
+    imgAlt: "De NxtFrame-mascotte aan een laptop in een café",
     pos: "50% 40%",
     next: { label: "Bekijk wat een website bij mij kost", href: "/prijzen" },
     sections: [
@@ -372,7 +372,7 @@ const firstPosts: BlogPost[] = [
     updated: "2026-11-05",
     readMinutes: 9,
     img: "/images/bouw-mascotte.webp",
-    imgAlt: "De NXT Frame-mascotte met een tablet op een bouwplaats, tussen getekende vakmensen aan het werk",
+    imgAlt: "De NxtFrame-mascotte met een tablet op een bouwplaats, tussen getekende vakmensen aan het werk",
     pos: "45% 55%",
     next: { label: "Bekijk de website voor bouw en installatie", href: "/bouw-en-installatie-website" },
     sections: [

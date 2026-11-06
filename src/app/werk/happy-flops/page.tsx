@@ -10,9 +10,9 @@ import {
 } from "@/components/CaseDark";
 
 export const metadata = {
-  title: "Happy Flops case | NXT Frame",
+  title: "Happy Flops case | NxtFrame",
   alternates: { canonical: "/werk/happy-flops" },
-  description: "Hoe ik de Shopify-webshop van Happy Flops opnieuw opbouwde, met de telefoon als uitgangspunt. Een case van NXT Frame.",
+  description: "Hoe ik de Shopify-webshop van Happy Flops opnieuw opbouwde, met de telefoon als uitgangspunt. Een case van NxtFrame.",
 };
 
 /* The Happy Flops case, in the layout of CaseDark (after Instrument's Nike case): black, then wine,

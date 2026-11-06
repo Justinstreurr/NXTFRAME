@@ -37,9 +37,9 @@ import LegalPage, { type LegalSection } from "@/components/LegalPage";
  */
 
 export const metadata: Metadata = {
-  title: "Privacyverklaring | NXT Frame",
+  title: "Privacyverklaring | NxtFrame",
   description:
-    "Welke gegevens NXT Frame van je verwerkt, waarvoor en hoe lang. Cookies alleen met je toestemming, geen verkoop van gegevens, en je kunt altijd vragen om inzage of verwijdering.",
+    "Welke gegevens NxtFrame van je verwerkt, waarvoor en hoe lang. Cookies alleen met je toestemming, geen verkoop van gegevens, en je kunt altijd vragen om inzage of verwijdering.",
   alternates: { canonical: "/privacy" },
 };
 
@@ -50,12 +50,12 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>
-          NXT Frame is het bedrijf van Justin Streur. Ik werk alleen, dus ik ben ook zelf verantwoordelijk voor wat er met je gegevens gebeurt. Er is geen
+          NxtFrame is het bedrijf van Justin Streur. Ik werk alleen, dus ik ben ook zelf verantwoordelijk voor wat er met je gegevens gebeurt. Er is geen
           aparte functionaris gegevensbescherming: met een vraag over privacy kom je direct bij mij uit.
         </p>
         <ul>
           <li>
-            <strong>Bedrijf:</strong> NXT Frame, Justin Streur
+            <strong>Bedrijf:</strong> NxtFrame, Justin Streur
           </li>
           <li>
             <strong>E-mail:</strong> <a href="mailto:hallo@nxtframe.ai">hallo@nxtframe.ai</a>

@@ -7,7 +7,7 @@ import { LogoMark } from "@/components/Logo";
 import { Button, Container, Eyebrow, TextLink } from "@/components/ui";
 
 export const metadata: Metadata = {
-  title: "Pagina niet gevonden | NXT Frame",
+  title: "Pagina niet gevonden | NxtFrame",
   description: "Deze pagina bestaat niet of is verhuisd. Ga terug naar home of kijk bij werk, diensten of contact.",
 };
 

@@ -5,9 +5,9 @@ import { FrameGlyph } from "@/components/Logo";
 import { Button, Container, Eyebrow, TextLink } from "@/components/ui";
 
 export const metadata = {
-  title: "Werk | NXT Frame",
+  title: "Werk | NxtFrame",
   alternates: { canonical: "/werk" },
-  description: "Alle cases en concepten van NXT Frame op één plek: websites voor klanten en concepten per branche.",
+  description: "Alle cases en concepten van NxtFrame op één plek: websites voor klanten en concepten per branche.",
 };
 
 export default function Page() {

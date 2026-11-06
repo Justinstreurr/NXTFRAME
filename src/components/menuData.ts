@@ -490,7 +490,7 @@ export const branchSeo: Record<string, { path: string; title: string; template?:
 export const branchHref = (b: Branch) => branchSeo[b.slug]?.path ?? "/branches";
 
 /* the question every branch asks sooner or later, answered the same way everywhere (texts are
-   written by NXT Frame and checked by the client); placed third, after the branch's own first two */
+   written by NxtFrame and checked by the client); placed third, after the branch's own first two */
 export const textsFaq = {
   q: "Moet ik de teksten zelf schrijven?",
   a: "Nee. Ik schrijf ze, op basis van de kennismaking en wat je me vertelt over je bedrijf en je klanten. Je krijgt ze ter controle, geeft feedback, en pas na jouw akkoord gaan ze online. Jouw tijd zit in een gesprek en het nalezen, niet in het schrijven.",

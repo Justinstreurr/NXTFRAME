@@ -134,7 +134,7 @@ const cards: Card[] = [
     muted: "text-cream/75",
     span: "h-[620px] md:col-span-2 md:h-[460px] lg:h-auto",
     textW: "md:max-w-[44%]",
-    glow: "bg-[radial-gradient(60%_70%_at_78%_100%,rgb(218_252_146/0.22),transparent_70%)]",
+    glow: "bg-[radial-gradient(95%_95%_at_10%_115%,rgb(218_252_146/0.78)_0%,rgb(218_252_146/0.4)_28%,rgb(218_252_146/0.12)_55%,transparent_80%),radial-gradient(60%_70%_at_100%_0%,rgb(186_236_214/0.3),transparent_70%),linear-gradient(160deg,#011a14_0%,#02261e_45%,#0b3f2c_100%)]",
     stage: "inset-x-6 bottom-0 top-[36%] md:inset-x-auto md:right-7 md:top-7 md:w-[50%]",
     film: (s) => <Chat step={s} />,
   },

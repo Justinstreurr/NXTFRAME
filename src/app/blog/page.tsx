@@ -4,9 +4,9 @@ import { ArrowIcon } from "@/components/ui";
 import { longDate, postHref, posts } from "@/components/blogPosts";
 
 export const metadata: Metadata = {
-  title: "Blog | Eerlijke antwoorden over websites | NXT Frame",
+  title: "Blog | Eerlijke antwoorden over websites | NxtFrame",
   description:
-    "Antwoorden op de vragen die ondernemers stellen over hun website: wat het kost, hoe je gevonden wordt en wat je slim kunt automatiseren. Geschreven door Justin Streur van NXT Frame.",
+    "Antwoorden op de vragen die ondernemers stellen over hun website: wat het kost, hoe je gevonden wordt en wat je slim kunt automatiseren. Geschreven door Justin Streur van NxtFrame.",
   alternates: { canonical: "/blog" },
 };
 
@@ -16,10 +16,10 @@ const list = [...posts].sort((a, b) => b.published.localeCompare(a.published));
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Blog",
-  name: "Blog van NXT Frame",
+  name: "Blog van NxtFrame",
   url: "https://nxtframe.ai/blog",
   description: metadata.description,
-  publisher: { "@type": "Organization", name: "NXT Frame", url: "https://nxtframe.ai" },
+  publisher: { "@type": "Organization", name: "NxtFrame", url: "https://nxtframe.ai" },
   blogPost: list.map((p) => ({
     "@type": "BlogPosting",
     headline: p.title,

@@ -91,7 +91,7 @@ export default function Footer({ cta = true, flat = false }: { cta?: boolean; fl
 
         <div className="mt-14 flex md:mt-24 flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <p className="text-[15px] text-paper/60">© 2026 NXT Frame · nxtframe.ai · Alle rechten voorbehouden.</p>
+            <p className="text-[15px] text-paper/60">© 2026 NxtFrame · nxtframe.ai · Alle rechten voorbehouden.</p>
           </div>
           <ul className="flex flex-wrap gap-6 text-sm text-paper/60">
             {["Privacy", "Voorwaarden"].map((l) => (
@@ -111,7 +111,7 @@ export default function Footer({ cta = true, flat = false }: { cta?: boolean; fl
                 <svg viewBox="0 0 24 24" className="size-5" fill="currentColor" aria-hidden="true"><path d={s.path} /></svg>
               </a>
             ))}
-            <Link href="/" aria-label="NXT Frame, naar de homepage" className="ml-2 grid size-11 place-items-center rounded-lg bg-lime text-forest">
+            <Link href="/" aria-label="NxtFrame, naar de homepage" className="ml-2 grid size-11 place-items-center rounded-lg bg-lime text-forest">
               <FrameGlyph className="size-5" />
             </Link>
           </div>

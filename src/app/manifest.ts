@@ -3,8 +3,8 @@ import type { MetadataRoute } from "next";
 /* the web app manifest: name, colours and icons for "add to home screen" (the icons are made from the logo mark) */
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "NXT Frame",
-    short_name: "NXT Frame",
+    name: "NxtFrame",
+    short_name: "NxtFrame",
     description: "Websites die gevonden worden en verkopen.",
     lang: "nl",
     start_url: "/",

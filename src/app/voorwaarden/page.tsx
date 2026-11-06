@@ -33,7 +33,7 @@ import LegalPage, { type LegalSection } from "@/components/LegalPage";
  *  - art. 3: extra work is quoted as a fixed amount up front, never billed by the hour afterwards,
  *    because the site says "geen uurtje-factuurtje"
  *  - art. 7: the client gets a perpetual right to use design and code after full payment, and may
- *    have another party work on the site; reusable building blocks stay with NXT Frame. The
+ *    have another party work on the site; reusable building blocks stay with NxtFrame. The
  *    alternative is a full transfer of rights, usually at a higher price.
  *  - art. 7: portfolio use is allowed unless the client objects in writing
  *  - art. 8: hosting, domain and third-party accounts are in the client's name where possible
@@ -44,9 +44,9 @@ import LegalPage, { type LegalSection } from "@/components/LegalPage";
  */
 
 export const metadata: Metadata = {
-  title: "Algemene voorwaarden | NXT Frame",
+  title: "Algemene voorwaarden | NxtFrame",
   description:
-    "De afspraken die gelden als je een website of webshop laat maken door NXT Frame: prijs en betaling, feedback, oplevering, eigendom, onderhoud en aansprakelijkheid.",
+    "De afspraken die gelden als je een website of webshop laat maken door NxtFrame: prijs en betaling, feedback, oplevering, eigendom, onderhoud en aansprakelijkheid.",
   alternates: { canonical: "/voorwaarden" },
 };
 
@@ -62,7 +62,7 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>
-          NXT Frame (handelsnaam NxtFrame) is de eenmanszaak van Justin Streur, gevestigd in Purmerend. Waar hier &quot;ik&quot; staat, bedoel ik NXT Frame. Met &quot;jij&quot; bedoel ik het
+          NxtFrame is de eenmanszaak van Justin Streur, gevestigd in Purmerend. Waar hier &quot;ik&quot; staat, bedoel ik NxtFrame. Met &quot;jij&quot; bedoel ik het
           bedrijf of de ondernemer die mij een opdracht geeft.
         </p>
         <ul>
@@ -345,7 +345,7 @@ const sections: LegalSection[] = [
         <p>
           Ben je ergens niet tevreden over, mail dan naar <a href="mailto:hallo@nxtframe.ai">hallo@nxtframe.ai</a>. Dan zoeken we eerst samen een oplossing. Komen we er
           niet uit, dan leggen we het geschil voor aan{" "}
-          <Todo>bevoegde rechter, bijvoorbeeld de rechtbank in het arrondissement waar NXT Frame is gevestigd</Todo>.
+          <Todo>bevoegde rechter, bijvoorbeeld de rechtbank in het arrondissement waar NxtFrame is gevestigd</Todo>.
         </p>
         <p>
           Ik mag deze voorwaarden aanpassen. Voor een lopende opdracht blijft de versie gelden die bij je akkoord hoorde, tenzij we samen iets anders afspreken. Blijkt

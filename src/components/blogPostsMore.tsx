@@ -28,7 +28,7 @@ export const morePosts: BlogPost[] = [
     updated: "2026-11-06",
     readMinutes: 9,
     img: "/images/slim-search.webp",
-    imgAlt: "De NXT Frame-mascotte met een vergrootglas naast een zoekbalk, in een weiland",
+    imgAlt: "De NxtFrame-mascotte met een vergrootglas naast een zoekbalk, in een weiland",
     pos: "50% 45%",
     next: { label: "Bekijk hoe ik sites vindbaar maak in Google en AI", href: "/vindbaar-in-google-en-chatgpt" },
     sections: [
@@ -428,7 +428,7 @@ export const morePosts: BlogPost[] = [
     updated: "2026-11-06",
     readMinutes: 6,
     img: "/images/andere-tijd.webp",
-    imgAlt: "De NXT Frame-mascotte krabt zich achter het hoofd voor een ouderwetse website op een oude computer",
+    imgAlt: "De NxtFrame-mascotte krabt zich achter het hoofd voor een ouderwetse website op een oude computer",
     pos: "50% 40%",
     next: { label: "Bekijk wat onderhoud bij mij inhoudt", href: "/website-onderhoud" },
     sections: [
@@ -580,7 +580,7 @@ export const morePosts: BlogPost[] = [
     updated: "2026-11-06",
     readMinutes: 7,
     img: "/images/traag-mobiel.webp",
-    imgAlt: "De NXT Frame-mascotte kijkt op een telefoon in een drukke winkelstraat",
+    imgAlt: "De NxtFrame-mascotte kijkt op een telefoon in een drukke winkelstraat",
     pos: "60% 40%",
     next: { label: "Bekijk hoe ik een website laat maken", href: "/website-laten-maken" },
     sections: [
@@ -741,7 +741,7 @@ export const morePosts: BlogPost[] = [
     updated: "2026-11-06",
     readMinutes: 8,
     img: "/images/mascot-build.webp",
-    imgAlt: "De NXT Frame-mascotte bouwt met blokken aan een website",
+    imgAlt: "De NxtFrame-mascotte bouwt met blokken aan een website",
     pos: "50% 35%",
     next: { label: "Bekijk wat een website laten maken bij mij inhoudt", href: "/website-laten-maken" },
     sections: [

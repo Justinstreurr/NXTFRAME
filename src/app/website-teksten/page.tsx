@@ -24,7 +24,7 @@ import { textsFaq } from "@/components/menuData";
  * texts after delivery.
  */
 export const metadata: Metadata = {
-  title: "Website teksten laten schrijven | Webteksten die werken | NXT Frame",
+  title: "Website teksten laten schrijven | Webteksten die werken | NxtFrame",
   description:
     "Webteksten in de woorden van je klant, zodat bezoekers snappen wat je doet en contact opnemen. In jouw toon, met jouw akkoord. Heb je al teksten, dan maak ik ze scherper.",
   alternates: { canonical: "/website-teksten" },
@@ -188,7 +188,7 @@ const jsonLd = {
       name: "Website teksten laten schrijven",
       serviceType: "Webteksten en content",
       description: metadata.description,
-      provider: { "@type": "Organization", name: "NXT Frame", url: "https://nxtframe.ai" },
+      provider: { "@type": "Organization", name: "NxtFrame", url: "https://nxtframe.ai" },
       areaServed: { "@type": "Country", name: "Nederland" },
       url: "https://nxtframe.ai/website-teksten",
     },
@@ -249,7 +249,7 @@ export default function Page() {
             <source srcSet="/images/hero-hill-meadow.webp" type="image/webp" />
             <img
               src="/images/hero-hill-meadow.jpg"
-              alt="De NXT Frame-mascotte zit met een laptop op een stoel boven op een zonnige heuvel vol bloemen"
+              alt="De NxtFrame-mascotte zit met een laptop op een stoel boven op een zonnige heuvel vol bloemen"
               className="size-full object-cover object-[70%_30%] lg:object-[70%_32%]"
               loading="eager"
               decoding="async"

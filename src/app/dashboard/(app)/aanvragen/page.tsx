@@ -40,7 +40,7 @@ export default async function Requests({ searchParams }: { searchParams: Promise
                   <div>
                     <h2 className="font-display text-lg font-semibold tracking-tight">{s.naam}{s.onderwerp && <span className="font-normal text-forest/70"> · {s.onderwerp}</span>}</h2>
                     <p className="mt-1 text-sm text-forest/65">
-                      <a href={`mailto:${s.email}?subject=${encodeURIComponent(`Re: je aanvraag bij NXT Frame`)}`} className="underline underline-offset-4">{s.email}</a>
+                      <a href={`mailto:${s.email}?subject=${encodeURIComponent(`Re: je aanvraag bij NxtFrame`)}`} className="underline underline-offset-4">{s.email}</a>
                       {s.telefoon && <> · <a href={`tel:${s.telefoon}`} className="underline underline-offset-4">{s.telefoon}</a></>}
                       {s.website && <> · <a href={s.website.startsWith("http") ? s.website : `https://${s.website}`} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">{s.website}</a></>}
                     </p>

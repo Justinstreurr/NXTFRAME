@@ -19,9 +19,9 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const p = find((await params).slug);
-  if (!p) return { title: "Blog | NXT Frame" };
+  if (!p) return { title: "Blog | NxtFrame" };
   return {
-    title: `${p.title} | NXT Frame`,
+    title: `${p.title} | NxtFrame`,
     description: p.description,
     alternates: { canonical: postHref(p) },
     openGraph: { type: "article", title: p.title, description: p.description, publishedTime: p.published, modifiedTime: p.updated, authors: ["Justin Streur"] },
@@ -66,7 +66,7 @@ export default async function Page({ params }: { params: Params }) {
         dateModified: p.updated,
         inLanguage: "nl-NL",
         author: { "@type": "Person", "@id": `${SITE}/#justin`, name: "Justin Streur", url: `${SITE}/over` },
-        publisher: { "@type": "Organization", name: "NXT Frame", url: SITE },
+        publisher: { "@type": "Organization", name: "NxtFrame", url: SITE },
       },
       {
         "@type": "BreadcrumbList",
@@ -180,7 +180,7 @@ export default async function Page({ params }: { params: Params }) {
                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-paper/70">Geschreven door</p>
                     <p className="mt-3 font-display text-2xl font-medium tracking-tight">Justin Streur</p>
                     <p className="mt-2 text-[15px] leading-relaxed text-paper/80">
-                      Eigenaar van NXT Frame. Ik ontwerp en bouw websites voor ondernemers, van de eerste schets tot ver na de lancering. Vraag over dit
+                      Eigenaar van NxtFrame. Ik ontwerp en bouw websites voor ondernemers, van de eerste schets tot ver na de lancering. Vraag over dit
                       artikel? Mail me op hallo@nxtframe.ai.
                     </p>
                   </div>

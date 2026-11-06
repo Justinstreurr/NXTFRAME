@@ -33,7 +33,7 @@ export default function BranchPage({ branch }: { branch: Branch }) {
       {
         "@type": "Service",
         name: `Website laten maken voor ${branch.name}`,
-        provider: { "@type": "Organization", name: "NXT Frame", url: "https://nxtframe.ai" },
+        provider: { "@type": "Organization", name: "NxtFrame", url: "https://nxtframe.ai" },
         areaServed: { "@type": "Country", name: "Nederland" },
         description: branch.intro,
         offers: { "@type": "Offer", priceCurrency: "EUR", price: branch.price.from.replace(".", ""), description: `Vanaf € ${branch.price.from}` },

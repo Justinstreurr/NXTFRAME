@@ -8,7 +8,7 @@ import * as THREE from "three";
 import { bracketOutline, chevronOutline, handOutline, limbGeometry, pillowGeometry } from "./geometry";
 
 /**
- * The NXT Frame mascot as a real 3D character: four pillow-soft corner brackets,
+ * The NxtFrame mascot as a real 3D character: four pillow-soft corner brackets,
  * the "next" chevron as its face, tube limbs and little frame corners for hands.
  *
  * Poses: "point" (hero: points at the CTA, follows the cursor), "wave" (footer),

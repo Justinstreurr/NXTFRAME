@@ -25,7 +25,7 @@ import { faq } from "@/components/faq";
  * erna") and the FAQ answers about platforms and lead time.
  */
 export const metadata: Metadata = {
-  title: "Website redesign | Je website laten vernieuwen zonder vindbaarheid te verliezen | NXT Frame",
+  title: "Website redesign | Je website laten vernieuwen zonder vindbaarheid te verliezen | NxtFrame",
   description:
     "Je huidige site opnieuw ontworpen en gebouwd op moderne techniek. Oude adressen netjes doorgestuurd, wat werkt blijft, zodat je de vindbaarheid die je al hebt opgebouwd zo veel mogelijk houdt.",
   alternates: { canonical: "/website-redesign" },
@@ -162,7 +162,7 @@ const jsonLd = {
       "@type": "Service",
       name: "Website redesign",
       serviceType: "Website redesign",
-      provider: { "@type": "Organization", name: "NXT Frame", url: "https://nxtframe.ai" },
+      provider: { "@type": "Organization", name: "NxtFrame", url: "https://nxtframe.ai" },
       areaServed: { "@type": "Country", name: "Nederland" },
       description: metadata.description,
       url: "https://nxtframe.ai/website-redesign",

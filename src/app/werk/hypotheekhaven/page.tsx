@@ -10,9 +10,9 @@ import {
 } from "@/components/CaseDark";
 
 export const metadata = {
-  title: "Hypotheekhaven case | NXT Frame",
+  title: "Hypotheekhaven case | NxtFrame",
   alternates: { canonical: "/werk/hypotheekhaven" },
-  description: "Hoe ik voor hypotheekadviseur Sabrina van Hypotheekhaven een website met rekentools bouwde. Een case van NXT Frame.",
+  description: "Hoe ik voor hypotheekadviseur Sabrina van Hypotheekhaven een website met rekentools bouwde. Een case van NxtFrame.",
 };
 
 /* The Hypotheekhaven case, in the layout of CaseDark (after Instrument's Nike case), the same run of

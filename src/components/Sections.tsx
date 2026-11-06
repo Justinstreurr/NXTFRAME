@@ -60,7 +60,7 @@ export function Statement() {
         {/* the mascot building a site from blocks: header, photo and the lime button on top */}
         <picture className="mx-auto block w-32 sm:w-44 md:mx-0 md:w-56 lg:w-64">
           <source srcSet="/images/mascot-build.webp" type="image/webp" />
-          <img src="/images/mascot-build.png" alt="De NXT Frame-mascotte bouwt een website van blokken" width={846} height={1230} className="h-auto w-full drop-shadow-[0_24px_30px_rgba(2,38,30,0.18)]" loading="lazy" />
+          <img src="/images/mascot-build.png" alt="De NxtFrame-mascotte bouwt een website van blokken" width={846} height={1230} className="h-auto w-full drop-shadow-[0_24px_30px_rgba(2,38,30,0.18)]" loading="lazy" />
         </picture>
       </Container>
     </section>
@@ -367,11 +367,11 @@ export function Work({ turnDark = true }: { turnDark?: boolean } = {}) {
   );
 }
 
-/* ---------- NXT Frame vs. alternatieven ---------- */
+/* ---------- NxtFrame vs. alternatieven ---------- */
 const criteria = ["Snelheid en laadtijd", "Vindbaar in Google en AI", "Design op maat", "Gericht op aanvragen", "Eén aanspreekpunt", "Prijs en doorlooptijd"];
 type Score = 2 | 1 | 0;
 const columns: { name: string; body: string; scores: Score[]; highlight?: boolean }[] = [
-  { name: "NXT Frame", body: "Ontwerp, techniek en vindbaarheid in één hand. Eén persoon die het hele traject doet, van eerste schets tot livegang.", scores: [2, 2, 2, 2, 2, 2], highlight: true },
+  { name: "NxtFrame", body: "Ontwerp, techniek en vindbaarheid in één hand. Eén persoon die het hele traject doet, van eerste schets tot livegang.", scores: [2, 2, 2, 2, 2, 2], highlight: true },
   { name: "Bureau", body: "Sterk in strategie en design, maar vaak duurder en trager, met veel schijven tussen jou en de mensen die het maken.", scores: [1, 1, 2, 1, 0, 0] },
   { name: "Freelancer", body: "Flexibel en betaalbaar, maar meestal één specialisme. Design óf techniek óf vindbaarheid, zelden alle drie.", scores: [1, 0, 1, 1, 2, 2] },
   { name: "AI-sitebuilder", body: "Snel iets online, maar generiek. Geen eigen ontwerp, matige snelheid en geen strategie om gevonden te worden.", scores: [1, 0, 0, 0, 1, 2] },
@@ -402,12 +402,12 @@ export function Comparison() {
   return (
     <section data-zone="cherry" className="bg-cream py-12 md:py-32">
       <Container>
-        <Eyebrow className="max-w-xl">NXT Frame vs. de alternatieven</Eyebrow>
+        <Eyebrow className="max-w-xl">NxtFrame vs. de alternatieven</Eyebrow>
         <h2 className="mt-6 max-w-4xl t-section text-brown md:mt-8">
           Bureau, freelancer of AI-tool, <span className="serif-italic text-brown">naast elkaar gezet</span>
         </h2>
         {/* phones: the same comparison as a compact grid, the criteria down the side and the four
-            options as narrow icon columns (NXT Frame on pink), with what sets NXT Frame apart under it */}
+            options as narrow icon columns (NxtFrame on pink), with what sets NxtFrame apart under it */}
         <div className="mt-10 rounded-3xl bg-paper p-4 text-brown md:hidden">
           <div className="grid grid-cols-[minmax(0,1fr)_repeat(4,2.9rem)] items-center gap-y-2.5">
             <span />
@@ -695,14 +695,14 @@ const homeFaq = [
 ];
 
 export function HomeFaq() {
-  // the homepage's one JSON-LD block: who NXT Frame is, the site itself, and these questions
+  // the homepage's one JSON-LD block: who NxtFrame is, the site itself, and these questions
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Organization",
         "@id": "https://nxtframe.ai/#organization",
-        name: "NXT Frame",
+        name: "NxtFrame",
         url: "https://nxtframe.ai",
         logo: "https://nxtframe.ai/icon-512.png",
         email: "hallo@nxtframe.ai",
@@ -713,7 +713,7 @@ export function HomeFaq() {
         "@type": "WebSite",
         "@id": "https://nxtframe.ai/#website",
         url: "https://nxtframe.ai",
-        name: "NXT Frame",
+        name: "NxtFrame",
         inLanguage: "nl",
         publisher: { "@id": "https://nxtframe.ai/#organization" },
       },

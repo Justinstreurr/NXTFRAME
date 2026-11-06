@@ -39,7 +39,7 @@ export default function Hero() {
         <source srcSet={HERO} type="image/webp" />
         <img
           src="/images/hero-hill.jpg?v=3"
-          alt="De NXT Frame-mascotte, werkend op een MacBook op een wolk"
+          alt="De NxtFrame-mascotte, werkend op een MacBook op een wolk"
           className="size-full object-cover object-[76%_62%] lg:object-[80%_30%]"
           loading="eager"
           fetchPriority="high"

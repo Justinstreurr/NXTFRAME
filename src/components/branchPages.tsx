@@ -103,7 +103,7 @@ export const branchPages: Record<string, BranchPageData> = {
   },
 
   "bouw-en-installatie": {
-    hero: { src: "/images/bouw-mascotte.webp", alt: "De NXT Frame-mascotte met een tablet op een bouwplaats, tussen getekende vakmensen aan het werk", pos: "45% 55%" },
+    hero: { src: "/images/bouw-mascotte.webp", alt: "De NxtFrame-mascotte met een tablet op een bouwplaats, tussen getekende vakmensen aan het werk", pos: "45% 55%" },
     painArt: [
       { label: "Je werk", title: <>Je beste werk staat {i("op je telefoon")}</>, src: "/images/pain-mobiel.webp", pos: "50% 40%" },
       { label: "Offertes", title: <>Offertes lopen via de telefoon {i("tijdens het werk")}</>, src: "/images/traag-mobiel.webp", pos: "58% 50%" },
@@ -132,7 +132,7 @@ export const branchPages: Record<string, BranchPageData> = {
   },
 
   "zorg-en-praktijken": {
-    hero: { src: "/images/slim-choice.webp", alt: "De NXT Frame-mascotte aan het werk in een bloeiende weide", pos: "50% 40%" },
+    hero: { src: "/images/slim-choice.webp", alt: "De NxtFrame-mascotte aan het werk in een bloeiende weide", pos: "50% 40%" },
     painArt: [
       { label: "De telefoon", title: <>De telefoon gaat {i("de hele ochtend")}</>, src: "/images/pain-mobiel.webp", pos: "50% 40%" },
       { label: "Aanmelden", title: <>Nieuwe patiënten weten niet {i("of je plek hebt")}</>, src: "/images/herkenbaar-2.webp", pos: "50% 28%" },
@@ -160,7 +160,7 @@ export const branchPages: Record<string, BranchPageData> = {
   },
 
   "beauty-en-wellness": {
-    hero: { src: "/images/slim-palette.webp", alt: "De NXT Frame-mascotte met kleurstalen in de hand", pos: "50% 40%" },
+    hero: { src: "/images/slim-palette.webp", alt: "De NxtFrame-mascotte met kleurstalen in de hand", pos: "50% 40%" },
     painArt: [
       { label: "Instagram", title: <>Je bio-link is {i("je website")}</>, src: "/images/pain-mobiel.webp", pos: "50% 40%" },
       { label: "Je agenda", title: <>Gaten in je agenda zie je {i("pas 's avonds")}</>, src: "/images/slim-desk.webp" },
@@ -188,7 +188,7 @@ export const branchPages: Record<string, BranchPageData> = {
   },
 
   "coaches-en-adviseurs": {
-    hero: { src: "/images/over-mascot.webp", alt: "De NXT Frame-mascotte op de bank met een laptop", pos: "50% 40%" },
+    hero: { src: "/images/over-mascot.webp", alt: "De NxtFrame-mascotte op de bank met een laptop", pos: "50% 40%" },
     painArt: [
       { label: "Je aanbod", title: <>Je aanbod is niet te begrijpen {i("zonder gesprek")}</>, src: "/images/hero-hill-v1.webp" },
       { label: "Kennismakingen", title: <>Kennismakingen die {i("nooit iets worden")}</>, src: "/images/pain-mobiel.webp", pos: "50% 40%" },

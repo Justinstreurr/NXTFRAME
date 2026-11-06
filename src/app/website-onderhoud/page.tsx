@@ -14,7 +14,7 @@ import { faq } from "@/components/faq";
 /**
  * Website onderhoud: the page for "website onderhoud / website onderhoud abonnement / website laten
  * onderhouden / doorontwikkeling website". The visitor has (or is about to have) a site built by
- * NXT Frame and wants to know what happens after the launch. Order: the promise (hero), what the
+ * NxtFrame and wants to know what happens after the launch. Order: the promise (hero), what the
  * subscription holds (stacking cards), how it runs (the zigzag path), without versus with
  * maintenance (the ticked table of the aanpak page), what it costs (the two big cards of the
  * redesign page, the amount a placeholder as on /prijzen), the proof and the questions. The footer
@@ -29,10 +29,10 @@ import { faq } from "@/components/faq";
  *    a fixed price beforehand.
  *  - Cancelling: per month, the notice period and minimum term are still open in /voorwaarden.
  *  - No response times, uptime figures or frequencies are promised on purpose.
- *  - The page is about sites built by NXT Frame; maintenance of other sites is not mentioned.
+ *  - The page is about sites built by NxtFrame; maintenance of other sites is not mentioned.
  */
 export const metadata: Metadata = {
-  title: "Website onderhoud | Onderhoud en doorontwikkeling per maand | NXT Frame",
+  title: "Website onderhoud | Onderhoud en doorontwikkeling per maand | NxtFrame",
   description:
     "Website onderhoud per maand: hosting, updates, beveiliging en back-ups, snelheid en vindbaarheid gemeten, en verbeteringen op basis van wat bezoekers doen. Eén vast bedrag, één aanspreekpunt.",
   alternates: { canonical: "/website-onderhoud" },
@@ -159,7 +159,7 @@ const jsonLd = {
       "@type": "Service",
       name: "Website onderhoud en doorontwikkeling",
       serviceType: "Website onderhoud",
-      provider: { "@type": "Organization", name: "NXT Frame", url: "https://nxtframe.ai" },
+      provider: { "@type": "Organization", name: "NxtFrame", url: "https://nxtframe.ai" },
       areaServed: { "@type": "Country", name: "Nederland" },
       description: metadata.description,
       url: "https://nxtframe.ai/website-onderhoud",

@@ -67,7 +67,7 @@ for (let y = 0; y < 21; y++) {
  * drawer with the free-pair progress, where it ups the quantity to 2 and checks out; the Shopify
  * checkout, where the e-mail types itself, the address fills in, shipping turns free and iDEAL |
  * Wero is chosen; the iDEAL page with its QR code, paid; the thank-you page with confetti; then
- * three result tiles in NXT Frame's colours. The customer details are made up. Every moving part
+ * three result tiles in NxtFrame's colours. The customer details are made up. Every moving part
  * runs on CSS keyframes in globals.css (.cs3-*), transform, opacity and clip only.
  */
 /** The checkout film as markup: the source of the laptop video. Re-record it (headless Firefox, frame
@@ -485,7 +485,7 @@ export function Film() {
           ))}
         </div>
 
-        {/* ---- the result, in NXT Frame's colours ---- */}
+        {/* ---- the result, in NxtFrame's colours ---- */}
         <div className="cs2-a cs3-result absolute inset-x-[14px] bottom-[30px] grid grid-cols-3 gap-2">
           {[
             { k: "3 stappen", v: "van product tot betaald", tone: "bg-forest text-lime" },

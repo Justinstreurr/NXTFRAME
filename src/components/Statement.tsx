@@ -27,7 +27,7 @@ export default function Statement() {
           Van eerste schets tot lancering: één aanspreekpunt, een site die elke dag voor je werkt.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-3">
-          <a href="/aanpak" className="rounded-full bg-forest px-6 py-3.5 text-[15px] font-medium text-cream transition-colors hover:bg-forest-hover">Waarom NXT Frame</a>
+          <a href="/aanpak" className="rounded-full bg-forest px-6 py-3.5 text-[15px] font-medium text-cream transition-colors hover:bg-forest-hover">Waarom NxtFrame</a>
           <a href="/website-laten-maken" className="rounded-full bg-forest px-6 py-3.5 text-[15px] font-medium text-cream transition-colors hover:bg-forest-hover">Zo werkt het</a>
         </div>
       </Container>

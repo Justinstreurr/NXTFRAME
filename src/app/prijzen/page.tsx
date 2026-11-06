@@ -22,7 +22,7 @@ import { faq } from "@/components/faq";
  *  - After launch: one visible [INVULLEN] placeholder, the monthly amount of the maintenance
  *    subscription. What the subscription holds (hosting, updates, back-ups, small changes on
  *    request) and "ik help bij het overzetten" without one are a proposal: confirm or change.
- *    Decided 12 Oct 2026: NXT Frame offers hosting; the domain name is in the client's name and
+ *    Decided 12 Oct 2026: NxtFrame offers hosting; the domain name is in the client's name and
  *    paid by the client.
  *  - "Hosting en domein staan waar het kan op jouw naam" and "meerwerk krijgt vooraf een vaste
  *    prijs" follow the defaults in /voorwaarden (art. 8 and art. 3), which are still open there.
@@ -35,7 +35,7 @@ import { faq } from "@/components/faq";
 const [site, big] = tiers;
 
 export const metadata: Metadata = {
-  title: "Wat kost een website laten maken? Prijzen | NXT Frame",
+  title: "Wat kost een website laten maken? Prijzen | NxtFrame",
   description: `Wat kost een website laten maken? Een website vanaf € ${site.from}, een grote site of webshop vanaf € ${big.from} en maatwerk op offerte. Na de kennismaking krijg je één vaste prijs.`,
   alternates: { canonical: "/prijzen" },
 };
@@ -117,7 +117,7 @@ const jsonLd = {
       "@type": "Service",
       name: "Website of webshop laten maken",
       serviceType: "Webdesign en webdevelopment",
-      provider: { "@type": "Organization", name: "NXT Frame", url: "https://nxtframe.ai" },
+      provider: { "@type": "Organization", name: "NxtFrame", url: "https://nxtframe.ai" },
       areaServed: { "@type": "Country", name: "Nederland" },
       description: metadata.description,
       offers: offers(tiers),
@@ -203,7 +203,7 @@ export default function Page() {
             <source srcSet="/images/prijzen-hero.webp" type="image/webp" />
             <img
               src="/images/prijzen-hero.jpg"
-              alt="De NXT Frame-mascotte werkt op een laptop aan een houten tafel, terwijl twee klanten lachend meekijken, gezien door een raam in warm avondlicht"
+              alt="De NxtFrame-mascotte werkt op een laptop aan een houten tafel, terwijl twee klanten lachend meekijken, gezien door een raam in warm avondlicht"
               className="size-full object-cover object-[77%_50%] lg:object-[70%_45%]"
               loading="eager"
               decoding="async"

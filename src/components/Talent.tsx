@@ -28,7 +28,7 @@ export default function Talent() {
               <source srcSet="/images/over-mascot.webp" type="image/webp" />
               <img
                 src="/images/over-mascot.jpg"
-                alt="De NXT Frame mascotte wijst naar een website op een laptop"
+                alt="De NxtFrame mascotte wijst naar een website op een laptop"
                 className="aspect-[4/5] w-full object-cover"
                 loading="lazy"
               />
@@ -42,7 +42,7 @@ export default function Talent() {
           {/* copy */}
           <div className="self-start lg:sticky lg:top-28">
             <Eyebrow className="max-w-xl">
-              Over NXT Frame
+              Over NxtFrame
             </Eyebrow>
             <h2 className="mt-6 t-section md:mt-8">
               <span className="serif-italic">Eén persoon,</span>

@@ -1,5 +1,5 @@
 /**
- * NXT Frame logo: a viewfinder "frame" mark with a forward chevron ("next") inside,
+ * NxtFrame logo: a viewfinder "frame" mark with a forward chevron ("next") inside,
  * followed by the wordmark. Inherits colour from `currentColor`.
  */
 export function LogoMark({ className = "size-7" }: { className?: string }) {
@@ -85,7 +85,7 @@ export default function Logo({
     xl: { text: "text-[52px] md:text-[64px]", serif: "text-[63px] md:text-[78px]", dot: "size-[0.55em]" },
   }[size];
   return (
-    <span className={`inline-flex items-baseline leading-none ${className}`} role="img" aria-label="NXT Frame">
+    <span className={`inline-flex items-baseline leading-none ${className}`} role="img" aria-label="NxtFrame">
       <span className={`font-display font-bold tracking-[-0.03em] ${s.text}`}>nxt</span>
       <span className={`serif-italic ml-[0.03em] tracking-[-0.01em] ${s.serif}`}>frame</span>
       <FrameGlyph className={`ml-[0.2em] translate-y-[-0.02em] ${s.dot}`} />

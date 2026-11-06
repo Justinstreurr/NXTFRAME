@@ -17,7 +17,7 @@ import { faq } from "@/components/faq";
  * DRAFT COPY: the per-step details are a first version for Justin to check against how he works.
  */
 export const metadata: Metadata = {
-  title: "Aanpak | Zo verloopt een website laten maken | NXT Frame",
+  title: "Aanpak | Zo verloopt een website laten maken | NxtFrame",
   description:
     "Van kennismaking tot lancering in vijf stappen, met één aanspreekpunt. Per stap weet je wat je van mij krijgt, wat ik van jou nodig heb en hoe lang het duurt.",
   alternates: { canonical: "/aanpak" },
@@ -81,7 +81,7 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "HowTo",
-      name: "Zo verloopt een website laten maken bij NXT Frame",
+      name: "Zo verloopt een website laten maken bij NxtFrame",
       description: metadata.description,
       step: details.map((d, i) => ({ "@type": "HowToStep", position: i + 1, name: d.title, text: `${d.you} Je krijgt: ${d.get.join(", ").toLowerCase()}.`})),
     },

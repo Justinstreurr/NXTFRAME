@@ -20,7 +20,7 @@ import { integrations, smartFaq, tools } from "@/components/smartTools";
  * assistant has small monthly costs for the AI model (as the FAQ already says).
  */
 export const metadata: Metadata = {
-  title: "AI-oplossingen voor je bedrijf | AI-assistent, rekentools en automatisering | NXT Frame",
+  title: "AI-oplossingen voor je bedrijf | AI-assistent, rekentools en automatisering | NxtFrame",
   description:
     "AI en slimme tools op je website: een assistent die vragen beantwoordt, rekentools, offertes en facturen klaargezet om na te kijken, opvolging van aanvragen en koppelingen met je systemen. Vaste prijs vooraf.",
   alternates: { canonical: "/ai-oplossingen" },
@@ -43,7 +43,7 @@ const jsonLd = {
       "@type": "Service",
       name: "AI-oplossingen en slimme tools voor je website",
       serviceType: "AI-assistent, automatisering en koppelingen",
-      provider: { "@type": "Organization", name: "NXT Frame", url: "https://nxtframe.ai" },
+      provider: { "@type": "Organization", name: "NxtFrame", url: "https://nxtframe.ai" },
       areaServed: { "@type": "Country", name: "Nederland" },
       description: metadata.description,
       url: "https://nxtframe.ai/ai-oplossingen",
@@ -58,37 +58,50 @@ const jsonLd = {
 export default function Page() {
   return (
     <>
-      <Nav />
+      <Nav theme="photo" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <main id="main">
-        {/* Hero: the promise on the left, the glossy icon on a square aurora block on the right */}
-        <section data-zone="cherry" className="bg-cream pb-12 pt-28 text-forest md:pb-24 md:pt-40">
-          <Container className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-16">
-            <div>
-              <Eyebrow className="max-w-xl">AI-oplossingen</Eyebrow>
-              <h1 className="mt-6 t-hero md:mt-8">
-                Slimme tools die <span className="serif-italic">werk uit handen nemen</span>
+        {/* Hero, the frame of the other pages (720px on desktop, the nav floating over it, cream copy on
+            the left). There is no generated photo for AI yet, so the ground is a deep forest with a lime
+            and mint aurora on the right, the glossy koppelingen icon floating in it. Swap in a photo
+            (/images/ai-hero) later with the same <picture> as /over. */}
+        <section data-zone="green" className="relative isolate overflow-hidden bg-forest text-cream">
+          <div
+            className="absolute inset-0 -z-20 bg-[radial-gradient(55%_75%_at_78%_55%,rgb(218_252_146/0.55)_0%,rgb(218_252_146/0.22)_35%,transparent_70%),radial-gradient(40%_50%_at_100%_0%,rgb(186_236_214/0.45),transparent_70%),radial-gradient(45%_55%_at_95%_100%,rgb(252_187_185/0.28),transparent_70%),linear-gradient(120deg,#011a14_0%,#02261e_45%,#0a3a2a_100%)]"
+            aria-hidden="true"
+          />
+          <div
+            className="absolute inset-0 -z-10 hidden bg-[linear-gradient(to_right,rgb(0_0_0/0.55)_0%,rgb(0_0_0/0.35)_30%,transparent_55%)] lg:block"
+            aria-hidden="true"
+          />
+          <Container className="relative z-10 grid items-center gap-10 pb-16 pt-28 sm:pt-36 lg:min-h-[720px] lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:pb-28 lg:pt-32">
+            <div className="max-w-2xl">
+              <Eyebrow tone="light" className="max-w-xl">AI-oplossingen</Eyebrow>
+              <h1 className="mt-6 t-hero text-paper md:mt-8">
+                Slimme tools die <span className="serif-italic text-lime">werk uit handen nemen</span>
               </h1>
-              <p className="mt-6 max-w-lg text-forest/75 t-lead">
+              <p className="mt-6 max-w-lg text-paper t-lead">
                 Een assistent die vragen beantwoordt, offertes die klaarstaan om na te kijken, aanvragen die vanzelf worden opgevolgd. Gebouwd bovenop je site en gekoppeld aan wat je al gebruikt.
               </p>
-              <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
-                <Button className="px-8 py-4 text-base" href="/contact">
-                  Plan een kennismaking
-                </Button>
-                <TextLink href="#tools">Bekijk wat er kan</TextLink>
+              <div data-hero-cta className="mt-8">
+                <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
+                  <Button className="px-8 py-4 text-base" href="/contact">
+                    Plan een kennismaking
+                  </Button>
+                  <TextLink light href="#tools">Bekijk wat er kan</TextLink>
+                </div>
+                <ul className="mt-6 flex flex-col gap-2 font-display text-[15px] text-paper/90 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6">
+                  {["Vaste prijs vooraf", "Jij houdt de controle", "Geen overstap nodig"].map((t) => (
+                    <li key={t} className="flex items-center gap-2">
+                      <FrameGlyph className="size-3 text-lime" />
+                      {t}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="mt-6 flex flex-col gap-2 font-display text-[15px] text-forest/80 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6">
-                {["Vaste prijs vooraf", "Jij houdt de controle", "Geen overstap nodig"].map((t) => (
-                  <li key={t} className="flex items-center gap-2">
-                    <FrameGlyph className="size-3 text-forest" />
-                    {t}
-                  </li>
-                ))}
-              </ul>
             </div>
-            <div className="sb-bg-aurora relative grid aspect-square w-full place-items-center overflow-hidden">
-              <img src="/images/icon-koppelingen.webp" alt="" width={600} height={600} className="sb-float w-[58%]" loading="eager" decoding="async" />
+            <div className="relative mx-auto grid w-full max-w-[520px] place-items-center" aria-hidden="true">
+              <img src="/images/icon-koppelingen.webp" alt="" width={600} height={600} className="sb-float w-[72%] drop-shadow-[0_40px_60px_rgb(0_0_0/0.45)]" loading="eager" decoding="async" />
             </div>
           </Container>
         </section>

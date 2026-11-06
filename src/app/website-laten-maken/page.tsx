@@ -25,7 +25,7 @@ import { faq } from "@/components/faq";
  * are a first version for Justin to check. The pains and the price factors are the earlier copy.
  */
 export const metadata: Metadata = {
-  title: "Website laten maken | Snel, vindbaar in Google en AI | NXT Frame",
+  title: "Website laten maken | Snel, vindbaar in Google en AI | NxtFrame",
   description:
     "Een website laten maken die gevonden wordt en verkoopt. Op maat ontworpen en zo gebouwd dat Google en ChatGPT je kunnen vinden. Vanaf € 2.500, in 4 tot 6 weken.",
   alternates: { canonical: "/website-laten-maken" },
@@ -161,7 +161,7 @@ const jsonLd = {
       "@type": "Service",
       name: "Website laten maken",
       serviceType: "Webdesign en webdevelopment",
-      provider: { "@type": "Organization", name: "NXT Frame", url: "https://nxtframe.ai" },
+      provider: { "@type": "Organization", name: "NxtFrame", url: "https://nxtframe.ai" },
       areaServed: { "@type": "Country", name: "Nederland" },
       url: "https://nxtframe.ai/website-laten-maken",
       description: metadata.description,

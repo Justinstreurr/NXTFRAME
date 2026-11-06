@@ -18,7 +18,7 @@ import BranchPricing, { type PriceWay } from "@/components/BranchPricing";
 const makelaars = branches.find((b) => b.slug === "makelaars")!;
 
 export const metadata: Metadata = {
-  title: "Makelaar website laten maken | Woningaanbod uit je CRM | NXT Frame",
+  title: "Makelaar website laten maken | Woningaanbod uit je CRM | NxtFrame",
   description:
     "Een makelaarswebsite met je woningaanbod uit je eigen pakket (zoals Realworks, Kolibri of Skarabee), een waardebepaling zonder drempel en een pagina per plaats waar je werkt.",
   alternates: { canonical: "/makelaar-website" },
@@ -118,7 +118,7 @@ const jsonLd = {
       "@type": "Service",
       name: "Website laten maken voor makelaars",
       serviceType: "Webdesign en webdevelopment voor makelaars",
-      provider: { "@type": "Organization", name: "NXT Frame", url: "https://nxtframe.ai" },
+      provider: { "@type": "Organization", name: "NxtFrame", url: "https://nxtframe.ai" },
       areaServed: { "@type": "Country", name: "Nederland" },
       description: metadata.description,
       offers: { "@type": "Offer", priceCurrency: "EUR", price: makelaars.price.from.replace(".", ""), description: `Vanaf € ${makelaars.price.from}` },
@@ -186,7 +186,7 @@ export default function Page() {
             <source srcSet="/images/makelaars-hero.webp" type="image/webp" />
             <img
               src="/images/makelaars-hero.jpg"
-              alt="De NXT Frame-mascotte loopt met een laptop onder de arm langs de etalage van een makelaar, waar de makelaar in de deuropening staat"
+              alt="De NxtFrame-mascotte loopt met een laptop onder de arm langs de etalage van een makelaar, waar de makelaar in de deuropening staat"
               className="size-full object-cover object-[80%_50%] lg:object-[70%_50%]"
               loading="eager"
               decoding="async"

@@ -4,10 +4,10 @@ import { headers } from "next/headers";
 import { serviceClient } from "@/lib/supabase/server";
 import { topics, type ContactField, type ContactState } from "./fields";
 
-/* The contact form's server side: check the fields, then mail the request to NXT Frame.
+/* The contact form's server side: check the fields, then mail the request to NxtFrame.
    Delivery runs through Resend's HTTP API and needs three environment variables:
      RESEND_API_KEY   the API key
-     CONTACT_FROM     a sender on a domain verified at Resend, e.g. "NXT Frame <site@nxtframe.ai>"
+     CONTACT_FROM     a sender on a domain verified at Resend, e.g. "NxtFrame <site@nxtframe.ai>"
      CONTACT_TO       where requests land (defaults to hallo@nxtframe.ai)
    Without a key nothing can be sent: the visitor is told so and offered a ready-made mail instead,
    so a request is never lost silently. To use another mail service, replace deliver() only. */

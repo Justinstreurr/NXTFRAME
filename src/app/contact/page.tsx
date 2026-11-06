@@ -7,7 +7,7 @@ import { faq } from "@/components/faq";
 import { Container, Eyebrow, Reassure, TextLink } from "@/components/ui";
 
 export const metadata: Metadata = {
-  title: "Contact | Plan een kennismaking | NXT Frame",
+  title: "Contact | Plan een kennismaking | NxtFrame",
   description:
     "Plan een gratis kennismaking van een half uur. Vertel kort over je bedrijf en wat je site moet doen, en je krijgt antwoord van de maker zelf, meestal binnen één werkdag.",
   alternates: { canonical: "/contact" },
@@ -38,7 +38,7 @@ export default function Page() {
             <source srcSet="/images/contact-hero.webp" type="image/webp" />
             <img
               src="/images/contact-hero.jpg"
-              alt="Een limegroene telefoonhoorn bungelt aan zijn krulsnoer aan de arm van de NXT Frame-mascotte, tegen een wolkenlucht"
+              alt="Een limegroene telefoonhoorn bungelt aan zijn krulsnoer aan de arm van de NxtFrame-mascotte, tegen een wolkenlucht"
               className="size-full object-cover object-[78%_50%] lg:object-[100%_40%]"
               loading="eager"
               decoding="async"

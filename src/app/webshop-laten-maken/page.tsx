@@ -21,7 +21,7 @@ import { faq } from "@/components/faq";
  * DRAFT COPY: everything on this page is a first version for Justin to check.
  */
 export const metadata: Metadata = {
-  title: "Webshop laten maken | Snel op mobiel, vindbaar in Google en AI | NXT Frame",
+  title: "Webshop laten maken | Snel op mobiel, vindbaar in Google en AI | NxtFrame",
   description:
     "Een webshop laten maken die verkoopt: snelle productpagina's, een korte checkout met iDEAL en producten die je zelf beheert. Ontworpen en gebouwd door één maker, voor een vaste prijs.",
   alternates: { canonical: "/webshop-laten-maken" },
@@ -162,7 +162,7 @@ const jsonLd = {
       "@type": "Service",
       name: "Webshop laten maken",
       serviceType: "Webshop ontwerp en development",
-      provider: { "@type": "Organization", name: "NXT Frame", url: "https://nxtframe.ai" },
+      provider: { "@type": "Organization", name: "NxtFrame", url: "https://nxtframe.ai" },
       areaServed: { "@type": "Country", name: "Nederland" },
       url: "https://nxtframe.ai/webshop-laten-maken",
       description: metadata.description,

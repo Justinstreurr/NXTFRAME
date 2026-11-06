@@ -2,7 +2,7 @@ import * as THREE from "three";
 import { mergeVertices } from "three/examples/jsm/utils/BufferGeometryUtils.js";
 
 /**
- * Geometry helpers for the NXT Frame mascot.
+ * Geometry helpers for the NxtFrame mascot.
  *
  * The body brackets and the chevron are "pillow slabs": a 2D stroke outline (round caps,
  * round joins) extruded with a big quarter-circle bevel so every edge is soft, like the

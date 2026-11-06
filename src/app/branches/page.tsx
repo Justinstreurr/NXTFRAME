@@ -11,7 +11,7 @@ import { LaunchIcon, MapIcon, PenIcon } from "@/components/StepIcons";
 import { Button, Container, Eyebrow, TextLink } from "@/components/ui";
 
 export const metadata: Metadata = {
-  title: "Websites per branche | Makelaars, horeca, webshops en meer | NXT Frame",
+  title: "Websites per branche | Makelaars, horeca, webshops en meer | NxtFrame",
   description:
     "Een website gebouwd rond jouw branche: makelaars, horeca, webshops, adviseurs, bouw, zorg, beauty en coaches. Per branche een concept voor een bedrijf dat nog niet bestaat, zodat je ziet wat ik voor jouw vak kan bouwen.",
   alternates: { canonical: "/branches" },
@@ -107,7 +107,7 @@ export default function Page() {
             <source srcSet="/images/branches-hero-straat.webp" type="image/webp" />
             <img
               src="/images/branches-hero-straat.jpg"
-              alt="De NXT Frame-mascotte loopt met een laptop onder de arm door een zonnige Nederlandse winkelstraat, nagekeken door een winkelier en twee vrouwen op een terras"
+              alt="De NxtFrame-mascotte loopt met een laptop onder de arm door een zonnige Nederlandse winkelstraat, nagekeken door een winkelier en twee vrouwen op een terras"
               className="size-full object-cover object-[78%_50%] lg:object-[35%_50%]"
               loading="eager"
               decoding="async"
