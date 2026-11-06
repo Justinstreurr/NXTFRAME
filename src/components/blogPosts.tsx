@@ -425,8 +425,8 @@ export const posts: BlogPost[] = [
               Een akkoord zet je met één klik om in een factuur.
             </p>
             <p>
-              Goed als je veel vergelijkbare klussen doet. Het opzoekwerk doe je nog wel zelf: het programma weet niet wat de klant heeft gevraagd of
-              wat er op zijn foto&apos;s staat.
+              Goed als je veel vergelijkbare klussen doet. Het opzoekwerk doe je nog wel zelf: het programma weet niet wat de klant via je site heeft
+              gevraagd.
             </p>
             <h3>2. ChatGPT of een andere AI-assistent</h3>
             <p>
@@ -436,9 +436,10 @@ export const posts: BlogPost[] = [
             </p>
             <h3>3. Een hulpmiddel dat aan je site en je pakket gekoppeld is</h3>
             <p>
-              Dit is de stap verder. De klant vraagt een offerte aan op je site, met foto&apos;s en maten. Het hulpmiddel leest de aanvraag, zoekt je
-              prijzen en materialen erbij, rekent het uit en zet een concept klaar in je eigen huisstijl. Jij krijgt een melding, kijkt het na en
-              verstuurt. Zegt de klant online ja, dan staat de factuur als concept klaar, en na jouw controle gaat hij naar je boekhouding.
+              Dit is de stap verder, en het werkt zo. De klant vraagt een offerte aan op je site. Het hulpmiddel zoekt je vaste prijzen en
+              materialen erbij, rekent het uit en zet een concept klaar in je eigen huisstijl. Jij krijgt een melding, kijkt het na, past aan wat
+              anders is en verstuurt. Zegt de klant ja, dan maak je er met één klik een factuur van, en na jouw controle gaat die naar je
+              boekhouding.
             </p>
             <p>
               Hier verdwijnt het meeste werk, omdat ook het opzoeken en het overtypen wegvallen. Het werkt het best voor standaardklussen: een
@@ -529,8 +530,9 @@ export const posts: BlogPost[] = [
               <strong>Zet je prijzen op een rij.</strong> Uurtarief, voorrijkosten, vaste posten en de materialen die je standaard gebruikt.
             </li>
             <li>
-              <strong>Laat de klant het werk doen bij de aanvraag.</strong> Een formulier met de juiste vragen en een paar foto&apos;s scheelt je de
-              meeste ritjes.
+              <strong>Laat de klant het werk doen bij de aanvraag.</strong> Een formulier met de juiste vragen scheelt je bellen. Laat de klant er
+              ook een paar foto&apos;s bij doen, van de oude badkamer of de meterkast: dan zie jij vooraf waar je aan begint en rijd je minder vaak
+              voor niets langs.
             </li>
             <li>
               <strong>Koppel het aan wat je al gebruikt.</strong> Je boekhoudpakket blijft, de tool zet er alleen dingen in klaar.
@@ -548,7 +550,7 @@ export const posts: BlogPost[] = [
         body: (
           <>
             <p>
-              Ik ben Justin Streur en ik bouw websites voor bouw- en installatiebedrijven, met de offerteaanvraag met foto&apos;s erin. Daar bouw ik
+              Ik ben Justin Streur en ik bouw websites voor bouw- en installatiebedrijven, met een simpel offerteformulier erin. Daar bouw ik
               dit hulpmiddel bij: het zoekt je prijzen en materialen op, zet de offerte en na akkoord de factuur klaar, en jij kijkt het na voordat het
               de deur uitgaat. Werk je met een boekhoudpakket, dan koppel ik het eraan.
             </p>
