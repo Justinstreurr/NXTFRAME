@@ -32,10 +32,8 @@ function Col({ name, items, arrow = true, href }: { name: string; items: string[
   );
 }
 
-const socials: { label: string; path: string }[] = [
-  { label: "LinkedIn", path: "M6.94 8.5V19H3.56V8.5h3.38ZM5.25 3.5a1.97 1.97 0 1 1 0 3.94 1.97 1.97 0 0 1 0-3.94ZM20.5 19h-3.37v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V19H10.1V8.5h3.24v1.43h.05c.45-.85 1.55-1.75 3.2-1.75 3.42 0 4.05 2.25 4.05 5.18V19Z" },
-  { label: "Instagram", path: "M12 7.4a4.6 4.6 0 1 0 0 9.2 4.6 4.6 0 0 0 0-9.2Zm0 7.6a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm5.85-7.8a1.08 1.08 0 1 1-2.16 0 1.08 1.08 0 0 1 2.16 0ZM12 3c-2.44 0-2.75.01-3.71.05-3.4.16-5.1 1.87-5.24 5.24C3 9.25 3 9.56 3 12s.01 2.75.05 3.71c.15 3.38 1.85 5.09 5.24 5.24.96.04 1.27.05 3.71.05s2.75-.01 3.71-.05c3.38-.16 5.09-1.87 5.24-5.24.04-.96.05-1.27.05-3.71s-.01-2.75-.05-3.71c-.15-3.38-1.85-5.09-5.24-5.24C14.75 3.01 14.44 3 12 3Zm0 1.62c2.4 0 2.68.01 3.63.05 2.52.12 3.7 1.31 3.82 3.82.04.95.05 1.23.05 3.63s-.01 2.68-.05 3.63c-.12 2.5-1.3 3.7-3.82 3.82-.95.04-1.23.05-3.63.05s-2.68-.01-3.63-.05c-2.53-.12-3.7-1.32-3.82-3.82-.04-.95-.05-1.23-.05-3.63s.01-2.68.05-3.63c.12-2.51 1.3-3.7 3.82-3.82.95-.04 1.23-.05 3.63-.05Z" },
-];
+/* social profiles of the business; none yet (6 Nov 2026), so no icons rather than links to nowhere. Add { label, href, path } when there are */
+const socials: { label: string; href: string; path: string }[] = [];
 
 /** `cta={false}` leaves out the closing call to action, for the pages where it would point at itself (contact).
     `flat` gives the call to action a plain lime ground, so it runs on from a lime section above it. */
@@ -107,7 +105,7 @@ export default function Footer({ cta = true, flat = false }: { cta?: boolean; fl
           </ul>
           <div className="flex items-center gap-3">
             {socials.map((s) => (
-              <a key={s.label} href="#" aria-label={s.label} className="grid size-12 place-items-center rounded-full border border-paper/70 text-paper transition-colors hover:bg-paper hover:text-forest">
+              <a key={s.label} href={s.href} aria-label={s.label} className="grid size-12 place-items-center rounded-full border border-paper/70 text-paper transition-colors hover:bg-paper hover:text-forest">
                 <svg viewBox="0 0 24 24" className="size-5" fill="currentColor" aria-hidden="true"><path d={s.path} /></svg>
               </a>
             ))}
