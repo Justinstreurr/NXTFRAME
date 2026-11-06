@@ -32,6 +32,8 @@ const nextConfig: NextConfig = {
       ["/branches/zorg-en-praktijken", "/praktijk-website"],
       ["/branches/beauty-en-wellness", "/salon-website"],
       ["/branches/coaches-en-adviseurs", "/coach-website"],
+      // no single landing pages any more (6 Nov 2026): a site, a bigger job or custom work
+      ["/landingspagina-laten-maken", "/website-laten-maken"],
     ];
     return moved.map(([source, destination]) => ({ source, destination, permanent: true }));
   },

@@ -46,7 +46,7 @@ import LegalPage, { type LegalSection } from "@/components/LegalPage";
 export const metadata: Metadata = {
   title: "Algemene voorwaarden | NXT Frame",
   description:
-    "De afspraken die gelden als je een website, webshop of landingspagina laat maken door NXT Frame: prijs en betaling, feedback, oplevering, eigendom, onderhoud en aansprakelijkheid.",
+    "De afspraken die gelden als je een website of webshop laat maken door NXT Frame: prijs en betaling, feedback, oplevering, eigendom, onderhoud en aansprakelijkheid.",
   alternates: { canonical: "/voorwaarden" },
 };
 
@@ -73,7 +73,7 @@ const sections: LegalSection[] = [
           <li>Adres: Kanaalkade 15 D, 1441 KC Purmerend</li>
         </ul>
         <p>
-          Deze voorwaarden gelden voor elke offerte en elke opdracht: het ontwerpen en bouwen van een website, webshop of landingspagina, en het onderhoud en de
+          Deze voorwaarden gelden voor elke offerte en elke opdracht: het ontwerpen en bouwen van een website of webshop, en het onderhoud en de
           doorontwikkeling daarna. Ik werk alleen voor ondernemers en organisaties, niet voor consumenten.
         </p>
         <p>
@@ -361,7 +361,7 @@ export default function Page() {
     <LegalPage
       eyebrow="Voorwaarden"
       title={<>Heldere afspraken, <span className="serif-italic">in gewone taal</span></>}
-      intro="Dit zijn de afspraken die gelden als ik een website, webshop of landingspagina voor je maak. Zo weet je vooraf waar je aan toe bent."
+      intro="Dit zijn de afspraken die gelden als ik een website of webshop voor je maak. Zo weet je vooraf waar je aan toe bent."
       updated="12 oktober 2026"
       sections={sections}
     />

@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 import { FrameGlyph } from "./Logo";
-import { Connections, LaptopChat, PhoneHand, WidgetCalculator, show, useStep } from "./SmartBento";
+import { Connections, PhoneHand, WidgetCalculator, show, useStep } from "./SmartBento";
 
 /* ---------- the agenda card: a week, and one slot that gets booked while you look ---------- */
 function Agenda({ step }: { step: number }) {
@@ -43,6 +43,44 @@ function Agenda({ step }: { step: number }) {
   );
 }
 
+/* ---------- the assistant card: a chat window with the conversation playing in it ---------- */
+function Chat({ step }: { step: number }) {
+  const dots = (
+    <span className="flex gap-1 py-1" aria-hidden="true">
+      {[0, 1, 2].map((d) => <span key={d} className="sb-dot size-1.5 rounded-full bg-forest/50" style={{ animationDelay: `${d * 150}ms` }} />)}
+    </span>
+  );
+  const me = "max-w-[80%] self-end bg-lime px-3.5 py-2 text-forest";
+  const bot = "max-w-[85%] self-start bg-white px-3.5 py-2 text-forest";
+  return (
+    <div className="flex size-full flex-col bg-cream text-[13px] leading-snug text-forest shadow-[0_30px_60px_-30px_rgb(0_0_0/0.6)]">
+      <div className="flex items-center gap-2.5 border-b border-forest/10 bg-white px-4 py-3">
+        <span className="grid size-8 shrink-0 place-items-center bg-forest text-lime"><FrameGlyph className="size-3.5" /></span>
+        <span className="min-w-0 flex-1">
+          <span className="block font-semibold">Assistent</span>
+          <span className="flex items-center gap-1.5 text-[11px] text-forest/70"><span className="size-1.5 rounded-full bg-[#4caf50]" /> Online, ook om 23:48</span>
+        </span>
+      </div>
+      <div className="flex flex-1 flex-col justify-end gap-2 overflow-hidden p-4">
+        <p className={me}>Hebben jullie zaterdag nog plek?</p>
+        <div className={bot}>{step < 2 ? dots : <span className="sb-pop block">Zeker! Zaterdag om 10:30 en 13:00 is er nog plek. Welke past jou?</span>}</div>
+        <p className={`${me} ${show(step >= 3)}`}>13:00 graag</p>
+        <div className={`flex items-center gap-2.5 self-start bg-forest px-3.5 py-2.5 text-cream ${show(step >= 4)}`}>
+          <span className="grid size-5 shrink-0 place-items-center bg-lime text-[10px] text-forest">✓</span>
+          <span>
+            <span className="block font-semibold">Afspraak ingepland</span>
+            <span className="block text-[11px] text-cream/70">Za 13:00 · bevestiging gemaild</span>
+          </span>
+        </div>
+      </div>
+      <div className="flex items-center gap-2 border-t border-forest/10 bg-white px-4 py-3 text-forest/50">
+        <span className="flex-1">Stel je vraag…</span>
+        <span className="grid size-7 place-items-center bg-forest text-lime" aria-hidden="true">↑</span>
+      </div>
+    </div>
+  );
+}
+
 type Card = {
   title: string;
   body: string;
@@ -53,6 +91,10 @@ type Card = {
   span: string;
   /** where the film sits inside the card */
   stage: string;
+  /** the width of the title and line, when the film stands beside them */
+  textW?: string;
+  /** an extra layer behind the film, such as a glow */
+  glow?: string;
   film: (step: number, near: boolean) => ReactNode;
 };
 
@@ -87,12 +129,14 @@ const cards: Card[] = [
   },
   {
     title: "Vragen beantwoord, ook 's nachts",
-    body: "Een assistent met de kennis van jouw bedrijf. Weet hij het niet, dan krijg jij de vraag.",
-    tone: "sb-bg-night text-cream",
-    muted: "text-cream/70",
-    span: "h-[460px] md:col-span-2 lg:h-auto",
-    stage: "bottom-[-10%] left-1/2 w-[110%] -translate-x-1/2 md:left-auto md:right-[-8%] md:w-[74%] md:translate-x-0 md:bottom-[-14%]",
-    film: (s) => <LaptopChat step={s} />,
+    body: "Een assistent met de kennis van jouw bedrijf beantwoordt vragen en plant meteen een afspraak in. Weet hij het niet, dan krijg jij de vraag.",
+    tone: "bg-forest text-cream",
+    muted: "text-cream/75",
+    span: "h-[620px] md:col-span-2 md:h-[460px] lg:h-auto",
+    textW: "md:max-w-[44%]",
+    glow: "bg-[radial-gradient(60%_70%_at_78%_100%,rgb(218_252_146/0.22),transparent_70%)]",
+    stage: "inset-x-6 bottom-0 top-[36%] md:inset-x-auto md:right-7 md:top-7 md:w-[50%]",
+    film: (s) => <Chat step={s} />,
   },
   {
     title: "Afspraken direct in je agenda",
@@ -117,7 +161,8 @@ export default function SmartGrid() {
     <div ref={host} className="grid gap-3 md:grid-cols-2 md:gap-4 lg:grid-cols-4 lg:grid-rows-[400px_400px]">
       {cards.map((c) => (
         <article key={c.title} className={`relative overflow-hidden ${c.tone} ${c.span}`}>
-          <div className="relative z-10 max-w-sm p-6 md:p-7">
+          {c.glow && <span className={`pointer-events-none absolute inset-0 ${c.glow}`} aria-hidden="true" />}
+          <div className={`relative z-10 max-w-sm p-6 md:p-7 ${c.textW ?? ""}`}>
             <h3 className="font-display text-[1.375rem] font-semibold leading-[1.1] tracking-[-0.02em] md:text-[1.5rem]">{c.title}</h3>
             <p className={`mt-2.5 text-[15px] leading-relaxed ${c.muted}`}>{c.body}</p>
           </div>

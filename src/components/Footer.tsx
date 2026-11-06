@@ -6,10 +6,10 @@ import MascotHero from "./MascotHero";
 import FooterPanel from "./FooterPanel";
 import CookieSettingsLink from "./CookieSettingsLink";
 
-const diensten = ["Nieuwe website", "Redesign", "Landingspagina's", "Vindbaar in Google en AI", "Doorontwikkeling en onderhoud", "Teksten en content"];
+const diensten = ["Nieuwe website", "Redesign", "AI-oplossingen", "Vindbaar in Google en AI", "Doorontwikkeling en onderhoud", "Teksten en content"];
 const navigatie = ["Werk", "Diensten", "Prijzen", "Aanpak", "Blog", "Over", "Contact"];
 const branches = ["Makelaars", "Webshops", "Adviseurs", "Horeca"];
-const hrefs: Record<string, string> = { "Nieuwe website": "/website-laten-maken", Werk: "/werk", Diensten: "/diensten", Prijzen: "/prijzen", Aanpak: "/aanpak", "Voor makelaars": "/makelaar-website", Over: "/over", Blog: "/blog", Contact: "/contact", Makelaars: "/makelaar-website", Redesign: "/website-redesign", "Landingspagina's": "/landingspagina-laten-maken", "Vindbaar in Google en AI": "/vindbaar-in-google-en-chatgpt", "Doorontwikkeling en onderhoud": "/website-onderhoud", "Teksten en content": "/website-teksten", Webshops: "/webshop-laten-maken", Adviseurs: "/financieel-adviseur-website", Horeca: "/horeca-website" };
+const hrefs: Record<string, string> = { "Nieuwe website": "/website-laten-maken", Werk: "/werk", Diensten: "/diensten", Prijzen: "/prijzen", Aanpak: "/aanpak", "Voor makelaars": "/makelaar-website", Over: "/over", Blog: "/blog", Contact: "/contact", Makelaars: "/makelaar-website", Redesign: "/website-redesign", "AI-oplossingen": "/ai-oplossingen", "Vindbaar in Google en AI": "/vindbaar-in-google-en-chatgpt", "Doorontwikkeling en onderhoud": "/website-onderhoud", "Teksten en content": "/website-teksten", Webshops: "/webshop-laten-maken", Adviseurs: "/financieel-adviseur-website", Horeca: "/horeca-website" };
 
 /** a column of links; with `href` its heading links to the overview page */
 function Col({ name, items, arrow = true, href }: { name: string; items: string[]; arrow?: boolean; href?: string }) {
@@ -72,7 +72,7 @@ export default function Footer({ cta = true, flat = false }: { cta?: boolean; fl
       {/* Footer: a forest panel with rounded shoulders that slides up over the lime field and widens
           as it rises (FooterPanel) */}
       <FooterPanel>
-      <footer className="relative bg-forest text-paper">
+      <footer className="relative rounded-t-[36px] bg-forest text-paper md:rounded-t-[48px]">
         <div className="mx-auto w-full max-w-(--site-max) px-6 pb-12 md:pb-16 pt-16 md:px-12 md:pt-24 xl:px-20">
         <div className="grid grid-cols-2 gap-x-6 gap-y-12 border-t border-paper/20 pt-8 sm:gap-16 lg:grid-cols-[1.2fr_1fr_1fr_1.2fr] lg:gap-10">
           <Col name="Diensten" items={diensten} arrow={false} href="/diensten" />

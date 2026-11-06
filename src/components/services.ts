@@ -14,10 +14,6 @@ export const services: ServiceCard[] = [
     imgs: ["/images/andere-tijd.webp", "/images/showcase/nxtframe/card-07.webp", "/images/happyflops-duo.webp", "/images/conversie-macbook-poster-v3.webp"],
   },
   {
-    title: "Landingspagina's", body: "Voor een campagne, branche of product. Eén pagina met één doel, en alles erop werkt daarnaartoe.", href: "/landingspagina-laten-maken", icon: "grid",
-    imgs: ["/images/happyflops-mockup.webp", "/images/showcase/hypotheekhaven/card-03.webp", "/images/showcase/nxtframe/card-09.webp", "/images/hero-hill.webp"],
-  },
-  {
     title: "Vindbaar in Google en AI", body: "Structuur, content en techniek waarmee je beter gevonden wordt in Google, ChatGPT en andere AI-zoekmachines.", href: "/vindbaar-in-google-en-chatgpt", icon: "search",
     imgs: ["/images/slim-search.webp", "/images/herkenbaar-2.webp", "/images/branches-hero-straat.webp", "/images/pain-mobiel.webp"],
   },

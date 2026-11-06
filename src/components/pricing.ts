@@ -41,16 +41,6 @@ export const tiers: Tier[] = [
   },
 ];
 
-/* the landing page has its own page, but no card among the three */
-export const landing: Tier = {
-  name: "Landingspagina",
-  from: "1.950",
-  img: "/images/advies-hero.webp",
-  time: "3 tot 4 weken",
-  body: "Eén pagina, één doel. Voor een campagne, een dienst of een branche.",
-  items: ["Strategie en tekststructuur", "Ontwerp op maat", "Formulier of afsprakenplanner", "Gericht op één zoekvraag"],
-};
-
 /** the tier a webshop falls under, under its own name on the webshop pages */
 export const webshop: Tier = { ...tiers[1], name: "Webshop" };
 

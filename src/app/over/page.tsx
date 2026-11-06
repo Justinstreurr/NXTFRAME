@@ -57,7 +57,7 @@ const principles: StackCard[] = [
 /* the plain facts people check before they get in touch */
 const facts = [
   { k: "Wie", v: "Justin Streur, eigenaar en maker" },
-  { k: "Wat", v: "Websites, webshops en landingspagina's" },
+  { k: "Wat", v: "Websites, webshops en AI-oplossingen" },
   { k: "Waar", v: "Heel Nederland, online of op locatie" },
   { k: "Reactie", v: "Van mij zelf, meestal binnen één werkdag" },
   { k: "Contact", v: "hallo@nxtframe.ai", href: "mailto:hallo@nxtframe.ai" },

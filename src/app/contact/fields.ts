@@ -1,5 +1,5 @@
 /* The contact form's fields and state, shared by the form (client) and its action (server). */
-export const topics = ["Nieuwe website", "Redesign", "Webshop", "Landingspagina", "Iets anders"] as const;
+export const topics = ["Nieuwe website", "Redesign", "Webshop", "AI-oplossing", "Iets anders"] as const;
 
 export type ContactField = "naam" | "email" | "telefoon" | "website" | "onderwerp" | "bericht";
 export type ContactState = {

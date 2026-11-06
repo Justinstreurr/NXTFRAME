@@ -323,7 +323,7 @@ export const posts: BlogPost[] = [
           <>
             <p>
               Ik ben Justin Streur en ik bouw websites als zelfstandige maker. Een complete website begint bij mij bij € 2.500, een grotere site of een
-              webshop bij € 4.500, en een landingspagina bij € 1.950, allemaal exclusief btw. Teksten, ontwerp, bouw en een goede basis voor Google en
+              webshop bij € 4.500, en maatwerk op offerte, allemaal exclusief btw. Teksten, ontwerp, bouw en een goede basis voor Google en
               AI-zoekmachines zitten erin. Na een kennismaking van een half uur krijg je één vaste prijs, zodat je vooraf weet waar je aan toe bent.
             </p>
             <p>

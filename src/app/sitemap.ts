@@ -10,7 +10,7 @@ const pages: { path: string; priority: number }[] = [
   { path: "/", priority: 1 },
   { path: "/website-laten-maken", priority: 0.9 },
   { path: "/webshop-laten-maken", priority: 0.9 },
-  { path: "/landingspagina-laten-maken", priority: 0.9 },
+  { path: "/ai-oplossingen", priority: 0.9 },
   { path: "/website-redesign", priority: 0.8 },
   { path: "/vindbaar-in-google-en-chatgpt", priority: 0.8 },
   { path: "/website-onderhoud", priority: 0.7 },

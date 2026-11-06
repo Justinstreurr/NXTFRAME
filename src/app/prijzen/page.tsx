@@ -5,7 +5,7 @@ import MoreOnMobile from "@/components/MoreOnMobile";
 import { Comparison, FaqList } from "@/components/Sections";
 import { Button, Container, Eyebrow, Reassure, TextLink } from "@/components/ui";
 import { FrameGlyph } from "@/components/Logo";
-import { landing, offers, price, tiers } from "@/components/pricing";
+import { offers, price, tiers } from "@/components/pricing";
 import { faq } from "@/components/faq";
 
 /**
@@ -36,7 +36,7 @@ const [site, big] = tiers;
 
 export const metadata: Metadata = {
   title: "Wat kost een website laten maken? Prijzen | NXT Frame",
-  description: `Wat kost een website laten maken? Een website vanaf € ${site.from}, een grote site of webshop vanaf € ${big.from} en maatwerk op offerte. Een losse landingspagina vanaf € ${landing.from}. Na de kennismaking krijg je één vaste prijs.`,
+  description: `Wat kost een website laten maken? Een website vanaf € ${site.from}, een grote site of webshop vanaf € ${big.from} en maatwerk op offerte. Na de kennismaking krijg je één vaste prijs.`,
   alternates: { canonical: "/prijzen" },
 };
 
@@ -115,12 +115,12 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Service",
-      name: "Website, webshop of landingspagina laten maken",
+      name: "Website of webshop laten maken",
       serviceType: "Webdesign en webdevelopment",
       provider: { "@type": "Organization", name: "NXT Frame", url: "https://nxtframe.ai" },
       areaServed: { "@type": "Country", name: "Nederland" },
       description: metadata.description,
-      offers: offers([...tiers, landing]),
+      offers: offers(tiers),
     },
     {
       "@type": "FAQPage",

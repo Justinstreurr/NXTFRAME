@@ -5,7 +5,7 @@ import { FaqList, Work } from "@/components/Sections";
 import { ArrowIcon, Button, Container, Eyebrow, TextLink } from "@/components/ui";
 import { FrameGlyph } from "@/components/Logo";
 import BranchIcon, { type IconKey } from "@/components/BranchIcons";
-import { landing, tiers, webshop } from "@/components/pricing";
+import { tiers, webshop } from "@/components/pricing";
 import { faq } from "@/components/faq";
 
 /**
@@ -18,11 +18,11 @@ import { faq } from "@/components/faq";
 export const metadata: Metadata = {
   title: "Diensten | Website, webshop, redesign en vindbaarheid | NXT Frame",
   description:
-    "Een nieuwe website, webshop of landingspagina, een redesign, vindbaar worden in Google en ChatGPT, onderhoud en teksten. Alles van één maker, met vaste prijzen vooraf.",
+    "Een nieuwe website of webshop, een redesign, vindbaar worden in Google en ChatGPT, onderhoud en teksten. Alles van één maker, met vaste prijzen vooraf.",
   alternates: { canonical: "/diensten" },
 };
 
-const tier = (name: string) => [...tiers, landing, webshop].find((t) => t.name === name);
+const tier = (name: string) => [...tiers, webshop].find((t) => t.name === name);
 
 type Service = {
   id: string;
@@ -57,14 +57,6 @@ const list: Service[] = [
     img: "/images/happyflops-laptop-hands.webp", pos: "50% 100%", contain: true, alt: "Handen op een laptop met de webshop van Happy Flops",
     price: tier("Webshop") && { from: tier("Webshop")!.from!, time: tier("Webshop")!.time },
     link: { href: "/webshop-laten-maken", label: "Alles over een webshop laten maken" },
-  },
-  {
-    id: "landingspaginas", icon: "grid", title: "Landingspagina's",
-    lead: "Eén pagina, één doel. Voor een campagne, een dienst of een branche, en gericht op die ene stap die je bezoeker moet zetten.",
-    items: ["Strategie en tekststructuur", "Ontwerp op maat", "Formulier of afsprakenplanner", "Ingericht op één zoekvraag"],
-    img: "/images/advies-hero.webp", pos: "50% 50%", alt: "Een landingspagina van Hypotheekhaven op een telefoon",
-    price: tier("Landingspagina") && { from: tier("Landingspagina")!.from!, time: tier("Landingspagina")!.time },
-    link: { href: "/landingspagina-laten-maken", label: "Alles over een landingspagina laten maken" },
   },
   {
     id: "redesign", icon: "sparkle", title: "Redesign",

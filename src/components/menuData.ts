@@ -546,7 +546,7 @@ export const menu: MenuItem[] = [
       { label: "Website laten maken", href: "/website-laten-maken", icon: "layout" },
       { label: "Vindbaar in Google en AI", href: "/vindbaar-in-google-en-chatgpt", icon: "search" },
       { label: "Webshop", href: "/webshop-laten-maken", icon: "cart" },
-      { label: "Landingspagina", href: "/landingspagina-laten-maken", icon: "grid" },
+      { label: "AI-oplossingen", href: "/ai-oplossingen", icon: "sparkle" },
       { label: "Onderhoud en doorontwikkeling", href: "/website-onderhoud", icon: "refresh" },
       { label: "Teksten en content", href: "/website-teksten", icon: "pen" },
     ],
