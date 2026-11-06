@@ -824,7 +824,7 @@ export function Prices() {
             const c = priceTones[i % priceTones.length];
             return (
               <li key={t.name} className={t.highlight ? "order-first lg:order-none lg:-my-4" : ""}>
-                <a href="/prijzen" className={`group flex h-full flex-col p-6 md:p-8 ${c.card} ${t.highlight ? "lg:pb-12 lg:pt-12" : ""}`}>
+                <Link href="/prijzen" className={`group flex h-full flex-col p-6 md:p-8 ${c.card} ${t.highlight ? "lg:pb-12 lg:pt-12" : ""}`}>
                   <span className="flex items-center justify-between gap-4">
                     <span className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] ${c.pill}`}>
                       <FrameGlyph className="size-2.5" />
@@ -861,7 +861,7 @@ export function Prices() {
                     Bekijk wat erin zit
                     <ArrowIcon className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </span>
-                </a>
+                </Link>
               </li>
             );
           })}

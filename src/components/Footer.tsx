@@ -82,7 +82,7 @@ export default function Footer({ cta = true, flat = false }: { cta?: boolean; fl
               <li><a href="mailto:hallo@nxtframe.ai" className="hover:text-paper">hallo@nxtframe.ai</a></li>
               <li>Purmerend, werkt in heel Nederland</li>
               <li>KvK 42102903</li>
-              <li><a href="/contact" className="inline-flex items-center gap-1.5 text-lime hover:text-paper">Plan een kennismaking <ArrowIcon className="size-3.5" /></a></li>
+              <li><Link href="/contact" className="inline-flex items-center gap-1.5 text-lime hover:text-paper">Plan een kennismaking <ArrowIcon className="size-3.5" /></Link></li>
             </ul>
           </div>
         </div>

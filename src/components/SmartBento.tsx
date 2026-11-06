@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { FrameGlyph } from "./Logo";
 import MoreOnMobile from "./MoreOnMobile";
-import { quadMatrix } from "./quad";
 
 /* one shared clock for all four films: a step every 1.3 s, eight steps a loop */
 const STEPS = 8;
@@ -185,25 +184,21 @@ export function LaptopChat({ step }: { step: number }) {
   );
 }
 
-/* ---------- 4. Slimme opvolging: the notifications on the tilted phone in the hands photo ---------- */
+/* ---------- 4. Slimme opvolging: the notifications on a phone, drawn in CSS ---------- */
 
-/* the photo (public/images/phone-hand.webp) is 736 x 919; the screen's four corners in it, measured
-   from the photo. The top edge runs down to the right (y 171 at x 380, y 177 at x 500), so the top
-   corners follow that line; the bottom corners are nudged out a little to cover the rounded corners */
-const PHOTO = { w: 736, h: 919 };
+/* the screen is laid out at a fixed 300 x 650 and the whole phone scales with the width it gets,
+   so the notifications keep their proportions on every card size */
 const SCREEN_PX = { w: 300, h: 650 };
-const CORNERS: [number, number][] = [[324.7, 168.3], [525.6, 178.3], [432.3, 640.8], [226.3, 627.6]];
-
-const PHONE_MATRIX = quadMatrix(SCREEN_PX.w, SCREEN_PX.h, CORNERS);
+const BEZEL = 11;
+const PHONE = { w: SCREEN_PX.w + BEZEL * 2, h: SCREEN_PX.h + BEZEL * 2 };
 
 export function PhoneHand({ step }: { step: number }) {
-  // the photo scales with the card; the screen layer is laid out at photo size and scaled along
   const box = useRef<HTMLDivElement>(null);
-  const [scale, setScale] = useState(0.6);
+  const [scale, setScale] = useState(0.8);
   useEffect(() => {
     const el = box.current;
     if (!el) return;
-    const ro = new ResizeObserver(([e]) => setScale(e.contentRect.width / PHOTO.w));
+    const ro = new ResizeObserver(([e]) => setScale(e.contentRect.width / PHONE.w));
     ro.observe(el);
     return () => ro.disconnect();
   }, []);
@@ -214,13 +209,12 @@ export function PhoneHand({ step }: { step: number }) {
     { at: 5, title: "Klus afgerond", body: "Review gevraagd, met link naar Google" },
   ];
   return (
-    <div ref={box} className="relative w-full" style={{ aspectRatio: `${PHOTO.w} / ${PHOTO.h}` }}>
-      <img src="/images/phone-hand.webp" alt="" className="sb-fade-top absolute inset-0 size-full" loading="lazy" decoding="async" />
-      <div className="absolute left-0 top-0 origin-top-left" style={{ width: PHOTO.w, height: PHOTO.h, transform: `scale(${scale})` }}>
-        <div
-          className="absolute left-0 top-0 origin-top-left overflow-hidden rounded-[34px] bg-[#f4f6ef]"
-          style={{ width: SCREEN_PX.w, height: SCREEN_PX.h, transform: PHONE_MATRIX }}
-        >
+    <div ref={box} className="relative w-full" style={{ aspectRatio: `${PHONE.w} / ${PHONE.h}` }}>
+      <div
+        className="absolute left-0 top-0 origin-top-left rounded-[46px] bg-[#101614] shadow-[0_30px_60px_-30px_rgba(2,38,30,0.45)]"
+        style={{ width: PHONE.w, height: PHONE.h, padding: BEZEL, transform: `scale(${scale})` }}
+      >
+        <div className="relative size-full overflow-hidden rounded-[36px] bg-[#f4f6ef]">
           <span className="absolute left-1/2 top-[11px] h-[28px] w-[96px] -translate-x-1/2 rounded-full bg-black" />
           <div className="flex items-center justify-between px-7 pt-[14px] text-[15px] font-semibold text-forest">
             <span>9:41</span>
@@ -297,7 +291,7 @@ const cards: Card[] = [
     body: "Elke aanvraag krijgt meteen antwoord, een offerte die blijft liggen een herinnering, en na de klus vraagt je site om een review.",
     bg: "sb-bg-studio", text: "text-forest", muted: "text-forest/70", btn: "bg-forest text-cream hover:bg-forest-hover",
     span: "lg:col-span-5",
-    stage: "left-1/2 top-[120px] w-[120%] -translate-x-1/2",
+    stage: "left-1/2 top-[120px] w-[62%] -translate-x-1/2",
     film: (s) => <PhoneHand step={s} />,
   },
 ];
@@ -308,7 +302,7 @@ const cards: Card[] = [
  * underneath, all on one clock (useStep). The films are markup and CSS; the offertes card uses
  * the glossy icon render (public/images/icon-koppelingen.webp), the assistant card the laptop render
  * (public/images/laptop-assistent.webp), the price card the glass widget render (public/images/widget-rekentool.webp), the follow-up card
- * the phone in hands (public/images/phone-hand.webp).
+ * a phone drawn in CSS.
  */
 export default function SmartBento() {
   const { host, step, near } = useStep();

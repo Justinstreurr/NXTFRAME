@@ -7,27 +7,12 @@ import LegalPage, { type LegalSection } from "@/components/LegalPage";
  * no hourly billing, lead times that depend on the client, no ranking guarantees). They are not
  * legal advice: have a lawyer review them before the site goes live.
  *
- * Every open item is marked in the text as [INVULLEN: ...] with a common default as suggestion.
- * Search this file for "INVULLEN" to find them all. Decisions Justin still has to make:
- *
- * Facts to fill in (article 1)
- *  - VAT number (KvK number and address are filled in)
- *
- * Numbers to choose
- *  - how long a quote stays valid (art. 2)
- *  - payment schedule: deposit share and when the rest is invoiced (art. 3)
- *  - payment term in days (art. 3)
- *  - how fast the client has to respond to a request for content or feedback (art. 4)
- *  - after how long a stalled project may be invoiced for the work done so far (art. 4)
- *  - number of feedback rounds included per phase (art. 5)
- *  - approval window after delivery, after which the work counts as accepted (art. 6)
- *  - period after launch in which bugs are fixed for free (art. 6)
- *  - notice period and minimum term for monthly maintenance (art. 9)
- *  - yearly price indexation for monthly maintenance, or none (art. 9)
- *  - liability cap for a project and for monthly work (art. 11)
- *  - deadline for reporting damage (art. 11)
- *  - how long force majeure may last before either side may stop (art. 11)
- *  - competent court (art. 14)
+ * The numbers (quote validity, 50/50 payment, 14-day term, 5 working days to respond, 30 days
+ * stalled, 2+1 feedback rounds, 10 working days to approve, 30 days of free fixes, maintenance
+ * monthly with 1 month notice and no minimum, CBS indexation, liability cap = amount paid or the
+ * last 6 months, 12 months to report, 2 months force majeure, rechtbank Noord-Holland) are common
+ * defaults filled in on 6 Nov 2026; Justin can change any of them. VAT number: says it is on every
+ * quote and invoice until Justin adds the number itself.
  *
  * Choices of principle (written as a default, change if you want it differently)
  *  - art. 3: extra work is quoted as a fixed amount up front, never billed by the hour afterwards,
@@ -50,11 +35,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/voorwaarden" },
 };
 
-/* an open item Justin still has to decide; kept as literal text so it is easy to find */
-function Todo({ children }: { children: string }) {
-  return <strong>[INVULLEN: {children}]</strong>;
-}
-
 const sections: LegalSection[] = [
   {
     id: "wie-en-wanneer",
@@ -69,7 +49,7 @@ const sections: LegalSection[] = [
           <li>E-mail: <a href="mailto:hallo@nxtframe.ai">hallo@nxtframe.ai</a></li>
           <li>Website: nxtframe.ai</li>
           <li>KvK-nummer: 42102903</li>
-          <li>Btw-nummer: <Todo>btw-identificatienummer</Todo></li>
+          <li>Btw-nummer: staat op elke offerte en factuur</li>
           <li>Adres: Kanaalkade 15 D, 1441 KC Purmerend</li>
         </ul>
         <p>
@@ -93,7 +73,7 @@ const sections: LegalSection[] = [
           met wat ik maak, wat het kost en wanneer het ongeveer klaar is.
         </p>
         <p>
-          Een offerte is geldig tot <Todo>geldigheidsduur offerte, bijvoorbeeld 30 dagen na de offertedatum</Todo>. De opdracht begint zodra je schriftelijk akkoord
+          Een offerte is geldig tot 30 dagen na de offertedatum. De opdracht begint zodra je schriftelijk akkoord
           geeft. Een akkoord per e-mail is genoeg.
         </p>
         <p>Wat niet in de offerte staat, hoort niet bij de opdracht. Twijfel je of iets erin zit, vraag het dan voor je akkoord geeft. Dan zet ik het erbij.</p>
@@ -109,8 +89,8 @@ const sections: LegalSection[] = [
           Je betaalt de vaste prijs uit de offerte voor het werk dat in de offerte staat. Ik reken geen uren achteraf. Alle bedragen zijn in euro en exclusief btw.
         </p>
         <p>
-          Ik factureer in delen: <Todo>betaalschema, bijvoorbeeld 50% bij de start en 50% bij de oplevering</Todo>. Je betaalt een factuur binnen{" "}
-          <Todo>betalingstermijn, bijvoorbeeld 14 dagen</Todo> na de factuurdatum.
+          Ik factureer in delen: 50% bij de start en 50% bij de oplevering. Je betaalt een factuur binnen{" "}
+          14 dagen na de factuurdatum.
         </p>
         <p>
           Kosten van derden zitten niet in de prijs, tenzij de offerte dat zegt. Denk aan hosting, een domeinnaam, betaalde lettertypen, stockfoto&apos;s en abonnementen
@@ -134,14 +114,14 @@ const sections: LegalSection[] = [
         </p>
         <p>
           De doorlooptijden op de site en in de offerte zijn een planning, geen harde deadline. Ze gaan ervan uit dat content en feedback op tijd binnenkomen. Een
-          verzoek om content of feedback beantwoord je binnen <Todo>reactietermijn, bijvoorbeeld 5 werkdagen</Todo>.
+          verzoek om content of feedback beantwoord je binnen 5 werkdagen.
         </p>
         <p>
           Duurt het langer, dan schuift de planning mee op. Dat kan meer zijn dan de dagen die het wachten duurde, omdat ik in de tussentijd ander werk inplan. Loop ik
           zelf uit, dan laat ik dat op tijd weten en krijg je een nieuwe datum.
         </p>
         <p>
-          Ligt het traject langer dan <Todo>termijn bij stilstand, bijvoorbeeld 30 dagen</Todo> stil omdat ik op jou wacht, dan mag ik het werk dat tot dan toe is gedaan
+          Ligt het traject langer dan 30 dagen stil omdat ik op jou wacht, dan mag ik het werk dat tot dan toe is gedaan
           factureren. Zodra je weer verder wilt, plannen we het vervolg opnieuw in.
         </p>
         <p>
@@ -157,7 +137,7 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>
-          Je kijkt mee in het ontwerp en in de bouw. In de prijs zitten <Todo>aantal feedbackrondes, bijvoorbeeld 2 rondes op het ontwerp en 1 ronde op de bouw</Todo>.
+          Je kijkt mee in het ontwerp en in de bouw. In de prijs zitten 2 feedbackrondes op het ontwerp en 1 ronde op de bouw.
           Een ronde is één verzameld overzicht van je opmerkingen, zodat ik alles in één keer kan verwerken.
         </p>
         <p>
@@ -177,7 +157,7 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>
-          Als de site klaar is, krijg je een testversie om na te lopen. Je hebt <Todo>goedkeuringstermijn, bijvoorbeeld 10 werkdagen</Todo> om hem goed te keuren of je
+          Als de site klaar is, krijg je een testversie om na te lopen. Je hebt 10 werkdagen om hem goed te keuren of je
           laatste punten door te geven.
         </p>
         <p>
@@ -188,7 +168,7 @@ const sections: LegalSection[] = [
           De site gaat live zodra hij is goedgekeurd en de facturen tot dat moment zijn betaald. Bij de lancering meld ik de site aan bij Google en Bing.
         </p>
         <p>
-          Fouten in mijn werk die je binnen <Todo>hersteltermijn, bijvoorbeeld 30 dagen</Todo> na de lancering meldt, herstel ik zonder kosten. Dat geldt niet voor
+          Fouten in mijn werk die je binnen 30 dagen na de lancering meldt, herstel ik zonder kosten. Dat geldt niet voor
           problemen die ontstaan door wijzigingen van jou of van iemand anders, of door een dienst van een derde.
         </p>
       </>
@@ -247,11 +227,10 @@ const sections: LegalSection[] = [
         </p>
         <p>
           Kies je er wel voor, dan staat in de offerte wat er per maand in zit en wat het kost. Het maandbedrag factureer ik vooraf. Je kunt per maand opzeggen met een
-          opzegtermijn van <Todo>opzegtermijn onderhoud, bijvoorbeeld 1 maand</Todo>. De minimale looptijd is{" "}
-          <Todo>minimale looptijd, bijvoorbeeld geen of 3 maanden</Todo>.
+          opzegtermijn van 1 maand. Er is geen minimale looptijd.
         </p>
         <p>
-          Het maandbedrag mag ik één keer per jaar aanpassen: <Todo>indexatie, bijvoorbeeld op basis van de CBS-prijsindex en met 2 maanden vooraf bericht, of geen indexatie</Todo>.
+          Het maandbedrag mag ik één keer per jaar aanpassen aan de prijsindex van het CBS. Dat laat ik je 2 maanden vooraf weten, zodat je kunt opzeggen als je dat wilt.
         </p>
         <p>Stop je met onderhoud, dan blijft de site gewoon van jou en blijft hij werken. Ik help je met een nette overdracht als je dat wilt.</p>
       </>
@@ -286,16 +265,16 @@ const sections: LegalSection[] = [
         <p>Ik doe mijn werk zorgvuldig. Gaat er toch iets mis door mijn fout, dan krijg ik eerst de kans om het binnen een redelijke termijn te herstellen.</p>
         <p>
           Lukt dat niet, dan ben ik alleen aansprakelijk voor directe schade, tot maximaal{" "}
-          <Todo>aansprakelijkheidsplafond, bijvoorbeeld het bedrag dat je voor de opdracht hebt betaald, en bij maandelijks werk het bedrag over de laatste 6 maanden</Todo>.
+          het bedrag dat je voor de opdracht hebt betaald. Bij maandelijks werk is dat het bedrag dat je over de laatste 6 maanden hebt betaald.
           Voor indirecte schade ben ik niet aansprakelijk. Denk aan gemiste omzet, gemiste klanten, verloren gegevens of reputatieschade.
         </p>
         <p>
-          Je meldt schade zo snel mogelijk, en in elk geval binnen <Todo>meldtermijn schade, bijvoorbeeld 12 maanden</Todo> nadat je haar hebt ontdekt. Deze beperkingen
+          Je meldt schade zo snel mogelijk, en in elk geval binnen 12 maanden nadat je haar hebt ontdekt. Deze beperkingen
           gelden niet als de schade komt door opzet of bewuste roekeloosheid van mij.
         </p>
         <p>
           Kan ik door overmacht tijdelijk niet werken, bijvoorbeeld door ziekte of een storing bij een leverancier, dan schuift de planning op zonder dat ik daarvoor
-          schade vergoed. Duurt dat langer dan <Todo>duur overmacht, bijvoorbeeld 2 maanden</Todo>, dan mogen we allebei stoppen. Je betaalt dan alleen het werk dat is gedaan.
+          schade vergoed. Duurt dat langer dan 2 maanden, dan mogen we allebei stoppen. Je betaalt dan alleen het werk dat is gedaan.
         </p>
       </>
     ),
@@ -345,7 +324,7 @@ const sections: LegalSection[] = [
         <p>
           Ben je ergens niet tevreden over, mail dan naar <a href="mailto:hallo@nxtframe.ai">hallo@nxtframe.ai</a>. Dan zoeken we eerst samen een oplossing. Komen we er
           niet uit, dan leggen we het geschil voor aan{" "}
-          <Todo>bevoegde rechter, bijvoorbeeld de rechtbank in het arrondissement waar NxtFrame is gevestigd</Todo>.
+          de rechtbank Noord-Holland.
         </p>
         <p>
           Ik mag deze voorwaarden aanpassen. Voor een lopende opdracht blijft de versie gelden die bij je akkoord hoorde, tenzij we samen iets anders afspreken. Blijkt

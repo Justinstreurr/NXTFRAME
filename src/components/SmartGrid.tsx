@@ -124,7 +124,7 @@ const cards: Card[] = [
     tone: "sb-bg-studio text-forest",
     muted: "text-forest/70",
     span: "h-[560px] lg:row-span-2 lg:h-auto",
-    stage: "left-1/2 top-[34%] w-[130%] -translate-x-1/2 md:top-[30%]",
+    stage: "left-1/2 top-[38%] w-[64%] max-w-[300px] -translate-x-1/2 md:top-[34%] lg:top-[33%] lg:w-[88%] lg:max-w-none",
     film: (s) => <PhoneHand step={s} />,
   },
   {

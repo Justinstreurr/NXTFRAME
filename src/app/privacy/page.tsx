@@ -121,13 +121,13 @@ const sections: LegalSection[] = [
               <td>Laadsnelheid: hoe snel een pagina bij je verschijnt en reageert, met de pagina, het soort apparaat en browser en het land. Niet gekoppeld aan je naam of IP-adres</td>
               <td>Zien of de site bij echte bezoekers snel is, en dat verbeteren</td>
               <td>Gerechtvaardigd belang: een snelle site</td>
-              <td>[INVULLEN: bewaartermijn Vercel Speed Insights]</td>
+              <td>Anoniem; ik kijk tot 30 dagen terug</td>
             </tr>
             <tr>
               <td>IP-adres, tijdstip en opgevraagde pagina in de serverlogs</td>
               <td>De site afleveren, storingen oplossen en misbruik tegengaan</td>
               <td>Gerechtvaardigd belang: een veilige, werkende site</td>
-              <td>[INVULLEN: bewaartermijn serverlogs van de hostingpartij]</td>
+              <td>Maximaal 1 dag, daarna automatisch verwijderd</td>
             </tr>
           </tbody>
         </table>
@@ -197,13 +197,13 @@ const sections: LegalSection[] = [
             <strong>Contactformulier:</strong> Resend verstuurt je aanvraag naar mijn mailbox (servers in Ierland)
           </li>
           <li>
-            <strong>Opslag van aanvragen, projectgegevens en bezoekstatistieken:</strong> Supabase [INVULLEN: regio van het Supabase-project]
+            <strong>Opslag van aanvragen, projectgegevens en bezoekstatistieken:</strong> Supabase (servers in Londen; voor het Verenigd Koninkrijk heeft de Europese Commissie bepaald dat gegevens er net zo goed beschermd zijn als in de EU)
           </li>
           <li>
             <strong>E-mail:</strong> Google Workspace (Google Ireland Limited)
           </li>
           <li>
-            <strong>Facturen en boekhouding:</strong> [INVULLEN: boekhoudprogramma of boekhouder]
+            <strong>Facturen en boekhouding:</strong> mijn boekhoudprogramma. Wil je weten welk, mail me dan
           </li>
         </ul>
         <p>
@@ -234,7 +234,7 @@ const sections: LegalSection[] = [
             <strong>Bezoekstatistieken:</strong> 13 maanden. Oudere metingen worden automatisch verwijderd.
           </li>
           <li>
-            <strong>Serverlogs:</strong> [INVULLEN: bewaartermijn serverlogs van de hostingpartij]
+            <strong>Serverlogs:</strong> maximaal 1 dag. Mijn hostingpartij Vercel verwijdert ze daarna automatisch.
           </li>
         </ul>
         <p>Wil je dat ik iets eerder verwijder? Mail mij. Ik doe dat, tenzij de wet mij verplicht het te bewaren.</p>

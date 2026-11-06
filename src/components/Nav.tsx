@@ -48,9 +48,9 @@ export default function Nav({ theme = "cherry" }: { theme?: "cherry" | "hero" | 
         </Link>
         <MegaMenu items={menu} linkClass={link} floating={photo} />
         <div className="col-start-3 flex items-center gap-2 justify-self-end sm:gap-5">
-          <a href="/contact" className={`hidden text-[15px] font-medium min-[1400px]:block ${link}`}>
+          <Link href="/contact" className={`hidden text-[15px] font-medium min-[1400px]:block ${link}`}>
             Contact
-          </a>
+          </Link>
           {/* over a photo hero the button waits until the hero's own buttons have scrolled away */}
           <NavCta waitForHero={photo}>
             {/* on phones the full label didn't fit next to the logo and the menu button, and was cut off */}
