@@ -55,7 +55,7 @@ export default function Page() {
               <img src={img("foto-hero-kaartje")} alt="Een hand met het visitekaartje van Hypotheekhaven" className="aspect-square w-full object-cover" loading="lazy" />
             </Parallax>
             <Parallax speed={8} className="col-span-12 md:col-span-6 md:col-start-7 md:mt-8">
-              <img src={img("foto-woonkamer-breed")} alt="Een lichte woonkamer" className="aspect-[4/5] w-full rounded-[14px] object-cover" loading="lazy" />
+              <img src={img("foto-woonkamer-breed")} alt="Een lichte woonkamer" className="aspect-[4/5] w-full object-cover" loading="lazy" />
             </Parallax>
           </div>
         </Container>
@@ -79,7 +79,7 @@ export default function Page() {
               <img src={img("foto-sleutel")} alt="Een sleutel in een lege woning" className="aspect-[4/5] w-full object-cover" loading="lazy" />
             </Parallax>
             <Parallax speed={-4} className="col-span-8 md:col-span-5">
-              <img src={img("foto-planner-bank")} alt="Een planner op een gele bank" className="aspect-[4/5] w-full rounded-[14px] object-cover" loading="lazy" />
+              <img src={img("foto-planner-bank")} alt="Een planner op een gele bank" className="aspect-[4/5] w-full object-cover" loading="lazy" />
             </Parallax>
             <Parallax speed={10} className="col-span-6 col-start-4 -mt-16 md:col-span-4 md:col-start-auto md:mt-64">
               <img src={img("ui-review-0")} alt="Een review van Hypotheekhaven" className="w-full rounded-[10px] shadow-[0_30px_60px_-30px_rgba(0,0,0,0.4)]" loading="lazy" />

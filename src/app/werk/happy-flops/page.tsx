@@ -57,7 +57,7 @@ export default function Page() {
               <img src="/images/happyflops-phones.jpg" alt="Twee handen met telefoons waarop de webshop van Happy Flops staat" className="aspect-square w-full object-cover" loading="lazy" />
             </Parallax>
             <Parallax speed={8} className="col-span-12 md:col-span-6 md:col-start-7 md:mt-8">
-              <img src="/images/happyflops-grass.jpg" alt="De webshop van Happy Flops op een telefoon in het gras" className="aspect-[4/5] w-full rounded-[14px] object-cover" loading="lazy" />
+              <img src="/images/happyflops-grass.jpg" alt="De webshop van Happy Flops op een telefoon in het gras" className="aspect-[4/5] w-full object-cover" loading="lazy" />
             </Parallax>
           </div>
         </Container>
@@ -81,7 +81,7 @@ export default function Page() {
               <img src={reel("lp6")} alt="Een vrouw in Happy Flops op een terras in de sneeuw" className="aspect-[4/5] w-full object-cover" loading="lazy" />
             </Parallax>
             <Parallax speed={-4} className="col-span-8 md:col-span-5">
-              <img src="/images/happyflops-hero-2.jpg" alt="Een Happy Flops slipper op een groene bank" className="aspect-[4/5] w-full rounded-[14px] object-cover" loading="lazy" />
+              <img src="/images/happyflops-hero-2.jpg" alt="Een Happy Flops slipper op een groene bank" className="aspect-[4/5] w-full object-cover" loading="lazy" />
             </Parallax>
             <Parallax speed={10} className="col-span-6 col-start-4 -mt-16 md:col-span-4 md:col-start-auto md:mt-64">
               <div className="flex aspect-[5/4] items-center justify-center rounded-[10px] bg-[#f5f5f5] p-8">

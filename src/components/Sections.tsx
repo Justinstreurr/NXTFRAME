@@ -21,7 +21,7 @@ import ReviewCards, { Brand, type Review } from "./ReviewCards";
 import { FrameGlyph } from "./Logo";
 import { work } from "./workData";
 import { services, type ServiceCard } from "./services";
-import SmartBento from "./SmartBento";
+import SmartGrid from "./SmartGrid";
 
 /* ---------- The future of creative work ---------- */
 /* ---------- Wat je krijgt: the statement, the three pillars and "Slim gebouwd" in one section ---------- */
@@ -180,7 +180,7 @@ export function Pillars() {
             {pillars.map((p, i) => (
               <div
                 key={i}
-                className="pillar-demo absolute inset-0 overflow-hidden rounded-[14px] bg-paper ring-1 ring-forest/10 shadow-[0_28px_60px_-40px_rgba(2,38,30,0.6)]"
+                className="pillar-demo absolute inset-0 overflow-hidden bg-paper ring-1 ring-forest/10 shadow-[0_28px_60px_-40px_rgba(2,38,30,0.6)]"
               >
                 <p.Demo />
               </div>
@@ -306,7 +306,7 @@ export function Services({
   overlap?: boolean;
 } = {}) {
   return (
-    <section data-zone="cherry" className={`bg-cream py-12 text-forest md:py-32 ${overlap ? "relative z-20 -mt-12 rounded-t-[36px] md:-mt-16 md:rounded-t-[48px]" : ""}`}>
+    <section data-zone="cherry" className={`bg-cream py-12 text-forest md:py-32 ${overlap ? "relative z-20 -mt-12 md:-mt-16" : ""}`}>
       {/* centred heading, then the services as a quiet three-column list: an icon tile, the name
           and one line each. No cards, so the cream ground stays calm. */}
       <Container className="text-center">
@@ -771,22 +771,21 @@ export function SmartExtras() {
   return (
     <section data-zone="cherry" className="bg-cream py-12 text-forest md:py-32">
       <Container>
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-end lg:gap-20">
-          <div>
-            <Eyebrow className="max-w-xl">Meer dan een website</Eyebrow>
-            <h2 className="mt-6 t-section md:mt-8">
-              Een site die ook <span className="serif-italic">werk uit handen neemt</span>
-            </h2>
-          </div>
-          <p className="max-w-md text-forest/75 t-lead">
+        {/* the heading centred over the grid */}
+        <div className="text-center">
+          <Eyebrow className="mx-auto">Meer dan een website</Eyebrow>
+          <h2 className="mx-auto mt-6 max-w-4xl t-section md:mt-8">
+            Een site die ook <span className="serif-italic">werk uit handen neemt</span>
+          </h2>
+          <p className="mx-auto mt-6 max-w-xl text-forest/75 t-lead">
             Prijzen uitrekenen, offertes versturen, vragen beantwoorden en klanten opvolgen: het werk naast je werk. Ik bouw het erbij, zodat je site meer doet dan er goed uitzien.
           </p>
         </div>
-        {/* four tools as a bento grid, each with a small looping film of the tool at work (SmartBento) */}
+        {/* the tools as a bento grid of square colour blocks, each with the tool at work (SmartGrid) */}
         <div className="mt-12 md:mt-16">
-          <SmartBento />
+          <SmartGrid />
         </div>
-        <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-center">
           <TextLink href="/contact">Vraag wat er kan voor jouw bedrijf</TextLink>
           <p className="text-[15px] text-forest/70">Iets anders in gedachten? Vraag het gerust, dan zoek ik uit of het kan.</p>
         </div>
@@ -825,7 +824,7 @@ export function Prices() {
             const c = priceTones[i % priceTones.length];
             return (
               <li key={t.name} className={t.highlight ? "order-first lg:order-none lg:-my-4" : ""}>
-                <a href="/prijzen" className={`group flex h-full flex-col rounded-[14px] p-6 md:p-8 ${c.card} ${t.highlight ? "lg:pb-12 lg:pt-12" : ""}`}>
+                <a href="/prijzen" className={`group flex h-full flex-col p-6 md:p-8 ${c.card} ${t.highlight ? "lg:pb-12 lg:pt-12" : ""}`}>
                   <span className="flex items-center justify-between gap-4">
                     <span className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] ${c.pill}`}>
                       <FrameGlyph className="size-2.5" />

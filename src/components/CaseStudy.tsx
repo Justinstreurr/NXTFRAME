@@ -115,7 +115,7 @@ export function CasePhone({ src, alt = "", className = "", eager = false }: { sr
 /** the coloured ground a visual stands on, full width of the container */
 export function CasePanel({ children, className = "", style }: { children: ReactNode; className?: string; style?: CSSProperties }) {
   return (
-    <div className={`relative overflow-hidden rounded-[14px] ${className}`} style={style}>
+    <div className={`relative overflow-hidden ${className}`} style={style}>
       {children}
     </div>
   );
@@ -335,7 +335,7 @@ export default function CaseStudy({ data: c }: { data: CaseData }) {
           window's edges (CaseHeroGround) */}
       <section data-zone="green" className="relative isolate bg-cream p-2 md:p-3">
         <CaseHeroGround
-          className={`absolute inset-x-2 top-2 -z-10 overflow-hidden rounded-[18px] md:inset-x-3 md:top-3 ${c.heroVisual ? "bottom-[100px] md:bottom-[200px] lg:bottom-[240px]" : "bottom-2 md:bottom-3"}`}
+          className={`absolute inset-x-2 top-2 -z-10 overflow-hidden md:inset-x-3 md:top-3 ${c.heroVisual ? "bottom-[100px] md:bottom-[200px] lg:bottom-[240px]" : "bottom-2 md:bottom-3"}`}
           style={c.heroBg}
         >
           <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/5 to-transparent" />
@@ -431,7 +431,7 @@ export default function CaseStudy({ data: c }: { data: CaseData }) {
             </figure>
           )}
           {c.closing && (
-            <div className="mt-14 overflow-hidden rounded-[14px] md:mt-32">
+            <div className="mt-14 overflow-hidden md:mt-32">
               <img src={c.closing.src} alt={c.closing.alt} className="aspect-[4/3] w-full object-cover md:aspect-[16/8]" style={c.closing.pos ? { objectPosition: c.closing.pos } : undefined} loading="lazy" decoding="async" />
             </div>
           )}

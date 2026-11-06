@@ -16,7 +16,7 @@ const R = "/images/hf-reel/";
 
 function Tile({ label, children, className = "", bg = "#fff" }: { label: string; children: ReactNode; className?: string; bg?: string }) {
   return (
-    <div data-card className={`relative flex h-[340px] w-[82%] shrink-0 snap-start flex-col items-center justify-center rounded-[14px] px-4 pb-12 pt-8 md:h-auto md:w-auto text-[#111] ${className}`} style={{ background: bg }}>
+    <div data-card className={`relative flex h-[340px] w-[82%] shrink-0 snap-start flex-col items-center justify-center px-4 pb-12 pt-8 md:h-auto md:w-auto text-[#111] ${className}`} style={{ background: bg }}>
       {/* the moving piece is a picture of the client's site, not controls: out of reach for keys and screen readers */}
       <div className="flex flex-1 items-center justify-center" inert aria-hidden="true">{children}</div>
       <p className="absolute inset-x-0 bottom-5 text-center text-[15px] text-black/60 md:bottom-6 md:text-base">{label}</p>

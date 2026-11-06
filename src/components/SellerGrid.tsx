@@ -110,7 +110,7 @@ function Cell({ item, index }: { item: SiteFeature; index: number }) {
   return (
     <li ref={ref} onMouseEnter={play} className="relative overflow-hidden bg-sand px-8 py-12 text-center md:py-14">
       <canvas ref={canvas} className="pointer-events-none absolute inset-0 size-full" aria-hidden="true" />
-      <span className="relative mx-auto grid size-12 place-items-center rounded-[14px] bg-paper shadow-[0_1px_0_rgba(255,255,255,0.9)_inset,0_8px_18px_-10px_rgba(2,38,30,0.35)] ring-1 ring-forest/[0.08]">
+      <span className="relative mx-auto grid size-12 place-items-center bg-paper shadow-[0_1px_0_rgba(255,255,255,0.9)_inset,0_8px_18px_-10px_rgba(2,38,30,0.35)] ring-1 ring-forest/[0.08]">
         <SellerIcon name={item.icon} />
       </span>
       <h3 className="relative mt-6 font-display text-lg font-semibold tracking-tight md:text-xl">{item.title}</h3>

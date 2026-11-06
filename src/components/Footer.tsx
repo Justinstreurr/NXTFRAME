@@ -72,7 +72,7 @@ export default function Footer({ cta = true, flat = false }: { cta?: boolean; fl
       {/* Footer: a forest panel with rounded shoulders that slides up over the lime field and widens
           as it rises (FooterPanel) */}
       <FooterPanel>
-      <footer className="relative rounded-t-[36px] bg-forest text-paper md:rounded-t-[48px]">
+      <footer className="relative bg-forest text-paper">
         <div className="mx-auto w-full max-w-(--site-max) px-6 pb-12 md:pb-16 pt-16 md:px-12 md:pt-24 xl:px-20">
         <div className="grid grid-cols-2 gap-x-6 gap-y-12 border-t border-paper/20 pt-8 sm:gap-16 lg:grid-cols-[1.2fr_1fr_1fr_1.2fr] lg:gap-10">
           <Col name="Diensten" items={diensten} arrow={false} href="/diensten" />

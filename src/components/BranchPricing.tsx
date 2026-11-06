@@ -52,7 +52,7 @@ export default function BranchPricing({
             const c = tones[i % tones.length];
             return (
               <li key={w.name} className={w.highlight ? "order-first lg:order-none lg:-my-4" : ""}>
-                <a href="/contact" className={`group flex h-full flex-col rounded-[14px] p-6 md:p-8 ${c.card} ${w.highlight ? "lg:pb-12 lg:pt-12" : ""}`}>
+                <a href="/contact" className={`group flex h-full flex-col p-6 md:p-8 ${c.card} ${w.highlight ? "lg:pb-12 lg:pt-12" : ""}`}>
                   <span className="flex items-center justify-between gap-4">
                     <span className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] ${c.pill}`}>
                       <FrameGlyph className="size-2.5" />

@@ -111,10 +111,10 @@ export const branchPages: Record<string, BranchPageData> = {
     ],
     features: [
       { icon: "sold", title: "Projecten als bewijs", body: "Echte foto's, voor en na, wat de klus inhield en wat de klant ervan vond.", result: "Vertrouwen vóór het inmeten" },
-      { icon: "cost", title: "Offerte met foto's", body: "Een aanvraag die met één hand op een telefoon in te vullen is, met foto's van de situatie.", result: "Minder ritjes voor niets" },
+      { icon: "cost", title: "Offerte met foto's", body: "Een aanvraag die met één hand op een telefoon in te vullen is. De klant stuurt foto's mee, zodat jij vooraf ziet waar je aan begint.", result: "Minder ritjes voor niets" },
       { icon: "area", title: "Een pagina per dienst en plaats", body: "Van badkamer tot warmtepomp, per werkgebied een eigen pagina met echte inhoud.", result: "Gevonden op de klus die je wilt" },
       { icon: "read", title: "Certificeringen en garanties", body: "VCA, Sterkin, KOMO of je garantieregeling op een vaste, zichtbare plek.", result: "Zekerheid bij een grote klus" },
-      { icon: "value", title: "Offertes en facturen klaargezet", body: "De tool zoekt je prijzen, materialen en de gegevens uit de aanvraag erbij en zet de offerte klaar, na akkoord ook de factuur. Jij kijkt het na en verstuurt.", result: "Geen papierwerk meer 's avonds" },
+      { icon: "value", title: "Offertes en facturen klaargezet", body: "Een aanvraag via je site wordt meteen een concept-offerte met jouw prijzen en materialen. Jij kijkt het na en verstuurt. Bij akkoord maak je er met één klik de factuur van.", result: "Geen papierwerk meer 's avonds" },
       { icon: "edit", title: "Zelf projecten toevoegen", body: "Foto's en een paar regels tekst vanaf je telefoon, in een paar minuten.", result: "Je portfolio groeit mee" },
     ],
     heroLead: "Voor aannemers, installateurs en vakmensen. Je opgeleverde werk staat erop, en een offerte aanvragen kan 's avonds met een paar foto's erbij. Jij belt terug als het jou uitkomt.",

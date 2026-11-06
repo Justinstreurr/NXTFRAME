@@ -90,7 +90,7 @@ export default function LiveShowcase({
             <a
               key={p.title}
               href={`${liveUrl}${p.path}`}
-              className={`group relative flex h-[460px] flex-col overflow-hidden rounded-[14px] md:h-[520px] ${p.tone} ${p.span}`}
+              className={`group relative flex h-[460px] flex-col overflow-hidden md:h-[520px] ${p.tone} ${p.span}`}
             >
               <div className="relative z-10 max-w-md p-7 md:p-9">
                 <p className={`text-sm font-medium ${p.muted}`}>{p.label}</p>

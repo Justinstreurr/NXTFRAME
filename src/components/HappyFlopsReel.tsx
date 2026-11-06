@@ -205,7 +205,7 @@ export default function HappyFlopsReel() {
   }, [playing, i, run]);
 
   return (
-    <div ref={box} className="relative aspect-[3/2] w-full overflow-hidden rounded-[14px] bg-black [container-type:inline-size]" role="img" aria-label="Showreel van Happy Flops: het logo, campagnebeelden, slippers in alle kleuren en de schermen van de nieuwe webshop">
+    <div ref={box} className="relative aspect-[3/2] w-full overflow-hidden bg-black [container-type:inline-size]" role="img" aria-label="Showreel van Happy Flops: het logo, campagnebeelden, slippers in alle kleuren en de schermen van de nieuwe webshop">
       <div key={`${i}-${run}`} className="absolute inset-0" style={{ "--d": `${scenes[i].d}s` } as CSSProperties}>
         {scenes[i].el}
       </div>

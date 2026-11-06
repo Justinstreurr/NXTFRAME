@@ -282,9 +282,9 @@ export const branches: Branch[] = [
     ],
     musts: [
       { title: "Je werk als bewijs", body: "Projectpagina's met echte foto's, voor en na, wat de klus inhield en wat de klant ervan vond. Dat overtuigt meer dan elke tekst over vakmanschap." },
-      { title: "Offerte in een minuut", body: "Een aanvraagformulier dat met één hand op een telefoon in te vullen is, met foto-upload van de situatie, zodat je kunt inschatten zonder eerst langs te rijden." },
+      { title: "Offerte in een minuut", body: "Een aanvraagformulier dat met één hand op een telefoon in te vullen is. De klant kan er een paar foto's bij doen, bijvoorbeeld van de oude badkamer of de meterkast, zodat jij vooraf ziet waar je aan begint." },
       { title: "Gevonden per dienst en plaats", body: "Van badkamer renoveren tot warmtepomp installeren, elke dienst een eigen pagina per werkgebied, zodat je gevonden kunt worden op de klussen die je het liefst doet." },
-      { title: "Offertes en facturen klaargezet", body: "Een hulpmiddel achter je site dat het uitzoekwerk doet: het haalt je prijzen, materialen en de gegevens en foto's uit de aanvraag erbij en zet een offerte klaar. Na akkoord maakt het de factuur. Jij kijkt alles na voordat het de deur uitgaat." },
+      { title: "Offertes en facturen klaargezet", body: "Vraagt een klant een offerte aan via je site, dan staat er meteen een concept klaar, met jouw vaste prijzen en materialen en de gegevens van de klant. Jij kijkt het na, past aan wat anders is en verstuurt. Zegt de klant ja, dan maak je er met één klik de factuur van." },
     ],
     price: { from: "4.500", span: "8 tot 12 weken", note: "Inclusief projectpagina's, een offerteformulier met foto-upload, een offerte- en factuurtool en een pagina per dienst en werkgebied." },
     faq: [
@@ -314,7 +314,7 @@ export const branches: Branch[] = [
       },
       {
         q: "Gaan offertes en facturen dan vanzelf de deur uit?",
-        a: "Nee, en dat is bewust. De tool doet het zoek- en rekenwerk: je prijzen en materialen, de gegevens van de klant en de foto's uit de aanvraag. Daarmee zet hij de offerte klaar, en na akkoord de factuur. Jij kijkt het na, past aan wat afwijkt en verstuurt het zelf. Werk je met een boekhoudpakket, dan koppel ik het eraan.",
+        a: "Nee, en dat is bewust. Het werkt in vier stappen. Een klant vraagt een offerte aan via je site. De tool zet er een concept van klaar, met jouw vaste prijzen en materialen en de gegevens van de klant. Jij kijkt het na, past aan wat anders is en verstuurt het zelf. Zegt de klant ja, dan maak je er met één klik een factuur van, die je ook eerst nakijkt. Werk je met een boekhoudpakket, dan koppel ik het eraan.",
       },
     ],
   },
@@ -553,5 +553,6 @@ export const menu: MenuItem[] = [
   },
   { label: "Prijzen", href: "/prijzen" },
   { label: "Aanpak", href: "/aanpak" },
+  { label: "Blog", href: "/blog" },
   { label: "Over", href: "/over" },
 ];

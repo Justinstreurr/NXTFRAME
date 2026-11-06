@@ -230,7 +230,7 @@ export default function Page() {
                 const c = tones[i % tones.length];
                 return (
                   <li key={t.name} className={t.highlight ? "order-first lg:order-none lg:-my-4" : ""}>
-                    <article className={`flex h-full flex-col rounded-[14px] p-6 md:p-8 ${c.card} ${t.highlight ? "lg:pb-12 lg:pt-12" : ""}`}>
+                    <article className={`flex h-full flex-col p-6 md:p-8 ${c.card} ${t.highlight ? "lg:pb-12 lg:pt-12" : ""}`}>
                       <div className="flex items-center justify-between gap-4">
                         <h3 className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] ${c.pill}`}>
                           <FrameGlyph className="size-2.5" />
@@ -295,39 +295,39 @@ export default function Page() {
 
             <MoreOnMobile show={3} label={"Toon alles wat erbij zit"} as="ul" className="mt-12 grid gap-4 sm:grid-cols-2 md:mt-12 md:gap-5 lg:grid-cols-12 lg:grid-rows-[repeat(3,250px)]">
               {/* tall, picture on top */}
-              <li className="flex flex-col overflow-hidden rounded-[14px] bg-[#fcbbb9] text-[#440220] lg:col-span-4 lg:row-span-2">
-                <img src="/images/slim-palette.webp" alt="" className="aspect-[4/3] w-full rounded-[14px] object-cover object-[50%_30%] lg:aspect-auto lg:min-h-0 lg:flex-1" loading="lazy" decoding="async" />
+              <li className="flex flex-col overflow-hidden bg-[#fcbbb9] text-[#440220] lg:col-span-4 lg:row-span-2">
+                <img src="/images/slim-palette.webp" alt="" className="aspect-[4/3] w-full object-cover object-[50%_30%] lg:aspect-auto lg:min-h-0 lg:flex-1" loading="lazy" decoding="async" />
                 <IncludedCopy label="Ontwerp" item={always[2]} tone="wine" className="p-6 md:p-8" />
               </li>
 
               {/* wide, picture on the right */}
-              <li className="flex flex-col gap-6 rounded-[14px] bg-[#440220] p-6 text-[#fcbbb9] sm:col-span-2 sm:flex-row sm:items-center md:p-8 lg:col-span-8">
+              <li className="flex flex-col gap-6 bg-[#440220] p-6 text-[#fcbbb9] sm:col-span-2 sm:flex-row sm:items-center md:p-8 lg:col-span-8">
                 <IncludedCopy label="Samenwerken" item={always[5]} tone="blush" className="flex-1" />
                 <img src="/images/slim-choice.webp" alt="" className="aspect-[4/3] w-full rounded-3xl object-cover object-[40%_35%] sm:aspect-square sm:w-[38%] lg:w-auto lg:self-stretch" loading="lazy" decoding="async" />
               </li>
 
               {/* the copy over the picture */}
-              <li className="relative isolate flex min-h-[300px] flex-col justify-end overflow-hidden rounded-[14px] bg-forest text-cream lg:col-span-4 lg:min-h-0">
+              <li className="relative isolate flex min-h-[300px] flex-col justify-end overflow-hidden bg-forest text-cream lg:col-span-4 lg:min-h-0">
                 <img src="/images/slim-desk.webp" alt="" className="absolute inset-0 -z-20 size-full object-cover object-[50%_35%]" loading="lazy" decoding="async" />
                 <span className="absolute inset-0 -z-10 bg-gradient-to-t from-forest via-forest/60 to-transparent" aria-hidden="true" />
                 <IncludedCopy label="Snelheid" item={always[0]} tone="light" className="p-6 md:p-8" />
               </li>
 
               {/* tall, picture on top, on forest */}
-              <li className="flex flex-col overflow-hidden rounded-[14px] bg-forest text-cream lg:col-span-4 lg:row-span-2">
-                <img src="/images/slim-search.webp" alt="" className="aspect-[4/3] w-full rounded-[14px] object-cover object-[50%_40%] lg:aspect-auto lg:min-h-0 lg:flex-1" loading="lazy" decoding="async" />
+              <li className="flex flex-col overflow-hidden bg-forest text-cream lg:col-span-4 lg:row-span-2">
+                <img src="/images/slim-search.webp" alt="" className="aspect-[4/3] w-full object-cover object-[50%_40%] lg:aspect-auto lg:min-h-0 lg:flex-1" loading="lazy" decoding="async" />
                 <IncludedCopy label="Vindbaarheid" item={always[1]} tone="light" className="p-6 md:p-8" />
               </li>
 
               {/* the copy over the picture, again */}
-              <li className="relative isolate flex min-h-[300px] flex-col justify-end overflow-hidden rounded-[14px] bg-[#440220] text-[#fcbbb9] lg:col-span-4 lg:min-h-0">
+              <li className="relative isolate flex min-h-[300px] flex-col justify-end overflow-hidden bg-[#440220] text-[#fcbbb9] lg:col-span-4 lg:min-h-0">
                 <img src="/images/over-mascot.webp" alt="" className="absolute inset-0 -z-20 size-full object-cover object-[40%_40%]" loading="lazy" decoding="async" />
                 <span className="absolute inset-0 -z-10 bg-gradient-to-t from-[#440220] via-[#440220]/65 to-transparent" aria-hidden="true" />
                 <IncludedCopy label="Beheer" item={always[3]} tone="blush" className="p-6 md:p-8" />
               </li>
 
               {/* plain lime, with the two search engines the site is signed up with as tiles in the corner */}
-              <li className="relative flex min-h-[220px] flex-col justify-end rounded-[14px] bg-lime p-6 md:p-8 lg:col-span-4 lg:min-h-0">
+              <li className="relative flex min-h-[220px] flex-col justify-end bg-lime p-6 md:p-8 lg:col-span-4 lg:min-h-0">
                 <span className="absolute right-6 top-6 flex -space-x-2 md:right-8 md:top-8">
                   <span className="grid size-11 place-items-center rounded-full bg-paper ring-2 ring-lime">
                     <img src="/images/logos/google.webp" alt="Google" className="h-5 w-auto" loading="lazy" decoding="async" />
@@ -369,7 +369,7 @@ export default function Page() {
 
             <ul className="mt-12 grid gap-5 md:mt-16 lg:grid-cols-2">
               {after.map((a) => (
-                <li key={a.title} className={`flex flex-col rounded-[14px] p-6 md:p-10 ${a.highlight ? "bg-lime text-forest" : "bg-paper/[0.06] text-paper ring-1 ring-paper/15"}`}>
+                <li key={a.title} className={`flex flex-col p-6 md:p-10 ${a.highlight ? "bg-lime text-forest" : "bg-paper/[0.06] text-paper ring-1 ring-paper/15"}`}>
                   <span className={`w-fit rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] ${a.highlight ? "bg-forest text-lime" : "border border-paper/25 text-paper/80"}`}>
                     {a.label}
                   </span>

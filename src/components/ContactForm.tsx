@@ -68,7 +68,7 @@ export default function ContactForm() {
 
   if (state.status === "sent") {
     return (
-      <div className="rounded-[14px] bg-forest p-8 text-cream md:p-12" role="status">
+      <div className="bg-forest p-8 text-cream md:p-12" role="status">
         <span className="grid size-12 place-items-center rounded-full bg-lime text-forest">
           <FrameGlyph className="size-5" />
         </span>
@@ -90,7 +90,7 @@ export default function ContactForm() {
   )}`;
 
   return (
-    <form action={action} noValidate className="rounded-[14px] bg-paper p-6 ring-1 ring-forest/10 md:p-10">
+    <form action={action} noValidate className="bg-paper p-6 ring-1 ring-forest/10 md:p-10">
       <div className="grid gap-6 sm:grid-cols-2">
         <Field name="naam" label="Naam" state={state}>
           {(p) => <input {...p} type="text" autoComplete="name" required />}

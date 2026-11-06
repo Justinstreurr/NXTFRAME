@@ -104,7 +104,7 @@ export default function MegaMenu({
 
   return (
     <>
-      <nav ref={findHost} className="col-start-2 hidden items-center gap-8 justify-self-center lg:flex" aria-label="Main">
+      <nav ref={findHost} className="col-start-2 hidden items-center gap-5 justify-self-center lg:flex xl:gap-8" aria-label="Main">
         {items.map((i) => {
           // while a menu is open the other links step back, so the open one reads as the heading of the sheet
           const dim = active && active.label !== i.label ? "opacity-45!" : "";
@@ -135,7 +135,7 @@ export default function MegaMenu({
         host &&
         createPortal(
           <div
-            className="mega-sheet absolute inset-x-0 top-0 -z-10 hidden rounded-b-[48px] bg-cream text-forest lg:block"
+            className="mega-sheet absolute inset-x-0 top-0 -z-10 hidden bg-cream text-forest lg:block"
             onBlur={(e) => {
               if (!e.currentTarget.contains(e.relatedTarget as Node)) hide();
             }}

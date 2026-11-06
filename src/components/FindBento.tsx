@@ -178,7 +178,7 @@ export default function FindBento({ content }: { content: FindContent }) {
     <div ref={host}>
       <MoreOnMobile show={2} label={`Toon alle ${cards.length} plekken`} className="grid gap-4 md:gap-5 lg:grid-cols-12">
       {cards.map((c) => (
-        <article key={c.title} className={`relative overflow-hidden rounded-[14px] ${c.bg} ${c.text} ${c.box}`}>
+        <article key={c.title} className={`relative overflow-hidden ${c.bg} ${c.text} ${c.box}`}>
           <div className={`relative z-10 p-7 md:p-9 ${c.copy}`}>
             <p className={`flex items-center gap-2.5 text-sm font-medium ${c.muted}`}>
               <span className="grid size-8 place-items-center rounded-lg bg-white shadow-[0_6px_14px_-8px_rgba(2,38,30,0.35)]">

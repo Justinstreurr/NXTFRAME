@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  /* one corner for every card and photo: 14px. rounded-2xl and rounded-3xl both land on it, so a
-     card and the photo inside it share the same curve. Pills and circles (rounded-full) and the
-     phone frames in the mockups keep their own radius. */
-  --radius-2xl: 14px;
-  --radius-3xl: 14px;
+  /* square corners on every card, panel and photo: rounded-2xl and rounded-3xl both land on 0, so
+     every colour block on the site stands straight. Pills and circles (rounded-full), buttons and
+     the phone frames in the mockups keep their own radius. */
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
   /* brand palette: cream (page), sand (quiet surfaces), paper (cards, light type), lime, forest */
   --color-cream: #f7f1e8;
   --color-sand: #f2e7df;
@@ -2073,3 +2073,4 @@ html[data-statement-sand] .slim-bg { background-color: var(--color-sand); }
 @keyframes orb-z { from { z-index: 1; } to { z-index: 20; } }
 .wheel-paused :is(.orb, .orb-x, .orb-y) { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) { :is(.orb, .orb-x, .orb-y) { animation-play-state: paused; } }
+

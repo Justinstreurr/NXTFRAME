@@ -87,7 +87,7 @@ const pipes = [
   { name: "Boekhouding", d: "M350 105 V70 Q350 40 380 40 H760", at: [455, 40] },
 ];
 
-function Connections({ step, near }: { step: number; near: boolean }) {
+export function Connections({ step, near }: { step: number; near: boolean }) {
   const active = step % pipes.length;
   return (
     <svg viewBox="0 0 700 350" preserveAspectRatio="xMidYMax slice" className="size-full" aria-hidden="true">
@@ -138,7 +138,7 @@ function Connections({ step, near }: { step: number; near: boolean }) {
 /* where the screen sits in public/images/laptop-assistent.webp, in % of the image (measured from the render) */
 const SCREEN = { left: 13.82, top: 8.18, width: 72.43, height: 74.6 };
 
-function LaptopChat({ step }: { step: number }) {
+export function LaptopChat({ step }: { step: number }) {
   const dots = (
     <span className="flex gap-[0.3em] py-[0.3em]" aria-hidden="true">
       {[0, 1, 2].map((d) => <span key={d} className="sb-dot size-[0.45em] rounded-full bg-cream/70" style={{ animationDelay: `${d * 150}ms` }} />)}
@@ -196,7 +196,7 @@ const CORNERS: [number, number][] = [[324.7, 168.3], [525.6, 178.3], [432.3, 640
 
 const PHONE_MATRIX = quadMatrix(SCREEN_PX.w, SCREEN_PX.h, CORNERS);
 
-function PhoneHand({ step }: { step: number }) {
+export function PhoneHand({ step }: { step: number }) {
   // the photo scales with the card; the screen layer is laid out at photo size and scaled along
   const box = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(0.6);
@@ -317,7 +317,7 @@ export default function SmartBento() {
     <div ref={host}>
       <MoreOnMobile show={2} label="Toon nog 2 voorbeelden" className="grid gap-4 md:gap-5 lg:grid-cols-12">
       {cards.map((c) => (
-        <article key={c.title} className={`relative ${c.h ?? "h-[560px]"} overflow-hidden rounded-[14px] ${c.bg} ${c.text} ${c.span}`}>
+        <article key={c.title} className={`relative ${c.h ?? "h-[560px]"} overflow-hidden ${c.bg} ${c.text} ${c.span}`}>
           <div className="relative z-10 p-7 md:p-9">
             <h3 className="font-display text-[2rem] font-semibold leading-[1.05] tracking-[-0.02em] md:text-[2.25rem]">{c.title}</h3>
             <p className={`mt-3 max-w-md text-[15px] leading-relaxed md:text-base ${c.muted}`}>{c.body}</p>

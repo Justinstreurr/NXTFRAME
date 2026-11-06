@@ -56,7 +56,7 @@ export function CaseDarkTitle({ children }: { children: ReactNode }) {
   );
 }
 
-export const panel = "overflow-hidden rounded-[14px] bg-[#f1f1f1]";
+export const panel = "overflow-hidden bg-[#f1f1f1]";
 
 /** a full-page screenshot scrolling by itself on a monitor, on a light panel */
 export function CaseDarkMonitor({ src, alt, to = "-83%" }: { src: string; alt: string; to?: string }) {
@@ -105,7 +105,7 @@ export function CaseDarkNote({ title, children }: { title: string; children: Rea
 export function CaseDarkPhoto({ src, alt, ratio = "3/2" }: { src: string; alt: string; ratio?: string }) {
   return (
     <Container>
-      <Pausable className="overflow-hidden rounded-[14px]">
+      <Pausable className="overflow-hidden">
         <img src={src} alt={alt} className="hfd-move w-full object-cover" style={{ aspectRatio: ratio, animation: "hfd-float 14s ease-in-out infinite alternate", "--x0": "0%", "--x1": "0%", "--s": "1.04" } as CSSProperties} loading="lazy" />
       </Pausable>
     </Container>
@@ -117,7 +117,7 @@ export function CaseDarkField({ cards }: { cards: { src: string; x: number; y: n
   return (
     // phones skip the field: at that width its min-height forced a 756px wide box (sideways scroll) and the cards were too small to read
     <Container className="hidden pt-24 md:block md:pt-40">
-      <Pausable className="relative aspect-[2.7/1] min-h-[280px] overflow-hidden rounded-[14px] bg-black">
+      <Pausable className="relative aspect-[2.7/1] min-h-[280px] overflow-hidden bg-black">
         {cards.map((c) => (
           <div key={c.src + c.x} className="absolute" style={{ left: `${c.x}%`, top: `${c.y}%`, width: `${c.w}%`, zIndex: Math.round((1 - c.z) * 10) }}>
             <div className="hfd-move overflow-hidden rounded-[4px] bg-white" style={{ filter: `blur(${(c.z * 7).toFixed(1)}px) brightness(${(1 - c.z * 0.45).toFixed(2)})`, animation: `hfd-float ${(16 + c.z * 18).toFixed(0)}s ease-in-out infinite alternate`, "--x0": `${10 - c.z * 6}%`, "--x1": `${-10 + c.z * 6}%` } as CSSProperties}>

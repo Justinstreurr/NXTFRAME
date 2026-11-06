@@ -184,7 +184,7 @@ export default function ServicesFlow() {
                     <div key={b.label} className="orb" style={{ "--p": i / build.length } as CSSProperties}>
                       <div className="orb-x size-full">
                         <div className="orb-y size-full">
-                          <div className="relative size-full overflow-hidden rounded-[20px] bg-forest md:rounded-[26px]">
+                          <div className="relative size-full overflow-hidden bg-forest">
                             <img src={b.img} alt="" width={800} height={1000} className="size-full object-cover" loading="lazy" decoding="async" />
                             <span className="absolute inset-x-0 bottom-0 h-1/2 bg-[linear-gradient(to_top,rgb(0_0_0/0.6),transparent)]" />
                             <span className="absolute bottom-2 left-2 flex items-center gap-1.5 rounded-lg bg-white p-1.5 text-[11px] font-semibold leading-tight text-forest md:bottom-3 md:left-3 md:right-3 md:gap-2 md:rounded-xl md:px-2.5 md:py-1.5 md:text-[13px]">
