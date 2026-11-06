@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { morePosts } from "./blogPostsMore";
 
 /* ---------- Blog: the articles on /blog ----------
    Each article answers one real search question (checked against Google's suggestions when it was
@@ -37,7 +38,7 @@ const Scroll = ({ label, children }: { label: string; children: ReactNode }) => 
 
 const A = ({ href, children }: { href: string; children: ReactNode }) => <a href={href}>{children}</a>;
 
-export const posts: BlogPost[] = [
+const firstPosts: BlogPost[] = [
   {
     slug: "wat-kost-een-website-laten-maken",
     title: "Wat kost een website laten maken in 2026?",
@@ -599,6 +600,9 @@ export const posts: BlogPost[] = [
     ],
   },
 ];
+
+/** every article; the hub sorts them by date */
+export const posts: BlogPost[] = [...firstPosts, ...morePosts];
 
 export const postHref = (p: BlogPost) => `/blog/${p.slug}`;
 

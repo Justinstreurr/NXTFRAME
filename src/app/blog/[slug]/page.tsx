@@ -37,7 +37,9 @@ const prose =
   "[&_a]:border-b [&_a]:border-forest/30 [&_a]:font-medium [&_a]:text-forest [&_a]:transition-colors hover:[&_a]:border-forest " +
   "[&_h3]:mt-8 [&_h3]:font-display [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:text-forest [&_h3+p]:mt-2 " +
   "[&_div+p]:mt-5 [&_table]:w-full max-md:[&_td]:min-w-[10rem] max-md:[&_th]:min-w-[10rem] [&_table]:text-left [&_table]:text-[15px] [&_th]:border-b [&_th]:border-forest/15 [&_th]:py-3 [&_th]:pr-4 [&_th]:font-semibold [&_th]:text-forest " +
-  "[&_td]:border-b [&_td]:border-forest/10 [&_td]:py-3 [&_td]:pr-4 [&_td]:align-top";
+  "[&_td]:border-b [&_td]:border-forest/10 [&_td]:py-3 [&_td]:pr-4 [&_td]:align-top " +
+  "[&_blockquote]:mt-4 [&_blockquote]:border-l-2 [&_blockquote]:border-forest/30 [&_blockquote]:bg-paper [&_blockquote]:p-5 [&_blockquote]:text-[15px] [&_blockquote+p]:mt-4 " +
+  "[&_code]:bg-forest/[0.06] [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:text-[0.9em] [&_code]:text-forest";
 
 /**
  * One article: breadcrumb, subject, title and the short answer as the lead, the author and dates,
