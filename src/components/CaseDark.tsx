@@ -149,7 +149,7 @@ export function CaseDarkDevices({ site, page, desktop, mobile }: { site: string;
 }
 
 /** "Resultaat:" and giant words that fill in as they scroll by */
-export function CaseDarkResult({ words }: { words: string[] }) {
+export function CaseDarkResult({ words, facts }: { words: string[]; /** what concretely changed, checkable on the live site */ facts?: string[] }) {
   return (
     <section className="overflow-hidden pb-16 md:pb-40">
       <p className="text-center font-mono text-xs uppercase tracking-[0.12em] opacity-70">Resultaat:</p>
@@ -157,6 +157,16 @@ export function CaseDarkResult({ words }: { words: string[] }) {
       <div style={{ fontSize: `min(17rem, calc((100vw - 2rem) / ${(Math.max(...words.map((w) => w.length)) * 0.66).toFixed(2)}))` }}>
         <FillWords words={words} className="mt-8 text-center font-display font-extrabold uppercase leading-[0.82] tracking-[-0.05em]" />
       </div>
+      {facts && (
+        <Container className="mt-12 md:mt-20">
+          <div className="mx-auto max-w-3xl">
+            <h3 className="font-display text-2xl font-medium tracking-[-0.02em] opacity-80">Wat er veranderde</h3>
+            <ul className="mt-6 grid gap-x-10 gap-y-4 text-[17px] leading-relaxed opacity-80 sm:grid-cols-2">
+              {facts.map((f) => <li key={f} className="border-t border-current/15 pt-4">{f}</li>)}
+            </ul>
+          </div>
+        </Container>
+      )}
     </section>
   );
 }

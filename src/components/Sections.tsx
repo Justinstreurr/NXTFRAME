@@ -40,8 +40,8 @@ const gains: StackCard[] = [
   },
   {
     label: "Kloppend", img: "/images/slim-palette.webp", pos: "42% 50%",
-    title: <>Design dat <span className="serif-italic">klopt bij jouw klant</span></>,
-    body: "Geen template, maar een ontwerp dat past bij jouw merk en je klanten. Elk onderdeel heeft een doel, zodat bezoekers weten wat de volgende stap is.",
+    title: <>Ontwerp en teksten <span className="serif-italic">rond jouw klant</span></>,
+    body: "Geen template, maar een ontwerp rond je merk, met teksten die ik voor je schrijf in jouw toon. Elke pagina heeft één doel, zodat bezoekers weten wat de volgende stap is.",
     cta: "Bekijk het werk", href: "/werk",
   },
 ];
@@ -78,13 +78,13 @@ export function AiFirst() {
         <div className="bg-inherit">
           <Container>
             <h2 className="mt-6 text-center t-section text-forest md:mt-0 md:whitespace-nowrap md:py-3">
-              Moderne techniek. <span className="serif-italic">Menselijke smaak.</span>
+              Ontwerp, teksten en bouw. <span className="serif-italic">Uit één hand.</span>
             </h2>
           </Container>
         </div>
         <Container>
           <p className="mx-auto mt-6 max-w-xl text-center text-forest/75 t-lead">
-            Snel, goed te vinden en passend bij je merk, gebouwd om aanvragen op te leveren. Elke keuze maak ik zelf: geen template, geen standaardwerk.
+            Je hoeft niets te schrijven en niets te regelen. De teksten, het ontwerp en de techniek maak ik zelf, voor één vaste prijs vooraf.
           </p>
           {/* the three pillars as cards that stack while you scroll (StackCards) */}
           <div className="mt-12 md:mt-16">
@@ -353,7 +353,7 @@ export function Work({ turnDark = true }: { turnDark?: boolean } = {}) {
     <section data-zone="green" id="ons-werk" className="bg-cream pb-16 pt-12 text-forest md:pb-32 md:pt-24">
       <Container>
         <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2">
-          <h2 className="font-display text-2xl font-medium tracking-tight md:text-[28px]">Ons werk</h2>
+          <h2 className="font-display text-2xl font-medium tracking-tight md:text-[28px]">Mijn werk</h2>
           <p className="text-[14px] text-forest/70">
             Meer zien?{" "}
             <Link href="/werk" className="font-medium text-forest underline decoration-forest/30 underline-offset-4 hover:decoration-forest">
@@ -413,7 +413,7 @@ export function Comparison() {
             <span />
             {columns.map((c) => (
               <span key={c.name} className={`mx-auto max-w-full rounded-full px-1 py-1 text-center text-[11px] font-semibold leading-tight [hyphens:manual] ${c.highlight ? "bg-pink" : "text-brown/70"}`}>
-                {c.highlight ? "NXT" : c.name === "AI-sitebuilder" ? "AI-tool" : c.name === "Freelancer" ? "Free­lancer" : c.name}
+                {c.highlight ? "Nxt­Frame" : c.name === "AI-sitebuilder" ? "AI-tool" : c.name === "Freelancer" ? "Free­lancer" : c.name}
               </span>
             ))}
             {criteria.map((crit, ri) => (
@@ -687,7 +687,7 @@ export function Difference({
 /* plus one homepage-only question that goes with "Meer dan een website" (not in the shared faq yet,
    so the other pages stay as they are) */
 const homeFaq = [
-  ...[0, 1, 2, 4, 3].map((i) => faq[i]),
+  ...[0, 8, 1, 2, 4, 3, 9].map((i) => faq[i]),
   {
     q: "Kun je ook een AI-assistent, rekentool of koppeling bouwen?",
     a: "Ja. Een rekentool, een assistent die vragen beantwoordt met de kennis van jouw bedrijf of een koppeling met het pakket dat je al gebruikt: ik bouw het erbij, ook in een bestaande site. Ik zoek vooraf uit wat kan en zeg eerlijk wat het kost, voordat er iets gebouwd wordt.",
@@ -872,7 +872,7 @@ export function Prices() {
             Plan een kennismaking
           </Button>
           <Reassure />
-          <p className="mt-2 max-w-md text-[15px] text-forest/70">Twijfel je welke past? In de kennismaking kijken we samen wat jouw site moet doen.</p>
+          <p className="mt-2 max-w-md text-[15px] text-forest/70">Twijfel je welke past? In de kennismaking kijken we samen wat jouw site moet doen. Meer werk komt er alleen bij na jouw ja.</p>
         </div>
       </Container>
     </section>

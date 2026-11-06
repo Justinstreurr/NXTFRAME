@@ -68,7 +68,7 @@ export default function HeroBand() {
   }, []);
 
   return (
-    <section data-zone="cherry" className="relative z-10 bg-cream pb-6 pt-6 text-forest md:pb-8 md:pt-8 lg:-mt-[22rem] lg:bg-transparent lg:pt-0" aria-label="Ons werk">
+    <section data-zone="cherry" className="relative z-10 bg-cream pb-6 pt-6 text-forest md:pb-8 md:pt-8 lg:-mt-[22rem] lg:bg-transparent lg:pt-0" aria-label="Mijn werk">
       <div ref={rowRef} className="relative">
         <Marquee speed="slow" fade={false}>
           {tiles.map((t, i) => {

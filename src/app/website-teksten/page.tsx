@@ -24,9 +24,9 @@ import { textsFaq } from "@/components/menuData";
  * texts after delivery.
  */
 export const metadata: Metadata = {
-  title: "Website teksten laten schrijven | Webteksten die werken | NxtFrame",
+  title: "Website teksten laten schrijven, samen met je site | NxtFrame",
   description:
-    "Webteksten in de woorden van je klant, zodat bezoekers snappen wat je doet en contact opnemen. In jouw toon, met jouw akkoord. Heb je al teksten, dan maak ik ze scherper.",
+    "Ik schrijf de teksten van je site zelf: in jouw toon, op de vragen van je klant, met titels voor Google. Tekst en ontwerp uit één hand, vaste prijs vooraf.",
   alternates: { canonical: "/website-teksten" },
 };
 
@@ -177,6 +177,18 @@ const questions = [
     q: "Van wie zijn de teksten?",
     a: "Van jou. Na de oplevering mag je ze gebruiken waar je wilt: op je site, in een folder of in een mail aan klanten.",
   },
+  {
+    q: "Welke teksten schrijf je?",
+    a: "Alle teksten van je site: de homepage, je dienstpagina's, over jou, contact en de veelgestelde vragen. Ook de titels en beschrijvingen die in Google verschijnen, en de teksten op je knoppen en formulieren.",
+  },
+  {
+    q: "Wat moet ik aanleveren?",
+    a: "Niets verplicht. Het meeste haal ik uit een gesprek. Wat helpt: oude teksten, folders, mails aan klanten en de vragen die klanten je vaak stellen.",
+  },
+  {
+    q: "Waarom tekst en ontwerp door dezelfde persoon?",
+    a: "Omdat ze elkaar nodig hebben. Een kop moet passen op de plek waar hij staat, een knop moet zeggen wat er gebeurt. Als één persoon allebei maakt, hoeft er niets heen en weer en klopt het in één keer.",
+  },
   faq[3],
 ];
 
@@ -223,7 +235,7 @@ export default function Page() {
                 <span className="serif-italic text-lime">meteen snapt</span>
               </h1>
               <p className="mt-6 max-w-lg text-paper t-lead">
-                Begrijpelijk voor je klant en voor zoekmachines, en geschreven om bezoekers te laten bellen, mailen of boeken. Heb je al teksten, dan maak ik ze scherper.
+                Ik schrijf, ontwerp en bouw je site zelf. Daardoor past elke kop in het ontwerp en werkt elke pagina naar één doel. Jij vertelt, ik schrijf, jij keurt goed.
               </p>
               <div data-hero-cta className="mt-8">
                 <div className="flex flex-wrap items-center gap-x-8 gap-y-4">

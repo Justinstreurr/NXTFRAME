@@ -178,9 +178,10 @@ export default function Page() {
                   Dat ligt zelden aan de ondernemer. Het ligt aan hoe sites gemaakt worden: een ontwerper die iets moois tekent, een bouwer die het in een template perst, en een accountmanager die ertussen zit. Ergens onderweg verdwijnt de vraag waar het om draait: wat moet deze site opleveren?
                 </p>
                 <p>
-                  Daarom werk ik alleen. Ik denk mee over je klant, ontwerp de pagina&apos;s en schrijf de code zelf. Wat we samen bedenken, is precies wat er live gaat. En omdat ik de code zelf schrijf, zonder trage plugins, laadt de site snel en kunnen Google en ChatGPT hem goed lezen.
+                  Daarom werk ik alleen. Ik denk mee over je klant, ontwerp de pagina&apos;s en schrijf de code zelf. Wat we samen bedenken, is precies wat er live gaat. Ook de teksten schrijf ik zelf, zodat jij niet met een leeg document blijft zitten. En omdat ik de code zelf schrijf, zonder trage plugins, laadt de site snel en kunnen Google en ChatGPT hem goed lezen.
                 </p>
-                <p>[INVULLEN: een paar zinnen over je eigen achtergrond: hoe je begon, wat je hiervoor deed]</p>
+                {/* TODO Justin: a few sentences about your own background (how you started, what you did before) */}
+                <p>Ik werk vanuit Purmerend, voor ondernemers in heel Nederland. Je spreekt mij in de kennismaking, en daarna ook bij elke stap tot ver na de lancering.</p>
               </div>
               <div className="mt-12 flex items-center gap-4 border-t border-forest/15 pt-8">
                 <span className="grid size-12 place-items-center rounded-full bg-forest text-lime" aria-hidden="true">

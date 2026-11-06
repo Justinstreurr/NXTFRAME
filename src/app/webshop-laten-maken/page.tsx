@@ -21,9 +21,9 @@ import { faq } from "@/components/faq";
  * DRAFT COPY: everything on this page is a first version for Justin to check.
  */
 export const metadata: Metadata = {
-  title: "Webshop laten maken | Snel op mobiel, vindbaar in Google en AI | NxtFrame",
+  title: "Webshop laten maken op Shopify, vaste prijs | NxtFrame",
   description:
-    "Een webshop laten maken die verkoopt: snelle productpagina's, een korte checkout met iDEAL en producten die je zelf beheert. Ontworpen en gebouwd door één maker, voor een vaste prijs.",
+    "Ik ontwerp, schrijf en bouw je webshop zelf, meestal op Shopify. Snel op mobiel, iDEAL en verzending gekoppeld, productpagina's die overtuigen. Eén vaste prijs vooraf.",
   alternates: { canonical: "/webshop-laten-maken" },
 };
 
@@ -129,7 +129,7 @@ const questions = [
   },
   {
     q: "Werk je met Shopify, WooCommerce of maatwerk?",
-    a: "Met alle drie. De keuze hangt af van je aantal producten en hoe bijzonder je verkoopproces is. Shopify voor gemak en betrouwbaarheid, WooCommerce als je al in WordPress zit, maatwerk als snelheid en een eigen flow het verschil maken. Ik kies wat jou het minste werk kost, niet wat mij het beste uitkomt.",
+    a: "Meestal kies ik Shopify: betrouwbaar, veilig en makkelijk zelf te beheren. De webshop van Happy Flops draait er ook op. Zit je al in WordPress, dan kan WooCommerce logischer zijn, en is je verkoopproces echt bijzonder, dan bouw ik maatwerk. Ik kies wat jou het minste werk kost, niet wat mij het beste uitkomt.",
   },
   {
     q: "Welke betaalmethoden kan ik aanbieden?",
@@ -150,6 +150,26 @@ const questions = [
   {
     q: "Verlies ik mijn Google-posities als ik overstap?",
     a: "Niet als de overstap goed wordt voorbereid. Elke oude product- en categoriepagina krijgt een doorverwijzing naar zijn nieuwe adres. Een garantie op een plek in Google kan niemand geven, maar zo gaat er niets verloren van wat je al hebt opgebouwd.",
+  },
+  {
+    q: "Waarom is dat duurder dan een webshop van een paar honderd euro?",
+    a: "Voor dat geld krijg je een standaardthema waar je zelf je producten en teksten in zet. Soms is dat genoeg, en dan zeg ik dat ook. Bij mij krijg je een ontwerp rond jouw producten, teksten die verkopen, een checkout die op een telefoon klopt en de koppelingen met je verzending en boekhouding. Dat werk zit in de prijs.",
+  },
+  {
+    q: "Schrijf je ook de teksten en productteksten?",
+    a: "De teksten van je shop, zoals de homepage, categorieën, over ons en de veelgestelde vragen, schrijf ik zelf. Voor productteksten hangt het af van je aantal producten: een kleine collectie neem ik mee, bij honderden producten spreken we vooraf af hoe we dat doen. Dat staat dan in de offerte.",
+  },
+  {
+    q: "Kan ik ook achteraf betalen of Klarna aanbieden?",
+    a: "Ja. Via Mollie of Shopify Payments zet je Klarna en andere achteraf-betaalmethoden aan naast iDEAL, Bancontact en Apple Pay. Wat het per betaling kost, verschilt per methode.",
+  },
+  {
+    q: "Wat kost Shopify per maand?",
+    a: "Shopify rekent een abonnement per maand, voor een kleine shop meestal een paar tientjes, plus transactiekosten per betaling. Dat betaal je rechtstreeks aan Shopify, niet aan mij. De actuele bedragen staan op de prijzenpagina van Shopify; in de kennismaking rekenen we uit wat het voor jouw shop wordt.",
+  },
+  {
+    q: "Wat moet ik juridisch regelen voor een webshop?",
+    a: "Algemene voorwaarden, een retour- en herroepingsbeleid (klanten mogen in de meeste gevallen 14 dagen bedenktijd nemen) en een privacyverklaring. Ik zorg dat ze op de juiste plek in je shop en checkout staan. De inhoud is jouw verantwoordelijkheid: juridisch advies geef ik niet.",
   },
   faq[4],
   faq[6],
@@ -198,14 +218,14 @@ export default function Page() {
           />
           <Container className="relative z-10 flex flex-col justify-center pb-12 pt-28 sm:pt-36 lg:min-h-[720px] lg:pb-28 lg:pt-32">
             <div className="max-w-2xl lg:max-w-[50%]">
-              <Eyebrow tone="light" className="max-w-xl">Webshop laten maken</Eyebrow>
+              <Eyebrow tone="light" className="max-w-xl">Webshop op maat</Eyebrow>
               <h1 className="mt-6 t-hero text-paper md:mt-8">
-                Een webshop
+                Webshop laten maken
                 <br />
                 <span className="serif-italic text-lime">die verkoopt</span>
               </h1>
               <p className="mt-6 max-w-lg text-paper t-lead">
-                Snel op een telefoon, met een korte checkout en producten die je zelf beheert. Ik ontwerp en bouw de shop zelf, en je weet vooraf wat het kost.
+                Ik ontwerp, schrijf en bouw je shop zelf. Snel op een telefoon, met een korte checkout en producten die je zelf beheert. Vooraf één vaste prijs.
               </p>
               <div data-hero-cta className="mt-8">
                 <div className="flex flex-wrap items-center gap-x-8 gap-y-4">

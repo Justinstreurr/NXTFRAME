@@ -36,9 +36,9 @@ const isPreview = process.env.VERCEL_ENV === "preview" || process.env.VERCEL_ENV
    The share image (opengraph-image.jpg) and the icons sit next to this file. */
 export const metadata: Metadata = {
   metadataBase: new URL("https://nxtframe.ai"),
-  title: "NxtFrame | Websites die gevonden worden en verkopen",
+  title: "NxtFrame | Webdesigner uit Purmerend, websites die verkopen",
   description:
-    "Creatieve webbouwer voor websites die snel laden, gevonden worden in Google en ChatGPT, en converteren. Ontworpen rond jouw klant.",
+    "Ik ben Justin Streur, webdesigner uit Purmerend. Ik ontwerp, schrijf en bouw je website zelf, vindbaar in Google en ChatGPT, voor één vaste prijs vooraf.",
   openGraph: { type: "website", locale: "nl_NL", siteName: "NxtFrame" },
   twitter: { card: "summary_large_image" },
   ...(isPreview && { robots: { index: false, follow: false } }),

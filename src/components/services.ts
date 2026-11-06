@@ -10,7 +10,7 @@ export const services: ServiceCard[] = [
     imgs: ["/images/happyflops-laptop-hands.webp", "/images/hypotheekhaven-fauteuil.webp", "/images/showcase/nxtframe/card-04.webp", "/images/advies-hero-laptop.webp"],
   },
   {
-    title: "Redesign", body: "Je huidige site opnieuw ontworpen en gebouwd op moderne techniek, met zorg voor de vindbaarheid die je al hebt.", href: "/website-redesign", icon: "sparkle",
+    title: "Redesign", body: "Je huidige site opnieuw ontworpen en gebouwd op moderne techniek, met zorg voor de vindbaarheid die je al hebt.", href: "/website-vernieuwen", icon: "sparkle",
     imgs: ["/images/andere-tijd.webp", "/images/showcase/nxtframe/card-07.webp", "/images/happyflops-duo.webp", "/images/conversie-macbook-poster-v3.webp"],
   },
   {

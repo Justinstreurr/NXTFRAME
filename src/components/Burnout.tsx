@@ -19,7 +19,7 @@ const homePains: Pain[] = [
         Traag <span className="serif-italic">op mobiel</span>
       </>
     ),
-    body: "Elke seconde laadtijd kost bezoekers. Op een telefoon haken ze af voordat je aanbod in beeld is.",
+    body: "Je klant zoekt je op zijn telefoon, tussen twee dingen door. Duurt het laden te lang, dan tikt hij terug naar Google en kiest de volgende.",
     src: "/images/traag-mobiel.webp",
     pos: "58% 50%",
   },
@@ -29,7 +29,7 @@ const homePains: Pain[] = [
         <span className="serif-italic">Onvindbaar</span> in Google en AI
       </>
     ),
-    body: "Zoekmachines en ChatGPT begrijpen je site niet. Klanten die nu al zoeken, komen bij een ander uit.",
+    body: "Op je bedrijfsnaam sta je bovenaan. Op wat je doet, in je eigen plaats, niet. Daar zoekt je nieuwe klant, en daar staat een concurrent.",
     src: "/images/herkenbaar-2.webp",
     pos: "50% 28%",
   },
@@ -39,7 +39,7 @@ const homePains: Pain[] = [
         Gebouwd voor <span className="serif-italic">een andere tijd</span>
       </>
     ),
-    body: "Een template van jaren terug, met tekst die niemand meer leest. Het voelt niet als jouw bedrijf van nu.",
+    body: "Teksten over kwaliteit en passie, en een contactpagina als enige knop. Je bedrijf is gegroeid, maar je site vertelt nog het verhaal van toen.",
     src: "/images/andere-tijd.webp",
   },
 ];
@@ -56,7 +56,7 @@ export default function Burnout({
       <span className="serif-italic"><LetterFill parts={[{ text: "kost je klanten" }]} /></span>
     </>
   ),
-  lead = "Traag, onvindbaar en gebouwd in een tijd dat niemand ChatGPT om advies vroeg. Drie signalen die je waarschijnlijk herkent.",
+  lead = "Drie signalen dat je site klanten laat liggen. Herken je er één, dan is een half uur praten de moeite waard.",
   pains = homePains,
 }: { title?: ReactNode; lead?: string; pains?: Pain[] } = {}) {
   return (

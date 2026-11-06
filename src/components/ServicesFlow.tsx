@@ -10,7 +10,7 @@ import { Container, Eyebrow } from "./ui";
 const build: { label: string; short: string; href: string; icon: IconKey; img: string }[] = [
   { label: "Nieuwe website", short: "Website", href: "/website-laten-maken", icon: "layout", img: "/images/services/nieuwe-website.webp" },
   { label: "Webshop", short: "Webshop", href: "/webshop-laten-maken", icon: "bag", img: "/images/tiles/happy-flops.webp" },
-  { label: "Redesign", short: "Redesign", href: "/website-redesign", icon: "sparkle", img: "/images/services/redesign.webp" },
+  { label: "Redesign", short: "Redesign", href: "/website-vernieuwen", icon: "sparkle", img: "/images/services/redesign.webp" },
   { label: "Vindbaar in Google en AI", short: "Vindbaar", href: "/vindbaar-in-google-en-chatgpt", icon: "search", img: "/images/services/vindbaar.webp" },
   { label: "Teksten en content", short: "Teksten", href: "/website-teksten", icon: "pen", img: "/images/services/teksten.webp" },
   { label: "Onderhoud", short: "Onderhoud", href: "/website-onderhoud", icon: "refresh", img: "/images/services/onderhoud.webp" },

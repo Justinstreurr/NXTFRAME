@@ -423,7 +423,7 @@ export const branches: Branch[] = [
   {
     slug: "coaches-en-adviseurs", name: "coaches en adviseurs", label: "Coaches en adviseurs", icon: "chat", img: "/images/over-mascot.webp",
     title: { lead: "Een coachwebsite die", italic: "je aanbod uitlegt en gesprekken oplevert" },
-    intro: "Voor coaches, trainers en consultants. Een site die klinkt zoals jij, met een aanbod dat mensen ook zonder gesprek begrijpen.",
+    intro: "Voor coaches en trainers. Een site die klinkt zoals jij, met een aanbod dat mensen ook zonder gesprek begrijpen.",
     pains: [
       {
         title: "Je aanbod is niet te begrijpen zonder gesprek",
@@ -477,15 +477,32 @@ export const branches: Branch[] = [
    page title to match. Makelaars and financieel advies have a page of their own, webshops share the
    service page /webshop-laten-maken (one page per search, so they don't compete); the rest run on the
    shared template ([branch]/page.tsx). The old /branches/... addresses redirect (next.config.ts). */
-export const branchSeo: Record<string, { path: string; title: string; template?: true }> = {
+/* title and desc are the search snippet: the words people type ("website aannemer laten maken"),
+   checked against the pages that rank top 3 for them (search research, 6 Nov 2026) */
+export const branchSeo: Record<string, { path: string; title: string; desc?: string; template?: true }> = {
   makelaars: { path: "/makelaar-website", title: "Makelaar website laten maken" },
-  horeca: { path: "/horeca-website", title: "Horeca website laten maken", template: true },
+  horeca: {
+    path: "/horeca-website", title: "Horeca website laten maken: reserveren en menukaart", template: true,
+    desc: "Een restaurantwebsite waar gasten zelf reserveren via Formitable, Zenchef of TheFork, met een menukaart als echte tekst en een Google-profiel dat klopt. Teksten schrijf ik.",
+  },
   webshops: { path: "/webshop-laten-maken", title: "Webshop laten maken" },
   "financieel-advies": { path: "/financieel-adviseur-website", title: "Website voor financieel adviseurs laten maken" },
-  "bouw-en-installatie": { path: "/bouw-en-installatie-website", title: "Website laten maken voor bouw en installatie", template: true },
-  "zorg-en-praktijken": { path: "/praktijk-website", title: "Website voor je praktijk laten maken", template: true },
-  "beauty-en-wellness": { path: "/salon-website", title: "Website voor je salon laten maken", template: true },
-  "coaches-en-adviseurs": { path: "/coach-website", title: "Website voor coaches laten maken", template: true },
+  "bouw-en-installatie": {
+    path: "/bouw-en-installatie-website", title: "Website aannemer of installateur laten maken", template: true,
+    desc: "Een website voor aannemers en installateurs: je projecten als bewijs, een offerte aanvragen met foto's en een pagina per dienst en plaats. Teksten schrijf ik. Vaste prijs.",
+  },
+  "zorg-en-praktijken": {
+    path: "/praktijk-website", title: "Website fysiotherapeut of zorgpraktijk laten maken", template: true,
+    desc: "Een praktijkwebsite waar patiënten zelf een afspraak maken, wachttijd en vergoedingen zien en je behandelaars met BIG-registratie vinden. Toegankelijk volgens WCAG.",
+  },
+  "beauty-en-wellness": {
+    path: "/salon-website", title: "Website kapsalon of schoonheidssalon laten maken", template: true,
+    desc: "Een salonwebsite waar klanten zelf boeken via je boekingssysteem, met je prijslijst per behandeling en je eigen werk voorop. Teksten schrijf ik, jij keurt goed.",
+  },
+  "coaches-en-adviseurs": {
+    path: "/coach-website", title: "Website coach laten maken: aanbod, prijs en kennismaking", template: true,
+    desc: "Een coachwebsite die je aanbod in één keer uitlegt, met trajecten en prijs, een gekoppelde agenda en artikelen die gevonden blijven. Teksten schrijf ik, in jouw toon.",
+  },
 };
 export const branchHref = (b: Branch) => branchSeo[b.slug]?.path ?? "/branches";
 
@@ -495,8 +512,54 @@ export const textsFaq = {
   q: "Moet ik de teksten zelf schrijven?",
   a: "Nee. Ik schrijf ze, op basis van de kennismaking en wat je me vertelt over je bedrijf en je klanten. Je krijgt ze ter controle, geeft feedback, en pas na jouw akkoord gaan ze online. Jouw tijd zit in een gesprek en het nalezen, niet in het schrijven.",
 };
-export const faqFor = (b: Branch) =>
-  b.faq.some((f) => f.q === textsFaq.q) ? b.faq : [...b.faq.slice(0, 2), textsFaq, ...b.faq.slice(2)];
+/* questions the pages ranking top 3 for each branch answer and ours didn't (search research, 6 Nov
+   2026), added after the branch's own */
+const moreFaq: Record<string, { q: string; a: string }[]> = {
+  makelaars: [
+    { q: "Kan ik ook nieuwbouwprojecten, bedrijfspanden of huurwoningen tonen?", a: "Ja. Komen ze uit je pakket, dan krijgen ze hun eigen overzicht naast je koopwoningen. Een groot nieuwbouwproject kan daarnaast een eigen projectpagina krijgen." },
+    { q: "Kunnen kopers zich inschrijven voor nieuw aanbod?", a: "Ja, met een woningalert per mail: wie zich aanmeldt, hoort het als er een woning bijkomt die past. Hoe dat precies werkt, hangt af van wat je feed meelevert. Dat test ik aan het begin." },
+    { q: "Kan mijn NVM- of VBO-lidmaatschap erop?", a: "Ja, op een vaste en zichtbare plek, met je certificeringen en je Google-reviews erbij. Een verkoper die makelaars vergelijkt, zoekt daarnaar." },
+  ],
+  "financieel-advies": [
+    { q: "Werk je ook voor pensioen- en verzekeringsadviseurs?", a: "Ja. Dan krijgt elk adviesgebied een eigen pagina, met de vragen die mensen daarover stellen, net zoals ik dat voor hypotheken doe." },
+    { q: "Mag ik reclame maken met rente of rendement?", a: "Daar gelden strenge regels. Ik zet geen beloftes over de laagste rente of een rendement in je teksten, en je checkt ze met je compliance-adviseur voordat ze online gaan." },
+    { q: "Ik werk onder een formule. Waarom een eigen site?", a: "Formulesites geven honderden adviseurs dezelfde teksten. Google ziet dan geen reden om juist jou te tonen. Een eigen site met jouw verhaal, je regio en je reviews maakt dat verschil wel." },
+  ],
+  horeca: [
+    { q: "Kan ik cadeaubonnen verkopen?", a: "Ja. Veel kassa- en reserveringssystemen hebben een cadeaubonmodule, en die bouw ik in. Heb je die niet, dan kan een eenvoudige cadeaubon met iDEAL op de site zelf. Zo verdien je ook buiten de zaal." },
+    { q: "Kan de reserveerknop ook in Google staan?", a: "Bij veel reserveringssystemen wel: dan reserveert een gast rechtstreeks vanuit je Google-profiel. Ik kijk vooraf of jouw systeem dat ondersteunt en zet het aan." },
+    { q: "Heb ik een Engelse menukaart nodig?", a: "In een toeristische plaats of een stad met veel expats wel. Dan krijgt de kaart een Engelse versie die je net zo makkelijk bijwerkt als de Nederlandse." },
+    { q: "Kan er een vacaturepagina bij?", a: "Ja, kort en gemaakt voor de telefoon, want daar solliciteert horecapersoneel. Een paar vragen en een knop, geen lang formulier." },
+  ],
+  "bouw-en-installatie": [
+    { q: "Kunnen klanten me snel bereiken bij spoed of een storing?", a: "Ja. Een bel- en WhatsApp-knop blijft op een telefoon altijd in beeld, en je storingsnummer staat op een vaste plek. Wie haast heeft, hoeft niet te zoeken." },
+    { q: "Kan ik subsidies zoals de ISDE uitleggen?", a: "Ja, op de pagina van de dienst waar de subsidie bij hoort. Bedragen en voorwaarden veranderen elk jaar, dus ik link naar de officiële bron in plaats van een bedrag dat over een jaar niet meer klopt." },
+    { q: "Helpt de site bij het vinden van monteurs?", a: "Een werken-bij-pagina met echte foto's van je team, wat je biedt en een korte sollicitatie werkt vaak beter dan een vacaturesite. Die bouw ik erbij als je wilt." },
+    { q: "Kan een klant zelf een richtprijs uitrekenen?", a: "Dat kan, met een rekentool op je eigen prijzen. Een klant ziet dan vooraf of de klus in zijn budget past, en jij krijgt aanvragen die beter passen. Wat zo'n tool kost, hoor je vooraf." },
+  ],
+  "zorg-en-praktijken": [
+    { q: "Kunnen patiënten zonder verwijzing komen, en hoe leg ik dat uit?", a: "Bij veel fysiotherapeuten kan dat. Ik zet op een vaste plek of iemand een verwijzing nodig heeft, wat de eerste afspraak inhoudt en hoe de vergoeding werkt, zodat een patiënt niet hoeft te bellen om het te vragen." },
+    { q: "Koppelt het met mijn EPD of agenda?", a: "Als je EPD of agenda een online afsprakenmodule heeft, bouw ik die in. Of dat bij jouw systeem kan, zoek ik vooraf voor je uit, voordat je iets tekent." },
+    { q: "Kunnen beoordelingen van ZorgkaartNederland erop?", a: "Ja. In de zorg kijken patiënten vaak eerst daar, dus je score en een link naar je beoordelingen staan op een zichtbare plek." },
+    { q: "Hoe ga je om met gezondheidsgegevens?", a: "Gezondheidsgegevens zijn onder de AVG extra gevoelig. Daarom vraagt een formulier op je site alleen wat nodig is om een afspraak te maken, en zet ik op die pagina's geen trackers. Medische informatie hoort in je EPD, niet in een mail." },
+  ],
+  "beauty-en-wellness": [
+    { q: "Welke boekingssystemen koppel je?", a: "Systemen als Salonized, Treatwell, Booksy, Fresha en Salonhub hebben een boekingsmodule of -link. Die bouw ik zo in dat hij bij je site past. Noem me je systeem, dan kijk ik vooraf wat er kan." },
+    { q: "Kunnen klanten me ook appen?", a: "Ja, met een WhatsApp-knop die op een telefoon in beeld blijft. Handig voor een snelle vraag of als je ook inloop hebt." },
+    { q: "Kan ik cadeaubonnen verkopen?", a: "Ja, via je boekingssysteem als dat cadeaubonnen heeft, of met een eenvoudige cadeaubon met iDEAL op de site." },
+    { q: "Werkt dit ook voor een barbershop of kapper aan huis?", a: "Ja. Voor een kapper aan huis staat je werkgebied centraal, met een pagina per plaats waar je komt. Voor een barbershop draait het om je werk in beeld en snel boeken." },
+  ],
+  "coaches-en-adviseurs": [
+    { q: "Heb ik professionele foto's nodig?", a: "Als coach ben jij het product, dus goede foto's van jezelf maken veel verschil. Heb je ze nog niet, dan start ik met wat er is en geef ik advies voor een shoot." },
+    { q: "Kan ik een nieuwsbrief koppelen?", a: "Ja, met MailBlue, Mailchimp of Laposta. Een aanmelding op je site komt dan direct in je lijst." },
+    { q: "Ik begin net als coach. Heeft een site dan al zin?", a: "Ja, als hij klein begint: één duidelijk aanbod, wie je bent en een kennismaking die mensen zelf plannen. Uitbreiden kan zodra je praktijk groeit." },
+    { q: "Kan mijn registratie bij NOBCO of Noloc erop?", a: "Ja, op een vaste plek met een link naar je registratie, zodat iemand het zelf kan nagaan." },
+  ],
+};
+export const faqFor = (b: Branch) => {
+  const own = b.faq.some((f) => f.q === textsFaq.q) ? b.faq : [...b.faq.slice(0, 2), textsFaq, ...b.faq.slice(2)];
+  return [...own, ...(moreFaq[b.slug] ?? [])];
+};
 
 /* ---------- Main menu ---------- */
 /* a card in the open menu: a photo with a title and one line under it; `tag` is the small label on the photo */
@@ -539,7 +602,7 @@ export const menu: MenuItem[] = [
     cardsLabel: "Meest gevraagd",
     cards: [
       { title: "Website laten maken", body: "Van strategie tot lancering. Snel, vindbaar en gebouwd rond jouw klant.", href: "/website-laten-maken", img: "/images/happyflops-laptop-hands.webp" },
-      { title: "Redesign", body: "Je huidige site opnieuw gebouwd, zonder verlies van vindbaarheid.", href: "/website-redesign", img: "/images/andere-tijd.webp" },
+      { title: "Redesign", body: "Je huidige site opnieuw gebouwd, zonder verlies van vindbaarheid.", href: "/website-vernieuwen", img: "/images/andere-tijd.webp" },
       { title: "Vindbaar in Google en AI", body: "Structuur en content die Google én ChatGPT begrijpen.", href: "/vindbaar-in-google-en-chatgpt", img: "/images/slim-search.webp", pos: "48% 50%" },
     ],
     links: [

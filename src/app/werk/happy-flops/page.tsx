@@ -125,7 +125,15 @@ export default function Page() {
 
         <BgMark bg="#dafc92" fg="#02261e" at={1} />
 
-        <CaseDarkResult words={["Snel", "Vindbaar", "Vrolijk"]} />
+        <CaseDarkResult
+          words={["Snel", "Vindbaar", "Vrolijk"]}
+          facts={[
+            "Eén vaste opbouw voor de homepage, de collecties en de productpagina's",
+            "Nieuwe collecties en acties gaan erop zonder nieuw ontwerp",
+            "Elk product en elke categorie met gestructureerde gegevens voor Google en ChatGPT",
+            "Op Shopify, eerst ontworpen voor de telefoon",
+          ]}
+        />
 
         <CaseDarkRoles
           roles={[

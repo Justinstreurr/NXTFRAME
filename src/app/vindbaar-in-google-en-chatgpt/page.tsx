@@ -22,9 +22,9 @@ import { faq } from "@/components/faq";
  * links to /prijzen and /contact.
  */
 export const metadata: Metadata = {
-  title: "Vindbaar in Google en ChatGPT | SEO en AI-zoekmachines | NxtFrame",
+  title: "Gevonden worden in ChatGPT en Google | NxtFrame",
   description:
-    "Beter gevonden worden op de vragen van je klant, in Google en in AI-zoekmachines zoals ChatGPT en Perplexity. Met een kloppende opbouw, heldere teksten en goede techniek, zonder beloftes over plek 1.",
+    "Gevonden worden in ChatGPT, Gemini en Google? Ik richt je site zo in dat zoekmachines hem lezen en kunnen citeren. Eerlijk: plek 1 belooft niemand.",
   alternates: { canonical: "/vindbaar-in-google-en-chatgpt" },
 };
 
@@ -163,6 +163,26 @@ const questions = [
     q: "Wat kost het?",
     a: "Bij een nieuwe website zit het werk aan vindbaarheid er gewoon in. Voor een bestaande site hangt het af van wat er nodig is. Op de prijzenpagina zie je waar je ongeveer aan moet denken, en na de kennismaking krijg je een vaste prijs.",
   },
+  {
+    q: "Telt alleen mijn website mee?",
+    a: "Nee. Google en ChatGPT kijken ook naar je reviews, je Google-bedrijfsprofiel en wat andere sites over je zeggen. Daarom zorg ik dat je naam, adres en diensten overal hetzelfde staan, en vraag je klanten om een review. Je site is de basis, maar niet het hele verhaal.",
+  },
+  {
+    q: "Hoe weet ik of ChatGPT mijn bedrijf noemt?",
+    a: "Door het te testen. Voor de lancering stel ik een vaste set vragen die je klanten zouden stellen aan ChatGPT, Gemini en Perplexity, en na de lancering stel ik ze opnieuw. Daarnaast zie je in je statistieken hoeveel bezoekers via AI-zoekmachines binnenkomen.",
+  },
+  {
+    q: "Kan ik betalen om in ChatGPT genoemd te worden?",
+    a: "Nee. Een aanbeveling in een antwoord kun je niet kopen: die volgt uit wat zo'n AI over je bedrijf kan vinden en of dat klopt. Daar werk ik aan.",
+  },
+  {
+    q: "Wat is GEO of ChatGPT SEO?",
+    a: "Twee namen voor hetzelfde: je site zo inrichten dat AI-zoekmachines hem kunnen lezen, begrijpen en als bron noemen. Het bouwt voort op gewone SEO, met extra aandacht voor heldere antwoorden en gestructureerde gegevens.",
+  },
+  {
+    q: "Word ik als lokaal bedrijf ook genoemd?",
+    a: "Daar maak je juist een goede kans, omdat mensen vaak vragen om een bedrijf in hun eigen plaats. Een pagina per dienst en plaats, een kloppend Google-profiel en recente reviews doen daarbij het meeste werk.",
+  },
   faq[6],
 ];
 
@@ -211,10 +231,10 @@ export default function Page() {
               <h1 className="mt-6 t-hero text-paper md:mt-8">
                 Gevonden worden
                 <br />
-                <span className="serif-italic text-lime">waar je klant zoekt</span>
+                <span className="serif-italic text-lime">in Google en ChatGPT</span>
               </h1>
               <p className="mt-6 max-w-lg text-paper t-lead">
-                In Google, en steeds vaker in ChatGPT en andere AI-zoekmachines. Ik zorg voor de structuur, de teksten en de techniek waarmee je site daar een goede kans maakt om genoemd te worden.
+                Daar waar je klant zoekt: in Google, en steeds vaker in ChatGPT en andere AI-zoekmachines. Ik zorg voor de structuur, de teksten en de techniek waarmee je site daar een goede kans maakt om genoemd te worden.
               </p>
               <div data-hero-cta className="mt-8">
                 <div className="flex flex-wrap items-center gap-x-8 gap-y-4">

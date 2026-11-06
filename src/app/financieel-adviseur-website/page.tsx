@@ -7,7 +7,7 @@ import { branchSections } from "@/components/branchSectionContent";
 import SellerGrid, { type SiteFeature } from "@/components/SellerGrid";
 import BranchPricing, { type PriceWay } from "@/components/BranchPricing";
 import { FrameGlyph } from "@/components/Logo";
-import { branches } from "@/components/menuData";
+import { branches, faqFor } from "@/components/menuData";
 import { Difference, FaqList, Platform, type PathStep } from "@/components/Sections";
 import { LaunchIcon, MapIcon, PenIcon, TalkIcon } from "@/components/StepIcons";
 import { Button, Container, Eyebrow, TextLink } from "@/components/ui";
@@ -18,9 +18,9 @@ import { Button, Container, Eyebrow, TextLink } from "@/components/ui";
 const advies = branches.find((b) => b.slug === "financieel-advies")!;
 
 export const metadata: Metadata = {
-  title: "Website voor hypotheek- en financieel adviseurs laten maken | NxtFrame",
+  title: "Website hypotheekadviseur of financieel adviseur laten maken | NxtFrame",
   description:
-    "Een adviseurswebsite met een kennismaking die je online plant, rekentools waarmee bezoekers zelf rekenen en een pagina per dienst en levensmoment. Voorbeeld: Hypotheekhaven.",
+    "Een adviseurssite met rekentools, een kennismaking die bezoekers 's avonds zelf plannen en een vaste plek voor je verplichte informatie. Teksten schrijf ik, jij keurt goed.",
   alternates: { canonical: "/financieel-adviseur-website" },
 };
 
@@ -125,7 +125,7 @@ const jsonLd = {
     },
     {
       "@type": "FAQPage",
-      mainEntity: advies.faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+      mainEntity: faqFor(advies).map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
     },
     {
       "@type": "BreadcrumbList",
@@ -281,7 +281,7 @@ export default function Page() {
               <p className="mt-6 max-w-md text-forest/75 t-lead">Staat je vraag er niet bij? Stel hem in de kennismaking, of mail me.</p>
               <TextLink href="mailto:hallo@nxtframe.ai" className="mt-8">hallo@nxtframe.ai</TextLink>
             </div>
-            <FaqList items={advies.faq} />
+            <FaqList items={faqFor(advies)} />
           </Container>
         </section>
 

@@ -78,9 +78,9 @@ export default function Hero() {
               </span>
             </h1>
             <p className="mt-6 max-w-lg text-cream/80 t-lead">
-              Vindbaar in Google en ChatGPT, snel op elk scherm en gebouwd om aanvragen op te leveren.
+              Ik ontwerp, schrijf en bouw je site zelf: vindbaar in Google en ChatGPT, snel op elk scherm en gebouwd om aanvragen op te leveren.
               {/* phones keep the hero to the promise; the second line comes from sm up */}
-              <span className="hidden sm:inline"> Je werkt direct met de maker, niet met een bureau.</span>
+              <span className="hidden sm:inline"> Eén vaste prijs vooraf, en je spreekt alleen mij.</span>
             </p>
             {/* one line of proof under the promise: this site's own PageSpeed result (mobile, 30 Oct 2026: LCP 1,2 s, score 100) */}
             <ul className="mt-7 hidden flex-wrap items-center gap-x-6 gap-y-2 text-[15px] font-medium text-cream/90 sm:flex">

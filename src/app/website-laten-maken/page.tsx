@@ -25,9 +25,9 @@ import { faq } from "@/components/faq";
  * are a first version for Justin to check. The pains and the price factors are the earlier copy.
  */
 export const metadata: Metadata = {
-  title: "Website laten maken | Snel, vindbaar in Google en AI | NxtFrame",
+  title: "Website laten maken vanaf € 2.500 | Vaste prijs | NxtFrame",
   description:
-    "Een website laten maken die gevonden wordt en verkoopt. Op maat ontworpen en zo gebouwd dat Google en ChatGPT je kunnen vinden. Vanaf € 2.500, in 4 tot 6 weken.",
+    "Website laten maken door één maker: ontwerp, teksten en bouw. Vanaf € 2.500, vaste prijs vooraf, live in 4 tot 6 weken. Site en domein op jouw naam.",
   alternates: { canonical: "/website-laten-maken" },
 };
 
@@ -109,7 +109,7 @@ const parts = [
 const priceFactors = [
   { title: "Aantal pagina's", body: "Elke pagina met een eigen doel kost ontwerp- en schrijftijd. Tien sterke pagina's zijn beter dan dertig dunne." },
   { title: "Koppelingen", body: "Reserveringssysteem, CRM, woningaanbod, voorraad: elke koppeling is werk, maar scheelt je daarna handwerk." },
-  { title: "Content", body: "Heb je teksten en foto's, of maken we ze samen? Goede teksten en foto's maken vaak meer verschil dan het ontwerp." },
+  { title: "Foto's", body: "De teksten schrijf ik zelf, dat zit in de prijs. Heb je eigen foto's, dan scheelt dat. Zo niet, dan kijken we samen wat nodig is: eigen foto's maken vaak meer verschil dan het ontwerp." },
   { title: "Doorontwikkeling", body: "Na de lancering kun je kiezen voor onderhoud per maand. Dan houd ik de site bij en bouw ik verder waar dat nodig is." },
 ];
 
@@ -118,7 +118,7 @@ const priceFactors = [
 const handover = [
   {
     title: "Voor de start",
-    you: "Een half uur voor de kennismaking. Heb je al een logo, huisstijl, teksten of foto's, stuur ze mee. Zo niet, dan maken we ze in het traject.",
+    you: "Een half uur voor de kennismaking. Heb je al een logo, huisstijl of foto's, stuur ze mee. Teksten hoef je niet te hebben: die schrijf ik.",
     get: ["Eén vaste prijs voor het hele traject", "Een planning met een lanceerdatum"],
   },
   {
@@ -141,10 +141,28 @@ const handover = [
 /* the shared hub questions, plus two the best Dutch pages answer and this one did not yet
    (DRAFT: ownership and the monthly costs, no amounts until Justin confirms them) */
 const questions = [
-  ...faq.slice(0, 7),
+  faq[0],
+  faq[8],
+  ...faq.slice(1, 7),
+  {
+    q: "Hoeveel pagina's heb ik nodig?",
+    a: "Voor de meeste bedrijven vijf tot acht: een homepage, een pagina per dienst, over jou en contact. Tien sterke pagina's zijn beter dan dertig dunne. Welke het worden, volgt uit de zoekvragen van je klant, en dat zoek ik vooraf uit.",
+  },
+  {
+    q: "Regel je ook het domein en de hosting?",
+    a: "Ja. Het domein staat altijd op jouw naam en betaal je zelf, ik regel de aanvraag en de instellingen. De hosting zit in het onderhoudsabonnement, of je regelt hem zelf en ik help bij het overzetten.",
+  },
+  {
+    q: "Kan ik later pagina's of een webshop toevoegen?",
+    a: "Ja. De site is zo opgezet dat er later pagina's, een webshop of een rekentool bij kunnen, in dezelfde stijl. Voor elke uitbreiding hoor je vooraf een vaste prijs.",
+  },
+  {
+    q: "Ik heb al een website. Werk je daar ook aan?",
+    a: "Ja. Is je site traag of levert hij niets op, dan vernieuw ik hem en neem ik mee wat al werkt: je adressen, je sterke teksten en je vindbaarheid. Lees meer bij website vernieuwen.",
+  },
   {
     q: "Van wie is de website als hij klaar is?",
-    a: "Van jou. Het domein staat op jouw naam, je krijgt alle inloggegevens, en de teksten en het ontwerp die we voor je site maken, zijn van jou. Wil je later verder met iemand anders, dan kan dat. Je zit nergens aan vast.",
+    a: "Van jou. Het domein staat op jouw naam, je krijgt alle inloggegevens, en de teksten en het ontwerp die ik voor je site maak, zijn van jou. Wil je later verder met iemand anders, dan kan dat. Je zit nergens aan vast.",
   },
   {
     q: "Wat kost een website per maand na de lancering?",
@@ -192,14 +210,14 @@ export default function Page() {
           />
           <Container className="relative z-10 flex flex-col justify-center pb-12 pt-28 sm:pt-36 lg:min-h-[720px] lg:pb-28 lg:pt-32">
             <div className="max-w-2xl lg:max-w-[52%]">
-              <Eyebrow tone="light" className="max-w-xl">Website laten maken</Eyebrow>
+              <Eyebrow tone="light" className="max-w-xl">Ontwerp, teksten en bouw</Eyebrow>
               <h1 className="mt-6 t-hero text-paper md:mt-8">
-                Een website die
+                Website laten maken
                 <br />
-                <span className="serif-italic text-lime">gevonden wordt en verkoopt</span>
+                <span className="serif-italic text-lime">die gevonden wordt en verkoopt</span>
               </h1>
               <p className="mt-6 max-w-lg text-paper t-lead">
-                Ontworpen rond wat jouw klant zoekt, en zo gebouwd dat Google en ChatGPT je kunnen vinden. Ik doe alles zelf, van plan tot lancering, voor een prijs die vooraf vaststaat.
+                Ik ontwerp, schrijf en bouw je site zelf. Gemaakt rond wat je klant zoekt, vindbaar in Google en ChatGPT, voor één vaste prijs vooraf.
               </p>
               <div data-hero-cta className="mt-8">
                 <div className="flex flex-wrap items-center gap-x-8 gap-y-4">

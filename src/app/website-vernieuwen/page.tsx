@@ -25,10 +25,10 @@ import { faq } from "@/components/faq";
  * erna") and the FAQ answers about platforms and lead time.
  */
 export const metadata: Metadata = {
-  title: "Website redesign | Je website laten vernieuwen zonder vindbaarheid te verliezen | NxtFrame",
+  title: "Website vernieuwen zonder je Google-posities te verliezen | NxtFrame",
   description:
-    "Je huidige site opnieuw ontworpen en gebouwd op moderne techniek. Oude adressen netjes doorgestuurd, wat werkt blijft, zodat je de vindbaarheid die je al hebt opgebouwd zo veel mogelijk houdt.",
-  alternates: { canonical: "/website-redesign" },
+    "Je site is traag of verouderd? Ik vernieuw hem op moderne techniek en neem mee wat werkt: adressen, sterke teksten en vindbaarheid. Vaste prijs vooraf.",
+  alternates: { canonical: "/website-vernieuwen" },
 };
 
 const website = tiers.find((t) => t.name === "Website")!;
@@ -151,6 +151,22 @@ const questions = [
     q: "Hoe lang duurt een redesign?",
     a: `Ongeveer zo lang als een nieuwe website: ${website.time}, gerekend vanaf het moment dat teksten, foto's en toegang binnen zijn. Daarna hangt het vooral af van het aantal pagina's en hoe snel feedback binnenkomt. Bij de start spreken we een beoogde lanceerdatum af.`,
   },
+  {
+    q: "Blijft mijn site online tijdens het vernieuwen?",
+    a: "Ja. Ik bouw de nieuwe site op een apart testadres. Je huidige site blijft gewoon draaien, en op de lanceerdag zetten we hem in één keer over.",
+  },
+  {
+    q: "Mijn site staat op WordPress, Wix, JouwWeb of Squarespace. Kan ik overstappen?",
+    a: "Ja. Ik zet je pagina's, teksten en foto's over waar dat zinvol is, en elke oude pagina verwijst door naar de nieuwe. Zo neem je mee wat je in Google hebt opgebouwd.",
+  },
+  {
+    q: "Moet ik nieuwe teksten aanleveren?",
+    a: "Nee. Ik houd wat al goed werkt en herschrijf de rest zelf. Jij leest mee en keurt goed.",
+  },
+  {
+    q: "Hoe weet je wat ik in Google niet mag verliezen?",
+    a: "Voor ik begin, kijk ik in Google Search Console welke pagina's bezoekers en posities opleveren. Die krijgen op de nieuwe site een plek of een doorverwijzing. Een garantie op posities kan niemand geven, maar zo gaat er niets onnodig verloren.",
+  },
   faq[2],
   faq[3],
 ];
@@ -165,7 +181,7 @@ const jsonLd = {
       provider: { "@type": "Organization", name: "NxtFrame", url: "https://nxtframe.ai" },
       areaServed: { "@type": "Country", name: "Nederland" },
       description: metadata.description,
-      url: "https://nxtframe.ai/website-redesign",
+      url: "https://nxtframe.ai/website-vernieuwen",
       offers: {
         "@type": "Offer",
         priceCurrency: "EUR",
@@ -199,12 +215,12 @@ export default function Page() {
             <div className="max-w-2xl lg:max-w-[52%]">
               <Eyebrow tone="light" className="max-w-xl">Website redesign</Eyebrow>
               <h1 className="mt-6 t-hero text-paper md:mt-8">
-                Een nieuwe site,
+                Website vernieuwen,
                 <br />
                 <span className="serif-italic text-lime">zonder opnieuw te beginnen</span>
               </h1>
               <p className="mt-6 max-w-lg text-paper t-lead">
-                Je huidige site is traag, verouderd of levert niets op. Ik ontwerp en bouw hem opnieuw op moderne techniek, en neem mee wat al werkt: je adressen, je sterke teksten en de vindbaarheid die je hebt opgebouwd.
+                Je huidige site is traag, verouderd of levert niets op. Ik ontwerp en bouw hem opnieuw op moderne techniek, en neem mee wat al werkt: je adressen, je sterke teksten en de vindbaarheid die je hebt opgebouwd. Je huidige site blijft online tot de nieuwe klaar is.
               </p>
               <div data-hero-cta className="mt-8">
                 <div className="flex flex-wrap items-center gap-x-8 gap-y-4">

@@ -2,15 +2,15 @@
 export const faq = [
   {
     q: "Wat kost een website laten maken?",
-    a: "Een complete website begint rond € 2.500. Een grote site of een webshop begint rond € 4.500, en echt maatwerk, zoals een platform of een eigen tool, gaat op offerte. De uiteindelijke prijs hangt af van het aantal pagina's, koppelingen en of we de content samen maken. Na de kennismaking krijg je een vaste prijs, geen uurtje-factuurtje.",
+    a: "Een complete website begint rond € 2.500. Een grote site of een webshop begint rond € 4.500, en echt maatwerk, zoals een platform of een eigen tool, gaat op offerte. De uiteindelijke prijs hangt af van het aantal pagina's en koppelingen. De teksten schrijf ik zelf, dat zit in de prijs. Na de kennismaking krijg je een vaste prijs, geen uurtje-factuurtje.",
   },
   {
     q: "Hoe lang duurt het om een website te laten maken?",
-    a: "Een website staat in 4 tot 6 weken live, een grote site of webshop in 8 tot 12 weken, gerekend vanaf het moment dat teksten, foto's en toegang binnen zijn. Hoe snel feedback binnenkomt, bepaalt de rest.",
+    a: "Een website staat in 4 tot 6 weken live, een grote site of webshop in 8 tot 12 weken, gerekend vanaf het moment dat ik je foto's en de toegang tot je domein heb. De teksten schrijf ik zelf; hoe snel jij ze nakijkt, bepaalt de rest.",
   },
   {
     q: "Waarom geen WordPress, Wix of een AI-sitebuilder?",
-    a: "Die tools zijn prima om snel iets online te zetten. Maar ze zijn vaak traag, het ontwerp is generiek en je bent afhankelijk van plugins en updates. Ik bouw met moderne code, zonder ballast. Daardoor laadt de site snel en kunnen Google en AI-zoekmachines hem goed lezen.",
+    a: "Die tools zijn prima om snel iets online te zetten. Maar ze zijn vaak traag, het ontwerp is generiek en je bent afhankelijk van plugins en updates. Websites bouw ik met moderne code, zonder ballast, zodat ze snel laden en Google en AI-zoekmachines ze goed kunnen lezen. Voor webshops kies ik meestal Shopify: betrouwbaar, veilig en makkelijk zelf te beheren.",
   },
   {
     q: "Kan ik de website zelf aanpassen?",
@@ -22,7 +22,7 @@ export const faq = [
   },
   {
     q: "Wat heb ik nodig om te starten?",
-    a: "Alleen een half uur voor de kennismaking. Een logo, teksten en foto's zijn handig maar niet verplicht: als ze er niet zijn, maken we ze in het traject.",
+    a: "Alleen een half uur voor de kennismaking. Teksten hoef je niet te schrijven: dat doe ik, op basis van ons gesprek. Een logo en eigen foto's zijn handig. Heb je ze niet, dan zoeken we samen een oplossing.",
   },
   {
     q: "Wat gebeurt er na de lancering?",
@@ -31,5 +31,15 @@ export const faq = [
   {
     q: "Werk je ook voor mijn branche?",
     a: "Ik bouw websites voor makelaars, horeca, webshops, financieel adviseurs, bouw- en installatiebedrijven, zorgpraktijken, beauty en wellness, en coaches. Per branche staat beschreven wat de site moet doen.",
+  },
+  /* 8: the biggest objection of a small business owner (no time to write), answered up front */
+  {
+    q: "Moet ik de teksten zelf schrijven?",
+    a: "Nee, dat doe ik. In de kennismaking en een gesprek daarna vertel je over je bedrijf en je klanten, en daar schrijf ik de teksten van, in jouw toon. Je leest ze na, geeft feedback, en pas na jouw akkoord gaan ze online. Het schrijven zit in de prijs.",
+  },
+  /* 9: who and where, for a visitor deciding whether to trust one person */
+  {
+    q: "Wie ben je en waar werk je?",
+    a: "Ik ben Justin Streur, eigenaar van NxtFrame. Ik werk vanuit Purmerend voor ondernemers in heel Nederland, online of op locatie. Je spreekt van begin tot eind mij: ik ontwerp, schrijf en bouw je site zelf.",
   },
 ];

@@ -121,7 +121,15 @@ export default function Page() {
 
         <BgMark bg="#dafc92" fg="#02261e" at={1} />
 
-        <CaseDarkResult words={["Helder", "Vindbaar", "Persoonlijk"]} />
+        <CaseDarkResult
+          words={["Helder", "Vindbaar", "Persoonlijk"]}
+          facts={[
+            "Rekentools die in een paar stappen een eerlijke indicatie geven",
+            "Uitleg over kosten en werkwijze in gewone taal",
+            "Een gratis kennismaking die bezoekers zelf inplannen",
+            "De rekentools werk ik elk jaar bij met de nieuwe regels",
+          ]}
+        />
 
         <CaseDarkRoles
           roles={[

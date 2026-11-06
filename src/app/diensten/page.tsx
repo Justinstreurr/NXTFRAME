@@ -63,7 +63,7 @@ const list: Service[] = [
     lead: "Je huidige site opnieuw ontworpen en gebouwd op moderne techniek. Met oude adressen netjes doorgestuurd, zodat je zo min mogelijk van je opgebouwde vindbaarheid verliest.",
     items: ["Analyse van je huidige site", "Nieuw ontwerp en nieuwe techniek", "Oude adressen netjes doorgestuurd", "Teksten en structuur verbeterd"],
     img: "/images/andere-tijd.webp", pos: "50% 40%", alt: "De NxtFrame-mascotte krabt zich achter het hoofd voor een ouderwetse website op een oude computer",
-    link: { href: "/website-redesign", label: "Alles over een redesign" },
+    link: { href: "/website-vernieuwen", label: "Alles over een redesign" },
   },
   {
     id: "vindbaarheid", icon: "search", title: "Vindbaar in Google en AI",
@@ -184,7 +184,7 @@ export default function Page() {
           <Container className="text-center">
             <Eyebrow className="mx-auto w-fit">Wat ik doe</Eyebrow>
             <h2 className="mx-auto mt-6 max-w-4xl t-section md:mt-8">
-              Zeven diensten, <span className="serif-italic">één doel</span>
+              Zes diensten, <span className="serif-italic">één doel</span>
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-forest/75 t-lead">
               Een site die gevonden wordt en verkoopt. Kies wat je nodig hebt, of begin bij de kennismaking en we bepalen het samen.

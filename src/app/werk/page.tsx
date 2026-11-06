@@ -34,7 +34,7 @@ export default function Page() {
                 <span className="serif-italic text-lime">zelf kunt bekijken</span>
               </h1>
               <p className="mt-6 max-w-lg text-paper t-lead">
-                Websites voor klanten als Happy Flops en Hypotheekhaven, en per branche een concept van wat de site daar moet doen.
+                Websites voor Happy Flops en Hypotheekhaven, en per branche een concept van wat de site daar moet doen.
               </p>
               <div data-hero-cta className="mt-8">
                 <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
@@ -76,7 +76,7 @@ export default function Page() {
             header={
               <div className="grid gap-10 lg:grid-cols-2 lg:items-end lg:gap-20">
                 <div>
-                  <Eyebrow className="max-w-xl">Ons werk</Eyebrow>
+                  <Eyebrow className="max-w-xl">Mijn werk</Eyebrow>
                   <h2 className="mt-6 t-section md:mt-8">
                     Klanten en concepten, <span className="serif-italic">alles op één plek</span>
                   </h2>

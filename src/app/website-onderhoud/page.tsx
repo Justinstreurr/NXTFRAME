@@ -32,9 +32,9 @@ import { faq } from "@/components/faq";
  *  - The page is about sites built by NxtFrame; maintenance of other sites is not mentioned.
  */
 export const metadata: Metadata = {
-  title: "Website onderhoud | Onderhoud en doorontwikkeling per maand | NxtFrame",
+  title: "Website onderhoud per maand, vast bedrag | NxtFrame",
   description:
-    "Website onderhoud per maand: hosting, updates, beveiliging en back-ups, snelheid en vindbaarheid gemeten, en verbeteringen op basis van wat bezoekers doen. Eén vast bedrag, één aanspreekpunt.",
+    "Hosting, updates, back-ups en kleine aanpassingen voor één vast bedrag per maand. Eén aanspreekpunt, per maand opzegbaar, en de site blijft van jou.",
   alternates: { canonical: "/website-onderhoud" },
 };
 
@@ -148,6 +148,26 @@ const questions = [
     q: "Is de site van mij als ik stop?",
     a: "Ja. Stop je met onderhoud, dan blijft de site van jou, inclusief de code, en blijft hij werken. Ik help je met een nette overdracht als je dat wilt. Je domeinnaam staat altijd op jouw naam.",
   },
+  {
+    q: "Wat als je op vakantie of ziek bent?",
+    a: "Je site draait op goede hosting en blijft gewoon online. Vakanties hoor je ruim van tevoren. De code en de documentatie zijn van jou, dus je bent nooit afhankelijk van mij alleen: een andere ontwikkelaar kan er altijd mee verder.",
+  },
+  {
+    q: "Hoe snel reageer je?",
+    a: "Meestal binnen één werkdag, en je hoort het van mij zelf. Ligt je site eruit, dan heeft dat voorrang op al het andere.",
+  },
+  {
+    q: "Waarom heeft mijn site minder onderhoud nodig dan een WordPress-site?",
+    a: "Een WordPress-site draait vaak op tientallen plugins die elk hun eigen updates en lekken hebben. Mijn sites hebben die stapel niet. Daardoor is er minder dat kan breken of gehackt worden, en gaat je abonnement vooral naar verbeteren in plaats van repareren.",
+  },
+  {
+    q: "Mijn site is door iemand anders gebouwd. Kun je die onderhouden?",
+    a: "Mijn onderhoud is gemaakt voor sites die ik zelf bouw. Heb je een site van iemand anders, dan kijk ik eerst wat er nodig is. Soms is overzetten of vernieuwen op termijn goedkoper dan blijven repareren, en dat hoor je dan eerlijk.",
+  },
+  {
+    q: "Wat als mijn site toch gehackt wordt?",
+    a: "Met onderhoud worden er regelmatig back-ups gemaakt. Gaat er iets mis, dan zet ik een werkende versie terug en zoek ik uit wat er gebeurde. Zonder plugins is die kans al een stuk kleiner.",
+  },
   faq[3],
   faq[6],
 ];
@@ -196,7 +216,7 @@ export default function Page() {
                 <span className="serif-italic text-lime">gaat het door</span>
               </h1>
               <p className="mt-6 max-w-lg text-paper t-lead">
-                Ik houd je site snel en veilig, let op hoe hij gevonden wordt en bouw hem verder uit op basis van wat bezoekers doen. Eén vast bedrag per maand, één aanspreekpunt.
+                Ik houd je site snel, veilig en actueel, let op hoe hij gevonden wordt en bouw hem verder uit op basis van wat bezoekers doen. Eén vast bedrag per maand, per maand opzegbaar.
               </p>
               <div data-hero-cta className="mt-8">
                 <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
@@ -361,7 +381,7 @@ export default function Page() {
                   </span>
                   Onderhoudsabonnement
                 </p>
-                <p className="mt-10 font-serif text-4xl leading-tight text-lime [overflow-wrap:anywhere] md:text-5xl">[INVULLEN: bedrag onderhoudsabonnement per maand]</p>
+                <p className="mt-10 font-serif text-4xl leading-tight text-lime [overflow-wrap:anywhere] md:text-5xl">Vast bedrag per maand</p>
                 <p className="mt-3 text-sm text-paper/60">exclusief btw · per maand opzegbaar</p>
                 <p className="mt-6 max-w-md text-base leading-relaxed text-paper/80 md:text-lg">
                   Je site draait bij mij en ik houd hem bij. Eén vast bedrag per maand, en je hebt er geen omkijken naar.

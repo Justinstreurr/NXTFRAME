@@ -34,6 +34,8 @@ const nextConfig: NextConfig = {
       ["/branches/coaches-en-adviseurs", "/coach-website"],
       // no single landing pages any more (6 Nov 2026): a site, a bigger job or custom work
       ["/landingspagina-laten-maken", "/website-laten-maken"],
+      // the Dutch search is "website vernieuwen", not "website redesign" (search research, 6 Nov 2026)
+      ["/website-redesign", "/website-vernieuwen"],
     ];
     return moved.map(([source, destination]) => ({ source, destination, permanent: true }));
   },

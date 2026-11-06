@@ -20,9 +20,9 @@ import { integrations, smartFaq, tools } from "@/components/smartTools";
  * assistant has small monthly costs for the AI model (as the FAQ already says).
  */
 export const metadata: Metadata = {
-  title: "AI-oplossingen voor je bedrijf | AI-assistent, rekentools en automatisering | NxtFrame",
+  title: "AI voor het mkb: chatbot, rekentools en koppelingen | NxtFrame",
   description:
-    "AI en slimme tools op je website: een assistent die vragen beantwoordt, rekentools, offertes en facturen klaargezet om na te kijken, opvolging van aanvragen en koppelingen met je systemen. Vaste prijs vooraf.",
+    "Een AI-assistent, rekentool of koppeling op je site, met een vaste prijs vooraf. Jij houdt de controle: niets gaat zonder jouw akkoord naar buiten.",
   alternates: { canonical: "/ai-oplossingen" },
 };
 

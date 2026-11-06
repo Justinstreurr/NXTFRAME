@@ -18,9 +18,9 @@ import BranchPricing, { type PriceWay } from "@/components/BranchPricing";
 const makelaars = branches.find((b) => b.slug === "makelaars")!;
 
 export const metadata: Metadata = {
-  title: "Makelaar website laten maken | Woningaanbod uit je CRM | NxtFrame",
+  title: "Makelaarswebsite laten maken met Realworks of Kolibri | NxtFrame",
   description:
-    "Een makelaarswebsite met je woningaanbod uit je eigen pakket (zoals Realworks, Kolibri of Skarabee), een waardebepaling zonder drempel en een pagina per plaats waar je werkt.",
+    "Een makelaarswebsite die verkopers binnenhaalt: aanbod uit Realworks, Kolibri of Skarabee, online waardebepaling en een pagina per plaats. Teksten schrijf ik. Vaste prijs vooraf.",
   alternates: { canonical: "/makelaar-website" },
 };
 

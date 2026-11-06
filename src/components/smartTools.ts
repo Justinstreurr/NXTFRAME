@@ -59,7 +59,7 @@ export const integrations: { group: string; icon: IconKey; systems: string[] }[]
 export const smartFaq: { q: string; a: string }[] = [
   {
     q: "Mijn systeem staat er niet bij. Kan het dan niet?",
-    a: "Bijna altijd wel. De meeste pakketten hebben een koppeling of een export waar een site mee kan werken. Ik zoek het vooraf voor je uit en zeg eerlijk wat kan, wat het kost en waar de grenzen liggen, voordat er iets gebouwd wordt.",
+    a: "Vaak wel. De meeste pakketten hebben een koppeling of een export waar een site mee kan werken. Ik zoek het vooraf voor je uit en zeg eerlijk wat kan, wat het kost en waar de grenzen liggen, voordat er iets gebouwd wordt.",
   },
   {
     q: "Moet ik overstappen naar een ander pakket?",
@@ -67,7 +67,7 @@ export const smartFaq: { q: string; a: string }[] = [
   },
   {
     q: "Wat als een koppeling een keer stopt met werken?",
-    a: "Dan merk ik het, want koppelingen worden in de gaten gehouden. Met onderhoud per maand los ik het op voordat jij of je klanten er last van hebben.",
+    a: "Met onderhoud per maand houd ik je koppelingen in de gaten. Stopt er een, dan merk ik het en los ik het op, liefst voordat jij of je klanten er last van hebben.",
   },
   {
     q: "Wat kost een AI-assistent per maand?",
@@ -76,6 +76,22 @@ export const smartFaq: { q: string; a: string }[] = [
   {
     q: "Geeft een AI-assistent geen verkeerde antwoorden?",
     a: "Hij antwoordt alleen op basis van de informatie die jij hebt goedgekeurd, en zegt het eerlijk als hij iets niet weet. Dan zet hij de vraag door naar jou. Je kunt de gesprekken teruglezen en hem bijsturen.",
+  },
+  {
+    q: "Weten klanten dat ze met een AI praten?",
+    a: "Ja. De assistent zegt altijd dat hij een AI is. Dat is eerlijk, en volgens de Europese AI-regels ook verplicht. Wil iemand een mens spreken, dan zet hij de vraag door naar jou.",
+  },
+  {
+    q: "Is het AVG-proof?",
+    a: "Ik kies diensten die gegevens in Europa verwerken waar dat kan, en de assistent vraagt alleen wat nodig is. Welke gegevens er worden bewaard en hoe lang, spreken we vooraf af en leg je vast in je privacyverklaring.",
+  },
+  {
+    q: "Wat doet de assistent nooit zelf?",
+    a: "Klachten afhandelen, persoonlijk advies geven of iets beloven wat niet in jouw informatie staat. Zulke vragen gaan altijd naar jou.",
+  },
+  {
+    q: "Waarom niet zelf een chatbot zoals Tidio of Chatbase?",
+    a: "Dat kan prima voor algemene vragen. Het verschil zit in wat erachter zit: een assistent die je agenda kent, afspraken inplant en aanvragen in je eigen systeem zet. En niet elke vraag vraagt om een chatbot: soms is een duidelijke pagina beter. Dat hoor je dan eerlijk.",
   },
   {
     q: "Kan dit ook zonder nieuwe website?",

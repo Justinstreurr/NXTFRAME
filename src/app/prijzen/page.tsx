@@ -35,8 +35,8 @@ import { faq } from "@/components/faq";
 const [site, big] = tiers;
 
 export const metadata: Metadata = {
-  title: "Wat kost een website laten maken? Prijzen | NxtFrame",
-  description: `Wat kost een website laten maken? Een website vanaf € ${site.from}, een grote site of webshop vanaf € ${big.from} en maatwerk op offerte. Na de kennismaking krijg je één vaste prijs.`,
+  title: "Wat kost een website laten maken in 2026? | NxtFrame",
+  description: `Een website laten maken kost bij mij vanaf € ${site.from}, een webshop vanaf € ${big.from}. Met marktprijzen, de kosten per maand en wat er wel en niet in zit.`,
   alternates: { canonical: "/prijzen" },
 };
 
@@ -78,10 +78,42 @@ const after: { label: string; title: string; body: string; items: string[]; pric
   },
 ];
 
+/* what a complete site costs elsewhere, as the ranking price guides give it (Nov 2026) */
+const market = [
+  { who: "Sitebouwer of template", range: "€ 0 tot € 500", body: "Een standaardthema dat je zelf vult. Snel online, maar de teksten, foto's en vindbaarheid regel je zelf." },
+  { who: "Freelancer", range: "€ 1.500 tot € 4.000", body: "Vaak sterk in één ding: ontwerp, techniek of vindbaarheid. Teksten lever je meestal zelf aan." },
+  { who: "Bureau", range: "€ 5.000 of meer", body: "Strategie, ontwerp en bouw door een team, met een accountmanager ertussen. Langer traject." },
+  { who: "NxtFrame", range: `vanaf € ${site.from}`, body: "Ontwerp, teksten en bouw door één maker, met één vaste prijs vooraf. Site en domein op jouw naam.", us: true },
+];
+
 /* the price questions: two from the shared FAQ, the rest only asked here. Payment terms and the
    deposit are not decided yet, so those answers point to the quote instead of naming a schedule. */
 const questions = [
   faq[0],
+  {
+    q: "Zitten de teksten in de prijs?",
+    a: "Ja. Ik schrijf de teksten zelf, op basis van een gesprek over je bedrijf en je klanten. Je leest ze na en pas na jouw akkoord gaan ze online. Bij veel andere aanbieders lever je de teksten zelf aan, of betaal je er apart voor.",
+  },
+  {
+    q: "Waarom is een website van een paar honderd euro zoveel goedkoper?",
+    a: "Dan krijg je een standaardthema waar je zelf je teksten en foto's in zet, zonder plan voor wie je wilt bereiken of hoe je gevonden wordt. Soms is dat genoeg, en dan zeg ik dat ook. Wil je dat je site aanvragen oplevert, dan zit het verschil in het werk dat daarvoor nodig is.",
+  },
+  {
+    q: "Wat kost een website per maand?",
+    a: "Je domeinnaam kost meestal zo'n € 10 tot € 15 per jaar en betaal je zelf. Daarnaast kies je: hosting en onderhoud bij mij voor een vast bedrag per maand, dat vooraf in je offerte staat, of je regelt het zelf. Een rekentool houd ik in het abonnement actueel.",
+  },
+  {
+    q: "Wat kost een webshop laten maken?",
+    a: `Een webshop begint vanaf € ${big.from}. De prijs hangt vooral af van het aantal producten, je verzending en de koppelingen met je voorraad of boekhouding. Daarnaast betaal je je shopplatform en transactiekosten per betaling.`,
+  },
+  {
+    q: "Wat kost een extra pagina of functie later?",
+    a: "Dat hangt af van wat het is. Voor elke uitbreiding krijg je vooraf een vaste prijs, en pas na jouw akkoord begin ik.",
+  },
+  {
+    q: "Hoe vergelijk ik offertes?",
+    a: "Kijk naar vijf dingen: wie de teksten schrijft, hoeveel feedbackrondes er in zitten, of de site en het domein van jou zijn, wat hosting en onderhoud per maand kosten, en of er uren achteraf kunnen komen. Twee offertes met hetzelfde bedrag kunnen heel verschillend zijn.",
+  },
   {
     q: "Waarom staan er vanaf-prijzen en geen vaste bedragen?",
     a: "Omdat geen twee sites hetzelfde zijn. De vanaf-prijzen geven de richting, zodat je weet waar je aan toe bent. Na de kennismaking weet ik genoeg om één vast bedrag te noemen voor het hele traject.",
@@ -169,12 +201,14 @@ export default function Page() {
               {/* one line on desktop, set to the given spec: Inter Tight 400 at 88px on a 88px line, the serif
                   word in italic at 92px, in lime. Below 1440px it scales down with the window. */}
               <h1 className="mt-6 t-hero font-normal text-paper md:mt-8 lg:whitespace-nowrap lg:text-[length:min(6.11vw,5.5rem)]! lg:leading-none!">
-                Wat kost een <span className="serif-italic text-[1.0455em] text-lime">website?</span>
+                Wat kost een website
+                <br />
+                <span className="serif-italic text-[1.0455em] text-lime">laten maken?</span>
               </h1>
               {/* set to the given spec: Inter Tight 400, 18px on a 26px line */}
               <p className="mt-6 max-w-lg font-display text-[18px] font-normal leading-[26px] text-paper">
-                Een website laten maken heeft bij mij een vaste prijs. Hieronder zie je de vanaf-prijzen per pakket, en na de kennismaking krijg je één bedrag voor
-                het hele traject. De doorlooptijd telt vanaf het moment dat teksten, foto&apos;s en toegang binnen zijn.
+                Bij een freelancer betaal je voor een complete site meestal € 1.500 tot € 4.000, bij een bureau vaak € 5.000 of meer. Bij mij begint een complete
+                website bij € {site.from}, inclusief de teksten, en na de kennismaking krijg je één vaste prijs voor het hele traject.
               </p>
 
               {/* the button and the quiet link on one line; under them the three reassurances as their own row,
@@ -269,7 +303,7 @@ export default function Page() {
                 Plan een kennismaking
               </Button>
               <Reassure />
-              <p className="mt-2 max-w-md text-[15px] text-forest/70">Twijfel je welke past? In de kennismaking kijken we samen wat jouw site moet doen.</p>
+              <p className="mt-2 max-w-md text-[15px] text-forest/70">Twijfel je welke past? In de kennismaking kijken we samen wat jouw site moet doen. Meer werk komt er alleen bij na jouw ja.</p>
             </div>
           </Container>
         </section>
@@ -384,7 +418,7 @@ export default function Page() {
                     ))}
                   </ul>
                   <p className={`mt-8 border-t pt-5 font-display text-xl font-semibold tracking-tight ${a.highlight ? "border-forest/15" : "border-paper/15"}`}>
-                    {a.price ?? <span>[INVULLEN: bedrag onderhoudsabonnement per maand]</span>}
+                    {a.price ?? <span>Vast bedrag per maand, vooraf in je offerte</span>}
                   </p>
                 </li>
               ))}
@@ -397,6 +431,29 @@ export default function Page() {
                 aanvraag en de instellingen voor je. Heb je al een domeinnaam, dan gebruik je die gewoon verder.
               </p>
             </div>
+          </Container>
+        </section>
+
+        {/* what the market charges: the ranges the pages that rank for "wat kost een website laten maken"
+            give (search research, Nov 2026), so a visitor can place the price above. Ranges, not our data. */}
+        <section className="bg-cream pb-12 pt-4 text-forest md:pb-32 md:pt-8">
+          <Container>
+            <Eyebrow className="max-w-xl">Marktprijzen</Eyebrow>
+            <h2 className="mt-6 max-w-4xl t-section md:mt-8">
+              Wat een website <span className="serif-italic">elders kost</span>
+            </h2>
+            <p className="mt-6 max-w-2xl text-forest/75 t-lead">
+              Zo kun je de prijzen hierboven plaatsen. Dit zijn de bedragen die je in Nederland meestal tegenkomt voor een complete site, exclusief btw.
+            </p>
+            <ul className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+              {market.map((m) => (
+                <li key={m.who} className={`rounded-3xl p-6 md:p-8 ${m.us ? "bg-forest text-cream" : "bg-paper text-forest ring-1 ring-forest/10"}`}>
+                  <h3 className="font-display text-xl font-semibold tracking-tight">{m.who}</h3>
+                  <p className="mt-3 font-display text-3xl font-semibold tracking-[-0.03em]">{m.range}</p>
+                  <p className={`mt-4 text-[15px] leading-relaxed ${m.us ? "text-cream/80" : "text-forest/75"}`}>{m.body}</p>
+                </li>
+              ))}
+            </ul>
           </Container>
         </section>
 
