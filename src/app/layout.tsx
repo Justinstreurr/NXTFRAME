@@ -48,8 +48,8 @@ export const viewport: Viewport = { themeColor: "#02261e" };
 
 /* the business itself, on every page, so Google ties the site, the Google Business Profile and the
    socials to one entity (and not to the TCL NXTFRAME television). A service-area business: no street
-   address shown, the area it serves instead. sameAs: the Business Profile (its review link for now;
-   swap in the Maps link once the profile shows in Maps) and the socials once they are known. */
+   address shown, the area it serves instead. sameAs: the Business Profile in Google Maps, and the
+   socials once there are any. */
 const organization = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
@@ -64,7 +64,8 @@ const organization = {
   address: { "@type": "PostalAddress", addressLocality: "Purmerend", addressCountry: "NL" },
   areaServed: { "@type": "Country", name: "Nederland" },
   identifier: { "@type": "PropertyValue", propertyID: "KvK", value: "42102903" },
-  sameAs: ["https://g.page/r/CecKFPBta6z2EBM/review"],
+  hasMap: "https://maps.app.goo.gl/dKuPJVGSYLLJTihM7",
+  sameAs: ["https://maps.app.goo.gl/dKuPJVGSYLLJTihM7"],
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
