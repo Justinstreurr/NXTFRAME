@@ -18,8 +18,9 @@ export type Branch = {
   concept?: { url: string; img: string };
   /** the closest piece of real work; only set where one exists, the section is skipped otherwise */
   proof?: { name: string; kind: string; body: string; href: string; img: string; pos?: string };
-  /** the Uitgebreid package of pricing.ts (4.500, 8 tot 12 weken) for every branch, as each branch site includes a koppeling;
-      PLACEHOLDER until the prices in pricing.ts are confirmed */
+  /** the package of pricing.ts the branch's complete site falls under (decided 6 Nov 2026): Website (2.500) when the
+      systems the client already has are built in as a button or widget (reserveren, boeken, agenda); Uitgebreid
+      (4.500) when the site exchanges data with another system (woningfeed, webshop) */
   price: { from: string; span: string; note: string };
   /** the questions this branch actually asks, answered. Feeds the page and the FAQPage JSON-LD */
   faq: { q: string; a: string }[];
@@ -116,7 +117,7 @@ export const branches: Branch[] = [
       { title: "Een kaart voor de telefoon", body: "Geen pdf, maar een menukaart die snel laadt, per gerecht vindbaar is, allergenen toont en die je zelf in een minuut aanpast als de daghap verandert." },
       { title: "Google Maps op orde", body: "Openingstijden, feestdagen en foto's die in Google hetzelfde zeggen als op je site, zodat wie in de buurt zoekt niet voor een dichte deur staat." },
     ],
-    price: { from: "4.500", span: "8 tot 12 weken", note: "Inclusief reserveren via je eigen systeem en een menukaart die je zelf bijwerkt." },
+    price: { from: "2.500", span: "4 tot 6 weken", note: "Inclusief reserveren via je eigen systeem en een menukaart die je zelf bijwerkt." },
     faq: [
       {
         q: "Koppelt dit met mijn reserveringssysteem?",
@@ -226,7 +227,7 @@ export const branches: Branch[] = [
       name: "Hypotheekhaven", kind: "Klant", href: "/werk/hypotheekhaven", img: "/images/hypotheekhaven-fauteuil.webp",
       body: "Een adviespraktijk met een site die uitlegt hoe het werkt en de eerste afspraak zo licht mogelijk maakt.",
     },
-    price: { from: "4.500", span: "8 tot 12 weken", note: "Inclusief een afspraakplanner, pagina's per dienst en een vaste plek voor je verplichte informatie." },
+    price: { from: "2.500", span: "4 tot 6 weken", note: "Inclusief een afspraakplanner, pagina's per dienst en een vaste plek voor je verplichte informatie. Rekentools bouw ik erbij als uitbreiding." },
     faq: [
       {
         q: "Moet mijn site aan regels van de AFM voldoen?",
@@ -286,7 +287,7 @@ export const branches: Branch[] = [
       { title: "Gevonden per dienst en plaats", body: "Van badkamer renoveren tot warmtepomp installeren, elke dienst een eigen pagina per werkgebied, zodat je gevonden kunt worden op de klussen die je het liefst doet." },
       { title: "Offertes en facturen klaargezet", body: "Vraagt een klant een offerte aan via je site, dan staat er meteen een concept klaar, met jouw vaste prijzen en materialen en de gegevens van de klant. Jij kijkt het na, past aan wat anders is en verstuurt. Zegt de klant ja, dan maak je er met één klik de factuur van." },
     ],
-    price: { from: "4.500", span: "8 tot 12 weken", note: "Inclusief projectpagina's, een offerteformulier met foto-upload, een offerte- en factuurtool en een pagina per dienst en werkgebied." },
+    price: { from: "2.500", span: "4 tot 6 weken", note: "Inclusief projectpagina's, een offerteformulier met foto-upload en een pagina per dienst en werkgebied. Een offerte- en factuurtool bouw ik erbij als uitbreiding." },
     faq: [
       {
         q: "Ik heb geen goede foto's van mijn werk, wat nu?",
@@ -341,7 +342,7 @@ export const branches: Branch[] = [
       { title: "Toegankelijk voor iedereen", body: "Grote knoppen, rustig contrast, heldere taal en werkend met een schermlezer. Gebouwd volgens de toegankelijkheidsrichtlijnen, niet als sluitstuk maar vanaf het ontwerp." },
       { title: "Duidelijk over wachttijd en aanmelden", body: "Of je aanneemt, hoe lang het duurt en wat iemand moet meenemen naar de eerste afspraak. Dat scheelt telefoontjes en geeft rust, aan beide kanten." },
     ],
-    price: { from: "4.500", span: "8 tot 12 weken", note: "Inclusief online afspraken, toegankelijkheid volgens WCAG en een pagina per behandelaar." },
+    price: { from: "2.500", span: "4 tot 6 weken", note: "Inclusief online afspraken, toegankelijkheid volgens WCAG en een pagina per behandelaar." },
     faq: [
       {
         q: "Kan het koppelen met mijn afsprakensysteem?",
@@ -392,7 +393,7 @@ export const branches: Branch[] = [
       { title: "Je eigen sfeer", body: "Beeld, kleur en letters die bij jouw studio horen. Klanten kiezen ook op uitstraling, en die moet meteen kloppen, ook op een klein scherm." },
       { title: "Gevonden in de buurt", body: "Een eigen pagina per behandeling in combinatie met je stad of wijk, plus een Google-profiel dat klopt, zodat nieuwe klanten je ook zonder advertenties kunnen vinden." },
     ],
-    price: { from: "4.500", span: "8 tot 12 weken", note: "Inclusief de koppeling met je boekingssysteem en een pagina per behandeling." },
+    price: { from: "2.500", span: "4 tot 6 weken", note: "Inclusief je boekingssysteem ingebouwd en een pagina per behandeling." },
     faq: [
       {
         q: "Koppelt dit met mijn boekingssysteem?",
@@ -443,7 +444,7 @@ export const branches: Branch[] = [
       { title: "Aanbod dat helder is", body: "Trajecten, duur, prijs en resultaat in één oogopslag, met een kennismakingsgesprek als logische volgende stap in plaats van als enige optie." },
       { title: "Gevonden op je expertise", body: "Artikelen en pagina's over je specialisme, opgebouwd voor Google en ChatGPT. Elk stuk dat je schrijft, is een extra ingang naar je site." },
     ],
-    price: { from: "4.500", span: "8 tot 12 weken", note: "Inclusief een agendakoppeling, pagina's per traject en een plek om zelf te publiceren." },
+    price: { from: "2.500", span: "4 tot 6 weken", note: "Inclusief je agenda ingebouwd, pagina's per traject en een plek om zelf te publiceren." },
     faq: [
       {
         q: "Moet ik mijn prijzen op de site zetten?",

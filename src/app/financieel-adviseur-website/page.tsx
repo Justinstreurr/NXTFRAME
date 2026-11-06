@@ -86,7 +86,7 @@ const ways: PriceWay[] = [
     name: "Complete adviseurssite", from: advies.price.from,
     body: "Een nieuwe site die vertrouwen wekt en de eerste afspraak makkelijk maakt.",
     time: `Live in ${advies.price.span}`,
-    items: ["Teksten die ik voor je schrijf", "Online een kennismaking plannen", "Rekentools voor je bezoekers", "Een pagina per dienst en levensmoment", "Je reviews en jij als adviseur", "Een vaste plek voor je verplichte informatie"],
+    items: ["Teksten die ik voor je schrijf", "Online een kennismaking plannen", "Uitleg over kosten en werkwijze", "Een pagina per dienst en levensmoment", "Je reviews en jij als adviseur", "Een vaste plek voor je verplichte informatie"],
     highlight: true,
   },
   {

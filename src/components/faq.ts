@@ -2,7 +2,7 @@
 export const faq = [
   {
     q: "Wat kost een website laten maken?",
-    a: "Een complete website begint rond € 2.500. Een grote site of een webshop begint rond € 4.500, en echt maatwerk, zoals een platform of een eigen tool, gaat op offerte. De uiteindelijke prijs hangt af van het aantal pagina's en koppelingen. De teksten schrijf ik zelf, dat zit in de prijs. Na de kennismaking krijg je een vaste prijs, geen uurtje-factuurtje.",
+    a: "Een complete website begint bij € 2.500, ook als je reserveren, boeken of je agenda erin wilt. Wisselt je site gegevens uit met een ander systeem, zoals een webshop, je woningaanbod, een rekentool of je boekhouding, of heeft hij meer dan 8 pagina's, dan begint het bij € 4.500. Echt maatwerk, zoals een platform of een eigen tool, gaat op offerte. De uiteindelijke prijs hangt af van het aantal pagina's en koppelingen. De teksten schrijf ik zelf, dat zit in de prijs. Na de kennismaking krijg je een vaste prijs, geen uurtje-factuurtje.",
   },
   {
     q: "Hoe lang duurt het om een website te laten maken?",
